@@ -46,9 +46,6 @@ def handle_message(event):
     message=message.encode('utf-8')
     if event.message.text=="識別碼":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.source.user_id))
-    elif event.message.text=="名稱":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.source.display_name))
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="失敗"))
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
