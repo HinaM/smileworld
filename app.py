@@ -47,8 +47,8 @@ def handle_message(event):
     if event.message.text=="識別碼":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.source.user_id))
     elif event.message.text=="名稱":
-        profile = line_bot_api.get_profile(user_id)
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.source.display_name))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="失敗"))
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
