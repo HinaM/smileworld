@@ -9,6 +9,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+
+
 app = Flask(__name__)
  
 # 必須放上自己的Channel Access Token
@@ -39,10 +41,35 @@ def callback():
 ##### 基本上程式編輯都在這個function #####
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    message = event.message.text
+    message=event.message.text
     message=message.encode('utf-8')
-    if event.message.text == "微笑世界":
+    if event.message.text=="微笑世界":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="吸太多"))
+    elif event.message.text=="榊遊矢":
+        line_bot_api.reply_message(  # 回覆傳入的訊息文字
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='Buttons template',
+                            template=ButtonsTemplate(
+                                title='猜一猜',
+                                text='請選擇遊矢的王牌卡片',
+                                actions=[
+                                    MessageTemplateAction(
+                                        label='異色眼鐘擺龍',
+                                        text='錯了'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='EM族',
+                                        text='錯了'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='微笑世界',
+                                        text='對了'
+                                    )
+                                ]
+                            )
+                        )
+                    )
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
 
