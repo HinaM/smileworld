@@ -49,10 +49,10 @@ def handle_message(event):
     elif event.message.text=="榊遊矢":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="お楽しみはこれから"))
     elif event.message.text=="微笑世界":
-        mes1="決帶笑"
-        mes2="デュエルで、笑顔を"
-        mes=[mes1,mes2]
-        line_bot_api.reply_message(event.TextSendMessage(text=mes))
+        reply_arr=[]
+        reply_arr.append(TextSendMessage("決帶笑") )
+        reply_arr.append(TextSendMessage("デュエルで、笑顔を"))
+        line_bot_api.reply_message(event.reply_token, reply_arr)
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
