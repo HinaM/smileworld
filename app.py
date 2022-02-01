@@ -45,12 +45,9 @@ def handle_message(event):
     message=event.message.text
     message=message.encode('utf-8')
     if event.message.text=="識別碼":
-        reply_arr=[]
-        reply_arr.append(TextSendMessage("識別碼："+event.source.user_id))
         user_id = event.source.user_id
         profile = line_bot_api.get_profile(user_id)
-        reply_arr.append(TextSendMessage("名稱："+profile.display_name))
-        line_bot_api.reply_message(event.reply_token, reply_arr)
+        line_bot_api.reply_message(event.reply_token,text="識別碼："+event.source.user_id+"\n"+"名稱："+profile.display_name)
     elif event.message.text=="榊遊矢":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="お楽しみはこれから"))
     elif event.message.text=="微笑世界":
