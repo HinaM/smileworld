@@ -8,7 +8,8 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-
+from linebot import LineBotApi
+from linebot.exceptions import LineBotApiError
 
 
 app = Flask(__name__)
@@ -44,7 +45,8 @@ def handle_message(event):
     message=event.message.text
     message=message.encode('utf-8')
     line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
-    
+    profile = line_bot_api.get_profile('<user_id>')
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=profile))
 
 #主程式
 import os
