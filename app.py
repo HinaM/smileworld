@@ -8,9 +8,6 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-from linebot import LineBotApi
-from linebot.exceptions import LineBotApiError
-from excel.py import e
 
 app = Flask(__name__)
  
@@ -49,7 +46,7 @@ def handle_message(event):
 
     elif event.message.text=="榊遊矢":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="お楽しみはこれから"))
-        
+
     elif event.message.text=="微笑世界":
         reply_arr=[]
         reply_arr.append(TextSendMessage("決帶笑") )
