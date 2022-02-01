@@ -10,7 +10,7 @@ from linebot.exceptions import (
 from linebot.models import *
 from linebot import LineBotApi
 from linebot.exceptions import LineBotApiError
-
+from excel.py import e
 
 app = Flask(__name__)
  
@@ -53,6 +53,8 @@ def handle_message(event):
         reply_arr.append(TextSendMessage("決帶笑") )
         reply_arr.append(TextSendMessage("デュエルで、笑顔を"))
         line_bot_api.reply_message(event.reply_token, reply_arr)
+    elif event.message.text=="表格":
+        e
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
