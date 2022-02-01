@@ -53,6 +53,11 @@ def handle_message(event):
         reply_arr.append(TextSendMessage("デュエルで、笑顔を"))
         line_bot_api.reply_message(event.reply_token, reply_arr)
     
+    elif event.message.text=="名稱":
+        user_id = event.source.user_id         
+        profile = line_bot_api.get_profile(user_id)
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=profile.display_name))
+
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
