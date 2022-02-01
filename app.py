@@ -44,9 +44,8 @@ def callback():
 def handle_message(event):
     message=event.message.text
     message=message.encode('utf-8')
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     user_id = event.source.user_id
-    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=user_id))
+    line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.source.user_id))
 
 #主程式
 import os
