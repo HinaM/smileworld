@@ -9,6 +9,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+import random
+
 app = Flask(__name__)
  
 # 必須放上自己的Channel Access Token
@@ -57,6 +59,11 @@ def handle_message(event):
         user_id = event.source.user_id         
         profile = line_bot_api.get_profile(user_id)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=profile.display_name))
+
+    elif event.message.text=="決鬥":
+        deck=["EM","DD","幻奏","魔玩具","超重武者","魔界劇團","花札衛","捕食植物"]
+        draw= random.choice(deck)
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=draw))
 
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
