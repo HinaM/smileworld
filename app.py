@@ -46,6 +46,16 @@ def handle_message(event):
     message=message.encode('utf-8')
     if event.message.text=="識別碼":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.source.user_id))
+        
+        profile = line_bot_api.get_profile(user_id)
+        
+        #print(profile.display_name)
+        #print(profile.user_id)
+        #print(profile.picture_url)
+        #print(profile.status_message)
+    elif event.message.text=="名稱":
+        profile = line_bot_api.get_profile(user_id)
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=profile.display_name))
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
