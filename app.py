@@ -60,34 +60,43 @@ def handle_message(event):
         profile = line_bot_api.get_profile(user_id)
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=profile.display_name))
 
-    elif event.message.text=="決鬥":
-        deck=["EM","DD","幻奏","魔玩具","超重武者","魔界劇團","花札衛","捕食植物"]
+    elif event.message.text=="抽卡":
+        deck=["黑魔導","E-Hero新宇俠","星塵龍","No.39希望皇霍普","異色眼靈擺龍","解碼語者"]
         draw= random.choice(deck)
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=draw))
-
+    #有bug
     elif "微笑宇宙" == event.message.text:
-        buttons_template = TemplateSendMessage(
-            template=ButtonsTemplate(
-                title='猜謎決鬥',
-                text='遊矢的王牌卡片是？',
-                thumbnail_image_url='https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fyamataika135%2Fstatus%2F1063268603980480513&psig=AOvVaw1tUuI1Vp5havtKzL4crB9n&ust=1643831963796000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJiq8Lul3_UCFQAAAAAdAAAAABAJ',
-                actions=[
-                    MessageTemplateAction(
-                    label='動作卡',
-                    text='動作卡'
-                    ),
-                    MessageTemplateAction(
-                    label='EM族',
-                    text='EM族'
-                    ),
-                    URITemplateAction(
-                        label='異色眼靈擺龍',
-                        uri='異色眼靈擺龍'
+        line_bot_api.reply_message(  # 回復傳入的訊息文字
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='猜謎決鬥，只能用手機玩',
+                            template=ButtonsTemplate(
+                                title='猜謎決鬥',
+                                text='哪張卡片是遊矢的王牌',
+                                actions=[
+                                    MessageTemplateAction(
+                                        label='動作卡',
+                                        text='動作卡'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='EM族',
+                                        text='EM族'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='時讀、星讀魔術師',
+                                        text='時讀、星讀魔術師'
+                                    )
+                                ]
+                            )
+                        )
                     )
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
+    elif event.message.text=="動作卡":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="對ㄌ"))
+    elif event.message.text=="EM族":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
+    elif event.message.text=="時讀、星讀魔術師":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
+        
     elif event.message.text=="動作卡":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="對了"))
     elif event.message.text=="EM族":
