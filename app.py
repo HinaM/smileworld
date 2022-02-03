@@ -61,11 +61,11 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text=profile.display_name))
 
     elif event.message.text=="抽卡":
-        deck=["黑魔導","E-Hero新宇俠","星塵龍","No.39希望皇霍普","異色眼靈擺龍","解碼語者"]
+        deck=["黑魔導","E-HERO新宇俠","星塵龍","No.39希望皇霍普","異色眼靈擺龍","解碼語者"]
         draw= random.choice(deck)
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=draw))
     #有bug
-    elif "微笑宇宙" == event.message.text:
+    elif event.message.text=="微笑宇宙":
         line_bot_api.reply_message(  # 回復傳入的訊息文字
                         event.reply_token,
                         TemplateSendMessage(
@@ -97,12 +97,12 @@ def handle_message(event):
     elif event.message.text=="時讀、星讀魔術師":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
         
-    elif event.message.text=="動作卡":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="對了"))
-    elif event.message.text=="EM族":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯了"))
-    elif event.message.text=="異色眼靈擺龍":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯了"))
+    elif event.message.text=="卡池":
+        cache=["UR"]*2+["SR"]*13+["R"]*35+["N"]*50
+        get=[]
+        for i in range(10):
+            get.append(random.choice(cache))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=get))
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
