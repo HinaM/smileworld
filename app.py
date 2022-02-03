@@ -97,12 +97,6 @@ def handle_message(event):
     elif event.message.text=="時讀、星讀魔術師":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
         
-    elif event.message.text=="卡池":
-        cache=["UR"]*2+["SR"]*13+["R"]*35+["N"]*50
-        get=[]
-        for i in range(10):
-            get.append(random.choice(cache))
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=get))
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
