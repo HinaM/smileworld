@@ -10,13 +10,12 @@ from linebot.exceptions import (
 from linebot.models import *
 
 import random
-import pygsheets
-gc = pygsheets.authorize(service_file='"C:\Users\user\Desktop\smileworld\smile-world-340813-2bc0b8093b06.json"')
-sht = gc.open_by_url(
-'https://docs.google.com/spreadsheets/d/1FsfvfBLAazAehvUqaVH9rH6zzdCowoYpedVsDSkuAdk/'
-)
-wks_list = sht.worksheets()
-print(wks_list)
+
+from fileinput import filename
+import gspread
+gc=gspread.service_account(filename='smile-world-340813-6b2b86613f09.json')
+sh=gc.open_by_key('1FsfvfBLAazAehvUqaVH9rH6zzdCowoYpedVsDSkuAdk')
+worksheet=sh.sheet1
 app = Flask(__name__)
  
 # 必須放上自己的Channel Access Token
