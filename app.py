@@ -10,7 +10,13 @@ from linebot.exceptions import (
 from linebot.models import *
 
 import random
-
+import pygsheets
+gc = pygsheets.authorize(service_file='"C:\Users\user\Desktop\smileworld\smile-world-340813-2bc0b8093b06.json"')
+sht = gc.open_by_url(
+'https://docs.google.com/spreadsheets/d/1FsfvfBLAazAehvUqaVH9rH6zzdCowoYpedVsDSkuAdk/'
+)
+wks_list = sht.worksheets()
+print(wks_list)
 app = Flask(__name__)
  
 # 必須放上自己的Channel Access Token
@@ -64,7 +70,7 @@ def handle_message(event):
         deck=["黑魔導","E-HERO新宇俠","星塵龍","No.39希望皇霍普","異色眼靈擺龍","解碼語者"]
         draw= random.choice(deck)
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=draw))
-    #有bug
+    
     elif event.message.text=="微笑宇宙":
         line_bot_api.reply_message(  # 回復傳入的訊息文字
                         event.reply_token,
@@ -96,7 +102,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
     elif event.message.text=="時讀、星讀魔術師":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
-        
+    
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
