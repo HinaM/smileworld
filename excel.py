@@ -28,5 +28,10 @@ i+=1
 rowList=worksheet.row_values(i)
 print(rowList)
 print(userList)
-worksheet.update('A2', '張')
+
+worksheet.update('A2', x)
 print(res)
+x=str(len(worksheet.col_values(1)))
+pieces=['A',x]
+j=''.join(pieces)
+print(j)

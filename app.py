@@ -102,6 +102,10 @@ def handle_message(event):
     elif event.message.text=="時讀、星讀魔術師":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
     
+    elif event.message.text=="表格":
+        user_id=event.source.user_id
+        worksheet.update('A2', user_id)
+
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
     
