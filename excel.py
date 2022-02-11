@@ -29,9 +29,19 @@ rowList=worksheet.row_values(i)
 print(rowList)
 print(userList)
 
-worksheet.update('A2', x)
+worksheet.update('B2', int(0))
 print(res)
 x=str(len(worksheet.col_values(1)))
-pieces=['A',x]
-j=''.join(pieces)
-print(j)
+'''
+list=[]
+for i in range(65,76):
+    list.append(chr(i)+str(2))
+print(list)
+'''
+
+a=[1,2,3]
+if 30 in a:
+    print("有")
+else:
+    a.append(30)
+print(a)
