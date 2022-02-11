@@ -117,14 +117,9 @@ def handle_message(event):
                 title='張日向',
                 text='description1',
                 actions=[
-                    PostbackAction(
-                        label='postback1',
-                        display_text='postback text1',
-                        data='action=buy&itemid=1'
-                    ),
                     MessageAction(
-                        label='message1',
-                        text='message text1'
+                        label='角色資料',
+                        text='張日向'
                     ),
                     URIAction(
                         label='uri1',
@@ -137,14 +132,9 @@ def handle_message(event):
                 title='何愷茹',
                 text='description1',
                 actions=[
-                    PostbackAction(
-                        label='postback1',
-                        display_text='postback text1',
-                        data='action=buy&itemid=1'
-                    ),
                     MessageAction(
-                        label='message1',
-                        text='message text1'
+                        label='角色資料',
+                        text='何愷茹'
                     ),
                     URIAction(
                         label='uri1',
@@ -157,14 +147,9 @@ def handle_message(event):
                 title='葉司',
                 text='description1',
                 actions=[
-                    PostbackAction(
-                        label='postback1',
-                        display_text='postback text1',
-                        data='action=buy&itemid=1'
-                    ),
                     MessageAction(
-                        label='message1',
-                        text='message text1'
+                        label='角色資料',
+                        text='葉司'
                     ),
                     URIAction(
                         label='uri1',
@@ -177,14 +162,9 @@ def handle_message(event):
                 title='馬玉山',
                 text='description2',
                 actions=[
-                    PostbackAction(
-                        label='postback2',
-                        display_text='postback text2',
-                        data='action=buy&itemid=2'
-                    ),
                     MessageAction(
-                        label='message2',
-                        text='message text2'
+                        label='角色資料',
+                        text='馬玉山'
                     ),
                     URIAction(
                         label='uri2',
