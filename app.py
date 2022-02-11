@@ -115,13 +115,13 @@ def handle_message(event):
             x=len(userid_list)
             list=[]
             for i in range(65,76):
-                list.append(chr(i)+x)
+                list.append(chr(i)+str(x+1))
             #ID
             worksheet.update(list[0],event.source.user_id)
             #初始值設定
             for i in range(1,11):
                 worksheet.update(list[i],int(0))
-
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經紀錄"))
 
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
