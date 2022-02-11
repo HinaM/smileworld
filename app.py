@@ -120,10 +120,6 @@ def handle_message(event):
                     MessageAction(
                         label='角色資料',
                         text='張日向'
-                    ),
-                    URIAction(
-                        label='uri1',
-                        uri='http://example.com/1'
                     )
                 ]
             ),
@@ -135,10 +131,6 @@ def handle_message(event):
                     MessageAction(
                         label='角色資料',
                         text='何愷茹'
-                    ),
-                    URIAction(
-                        label='uri1',
-                        uri='http://example.com/1'
                     )
                 ]
             ),
@@ -150,10 +142,6 @@ def handle_message(event):
                     MessageAction(
                         label='角色資料',
                         text='葉司'
-                    ),
-                    URIAction(
-                        label='uri1',
-                        uri='http://example.com/1'
                     )
                 ]
             ),
@@ -165,10 +153,6 @@ def handle_message(event):
                     MessageAction(
                         label='角色資料',
                         text='馬玉山'
-                    ),
-                    URIAction(
-                        label='uri2',
-                        uri='http://example.com/2'
                     )
                 ]
             )
