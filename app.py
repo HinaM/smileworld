@@ -170,10 +170,10 @@ def handle_message(event):
         if event.source.user_id in userid_list:
             for i in range(len(userid_list)):
                 if userid_list[i]==event.source.user_id:
-                    x=i
-            list.append('B'+x)
-            list.append('C'+x)
-            list.append('D'+x)
+                    x=i+1
+            list.append('B'+str(x))
+            list.append('C'+str(x))
+            list.append('D'+str(x))
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="凱茹好感度："+list[2]+"\n"+"司好感度："+list[0]+"\n"+"玉山好感度："+list[1]))
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲"))

@@ -46,3 +46,15 @@ else:
     a.append(30)
 print(a)
 print(type(int(worksheet.acell('C2').value)))
+userid_list=worksheet.col_values(1)
+list=[]
+if "Uba41d5fffc98d49212951542e172f811" in userid_list:
+    for i in range(len(userid_list)):
+        if userid_list[i]=="Uba41d5fffc98d49212951542e172f811":
+            x=i+1
+    list.append('B'+str(x))
+    list.append('C'+str(x))
+    list.append('D'+str(x))
+    print("凱茹好感度："+worksheet.acell(list[2]).value+"\n"+"司好感度："+worksheet.acell(list[0]).value+"\n"+"玉山好感度："+worksheet.acell(list[1]).value)
+else:
+    print("error")
