@@ -106,6 +106,199 @@ def handle_message(event):
         user_id=event.source.user_id
         worksheet.update('A2', user_id)
 
+    elif event.message.text=="人物介紹":
+        chara={
+            "type": "carousel",
+            "contents": [
+                {
+                "type": "bubble",
+                "direction": "ltr",
+                "header": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "張日向",
+                        "align": "center",
+                        "contents": []
+                    }
+                    ]
+                },
+                "hero": {
+                    "type": "image",
+                    "url": "https://wiki.komica.org/images/thumb/d/d1/Img18353.jpg/400px-Img18353.jpg",
+                    "size": "full",
+                    "aspectRatio": "1.51:1",
+                    "aspectMode": "fit"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "separator"
+                    }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "萬年吊車尾的日向，竟誤打誤撞的考上了輔大資管系，還遇到自己的真命天女—愷茹。為了要讓愷茹喜歡上他，日向開始努力讀書，希望有一天能被愷茹看見。",
+                        "weight": "regular",
+                        "align": "start",
+                        "margin": "lg",
+                        "wrap": True,
+                        "contents": []
+                    }
+                    ]
+                }
+                },
+                {
+                "type": "bubble",
+                "direction": "ltr",
+                "header": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "何愷茹",
+                        "align": "center",
+                        "contents": []
+                    }
+                    ]
+                },
+                "hero": {
+                    "type": "image",
+                    "url": "https://img.komicolle.org/2019-04/15566418114917.jpg",
+                    "size": "full",
+                    "aspectRatio": "1.51:1",
+                    "aspectMode": "fit"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "separator"
+                    }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "以全校第一的成績進入輔大資管系，無論何時何地都在讀書。平時都擺著一張撲克臉，讓人難以親近的樣子。不過一看到小動物時，臉上總是洋溢著幸福的笑容。",
+                        "align": "start",
+                        "margin": "lg",
+                        "wrap": True,
+                        "contents": []
+                    }
+                    ]
+                }
+                },
+                {
+                "type": "bubble",
+                "direction": "ltr",
+                "header": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "葉司",
+                        "align": "center",
+                        "contents": []
+                    }
+                    ]
+                },
+                "hero": {
+                    "type": "image",
+                    "url": "https://5.share.photo.xuite.net/davidyea2006/15c7a8a/19007516/1025961326_x.jpg",
+                    "size": "full",
+                    "aspectRatio": "1.51:1",
+                    "aspectMode": "fit"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "separator"
+                    }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "大二才轉學過來的轉學生，是日向的死黨。和日向一起去打籃球、吃飯、上課，雖然偶爾冒冒失失的，但是總是把朋友擺在第一位，常常把「兄弟就是要有福同享、有難同當阿」掛在嘴邊。",
+                        "align": "start",
+                        "margin": "lg",
+                        "wrap": True,
+                        "contents": []
+                    }
+                    ]
+                }
+                },
+                {
+                "type": "bubble",
+                "direction": "ltr",
+                "header": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "馬玉山",
+                        "align": "center",
+                        "contents": []
+                    }
+                    ]
+                },
+                "hero": {
+                    "type": "image",
+                    "url": "https://ygodl.com/wp-content/uploads/2021/09/5_Moment.jpg",
+                    "size": "full",
+                    "aspectRatio": "1.51:1",
+                    "aspectMode": "fit"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                    {
+                        "type": "separator"
+                     }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                    {
+                        "type": "text",
+                        "text": "「萬般皆下品，唯有決鬥高」是他的人生名言，與愷茹角逐班上的一二名。玉山也喜歡日向，為了不讓日向一直靠近愷茹，因此常常提出問題刁難日向。",
+                        "align": "start",
+                        "margin": "lg",
+                        "wrap": True,
+                        "contents": []
+                    }
+                    ]
+                }
+                }
+            ]
+            }
+        container_obj = FlexSendMessage.new_from_json_dict(chara)
+        line_bot_api.reply_message(event.reply_token,container_obj)
     elif event.message.text=="開始遊戲":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
@@ -119,9 +312,12 @@ def handle_message(event):
             #ID
             worksheet.update(list[0],event.source.user_id)
             #初始值設定
-            for i in range(1,11):
+            for i in range(1,5):
                 worksheet.update(list[i],int(0))
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經紀錄"))
+            worksheet.update(list[5],int(1))
+            for i in range(6,11):
+                worksheet.update(list[i],int(0))
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已開始遊戲"))
 
     else:
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
