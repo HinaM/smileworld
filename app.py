@@ -113,7 +113,7 @@ def handle_message(event):
         columns=[
             CarouselColumn(
                 thumbnail_image_url='https://example.com/item1.jpg',
-                title='this is menu1',
+                title='張日向',
                 text='description1',
                 actions=[
                     PostbackAction(
@@ -124,17 +124,13 @@ def handle_message(event):
                     MessageAction(
                         label='message1',
                         text='message text1'
-                    ),
-                    URIAction(
-                        label='uri1',
-                        uri='http://example.com/1'
                     )
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://example.com/item2.jpg',
-                title='this is menu2',
-                text='description2',
+                thumbnail_image_url='https://example.com/item1.jpg',
+                title='this is menu1',
+                text='description1',
                 actions=[
                     PostbackAction(
                         label='postback2',
@@ -144,10 +140,38 @@ def handle_message(event):
                     MessageAction(
                         label='message2',
                         text='message text2'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://example.com/item1.jpg',
+                title='this is menu3',
+                text='description3',
+                actions=[
+                    PostbackAction(
+                        label='postback3',
+                        display_text='postback text3',
+                        data='action=buy&itemid=3'
                     ),
-                    URIAction(
-                        label='uri2',
-                        uri='http://example.com/2'
+                    MessageAction(
+                        label='message3',
+                        text='message text3'
+                    )
+                ]
+            ),
+            CarouselColumn(
+                thumbnail_image_url='https://example.com/item2.jpg',
+                title='this is menu2',
+                text='description2',
+                actions=[
+                    PostbackAction(
+                        label='postback4',
+                        display_text='postback text4',
+                        data='action=buy&itemid=4'
+                    ),
+                    MessageAction(
+                        label='message2',
+                        text='message text2'
                     )
                 ]
             )
