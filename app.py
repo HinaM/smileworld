@@ -113,42 +113,82 @@ def handle_message(event):
     template=CarouselTemplate(
         columns=[
             CarouselColumn(
-                thumbnail_image_url='https://wiki.komica.org/images/thumb/d/d1/Img18353.jpg/400px-Img18353.jpg',
-                title='張日向',
+                thumbnail_image_url='https://example.com/item1.jpg',
+                title='this is menu1',
+                text='description1',
                 actions=[
+                    PostbackAction(
+                        label='postback1',
+                        display_text='postback text1',
+                        data='action=buy&itemid=1'
+                    ),
                     MessageAction(
-                        label='張日向角色資料',
-                        text='張日向角色資料'
+                        label='message1',
+                        text='message text1'
+                    ),
+                    URIAction(
+                        label='uri1',
+                        uri='http://example.com/1'
                     )
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://img.komicolle.org/2019-04/15566418114917.jpg',
-                title='何愷茹',
+                thumbnail_image_url='https://example.com/item1.jpg',
+                title='this is menu1',
+                text='description1',
                 actions=[
+                    PostbackAction(
+                        label='postback1',
+                        display_text='postback text1',
+                        data='action=buy&itemid=1'
+                    ),
                     MessageAction(
-                        label='何愷茹角色資料',
-                        text='何愷茹角色資料'
+                        label='message1',
+                        text='message text1'
+                    ),
+                    URIAction(
+                        label='uri1',
+                        uri='http://example.com/1'
                     )
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://5.share.photo.xuite.net/davidyea2006/15c7a8a/19007516/1025961326_x.jpg',
-                title='葉司',
+                thumbnail_image_url='https://example.com/item1.jpg',
+                title='this is menu1',
+                text='description1',
                 actions=[
+                    PostbackAction(
+                        label='postback1',
+                        display_text='postback text1',
+                        data='action=buy&itemid=1'
+                    ),
                     MessageAction(
-                        label='葉司角色資料',
-                        text='葉司角色資料'
+                        label='message1',
+                        text='message text1'
+                    ),
+                    URIAction(
+                        label='uri1',
+                        uri='http://example.com/1'
                     )
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://ygodl.com/wp-content/uploads/2021/09/5_Moment.jpg',
-                title='馬玉山',
+                thumbnail_image_url='https://example.com/item2.jpg',
+                title='this is menu2',
+                text='description2',
                 actions=[
+                    PostbackAction(
+                        label='postback2',
+                        display_text='postback text2',
+                        data='action=buy&itemid=2'
+                    ),
                     MessageAction(
-                        label='馬玉山角色資料',
-                        text='馬玉山角色資料'
+                        label='message2',
+                        text='message text2'
+                    ),
+                    URIAction(
+                        label='uri2',
+                        uri='http://example.com/2'
                     )
                 ]
             )
