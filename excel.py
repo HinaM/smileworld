@@ -29,7 +29,7 @@ rowList=worksheet.row_values(i)
 print(rowList)
 print(userList)
 
-worksheet.update('B2', int(0))
+
 print(res)
 x=str(len(worksheet.col_values(1)))
 '''
@@ -45,3 +45,4 @@ if 30 in a:
 else:
     a.append(30)
 print(a)
+print(type(int(worksheet.acell('C2').value)))
