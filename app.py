@@ -115,7 +115,7 @@ def handle_message(event):
             CarouselColumn(
                 thumbnail_image_url='https://wiki.komica.org/images/thumb/d/d1/Img18353.jpg/400px-Img18353.jpg',
                 title='張日向',
-                text='description1',
+                text='男主角',
                 actions=[
                     MessageAction(
                         label='角色資料',
@@ -126,7 +126,7 @@ def handle_message(event):
             CarouselColumn(
                 thumbnail_image_url='https://img.komicolle.org/2019-04/15566418114917.jpg',
                 title='何愷茹',
-                text='description1',
+                text='女主角',
                 actions=[
                     MessageAction(
                         label='角色資料',
@@ -137,7 +137,7 @@ def handle_message(event):
             CarouselColumn(
                 thumbnail_image_url='https://5.share.photo.xuite.net/davidyea2006/15c7a8a/19007516/1025961326_x.jpg',
                 title='葉司',
-                text='description1',
+                text='男主朋友',
                 actions=[
                     MessageAction(
                         label='角色資料',
@@ -148,7 +148,7 @@ def handle_message(event):
             CarouselColumn(
                 thumbnail_image_url='https://ygodl.com/wp-content/uploads/2021/09/5_Moment.jpg',
                 title='馬玉山',
-                text='description2',
+                text='學霸',
                 actions=[
                     MessageAction(
                         label='角色資料',
@@ -160,7 +160,15 @@ def handle_message(event):
     )
 )
         line_bot_api.reply_message(event.reply_token,carousel_template_message)
-        
+    elif event.message.text=="張日向":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="萬年吊車尾的日向，竟誤打誤撞的考上了輔大資管系，還遇到自己的真命天女—愷茹。為了要讓愷茹喜歡上他，日向開始努力讀書，希望有一天能被愷茹看見。"))
+    elif event.message.text=="何愷茹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="以全校第一的成績進入輔大資管系，無論何時何地都在讀書。平時都擺著一張撲克臉，讓人難以親近的樣子。不過一看到小動物時，臉上總是洋溢著幸福的笑容。"))
+    elif event.message.text=="葉司":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="大二才轉學過來的轉學生，是日向的死黨。和日向一起去打籃球、吃飯、上課，雖然偶爾冒冒失失的，但是總是把朋友擺在第一位，常常把「兄弟就是要有福同享、有難同當阿」掛在嘴邊。"))
+    elif event.message.text=="馬玉山":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="「萬般皆下品，唯有決鬥高」是他的人生名言，與愷茹角逐班上的一二名。玉山也喜歡日向，為了不讓日向一直靠近愷茹，因此常常提出問題刁難日向。"))
+
     elif event.message.text=="開始遊戲":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
