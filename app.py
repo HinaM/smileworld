@@ -116,7 +116,7 @@ def handle_message(event):
                 thumbnail_image_url='https://wiki.komica.org/images/thumb/d/d1/Img18353.jpg/400px-Img18353.jpg',
                 title='張日向',
                 text='主角',
-                actions=[
+                action=[
                     MessageAction(
                         label='張日向角色資料',
                         text='張日向角色資料'
@@ -127,7 +127,7 @@ def handle_message(event):
                 thumbnail_image_url='https://img.komicolle.org/2019-04/15566418114917.jpg',
                 title='何愷茹',
                 text='女主角',
-                actions=[
+                action=[
                     MessageAction(
                         label='何愷茹角色資料',
                         text='何愷茹角色資料'
@@ -138,19 +138,11 @@ def handle_message(event):
                 thumbnail_image_url='https://example.com/item1.jpg',
                 title='this is menu1',
                 text='description1',
-                actions=[
-                    PostbackAction(
-                        label='postback1',
-                        display_text='postback text1',
-                        data='action=buy&itemid=1'
-                    ),
+                action=[
+                    
                     MessageAction(
                         label='message1',
                         text='message text1'
-                    ),
-                    URIAction(
-                        label='uri1',
-                        uri='http://example.com/1'
                     )
                 ]
             ),
@@ -158,19 +150,11 @@ def handle_message(event):
                 thumbnail_image_url='https://example.com/item2.jpg',
                 title='this is menu2',
                 text='description2',
-                actions=[
-                    PostbackAction(
-                        label='postback2',
-                        display_text='postback text2',
-                        data='action=buy&itemid=2'
-                    ),
+                action=[
+                    
                     MessageAction(
                         label='message2',
                         text='message text2'
-                    ),
-                    URIAction(
-                        label='uri2',
-                        uri='http://example.com/2'
                     )
                 ]
             )
