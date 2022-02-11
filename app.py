@@ -113,42 +113,24 @@ def handle_message(event):
     template=CarouselTemplate(
         columns=[
             CarouselColumn(
-                thumbnail_image_url='https://example.com/item1.jpg',
-                title='this is menu1',
-                text='description1',
+                thumbnail_image_url='https://wiki.komica.org/images/thumb/d/d1/Img18353.jpg/400px-Img18353.jpg',
+                title='張日向',
+                text='主角',
                 actions=[
-                    PostbackAction(
-                        label='postback1',
-                        display_text='postback text1',
-                        data='action=buy&itemid=1'
-                    ),
                     MessageAction(
-                        label='message1',
-                        text='message text1'
-                    ),
-                    URIAction(
-                        label='uri1',
-                        uri='http://example.com/1'
+                        label='張日向角色資料',
+                        text='張日向角色資料'
                     )
                 ]
             ),
             CarouselColumn(
-                thumbnail_image_url='https://example.com/item1.jpg',
-                title='this is menu1',
-                text='description1',
+                thumbnail_image_url='https://img.komicolle.org/2019-04/15566418114917.jpg',
+                title='何愷茹',
+                text='女主角',
                 actions=[
-                    PostbackAction(
-                        label='postback1',
-                        display_text='postback text1',
-                        data='action=buy&itemid=1'
-                    ),
                     MessageAction(
-                        label='message1',
-                        text='message text1'
-                    ),
-                    URIAction(
-                        label='uri1',
-                        uri='http://example.com/1'
+                        label='何愷茹角色資料',
+                        text='何愷茹角色資料'
                     )
                 ]
             ),
@@ -218,7 +200,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已開始遊戲"))
 
     else:
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.message.text))
+        line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png', preview_image_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png'))
         
 
 #主程式
