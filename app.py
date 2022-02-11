@@ -174,7 +174,7 @@ def handle_message(event):
             list.append('B'+str(x))
             list.append('C'+str(x))
             list.append('D'+str(x))
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="凱茹好感度："+list[2]+"\n"+"司好感度："+list[0]+"\n"+"玉山好感度："+list[1]))
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="凱茹好感度："+worksheet.acell(list[2]).value+"\n"+"司好感度："+worksheet.acell(list[0]).value+"\n"+"玉山好感度："+worksheet.acell(list[1]).value))
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲"))
 
