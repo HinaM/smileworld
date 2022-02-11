@@ -114,7 +114,7 @@ def handle_message(event):
             CarouselColumn(
                 thumbnail_image_url='https://wiki.komica.org/images/thumb/d/d1/Img18353.jpg/400px-Img18353.jpg',
                 title='張日向',
-                text='萬年吊車尾的日向，竟誤打誤撞的考上了輔大資管系，還遇到自己的真命天女—愷茹。為了要讓愷茹喜歡上他，日向開始努力讀書，希望有一天能被愷茹看見。',
+                text='m',
                 actions=[
                     PostbackAction(
                         label='postback1',
