@@ -112,27 +112,24 @@ def handle_message(event):
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url='https://example.com/item1.jpg',
-                        title='this is menu1',
-                        text='description1',
-                        actions=[
-                            MessageAction(
-                                label='message1',
-                                text='message text1'
-                            )
-                        ]
+                        thumbnail_image_url='https://wiki.komica.org/images/thumb/d/d1/Img18353.jpg/400px-Img18353.jpg',
+                        title='張日向',
+                        text='萬年吊車尾的日向，竟誤打誤撞的考上了輔大資管系，還遇到自己的真命天女—愷茹。為了要讓愷茹喜歡上他，日向開始努力讀書，希望有一天能被愷茹看見。',
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='https://example.com/item2.jpg',
-                        title='this is menu2',
-                        text='description2',
-                        actions=[
-                            PostbackAction(
-                                label='postback2',
-                                display_text='postback text2',
-                                data='action=buy&itemid=2'
-                            )
-                        ]
+                        thumbnail_image_url='https://img.komicolle.org/2019-04/15566418114917.jpg',
+                        title='何愷茹',
+                        text='以全校第一的成績進入輔大資管系，無論何時何地都在讀書。平時都擺著一張撲克臉，讓人難以親近的樣子。不過一看到小動物時，臉上總是洋溢著幸福的笑容。',
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://5.share.photo.xuite.net/davidyea2006/15c7a8a/19007516/1025961326_x.jpg',
+                        title='葉司',
+                        text='大二才轉學過來的轉學生，是日向的死黨。和日向一起去打籃球、吃飯、上課，雖然偶爾冒冒失失的，但是總是把朋友擺在第一位，常常把「兄弟就是要有福同享、有難同當阿」掛在嘴邊。',
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://ygodl.com/wp-content/uploads/2021/09/5_Moment.jpg',
+                        title='馬玉山',
+                        text='「萬般皆下品，唯有決鬥高」是他的人生名言，與愷茹角逐班上的一二名。玉山也喜歡日向，為了不讓日向一直靠近愷茹，因此常常提出問題刁難日向。',
                     )
                 ]
             )
