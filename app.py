@@ -132,28 +132,6 @@ def handle_message(event):
                                 text='message text1'
                             )
                         ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://example.com/item1.jpg',
-                        title='this is menu1',
-                        text='description1',
-                        actions=[
-                            MessageAction(
-                                label='message1',
-                                text='message text1'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://example.com/item2.jpg',
-                        title='this is menu2',
-                        text='description2',
-                        actions=[
-                            MessageAction(
-                                label='message2',
-                                text='message text2'
-                            )
-                        ]
                     )
                 ]
             )
