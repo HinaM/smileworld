@@ -79,8 +79,9 @@ def handle_message(event):
                         TemplateSendMessage(
                             alt_text='猜謎決鬥，只能用手機玩',
                             template=ButtonsTemplate(
+                                thumbnail_image_url='https://i.imgur.com/j6THk84.png',
                                 title='猜謎決鬥',
-                                text='哪張卡片是遊矢的王牌',
+                                text='哪些卡片是遊矢的王牌',
                                 actions=[
                                     MessageTemplateAction(
                                         label='動作卡',
@@ -133,7 +134,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='https://5.share.photo.xuite.net/davidyea2006/15c7a8a/19007516/1025961326_x.jpg',
+                        thumbnail_image_url='https://5.share.photo.xuite.net/davidyea2006/15c7ae8/19334735/1060636313_x.jpg',
                         title='葉司',
                         text='男主朋友',
                         actions=[
@@ -179,13 +180,12 @@ def handle_message(event):
             list.append('D'+str(x))
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="凱茹好感度："+worksheet.acell(list[2]).value+"\n"+"司好感度："+worksheet.acell(list[0]).value+"\n"+"玉山好感度："+worksheet.acell(list[1]).value))
         else:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲"))
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲，按下開始遊戲建立個人檔案"))
 
     elif event.message.text=="開始遊戲":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
-            #
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經開始遊戲，要重置嗎"))
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經開始遊戲，要重置請輸入「重置遊戲」"))
         else:
             x=len(userid_list)
             list=[]
@@ -200,6 +200,26 @@ def handle_message(event):
             for i in range(6,11):
                 worksheet.update(list[i],int(0))
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已開始遊戲"))
+    elif event.message.text=="重置遊戲":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            x=len(userid_list)
+            list=[]
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    x=i
+            for i in range(65,76):
+                list.append(chr(i)+str(x+1))
+            #初始值設定
+            for i in range(1,5):
+                worksheet.update(list[i],int(0))
+            worksheet.update(list[5],int(1))
+            for i in range(6,11):
+                worksheet.update(list[i],int(0))
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已重置遊戲"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲，按下開始遊戲建立個人檔案"))
+        
 
     else:
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png', preview_image_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png'))
