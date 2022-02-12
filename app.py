@@ -54,11 +54,14 @@ def handle_message(event):
     elif event.message.text=="榊遊矢":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="お楽しみはこれから"))
 
+    elif event.message.text=="可用關鍵字":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="開始遊戲、榊遊矢、微笑世界、抽卡、微笑宇宙、人物介紹、角色好感度"))
+
     elif event.message.text=="微笑世界":
         reply_arr=[]
         reply_arr.append(TextSendMessage("決帶笑") )
         reply_arr.append(TextSendMessage("デュエルで、笑顔を"))
-        line_bot_api.reply_message(event.reply_token, reply_arr)
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="デュエルで、笑顔を"))
     
     elif event.message.text=="名稱":
         user_id = event.source.user_id         
