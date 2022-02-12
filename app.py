@@ -185,7 +185,7 @@ def handle_message(event):
     elif event.message.text=="開始遊戲":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經開始遊戲，要重置請輸入「重置遊戲」"))
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經開始遊戲，要重置請輸入「重新開始」"))
         else:
             x=len(userid_list)
             list=[]
@@ -200,7 +200,7 @@ def handle_message(event):
             for i in range(6,11):
                 worksheet.update(list[i],int(0))
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已開始遊戲"))
-    elif event.message.text=="重置遊戲":
+    elif event.message.text=="重新開始":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
             x=len(userid_list)
