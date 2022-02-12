@@ -108,7 +108,7 @@ def handle_message(event):
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url='https://wiki.komica.org/images/thumb/d/d1/Img18353.jpg/400px-Img18353.jpg',
+                        thumbnail_image_url='https://dic.nicovideo.jp/oekaki/725601.png',
                         title='張日向',
                         text='男主角',
                         actions=[
