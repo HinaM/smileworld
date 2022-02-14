@@ -100,8 +100,8 @@ def handle_message(event):
                         )
                     )
     elif event.message.text=="動作卡":
-        reply_arr=[]
-        reply_arr.append(TextSendMessage(text="對ㄌ。"+"\n"+"出身於弱小私塾——日勝塾的日向，決鬥風格以動作娛樂決鬥聞名，擅長尋找散落各處的動作卡。一起長大的凱茹也擅長將動作卡加入牌組思考策略，玉山更是直言「動作決鬥就是我們槍兵的決鬥風格」。"+"\n"+"凱茹好感度+10、玉山好感度+10"))
+        #reply_arr=[]
+        #reply_arr.append(TextSendMessage(text="對ㄌ。"+"\n"+"出身於弱小私塾——日勝塾的日向，決鬥風格以動作娛樂決鬥聞名，擅長尋找散落各處的動作卡。一起長大的凱茹也擅長將動作卡加入牌組思考策略，玉山更是直言「動作決鬥就是我們槍兵的決鬥風格」。"+"\n"+"凱茹好感度+10、玉山好感度+10"))
         buttons_template_message = TemplateSendMessage(
             alt_text='Buttons template',
             template=ButtonsTemplate(
@@ -125,8 +125,9 @@ def handle_message(event):
                 ]
             )
         )
-        reply_arr.append(buttons_template_message)
-        line_bot_api.reply_message(event.reply_token,reply_arr)
+        #reply_arr.append(buttons_template_message)
+        line_bot_api.reply_message(event.reply_token,buttons_template_message)
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="對ㄌ。"+"\n"+"出身於弱小私塾——日勝塾的日向，決鬥風格以動作娛樂決鬥聞名，擅長尋找散落各處的動作卡。一起長大的凱茹也擅長將動作卡加入牌組思考策略，玉山更是直言「動作決鬥就是我們槍兵的決鬥風格」。"+"\n"+"凱茹好感度+10、玉山好感度+10"))
     elif event.message.text=="EM族":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
     elif event.message.text=="異色眼靈擺龍":
