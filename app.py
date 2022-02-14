@@ -103,19 +103,24 @@ def handle_message(event):
         reply_arr=[]
         reply_arr.append(TextSendMessage(text="對ㄌ。"+"\n"+"出身於弱小私塾——日勝塾的日向，決鬥風格以動作娛樂決鬥聞名，擅長尋找散落各處的動作卡。一起長大的凱茹也擅長將動作卡加入牌組思考策略，玉山更是直言「動作決鬥就是我們槍兵的決鬥風格」。"+"\n"+"凱茹好感度+10、玉山好感度+10"))
         buttons_template_message = TemplateSendMessage(
-            alt_text='下一題',
+            alt_text='Buttons template',
             template=ButtonsTemplate(
-                thumbnail_image_url='http://i0.hdslb.com/bfs/archive/b792053af0532ab95b5ff90958c91e24e28fcda4.jpg',
-                title='想想，勝鬨，想想',
-                text='超量怪獸的等級是？',
+                thumbnail_image_url='https://example.com/image.jpg',
+                title='Menu',
+                text='Please select',
                 actions=[
-                    MessageAction(
-                        label='等級0',
-                        text='等級0'
+                    PostbackAction(
+                        label='postback',
+                        display_text='postback text',
+                        data='action=buy&itemid=1'
                     ),
                     MessageAction(
-                        label='沒有等級',
-                        text='沒有等級'
+                        label='message',
+                        text='message text'
+                    ),
+                    URIAction(
+                        label='uri',
+                        uri='http://example.com/'
                     )
                 ]
             )
