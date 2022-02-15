@@ -252,7 +252,7 @@ def handle_message(event):
             x+=10
             worksheet.update(list[0],x)
             y=int(worksheet.acell(list[1]).value)
-            x+=10
+            y+=10
             worksheet.update(list[1],y)
             worksheet.update(list[2],int(2))
             worksheet.update(list[3],int(1))
