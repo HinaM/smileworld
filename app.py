@@ -261,7 +261,7 @@ def handle_message(event):
             buttons_template_message = TemplateSendMessage(
                 alt_text='甲甲合唱',
                 template=ButtonsTemplate(
-                    thumbnail_image_url='https://cdn.suruga-ya.jp/database/pics_light/game/120119636.jpg',
+                    thumbnail_image_url='https://i.imgur.com/NhgzcHJ.jpeg',
                     title='甲甲合唱',
                     text='請選擇玉山和日向一起唱的曲名為？',
                     actions=[
