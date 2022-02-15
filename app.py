@@ -74,64 +74,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text=draw))
     
     elif event.message.text=="微笑宇宙":
-        line_bot_api.reply_message(  # 回復傳入的訊息文字
-                        event.reply_token,
-                        TemplateSendMessage(
-                            alt_text='猜謎決鬥，只能用手機玩',
-                            template=ButtonsTemplate(
-                                thumbnail_image_url='https://i.imgur.com/j6THk84.png',
-                                title='猜謎決鬥',
-                                text='哪些卡片是遊矢的王牌',
-                                actions=[
-                                    MessageTemplateAction(
-                                        label='動作卡',
-                                        text='動作卡'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='EM族',
-                                        text='EM族'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='異色眼靈擺龍',
-                                        text='異色眼靈擺龍'
-                                    )
-                                ]
-                            )
-                        )
-                    )
-    elif event.message.text=="動作卡":
-        reply_arr=[]
-        reply_arr.append(TextSendMessage(text="對ㄌ。"+"\n"+"出身於弱小私塾——日勝塾的日向，決鬥風格以動作娛樂決鬥聞名，擅長尋找散落各處的動作卡。一起長大的凱茹也擅長將動作卡加入牌組思考策略，玉山更是直言「動作決鬥就是我們槍兵的決鬥風格」。"+"\n"+"凱茹好感度+10、玉山好感度+10"))
-        buttons_template_message = TemplateSendMessage(
-            alt_text='Buttons template',
-            template=ButtonsTemplate(
-                thumbnail_image_url='https://example.com/image.jpg',
-                title='Menu',
-                text='Please select',
-                actions=[
-                    PostbackAction(
-                        label='postback',
-                        display_text='postback text',
-                        data='action=buy&itemid=1'
-                    ),
-                    MessageAction(
-                        label='message',
-                        text='message text'
-                    ),
-                    URIAction(
-                        label='uri',
-                        uri='http://example.com/'
-                    )
-                ]
-            )
-        )
-        reply_arr.append(buttons_template_message)
-        line_bot_api.reply_message(event.reply_token,reply_arr)
-        #line_bot_api.reply_message(event.reply_token,TextSendMessage(text="對ㄌ。"+"\n"+"出身於弱小私塾——日勝塾的日向，決鬥風格以動作娛樂決鬥聞名，擅長尋找散落各處的動作卡。一起長大的凱茹也擅長將動作卡加入牌組思考策略，玉山更是直言「動作決鬥就是我們槍兵的決鬥風格」。"+"\n"+"凱茹好感度+10、玉山好感度+10"))
-    elif event.message.text=="EM族":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
-    elif event.message.text=="異色眼靈擺龍":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="錯ㄌ"))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入「開始遊戲」才能玩喔"))
 
     elif event.message.text=="人物介紹":
         carousel_template_message = TemplateSendMessage(
@@ -226,7 +169,7 @@ def handle_message(event):
             worksheet.update(list[5],int(1))
             for i in range(6,11):
                 worksheet.update(list[i],int(0))
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已開始遊戲"))
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已開始遊戲，輸入「進行遊戲」開始遊戲。"))
 
     elif event.message.text=="重新開始":
         userid_list=worksheet.col_values(1)
@@ -250,8 +193,99 @@ def handle_message(event):
     
     #施工中
     elif event.message.text=="進行遊戲":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="。"))    
-
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+        list_Q=[]
+        list_Q.append('F'+str(j))
+        if event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="1":
+            line_bot_api.reply_message(  # 回復傳入的訊息文字
+                        event.reply_token,
+                        TemplateSendMessage(
+                            alt_text='猜謎決鬥，只能用手機玩',
+                            template=ButtonsTemplate(
+                                thumbnail_image_url='https://i.imgur.com/j6THk84.png',
+                                title='猜謎決鬥',
+                                text='哪些卡片是遊矢的王牌',
+                                actions=[
+                                    MessageTemplateAction(
+                                        label='動作卡',
+                                        text='動作卡'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='EM族',
+                                        text='EM族'
+                                    ),
+                                    MessageTemplateAction(
+                                        label='異色眼靈擺龍',
+                                        text='異色眼靈擺龍'
+                                    )
+                                ]
+                            )
+                        )
+                    )
+        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="2":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="答過了喔")) 
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入「開始遊戲」才能玩喔")) 
+    
+    elif event.message.text=="動作卡":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+        list_Q=[]
+        list_Q.append('F'+str(j))
+        if event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="1":
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('C'+str(j))
+            list.append('D'+str(j))
+            list.append('F'+str(j))
+            x=int(worksheet.acell(list[0]).value)
+            x+=10
+            worksheet.update(list[0],x)
+            y=int(worksheet.acell(list[1]).value)
+            x+=10
+            worksheet.update(list[1],y)
+            worksheet.update(list[2],int(2))
+            reply_arr=[]
+            reply_arr.append(TextSendMessage(text="對ㄌ。"+"\n"+"出身於弱小私塾——日勝塾的日向，決鬥風格以動作娛樂決鬥聞名，擅長尋找散落各處的動作卡。一起長大的凱茹也擅長將動作卡加入牌組思考策略，玉山更是直言「動作決鬥就是我們槍兵的決鬥風格」。"+"\n"+"凱茹好感度+10、玉山好感度+10"))
+            buttons_template_message = TemplateSendMessage(
+                alt_text='甲甲合唱',
+                template=ButtonsTemplate(
+                    thumbnail_image_url='https://i.imgur.com/j6THk84.png',
+                    title='甲甲合唱',
+                    text='請選擇玉山和日向一起唱的曲名為？',
+                    actions=[
+                        MessageTemplateAction(
+                            label='切り札',
+                            text='切り札'
+                        ),
+                        MessageTemplateAction(
+                            label='future fighter!',
+                            text='future fighter!'
+                        ),
+                        MessageTemplateAction(
+                            label='ビジョン',
+                            text='ビジョン'
+                        )
+                    ]
+                )
+            )
+            reply_arr.append(buttons_template_message)
+            line_bot_api.reply_message(event.reply_token,reply_arr)
+        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="2":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="答過了喔"))
+        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="0":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開放喔")) 
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入「開始遊戲」才能玩喔")) 
     else:
         line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png', preview_image_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png'))
         
