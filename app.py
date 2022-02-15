@@ -247,6 +247,7 @@ def handle_message(event):
             list.append('C'+str(j))
             list.append('D'+str(j))
             list.append('F'+str(j))
+            list.append('E'+str(j))
             x=int(worksheet.acell(list[0]).value)
             x+=10
             worksheet.update(list[0],x)
@@ -254,12 +255,13 @@ def handle_message(event):
             x+=10
             worksheet.update(list[1],y)
             worksheet.update(list[2],int(2))
+            worksheet.update(list[3],int(1))
             reply_arr=[]
             reply_arr.append(TextSendMessage(text="對ㄌ。"+"\n"+"出身於弱小私塾——日勝塾的日向，決鬥風格以動作娛樂決鬥聞名，擅長尋找散落各處的動作卡。一起長大的凱茹也擅長將動作卡加入牌組思考策略，玉山更是直言「動作決鬥就是我們槍兵的決鬥風格」。"+"\n"+"凱茹好感度+10、玉山好感度+10"))
             buttons_template_message = TemplateSendMessage(
                 alt_text='甲甲合唱',
                 template=ButtonsTemplate(
-                    thumbnail_image_url='https://i.imgur.com/j6THk84.png',
+                    thumbnail_image_url='https://imgur.com/a/EPBGMuE',
                     title='甲甲合唱',
                     text='請選擇玉山和日向一起唱的曲名為？',
                     actions=[
