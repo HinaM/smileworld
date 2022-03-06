@@ -282,17 +282,24 @@ def handle_message(event):
             )
             reply_arr.append(buttons_template_message)
             line_bot_api.reply_message(event.reply_token,reply_arr)
-        elif event.message.text=="future fighter!":
-            reply_arr1=[]
-            reply_arr1.append(TextSendMessage("為了辦理加退選，日向等人來到系辦。請問下圖打碼文字應為？（請輸入「ＯＯＯＯＯＯＯ」回答。）"))
-            reply_arr1.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2021/12/17/E8L3X5.png', preview_image_url='https://upload.cc/i1/2021/12/17/E8L3X5.png'))
-            line_bot_api.reply_message(event.reply_token,reply_arr1)
-        elif event.message.text=="資訊管理學系所":
-            reply_arr2=[]
-            reply_arr2.append(TextSendMessage("答對了！系辦位於LM306，而門口懸掛的木板上刻著「資訊管理學系所」字樣！"))
-            reply_arr2.append(TextSendMessage("進入下題！"))
-            reply_arr2.append(TextSendMessage("終於到了午休時間！為了應付早上的課程早就餓壞了，於是大家決定直接在校內解決午餐問題。"))
-            buttons_template_message = TemplateSendMessage(
+        
+        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="2":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="答過了喔"))
+        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="0":
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開放喔")) 
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入「開始遊戲」才能玩喔")) 
+    elif event.message.text=="future fighter!":
+        reply_arr1=[]
+        reply_arr1.append(TextSendMessage("為了辦理加退選，日向等人來到系辦。請問下圖打碼文字應為？（請輸入「ＯＯＯＯＯＯＯ」回答。）"))
+        reply_arr1.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2021/12/17/E8L3X5.png', preview_image_url='https://upload.cc/i1/2021/12/17/E8L3X5.png'))
+        line_bot_api.reply_message(event.reply_token,reply_arr1)
+    elif event.message.text=="資訊管理學系所":
+        reply_arr2=[]
+        reply_arr2.append(TextSendMessage("答對了！系辦位於LM306，而門口懸掛的木板上刻著「資訊管理學系所」字樣！"))
+        reply_arr2.append(TextSendMessage("進入下題！"))
+        reply_arr2.append(TextSendMessage("終於到了午休時間！為了應付早上的課程早就餓壞了，於是大家決定直接在校內解決午餐問題。"))
+        buttons_template_message = TemplateSendMessage(
                 alt_text='題目',
                 template=ButtonsTemplate(
                     thumbnail_image_url='https://i.imgur.com/uUgQmH1.jpeg',
@@ -314,14 +321,8 @@ def handle_message(event):
                     ]
                 )
             )
-            reply_arr2.append(buttons_template_message)
-            line_bot_api.reply_message(event.reply_token,reply_arr2)
-        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="2":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="答過了喔"))
-        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="0":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開放喔")) 
-        else:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入「開始遊戲」才能玩喔")) 
+        reply_arr2.append(buttons_template_message)
+        line_bot_api.reply_message(event.reply_token,reply_arr2)
     else:
         #line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png', preview_image_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png'))
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤")) 
