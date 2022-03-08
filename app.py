@@ -302,7 +302,7 @@ def handle_message(event):
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url='https://photox.pchome.com.tw/s13/moni101/112/135200602386/',
+                        thumbnail_image_url='https://4.bp.blogspot.com/-2t-ECy35d50/UPzH73UAg3I/AAAAAAAAKz4/OJZ0yCVaRbU/w1200-h630-p-k-no-nu/book.png',
                         title='童話書',
                         text='獲得童話書！',
                         actions=[
@@ -313,7 +313,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='https://example.com/item2.jpg',
+                        thumbnail_image_url='https://2.bp.blogspot.com/-S3cfGZGsBAk/WKFjIqvaF_I/AAAAAAABBvc/L95XLp5T8Vct6UYaTqHiiimyg1GKg9RzwCLcB/w1200-h630-p-k-no-nu/ticket_green.png',
                         title='冰淇淋券',
                         text='獲得冰淇淋券！',
                         actions=[
