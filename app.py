@@ -327,7 +327,7 @@ def handle_message(event):
             )
         )
         rep_arr.append(carousel_template_message2)
-        line_bot_api.reply_message(event.reply_token,reply_arr)
+        line_bot_api.reply_message(event.reply_token,rep_arr)
     elif event.message.event=="童話書介紹":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="適合學齡前小朋友的讀物，封底有被誰用油性筆寫上名字，但部分文字已脫落而看不出原本的字。被人反反覆覆翻閱過很多遍，看得出其主人對這本童書內容的喜愛。"))
     elif event.message.text=="資訊管理學系所":
