@@ -296,7 +296,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,reply_arr1)
     elif event.message.text=="個人檔案":
         rep_arr=[]
-        rep_arr.append(TextSendMessage(text="玩家選擇視角：日向"+"\n"+"目前關卡：#20"+"\n"+"解鎖回憶物件數：【2/8】"))
+        rep_arr.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#20"+"\n"+"解鎖回憶物件數：【2/8】"))
         carousel_template_message2 = TemplateSendMessage(
             alt_text='回憶物件',
             template=CarouselTemplate(
@@ -329,7 +329,7 @@ def handle_message(event):
         rep_arr.append(carousel_template_message2)
         line_bot_api.reply_message(event.reply_token,rep_arr)
     elif event.message.event=="童話書介紹":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="適合學齡前小朋友的讀物，封底有被誰用油性筆寫上名字，但部分文字已脫落而看不出原本的字。被人反反覆覆翻閱過很多遍，看得出其主人對這本童書內容的喜愛。"))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="適合學齡前小朋友的讀物，封底有被誰用油性筆寫上名字，但部分文字已脫落而看不出原本的字。被人反反覆覆翻閱過很多遍，看得出其主人對這本童書內容的喜愛。")) 
     elif event.message.text=="資訊管理學系所":
         reply_arr2=[]
         reply_arr2.append(TextSendMessage("答對了！系辦位於LM306，而門口懸掛的木板上刻著「資訊管理學系所」字樣！"))
