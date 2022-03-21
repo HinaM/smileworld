@@ -330,6 +330,168 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,rep_arr)
     elif event.message.event=="童話書介紹":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="適合學齡前小朋友的讀物，封底有被誰用油性筆寫上名字，但部分文字已脫落而看不出原本的字。被人反反覆覆翻閱過很多遍，看得出其主人對這本童書內容的喜愛。")) 
+    elif event.message.text=="隨便啦":
+        flex_message = FlexSendMessage(
+            alt_text='行銷搬進大程式',
+            contents={
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "label": "Line",
+      "uri": "https://linecorp.com/"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Brown Cafe",
+        "weight": "bold",
+        "size": "xl",
+        "contents": []
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "icon",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+            "size": "sm"
+          },
+          {
+            "type": "icon",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+            "size": "sm"
+          },
+          {
+            "type": "icon",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+            "size": "sm"
+          },
+          {
+            "type": "icon",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+            "size": "sm"
+          },
+          {
+            "type": "icon",
+            "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png",
+            "size": "sm"
+          },
+          {
+            "type": "text",
+            "text": "4.0",
+            "size": "sm",
+            "color": "#999999",
+            "flex": 0,
+            "margin": "md",
+            "contents": []
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "margin": "lg",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Place",
+                "size": "sm",
+                "color": "#AAAAAA",
+                "flex": 1,
+                "contents": []
+              },
+              {
+                "type": "text",
+                "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
+                "size": "sm",
+                "color": "#666666",
+                "flex": 5,
+                "wrap": true,
+                "contents": []
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Time",
+                "size": "sm",
+                "color": "#AAAAAA",
+                "flex": 1,
+                "contents": []
+              },
+              {
+                "type": "text",
+                "text": "10:00 - 23:00",
+                "size": "sm",
+                "color": "#666666",
+                "flex": 5,
+                "wrap": true,
+                "contents": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "flex": 0,
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "CALL",
+          "uri": "https://linecorp.com"
+        },
+        "height": "sm",
+        "style": "link"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "WEBSITE",
+          "uri": "https://linecorp.com"
+        },
+        "height": "sm",
+        "style": "link"
+      },
+      {
+        "type": "spacer",
+        "size": "sm"
+      }
+    ]
+  }
+} #json貼在這裡
+        )
+        line_bot_api.reply_message(event.reply_token, flex_message)
     elif event.message.text=="資訊管理學系所":
         reply_arr2=[]
         reply_arr2.append(TextSendMessage("答對了！系辦位於LM306，而門口懸掛的木板上刻著「資訊管理學系所」字樣！"))
