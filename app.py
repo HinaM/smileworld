@@ -45,83 +45,255 @@ def callback():
 #訊息傳遞區塊
 ##### 基本上程式編輯都在這個function #####
 @handler.add(MessageEvent, message=TextMessage)
+def callback():
+    # get X-Line-Signature header value
+    signature = request.headers['X-Line-Signature']
+
+    # get request body as text
+    body = request.get_data(as_text=True)
+    app.logger.info("Request body: " + body)
+
+    # handle webhook body
+    try:
+        handler.handle(body, signature)
+    except InvalidSignatureError:
+        print("Invalid signature. Please check your channel access token/channel secret.")
+        abort(400)
+
+    return 'OK'
+
+
+@handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     message=event.message.text
     message=message.encode('utf-8')
-    if event.message.text=="識別碼":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=event.source.user_id))
+    if event.message.text=="開始遊戲":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經開始遊戲，要重新開始請輸入「重置遊戲」。"))
+        else:
+            userid_list=worksheet.col_values(1)
+            x=len(userid_list)
+            list=[]
+            for i in range(65,91):
+                list.append(chr(i)+str(x+1))
+            for j in range(65,67):    
+                for i in range(65,91):
+                    list.append(chr(j)+chr(i)+str(x+1))
+            for i in range(65,70):
+                list.append("C"+chr(i)+str(x+1))
+            #寫入ID
+            worksheet.update(list[0],event.source.user_id)
+            #題目數量施工中
+            #初始值設定到AX
+            for i in range(1,50):
+                worksheet.update(list[i],int(0))
+            worksheet.update(list[4],int(1))
+            list_talk=[]
+            list_talk.append(TextSendMessage("選擇遊戲視角"))
+            image_carousel_template_message = TemplateSendMessage(
+                alt_text='選擇視角',
+                template=ImageCarouselTemplate(
+                    columns=[
+                        ImageCarouselColumn(
+                            image_url='https://upload.cc/i1/2022/03/30/K9D6Xw.jpg?fbclid=IwAR3TXV-o2OBUFuPpOursWi-w4pik7hG__iqpSahR59P7CcBaeb76ZvWKQPM',
+                            action=MessageTemplateAction(
+                                label='日翔',
+                                text='以日翔的視角進行遊戲'
+                            )
+                        ),
+                        ImageCarouselColumn(
+                            image_url='https://upload.cc/i1/2022/03/30/dRcCSl.jpg?fbclid=IwAR0LgBlXQ2LP-Ag99jBXJALWmbv2zF-DUX9BXp6dTEGn494AIAUKrxOr6q4',
+                            action=MessageTemplateAction(
+                                label='曉光',
+                                text='以曉光的視角進行遊戲'
+                            )
+                        )
+                    ]
+                )
+            )
+            list_talk.append(image_carousel_template_message)
+            line_bot_api.reply_message(event.reply_token,list_talk)   
 
-    elif event.message.text=="榊遊矢":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="お楽しみはこれから"))
+    elif event.message.text=="以日翔的視角進行遊戲":
+        userid_list=worksheet.col_values(1)
+        #ID已寫入
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            #ID已寫入且未選擇視角
+            if worksheet.acell(list[0]).value=="0":
+                worksheet.update(list[0],int(1))
+                list=[]
+                list.append(ImageSendMessage(original_content_url='https://i.imgur.com/2cCaBmx.jpeg', preview_image_url='https://i.imgur.com/2cCaBmx.jpeg'))
+                list.append(TextSendMessage(text="「唉......今天又被塞了一堆工作啊......」成為社畜後的日翔，每天過著上班族朝九晚五的生活。早上和一堆人擠著去上班，工作又多又忙連喘息的時間都沒有，晚上回到家早就累壞了。"+'\n'+'「如果能回到大學時期就好了啊......」某天工作回家的日翔突然感嘆起大學生活，大學可謂人生的最顛峰時期，不但沒有工作壓力的負擔，還有很多空閒時間可以讓他盡情做想做的事。這時，日翔的電子信箱突然跳出了一封信，開頭標題寫著「想回到過去嗎？」'+'\n'+'該不會是被誰監視了？雖然這麼想，出於好奇日翔還是點開了信件，內容寫著「路過的小精靈聽到你的願望送上的檔案，並沒有病毒。」，還附上了一個檔案「Code-140.136.py」。'+'\n'+'……哪個詐騙集團會說自己不是詐騙集團呢，日翔吐槽道。'+'\n'+'或許是想回到過去的願望過於強烈，日翔還是不由自主地下載了檔案。'))
+                list.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/06/q4DPkj.png', preview_image_url='https://upload.cc/i1/2022/03/06/q4DPkj.png'))
+                list.append(TextSendMessage(text='#1 檔案只有短短幾行程式碼，請問日翔該輸入什麼才能執行此函式，讓結果非None呢？（請輸入半形英文字母）'))
+                line_bot_api.reply_message(event.reply_token,list)
+            #ID已寫入建立且視角!=0
+            elif worksheet.acell(list[0]).value=="1":
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經選擇日翔視角。"))
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經選曉光視角，要重置請輸入「重置遊戲」。"))
+        #ID未寫入
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒建立個人檔案喔，輸入「開始遊戲」建立。"))
 
-    elif event.message.text=="可用關鍵字":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="開始遊戲、榊遊矢、微笑世界、抽卡、微笑宇宙、人物介紹、角色好感度"))
+    elif event.message.text=="以曉光的視角進行遊戲":
+        userid_list=worksheet.col_values(1)
+        #ID已寫入
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            #ID已寫入且已選擇視角
+            if worksheet.acell(list[0]).value=="0":
+                worksheet.update(list[0],int(2))
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="選擇了曉光視角！"))
+            #個人檔案已建立且視角!=0
+            elif worksheet.acell(list[0]).value=="2":
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經選曉光視角，要重置請輸入「重置遊戲」。"))
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經選日翔視角，要重置請輸入「重置遊戲」。"))
+        #ID未寫入
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒建立個人檔案喔，輸入「開始遊戲」建立。"))
 
-    elif event.message.text=="微笑世界":
-        reply_arr=[]
-        reply_arr.append(TextSendMessage("決帶笑") )
-        reply_arr.append(TextSendMessage("デュエルで、笑顔を"))
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="デュエルで、笑顔を"))
+    #1答案
+    elif event.message.text=="return":
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+        list=[]
+        list.append("E"+str(j))
+        list.append("F"+str(j))
+        list.append("AY"+str(j))
+        list.append("D"+str(j))
+        #日翔已經寫入id且Q1==1改Q1==2，Q2==1，其他錯誤           
+        if event.source.user_id in userid_list and worksheet.acell(list[0]).value=="1" and worksheet.acell(list[3]).value=="1":
+            worksheet.update_acell(list[0],int(2))
+            worksheet.update_acell(list[1],int(1))
+            worksheet.update_acell(list[2],int(0))
+            list_1=[]
+            list_1.append(TextSendMessage(text="執行程式後，日翔的螢幕發出了一道刺眼的閃光，幾乎讓日翔睜不開眼睛。日翔隱約聽見一個聲音在耳邊說著：「嘻嘻，這樣人情就還清了，剩下的就看你在學校的表現了。」聲音一落下，刺眼的光就消失了，日翔才緩緩地睜開眼睛。"+"\n"+"「剛剛那是什麼！？」日翔不記得自己欠過誰人情呀？過了一會，日翔才發現自己站在老家的房間裡，連房裡的擺設都跟以前一模一樣，難道自己真的回到過去了嗎？"+"\n"+"「日翔！你怎麼還在房間裡！大學不是今天開學嗎，難道你想第一天上學就遲到嗎？」呃！連媽媽的聲音都跟以前一樣，話說回來剛剛的聲音好像提到了學校？總之先去學校看看吧，搞不好能找到有關那個聲音的線索？"))
+            list_1.append(TextSendMessage(text='#2 要出發去學校了，輔大的地址是？（請以「ＯＯ市ＯＯ區ＯＯ路ＯＯＯ號」回答。）'))
+            line_bot_api.reply_message(event.reply_token,list_1)
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
     
-    elif event.message.text=="名稱":
-        user_id = event.source.user_id         
-        profile = line_bot_api.get_profile(user_id)
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=profile.display_name))
+    #2答案
+    elif event.message.text=="新北市新莊區中正路510號":
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+        list=[]
+        list.append("F"+str(j))
+        list.append("G"+str(j))
+        list.append("AZ"+str(j))
+        list.append("D"+str(j))
+        #日翔已經寫入id且Q1==1改Q1==2，Q2==1，其他錯誤           
+        if event.source.user_id in userid_list and worksheet.acell(list[0]).value=="1" and worksheet.acell(list[3]).value=="1":
+            worksheet.update_acell(list[0],int(2))
+            worksheet.update_acell(list[1],int(1))
+            worksheet.update_acell(list[2],int(0))
+            list_1=[]
+            list_1.append(TextSendMessage(text="日翔將上課需要的東西塞進書包匆匆出門了，從日翔老家前往輔大最方便的交通工具就是捷運了，不僅不像公車可能會遇上塞車，在開通環狀線後學生搭捷運所需通勤時間大幅縮短，甚至設有以輔大命名的捷運站直達校門口。"))
+            list_1.append(TextSendMessage(text='#3 請問離校園最近的捷運出口爲？（請以「Ｏ號」回答，Ｏ為半形數字。）'))
+            line_bot_api.reply_message(event.reply_token,list_1)
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
-    elif event.message.text=="抽卡":
-        deck=["黑魔導","E-HERO新宇俠","星塵龍","No.39希望皇霍普","異色眼靈擺龍","解碼語者"]
-        draw= random.choice(deck)
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text=draw))
-    
-    elif event.message.text=="微笑宇宙":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入「開始遊戲」才能玩喔"))
+    #3答案
+    elif event.message.text=="1號":
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+        list=[]
+        list.append("G"+str(j))
+        list.append("H"+str(j))
+        list.append("BB"+str(j))
+        list.append("D"+str(j))
+        #日翔已經寫入id且Q1==1改Q1==2，Q2==1，其他錯誤           
+        if event.source.user_id in userid_list and worksheet.acell(list[0]).value=="1" and worksheet.acell(list[3]).value=="1":
+            worksheet.update_acell(list[0],int(2))
+            worksheet.update_acell(list[1],int(1))
+            worksheet.update_acell(list[2],int(0))
+            list_1=[]
+            list_1.append(TextSendMessage(text="還好學生證裡還有足夠錢可以讓日翔坐車，日翔倚靠在車門邊沿途欣賞環狀線行經的景色。此刻的他正感到無比放鬆，同樣是在交通巔峰通勤，但日翔現在不必時刻煩惱公司那惱人的報表、業績考核，如果現在發生的一切都是夢的話，拜託讓他多享受一下再醒吧。"+"\n"+"捷運放慢速度進了站，因為是轉乘站的關係，在這站上下車的人數比較多，在一陣推擠後車門終於關上了。捷運再次啟動，這時車廂內傳來的小小聲的驚呼（曉光弄掉學生證ㄉ驚呼聲）讓日翔的目光從窗外回到車廂，日翔注意到腳邊不知何時出現了一張卡，上頭熟悉的圖案讓日翔一眼認出是輔大的學生證。"+"\n"+"日翔將學生證撿了起來，順便看了一眼學生證上頭的學生資訊，想看看到底是哪個冒失鬼遺落了學生證。經歷過一次大學生活的日翔知道學生證對輔大學生的重要性，學生證不僅可以作為悠遊卡使用，有些教授在期中期末考也會要求學生出示學生證以辨認學生身分。"+"\n"+"學生證上是一張青澀的女孩子的照片，總覺得看起來很熟悉......？往下瞧竟然也是資訊管理系，開學第一天就遇到同系的人嗎？還真巧啊，日翔莞爾。不過看見對方的姓名欄時日翔愣住了，白底黑字清清楚楚地寫著「何曉光」三個字。"+"\n"+"何曉光——在過去和日翔同班，不僅是個大學霸，還是系上的系花，更重要的是！曉光還是日翔單戀了整整四年的女神，不過日翔在過去因為成績太差而不敢高攀曉光。曉光總是安安靜靜地坐在位置上看書，給人一種「可遠觀不可褻玩焉」的感覺，曉光無論是舉手投足間的優雅，還是不冷不熱的語調都讓日翔很是喜歡。"+"\n"+"曉光的學生證掉落在這裡表示曉光也在這班車上嗎！？日翔朝車廂內望去，果不其然發現了正四處張望尋找遺落的學生證的曉光，日翔其實很猶豫到底要不要跟曉光搭話，但少了學生證曉光也出不了站。既然神都給他和曉光說上話的機會了，他又何嘗不把握呢？"))
+            list_1.append(TextSendMessage(text='「妳在找這個吧？」日翔做足了心理準備朝曉光遞出學生證。'+"\n"+"「對......謝謝你。」曉光驚訝地道謝接過。"+"\n"+"「不會。」沒想到能有被曉光道謝一天，日翔在心裡默默感謝那個神秘聲音，「我剛剛看了妳的學生證發現我們同一班呢。我叫游日翔，請多指教啦。」和曉光說上話讓日翔心裡感覺輕飄飄的。"))
+            list_1.append(TextSendMessage(text='#4 曉光的學號是「408402132」，請問曉光是民國幾年入學、甲班還是乙班、座號幾號呢？（請以「ＯＯ年、Ｏ班、ＯＯ號回答」。）'))
+            line_bot_api.reply_message(event.reply_token,list_1)
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    elif event.message.text=="遊戲規則":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
+    #文字施工中
     elif event.message.text=="人物介紹":
         carousel_template_message = TemplateSendMessage(
-            alt_text='Carousel template',
+            alt_text='人物介紹',
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url='https://dic.nicovideo.jp/oekaki/725601.png',
-                        title='張日向',
-                        text='男主角',
+                        thumbnail_image_url='https://upload.cc/i1/2022/03/30/K9D6Xw.jpg?fbclid=IwAR3TXV-o2OBUFuPpOursWi-w4pik7hG__iqpSahR59P7CcBaeb76ZvWKQPM',
+                        title='游日翔',
+                        text='心思細膩的青年',
                         actions=[
                             MessageAction(
                                 label='角色資料',
-                                text='張日向'
+                                text='日翔角色資料'
                             )
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='https://img.komicolle.org/2019-04/15566418114917.jpg',
-                        title='何愷茹',
-                        text='女主角',
+                        thumbnail_image_url='https://upload.cc/i1/2022/03/30/dRcCSl.jpg?fbclid=IwAR0LgBlXQ2LP-Ag99jBXJALWmbv2zF-DUX9BXp6dTEGn494AIAUKrxOr6q4',
+                        title='何曉光',
+                        text='研精靜慮的才女',
                         actions=[
                             MessageAction(
                                 label='角色資料',
-                                text='何愷茹'
+                                text='曉光角色資料'
                             )
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='https://5.share.photo.xuite.net/davidyea2006/15c7ae8/19334735/1060636313_x.jpg',
-                        title='葉司',
-                        text='男主朋友',
+                        thumbnail_image_url='https://upload.cc/i1/2022/03/03/8rgJCv.png',
+                        title='葉司晨',
+                        text='陽光朝氣的笨蛋',
                         actions=[
                             MessageAction(
                                 label='角色資料',
-                                text='葉司'
+                                text='司晨角色資料'
                             )
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='https://ygodl.com/wp-content/uploads/2021/09/5_Moment.jpg',
-                        title='馬玉山',
-                        text='學霸',
+                        thumbnail_image_url='https://upload.cc/i1/2022/03/15/yvIkxV.png',
+                        title='林真澄',
+                        text='塔羅占卜的能手',
                         actions=[
                             MessageAction(
                                 label='角色資料',
-                                text='馬玉山'
+                                text='真澄角色資料'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.cc/i1/2022/03/03/UvGMpX.png',
+                        title='馬宇恒',
+                        text='自視甚高的學霸',
+                        actions=[
+                            MessageAction(
+                                label='角色資料',
+                                text='宇恒角色資料'
                             )
                         ]
                     )
@@ -129,240 +301,604 @@ def handle_message(event):
             )
         )
         line_bot_api.reply_message(event.reply_token,carousel_template_message)
-    elif event.message.text=="張日向":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="萬年吊車尾的日向，竟誤打誤撞的考上了輔大資管系，還遇到自己的真命天女—愷茹。為了要讓愷茹喜歡上他，日向開始努力讀書，希望有一天能被愷茹看見。"))
-    elif event.message.text=="何愷茹":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="以全校第一的成績進入輔大資管系，無論何時何地都在讀書。平時都擺著一張撲克臉，讓人難以親近的樣子。不過一看到小動物時，臉上總是洋溢著幸福的笑容。"))
-    elif event.message.text=="葉司":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="大二才轉學過來的轉學生，是日向的死黨。和日向一起去打籃球、吃飯、上課，雖然偶爾冒冒失失的，但是總是把朋友擺在第一位，常常把「兄弟就是要有福同享、有難同當阿」掛在嘴邊。"))
-    elif event.message.text=="馬玉山":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="「萬般皆下品，唯有決鬥高」是他的人生名言，與愷茹角逐班上的一二名。玉山也喜歡日向，為了不讓日向一直靠近愷茹，因此常常提出問題刁難日向。"))
-
-    elif event.message.text=="角色好感度":
-        userid_list=worksheet.col_values(1)
-        list=[]
-        if event.source.user_id in userid_list:
-            for i in range(len(userid_list)):
-                if userid_list[i]==event.source.user_id:
-                    x=i+1
-            list.append('B'+str(x))
-            list.append('C'+str(x))
-            list.append('D'+str(x))
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="凱茹好感度："+worksheet.acell(list[2]).value+"\n"+"司好感度："+worksheet.acell(list[0]).value+"\n"+"玉山好感度："+worksheet.acell(list[1]).value))
-        else:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲，按下開始遊戲建立個人檔案"))
-
-    elif event.message.text=="開始遊戲":
+    elif event.message.text=="日翔角色資料":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="誤打誤撞考上輔大資管系的普通學生日翔，在學間遇到自己的真命天女——曉光，卻因為成績差而不敢進一步追求。內心思緒豐富喜歡吐槽，且觀察力十分敏銳，總能注意到一些小細節。稱呼死黨司晨為「阿司」。"))
+    elif event.message.text=="曉光角色資料":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="以在校成績第一繁星進入輔大資管系，一有空閒就會拿書出來閱讀。平時都擺著一張撲克臉，讓人難以親近的樣子。除了與好友真澄的關係比較親密之外，鮮少看到她與其他人有互動。但若吃到學校的食科冰，臉上便會洋溢出幸福的笑容。家裡養了一隻叫德魯貝的貓。"))
+    elif event.message.text=="司晨角色資料":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="日翔的死黨。和日翔一起去打籃球、吃飯、上課，雖然總是冒冒失失的，但一直都把朋友擺在第一位，偶爾會顯得可靠。喜歡幫人取奇怪的綽號，稱呼日翔為「阿日」。"))
+    elif event.message.text=="宇恒角色資料":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="擅長讀書跟coding，總是與曉光角逐班上的一二名。宇桓也喜歡同為學霸的曉光，為了不讓日翔靠近曉光，常常提出問題刁難日翔。出手闊綽，家裡似乎很有錢，把領到的書卷獎當零頭。"))
+    elif event.message.text=="真澄角色資料":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="曉光在通識課程中認識的甲班同學，對任何人最初都抱有警戒心，熟識後會發現真澄只是不知如何開口向他人表達關心。對自我要求很高，課程總是排得很滿，因此常常衝堂改修乙班的課。"))
+    
+    elif event.message.text=="個人檔案":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經開始遊戲，請輸入「進行遊戲」開始遊玩，要重置請輸入「重新開始」"))
-        else:
+            #玩家名稱
+            user_id = event.source.user_id
+            profile = line_bot_api.get_profile(user_id)         
+            #從exccel取學分
             x=len(userid_list)
             list=[]
-            for i in range(65,76):
-                list.append(chr(i)+str(x+1))
-            #ID
-            worksheet.update(list[0],event.source.user_id)
-            #初始值設定
-            for i in range(1,5):
-                worksheet.update(list[i],int(0))
-            worksheet.update(list[5],int(1))
-            for i in range(6,11):
-                worksheet.update(list[i],int(0))
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已開始遊戲，輸入「進行遊戲」開始遊戲。"))
-
-    elif event.message.text=="重新開始":
-        userid_list=worksheet.col_values(1)
-        if event.source.user_id in userid_list:
-            x=len(userid_list)
-            list=[]
-            for i in range(len(userid_list)):
-                if userid_list[i]==event.source.user_id:
-                    x=i
-            for i in range(65,76):
-                list.append(chr(i)+str(x+1))
-            #初始值設定
-            for i in range(1,5):
-                worksheet.update(list[i],int(0))
-            worksheet.update(list[5],int(1))
-            for i in range(6,11):
-                worksheet.update(list[i],int(0))
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已重置遊戲"))
-        else:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲，按下開始遊戲建立個人檔案"))
-    
-    #施工中
-    elif event.message.text=="進行遊戲":
-        userid_list=worksheet.col_values(1)
-        if event.source.user_id in userid_list:
-            for i in range(len(userid_list)):
+            for i in range(x):
                 if userid_list[i]==event.source.user_id:
                     j=i+1
-        list_Q=[]
-        list_Q.append('F'+str(j))
-        if event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="1":
-            line_bot_api.reply_message(  # 回復傳入的訊息文字
-                        event.reply_token,
-                        TemplateSendMessage(
-                            alt_text='猜謎決鬥，只能用手機玩',
-                            template=ButtonsTemplate(
-                                thumbnail_image_url='https://i.imgur.com/j6THk84.png',
-                                title='猜謎決鬥',
-                                text='哪些卡片是遊矢的王牌',
-                                actions=[
-                                    MessageTemplateAction(
-                                        label='動作卡',
-                                        text='動作卡'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='EM族',
-                                        text='EM族'
-                                    ),
-                                    MessageTemplateAction(
-                                        label='異色眼靈擺龍',
-                                        text='異色眼靈擺龍'
-                                    )
-                                ]
-                            )
-                        )
-                    )
-        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="2":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="答過了喔")) 
-        else:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入「開始遊戲」才能玩喔")) 
-    
-    elif event.message.text=="動作卡":
-        userid_list=worksheet.col_values(1)
-        if event.source.user_id in userid_list:
-            for i in range(len(userid_list)):
-                if userid_list[i]==event.source.user_id:
-                    j=i+1
-        list_Q=[]
-        list_Q.append('F'+str(j))
-        if event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="1":
-            for i in range(len(userid_list)):
-                if userid_list[i]==event.source.user_id:
-                    j=i+1
-            list=[]
+            #建築、物件、視角
+            list.append('B'+str(j))
             list.append('C'+str(j))
             list.append('D'+str(j))
-            list.append('F'+str(j))
-            list.append('G'+str(j))
-            x=int(worksheet.acell(list[0]).value)
-            x+=10
-            worksheet.update(list[0],x)
-            y=int(worksheet.acell(list[1]).value)
-            y+=10
-            worksheet.update(list[1],y)
-            worksheet.update(list[2],int(2))
-            worksheet.update(list[3],int(1))
-            reply_arr=[]
-            reply_arr.append(TextSendMessage(text="對ㄌ。"+"\n"+"出身於弱小私塾——日勝塾的日向，決鬥風格以動作娛樂決鬥聞名，擅長尋找散落各處的動作卡。一起長大的凱茹也擅長將動作卡加入牌組思考策略，玉山更是直言「動作決鬥就是我們槍兵的決鬥風格」。"+"\n"+"凱茹好感度+10、玉山好感度+10"))
-            buttons_template_message = TemplateSendMessage(
-                alt_text='甲甲合唱',
-                template=ButtonsTemplate(
-                    thumbnail_image_url='https://i.imgur.com/NhgzcHJ.jpeg',
-                    title='甲甲合唱',
-                    text='請選擇玉山和日向一起唱的曲名為？',
-                    actions=[
-                        MessageTemplateAction(
-                            label='切り札',
-                            text='切り札'
-                        ),
-                        MessageTemplateAction(
-                            label='future fighter!',
-                            text='future fighter!'
-                        ),
-                        MessageTemplateAction(
-                            label='ビジョン',
-                            text='ビジョン'
-                        )
-                    ]
+            #找關卡代號為1
+            list_c=[]
+            for i in range(69,76):
+                list_c.append(chr(i)+str(j))
+            for i in range(len(list_c)):
+                if worksheet.acell(list_c[i]).value=="1":
+                    ques=str(ord(list_c[i][0])-68)
+            #還沒選擇視角
+            if worksheet.acell(list[2]).value=="0":
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='選擇視角',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://upload.cc/i1/2022/03/30/K9D6Xw.jpg?fbclid=IwAR3TXV-o2OBUFuPpOursWi-w4pik7hG__iqpSahR59P7CcBaeb76ZvWKQPM',
+                                action=MessageTemplateAction(
+                                    label='日翔',
+                                    text='以日翔的視角進行遊戲'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://upload.cc/i1/2022/03/30/dRcCSl.jpg?fbclid=IwAR0LgBlXQ2LP-Ag99jBXJALWmbv2zF-DUX9BXp6dTEGn494AIAUKrxOr6q4',
+                                action=MessageTemplateAction(
+                                    label='曉光',
+                                    text='以曉光的視角進行遊戲'
+                                )
+                            )
+                        ]
+                    )
                 )
-            )
-            reply_arr.append(buttons_template_message)
-            line_bot_api.reply_message(event.reply_token,reply_arr)
-        
-        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="2":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="答過了喔"))
-        elif event.source.user_id in userid_list and worksheet.acell(list_Q[0]).value=="0":
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開放喔")) 
+                line_bot_api.reply_message(event.reply_token,image_carousel_template_message)
+            #日向視角
+            elif worksheet.acell(list[2]).value=="1":
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))
+            #小光視角
+            else:
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：小曉"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))   
         else:
-            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入「開始遊戲」才能玩喔")) 
-    elif event.message.text=="future fighter!":
-        reply_arr1=[]
-        reply_arr1.append(TextSendMessage("為了辦理加退選，日向等人來到系辦。請問下圖打碼文字應為？（請輸入「ＯＯＯＯＯＯＯ」回答。）"))
-        reply_arr1.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2021/12/17/E8L3X5.png', preview_image_url='https://upload.cc/i1/2021/12/17/E8L3X5.png'))
-        line_bot_api.reply_message(event.reply_token,reply_arr1)
-    elif event.message.text=="個人檔案":
-        rep_arr=[]
-        rep_arr.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#20"+"\n"+"解鎖回憶物件數：【2/8】"))
-        carousel_template_message2 = TemplateSendMessage(
-            alt_text='回憶物件',
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲喔，請輸入「開始遊戲」建立個人檔案。"))
+
+    elif event.message.text=="重置遊戲":
+        userid_list=worksheet.col_values(1)
+        #已寫入ID
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            worksheet.delete_row(j)
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已重置遊戲，請輸入「開始遊戲」。"))
+        #未寫入ID
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒建立開始遊戲喔，請輸入「開始遊戲」建立個人檔案。"))
+    elif event.message.text=="遊戲地圖":
+        #施工中
+        carousel_template_message = TemplateSendMessage(
+            alt_text='遊戲地圖',
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url='https://4.bp.blogspot.com/-2t-ECy35d50/UPzH73UAg3I/AAAAAAAAKz4/OJZ0yCVaRbU/w1200-h630-p-k-no-nu/book.png',
-                        title='童話書',
-                        text='獲得童話書！',
+                        thumbnail_image_url='https://photox.pchome.com.tw/s13/moni101/112/135200602386/',
+                        title='利瑪竇大樓',
+                        text='成功解鎖利瑪竇大樓！',
                         actions=[
                             MessageAction(
-                                label='回憶物件介紹',
-                                text='童話書介紹'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://2.bp.blogspot.com/-S3cfGZGsBAk/WKFjIqvaF_I/AAAAAAABBvc/L95XLp5T8Vct6UYaTqHiiimyg1GKg9RzwCLcB/w1200-h630-p-k-no-nu/ticket_green.png',
-                        title='冰淇淋券',
-                        text='獲得冰淇淋券！',
-                        actions=[
-                            MessageAction(
-                                label='回憶物件介紹',
-                                text='冰淇淋券介紹'
+                                label='建築介紹',
+                                text='利瑪竇大樓介紹'
                             )
                         ]
                     )
                 ]
             )
         )
-        rep_arr.append(carousel_template_message2)
-        line_bot_api.reply_message(event.reply_token,rep_arr)
-    elif event.message.event=="童話書介紹":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="適合學齡前小朋友的讀物，封底有被誰用油性筆寫上名字，但部分文字已脫落而看不出原本的字。被人反反覆覆翻閱過很多遍，看得出其主人對這本童書內容的喜愛。")) 
-    
-    elif event.message.text=="資訊管理學系所":
-        reply_arr2=[]
-        reply_arr2.append(TextSendMessage("答對了！系辦位於LM306，而門口懸掛的木板上刻著「資訊管理學系所」字樣！"))
-        reply_arr2.append(TextSendMessage("進入下題！"))
-        reply_arr2.append(TextSendMessage("終於到了午休時間！為了應付早上的課程早就餓壞了，於是大家決定直接在校內解決午餐問題。"))
-        buttons_template_message = TemplateSendMessage(
-                alt_text='題目',
-                template=ButtonsTemplate(
-                    thumbnail_image_url='https://i.imgur.com/uUgQmH1.jpeg',
-                    title='請選出正確的選項',
-                    text='請問輔大「五」學餐分別為？',
-                    actions=[
-                        MessageTemplateAction(
-                            label='輔園、文園、心園、仁園、理園',
-                            text='輔園、文園、心園、仁園、理園'
-                        ),
-                        MessageTemplateAction(
-                            label='一園、兩園、三園、四園、五園',
-                            text='一園、兩園、三園、四園、五園'
-                        ),
-                        MessageTemplateAction(
-                            label='動物園、植物園、伊甸園、公園、球好園',
-                            text='動物園、植物園、伊甸園、公園、球好園'
-                        )
-                    ]
-                )
+        carousel_template_message2 = TemplateSendMessage(
+            alt_text='遊戲地圖',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://photox.pchome.com.tw/s13/moni101/112/135200602386/',
+                        title='利瑪竇大樓',
+                        text='成功解鎖利瑪竇大樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='利瑪竇大樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://pic.pimg.tw/fjumyblog/4a128e07da7c5_wn.jpg',
+                        title='聖言樓',
+                        text='成功解鎖聖言樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='聖言樓介紹'
+                            )
+                        ]
+                    )
+                ]
             )
-        reply_arr2.append(buttons_template_message)
-        line_bot_api.reply_message(event.reply_token,reply_arr2)
-    else:
-        #line_bot_api.reply_message(event.reply_token,ImageSendMessage(original_content_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png', preview_image_url='https://memeprod.ap-south-1.linodeobjects.com/user-template/536263c581f68d6a929bcbcf7191928a.png'))
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤")) 
+        )
+        carousel_template_message3 = TemplateSendMessage(
+            alt_text='遊戲地圖',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://photox.pchome.com.tw/s13/moni101/112/135200602386/',
+                        title='利瑪竇大樓',
+                        text='成功解鎖利瑪竇大樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='利瑪竇大樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://pic.pimg.tw/fjumyblog/4a128e07da7c5_wn.jpg',
+                        title='聖言樓',
+                        text='成功解鎖聖言樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='聖言樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/FJU_Religion03.jpg/800px-FJU_Religion03.jpg',
+                        title='淨心堂',
+                        text='成功解鎖淨心堂！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='淨心堂介紹'
+                            )
+                        ]
+                    )
+                ]
+            )
+        )
+        carousel_template_message4 = TemplateSendMessage(
+            alt_text='遊戲地圖',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://photox.pchome.com.tw/s13/moni101/112/135200602386/',
+                        title='利瑪竇大樓',
+                        text='成功解鎖利瑪竇大樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='利瑪竇大樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://pic.pimg.tw/fjumyblog/4a128e07da7c5_wn.jpg',
+                        title='聖言樓',
+                        text='成功解鎖聖言樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='聖言樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/FJU_Religion03.jpg/800px-FJU_Religion03.jpg',
+                        title='淨心堂',
+                        text='成功解鎖淨心堂！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='淨心堂介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://mapio.net/images-p/84019119.jpg',
+                        title='進修部',
+                        text='成功解鎖進修部！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='進修部介紹'
+                            )
+                        ]
+                    )
+                ]
+            )
+        )
+        carousel_template_message5 = TemplateSendMessage(
+            alt_text='遊戲地圖',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://photox.pchome.com.tw/s13/moni101/112/135200602386/',
+                        title='利瑪竇大樓',
+                        text='成功解鎖利瑪竇大樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='利瑪竇大樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://pic.pimg.tw/fjumyblog/4a128e07da7c5_wn.jpg',
+                        title='聖言樓',
+                        text='成功解鎖聖言樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='聖言樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/FJU_Religion03.jpg/800px-FJU_Religion03.jpg',
+                        title='淨心堂',
+                        text='成功解鎖淨心堂！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='淨心堂介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://mapio.net/images-p/84019119.jpg',
+                        title='進修部',
+                        text='成功解鎖進修部！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='進修部介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/sqlb3OC.jpeg',
+                        title='伯達樓',
+                        text='成功解鎖伯達樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='伯達樓介紹'
+                            )
+                        ]
+                    )
+                ]
+            )
+        )
+        carousel_template_message6 = TemplateSendMessage(
+            alt_text='遊戲地圖',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/6/68/FJU_SSMG01.jpg',
+                        title='利瑪竇大樓',
+                        text='成功解鎖利瑪竇大樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='利瑪竇大樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://pic.pimg.tw/fjumyblog/4a128e07da7c5_wn.jpg',
+                        title='聖言樓',
+                        text='成功解鎖聖言樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='聖言樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/FJU_Religion03.jpg/800px-FJU_Religion03.jpg',
+                        title='淨心堂',
+                        text='成功解鎖淨心堂！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='淨心堂介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://mapio.net/images-p/84019119.jpg',
+                        title='進修部',
+                        text='成功解鎖進修部！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='進修部介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/sqlb3OC.jpeg',
+                        title='伯達樓',
+                        text='成功解鎖伯達樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='伯達樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://ppt.cc/f3IHdx@.jpg',
+                        title='濟時樓',
+                        text='成功解鎖濟時樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='濟時樓介紹'
+                            )
+                        ]
+                    )
+                ]
+            )
+        )
+        carousel_template_message7 = TemplateSendMessage(
+            alt_text='遊戲地圖',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/6/68/FJU_SSMG01.jpg',
+                        title='利瑪竇大樓',
+                        text='成功解鎖利瑪竇大樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='利瑪竇大樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://pic.pimg.tw/fjumyblog/4a128e07da7c5_wn.jpg',
+                        title='聖言樓',
+                        text='成功解鎖聖言樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='聖言樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/FJU_Religion03.jpg/800px-FJU_Religion03.jpg',
+                        title='淨心堂',
+                        text='成功解鎖淨心堂！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='淨心堂介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://mapio.net/images-p/84019119.jpg',
+                        title='進修部',
+                        text='成功解鎖進修部！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='進修部介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/sqlb3OC.jpeg',
+                        title='伯達樓',
+                        text='成功解鎖伯達樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='伯達樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://ppt.cc/f3IHdx@.jpg',
+                        title='濟時樓',
+                        text='成功解鎖濟時樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='濟時樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/dx980Kw.jpeg',
+                        title='中美堂',
+                        text='成功解鎖中美堂！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='中美堂介紹'
+                            )
+                        ]
+                    )
+                ]
+            )
+        )
+        carousel_template_message8 = TemplateSendMessage(
+            alt_text='遊戲地圖',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://photox.pchome.com.tw/s13/moni101/112/135200602386/',
+                        title='利瑪竇大樓',
+                        text='成功解鎖利瑪竇大樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='利瑪竇大樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://pic.pimg.tw/fjumyblog/4a128e07da7c5_wn.jpg',
+                        title='聖言樓',
+                        text='成功解鎖聖言樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='聖言樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/FJU_Religion03.jpg/800px-FJU_Religion03.jpg',
+                        title='淨心堂',
+                        text='成功解鎖淨心堂！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='淨心堂介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://mapio.net/images-p/84019119.jpg',
+                        title='進修部',
+                        text='成功解鎖進修部！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='進修部介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/sqlb3OC.jpeg',
+                        title='伯達樓',
+                        text='成功解鎖伯達樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='伯達樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://ppt.cc/f3IHdx@.jpg',
+                        title='濟時樓',
+                        text='成功解鎖濟時樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='濟時樓介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://i.imgur.com/dx980Kw.jpeg',
+                        title='中美堂',
+                        text='成功解鎖中美堂！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='中美堂介紹'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://fastly.4sqi.net/img/general/784x588/43402781_EW7mtusxKDYOM_Og5v3k7sFac_UPy0JeNmwAnTUQWgw.jpg',
+                        title='野聲樓',
+                        text='成功解鎖野聲樓！',
+                        actions=[
+                            MessageAction(
+                                label='建築介紹',
+                                text='野聲樓介紹'
+                            )
+                        ]
+                    )
+                ]
+            )
+        )
+        #施工中
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('B'+str(j))
+            rep_arr=[]
+            if worksheet.acell(list[0]).value=="0":
+                rep_arr.append(TextSendMessage("建築物解鎖進度：【0/8】"))
+                rep_arr.append(TextSendMessage(text="還沒解鎖任何建築！趕快去回答問題解鎖吧！"))
+                line_bot_api.reply_message(event.reply_token,rep_arr)
+            elif worksheet.acell(list[0]).value=="1":
+                rep_arr.append(TextSendMessage("建築物解鎖進度：【1/8】"))
+                rep_arr.append(carousel_template_message)
+                line_bot_api.reply_message(event.reply_token,rep_arr)
+            elif worksheet.acell(list[0]).value=="2":
+                rep_arr.append(TextSendMessage("建築物解鎖進度：【2/8】"))
+                rep_arr.append(carousel_template_message2)
+                line_bot_api.reply_message(event.reply_token,rep_arr)
+            elif worksheet.acell(list[0]).value=="3":
+                rep_arr.append(TextSendMessage("建築物解鎖進度：【3/8】"))
+                rep_arr.append(carousel_template_message3)
+                line_bot_api.reply_message(event.reply_token,rep_arr)
+            elif worksheet.acell(list[0]).value=="4":
+                rep_arr.append(TextSendMessage("建築物解鎖進度：【4/8】"))
+                rep_arr.append(carousel_template_message4)
+                line_bot_api.reply_message(event.reply_token,rep_arr)
+            elif worksheet.acell(list[0]).value=="5":
+                rep_arr.append(TextSendMessage("建築物解鎖進度：【5/8】"))
+                rep_arr.append(carousel_template_message5)
+                line_bot_api.reply_message(event.reply_token,rep_arr)
+            elif worksheet.acell(list[0]).value=="6":
+                rep_arr.append(TextSendMessage("建築物解鎖進度：【6/8】"))
+                rep_arr.append(carousel_template_message6)
+                line_bot_api.reply_message(event.reply_token,rep_arr)
+            elif worksheet.acell(list[0]).value=="7":
+                rep_arr.append(TextSendMessage("建築物解鎖進度：【7/8】"))
+                rep_arr.append(carousel_template_message7)
+                line_bot_api.reply_message(event.reply_token,rep_arr)
+            else:
+                rep_arr.append(TextSendMessage("建築物解鎖進度：【8/8】"))
+                rep_arr.append(carousel_template_message8)
+                line_bot_api.reply_message(event.reply_token,rep_arr)   
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒建立個人檔案喔，輸入「開始遊戲」建立。"))
+    elif event.message.text=="利瑪竇大樓介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="利瑪竇大樓為法管學院綜合大樓，呈現「T」字形，於1986年落成，為紀念來華傳教的耶穌會會是利瑪竇神父，特意以其姓名命名，在利瑪竇大樓的前庭、後廳大理石地板，還鑲嵌著輔仁校訓「真善美聖」的拉丁文。利瑪竇為天主教在中國傳教的開拓者之一，除了傳播天主教福音之外，他還結交許多中國官員，教導天文、數學、地理等西方科學知識，因而獲得「泰西儒士」的尊稱。《坤輿萬國全圖》則是利瑪竇為中國所製作的世界地圖，問世後不久即被傳入日本，對於亞洲地理學的發展產生重要影響。"))
+    elif event.message.text=="中美堂介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="中美堂是學校體育館，屬於大型活動的集會場所，由聖言會會士、德國人林慎白總建築師，及我國專家陳濯、李實鐸、沈大魁、趙楓等四位合作規劃而成，象徵古羅馬競技精神的圓形建築，遠看狀似北平天壇，取前總統蔣中正以及前董事長蔣宋美齡名字各一字，簡稱中美堂。"))
+    elif event.message.text=="聖言樓介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="代號SF，主要科系為電子系與資工系，而資管系的資料結構、網路設計課程安排在此棟建築物授課。地下室具有敦煌書局，內部除了各大科系的教科書、文具以外，還具備蘋果專區和餐廳，相當便利。"))
+    elif event.message.text=="靜心堂介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="淨心堂位於外語學院跟法管學院之間，圓環的旁邊喔。於民國66年落成，整體外觀為白色，乃前任校長羅光總主教選定的顏色，代表純潔肅穆莊嚴。在建築風格上非常特別，結合了科學、藝術、宗教等等，可以在外觀上找到字母Α和字母Ω。"))
+    elif event.message.text=="野聲樓介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="野聲樓為輔大的行政中心，所有行政辦公室都設置在此處，包含校長室秘書室、人事室、會計室、會議室、註冊組、教務處、課務組、軍訓室、公共事務室、生活輔導組、出納組，谷欣廳⋯⋯等等；此外，在野聲樓四樓設有中國天主教文物館、校史館、于斌樞機紀念館，可供民眾預約參觀，以便更了解輔仁大學的歷史背景。「野聲」取自輔大第一任校長于斌樞機主教的字號，源於聖經中聖洗者若翰曠「野」的呼「聲」，有趣的是，在野聲樓外頭也豎立著于斌樞機主教的雕像，和野聲樓相映對照，透過此空間規劃間接說明輔大創建的校史。"))
+    elif event.message.text=="濟時樓介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="濟時樓圖書總館館舍總面積約3500坪，閱覽席位1062席、全館無線網路(SSID FJU)、學習共享空間與檢索查詢之電腦設備92組、研究小間28間、團體討論室7間。二樓為圖書館入口、借閱櫃台、參考服務區、資訊檢索區、指定參考書區、新書展示區、學習共享空間、寫作中心及閱報區；三樓為現期期刊區、學位論文區及參考書區；四樓為期刊室（含合訂本報紙）；五至七樓為中西文書庫；八樓為辦公室。"))
+    elif event.message.text=="伯達樓介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="代號BS，所屬科系為社會科學系、法律學系，資管系的資料庫管理和作業系統課程也在此授課。建築意義：愛護真理、保護青年的張伯達神父（1905-1951致命殉道），他常說：現代青年該具有團結、合作、謙虛、仁恕、急公、好義等社會道德，還要有創造力。這樣，一旦跨出校門，不但能夠適應社會，在社會中生存，更能領導社會，改造社會，做社會中堅份子。"))
+    elif event.message.text=="進修部大樓介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輔大進修部的前身是輔大夜間部，自民國五十八年成立迄今已五十餘年。秉持天主教的辦學理念與宗旨，以全人教育為目標；秉持真、善、美、聖的校訓，提供一個終生學習的環境，為社會國家造就許多人才。"+"\n"+"本部下轄8個學系及10個學士學位學程，致力培養學生具備廣博的知識及精進的專業能力，並培育學生具有人文素養、人本情懷、人際溝通與思惟判斷能力之完備的社會人。"))
+    else:    
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
 #主程式
 import os
