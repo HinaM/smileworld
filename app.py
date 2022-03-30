@@ -165,11 +165,10 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒建立個人檔案喔，輸入「開始遊戲」建立。"))
 
     #1答案
-    elif event.message.text=="return":
-        if event.source.user_id in userid_list:
-            for i in range(len(userid_list)):
-                if userid_list[i]==event.source.user_id:
-                    j=i+1
+    elif event.message.text=="讓我回去":
+        for i in range(len(userid_list)):
+            if userid_list[i]==event.source.user_id:
+                j=i+1
         list=[]
         list.append("E"+str(j))
         list.append("F"+str(j))
