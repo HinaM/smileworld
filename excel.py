@@ -58,7 +58,8 @@ if "Uba41d5fffc98d49212951542e172f811" in userid_list:
     print("凱茹好感度："+worksheet.acell(list[2]).value+"\n"+"司好感度："+worksheet.acell(list[0]).value+"\n"+"玉山好感度："+worksheet.acell(list[1]).value)
 else:
     print("error")
-'''
+
 x=int(worksheet.acell('C2').value)
 x+=3
 worksheet.update('C2',x)
+'''

@@ -166,9 +166,11 @@ def handle_message(event):
 
     #1答案
     elif event.message.text=="讓我回去":
-        for i in range(len(userid_list)):
-            if userid_list[i]==event.source.user_id:
-                j=i+1
+        userid_list=worksheet.col_values(1)
+        if event.event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
         list=[]
         list.append("E"+str(j))
         list.append("F"+str(j))
