@@ -15,7 +15,7 @@ import gspread
 gc=gspread.service_account(filename='smile-world-340813-6b2b86613f09.json')
 sh=gc.open_by_key('1FsfvfBLAazAehvUqaVH9rH6zzdCowoYpedVsDSkuAdk')
 worksheet=sh.sheet1
-
+'''
 res=worksheet.get_all_records()
 print(res)
 
@@ -32,6 +32,7 @@ print(userList)
 
 print(res)
 x=str(len(worksheet.col_values(1)))
+'''
 '''
 list=[]
 for i in range(65,76):
@@ -63,3 +64,5 @@ x=int(worksheet.acell('C2').value)
 x+=3
 worksheet.update('C2',x)
 '''
+userid_list=worksheet.col_values(1)
+print(userid_list)
