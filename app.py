@@ -523,12 +523,9 @@ def handle_message(event):
             list.append('C'+str(j))
             list.append('D'+str(j))
             #找關卡代號為1
-            list_c=[]
-            for i in range(69,76):
-                list_c.append(chr(i)+str(j))
-            for i in range(len(list_c)):
-                if worksheet.acell(list_c[i]).value=="1":
-                    ques=str(ord(list_c[i][0])-68)
+            for i in range(4,len(worksheet.row_values(j))):
+                if worksheet.row_values(j)[i]=="1":
+                    ques=str(i-3)
             #還沒選擇視角
             if worksheet.acell(list[2]).value=="0":
                 image_carousel_template_message = TemplateSendMessage(
