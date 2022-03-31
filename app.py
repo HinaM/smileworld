@@ -1196,6 +1196,40 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #??
+    elif event.message.text=="這裡是哪裡？你到底是誰？為什麼要讓我回到大學生活？":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('AE'+str(j))
+            #ID已寫入、日向視角、AE=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="滿腔的疑問終究淹沒了日翔，他忍不住向這個空間的支配者詢問。"+"\n"+"「你的表現比我想像中的好嘛。」迷霧居然沒有搭理他的疑問，有一瞬間，日翔居然覺得這位陌生的個體似乎太有個性了……"+"\n"+"「你猜猜，我是來找你做什麼的？」"+"\n"+"「我怎麼會知……」正打算回應，可迷霧卻不等待日翔說完，便擅自搶答：「沒有啦，我只是來跟你打招呼，有沒有嚇到？」"+"\n"+"喂、這人……是人嗎？會不會太我行我素了？日翔終於忍不住在內心吐槽。"+"\n"+"不過，感覺上應該不是個壞人。"+"\n"+"謎的聲音似乎真的是來打招呼的，他沒有打算和日翔多說，整個世界便已經隨著逐漸模糊的聲音消逝：「總而言之，能像你一樣得到重返大學生活的機會的人『幾乎』是沒有的……這次啊，你得好好把握……」"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='？？',
+                    template=ButtonsTemplate(
+                        title='？？',
+                        text='……等等，別走！',
+                        actions=[
+                            MessageAction(
+                                label='？？',
+                                text='……等等，別走！'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
     
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
