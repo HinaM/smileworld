@@ -583,8 +583,31 @@ def handle_message(event):
                 worksheet.update(list[2],int(1))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="「阿日！好厲害！你根本是天才！」司晨看著日翔完成的一題題程式碼驚呼道。"+"\n"+"「不不，天才什麼的......」司晨的誇讚讓日翔有些心虛，日翔當然是不可能告訴司晨其實他已經學過了。"+"\n"+"「既然是天才，想必再困難的題目也難不倒你吧？」冰冷的聲音在兩人背後響起，兩人轉過頭一看發現竟是宇桓。"+"\n"+"「你是誰啊？」查覺到來者不善的司晨先發制人問道。"+"\n"+"宇桓瞥了司晨一眼，「我並不是在跟你說話，我找的是這位『天才』同學。」宇桓語帶嘲諷的強調「天才」兩個字。"+"\n"+"「哼...不過挑戰者先自報門號才符合禮節吧？」宇桓推了推眼鏡繼續說，「我叫宇桓，跟你同班。」"+"\n"+"「呃、宇桓同學？你是不是搞錯什麼......」如果可以，日翔還真不想接受宇桓的「挑戰」。話又說回來，這次還是被宇桓給盯上了嗎？自己到底是哪裡惹到宇桓了呢......"+"\n"+"「搞錯？我可是清清楚楚的聽見這個笨蛋叫你天才。」宇桓像是怕日翔聽不懂一樣一字一字緩緩地說，「怎麼了？該不會是害怕了？」"+"\n"+"「你這人從剛剛就一直瞧不起人啊！」被宇桓直罵的司晨晨憤憤地指著宇桓，「阿日怎麼可能會輸給你！不管你要出幾題阿日都會解開的！」"+"\n"+"「就當你是接受了。」宇桓一臉計畫通地笑了，語氣也不容許日翔拒絕。"+"\n"+"中了宇桓的圈套啊......宇桓想必是針對司晨容易被挑釁這點出手的。看來不解開宇桓的難題，宇桓是不會罷休了。"))
-                list_talk.append(TextSendMessage(text="#13 請問下圖最後會出現什麼結果？（請以「x=Ｏ」回答，Ｏ為半形數字。）"))
-                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/25/uHLoSw.png', preview_image_url='https://upload.cc/i1/2022/03/25/uHLoSw.png'))
+                list_talk.append(TextSendMessage(text="#13 請問下圖最後會出現什麼結果？（請以「Ｏ」回答，Ｏ為半形數字。）"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/10/J106XE.png', preview_image_url='https://upload.cc/i1/2022/03/10/J106XE.png'))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #13答案
+    elif event.message.text=="5050":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('Q'+str(j))
+            list.append('R'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#14 下列以Python語法撰寫出的程式碼最後輸出結果為？（請以「x=Ｏ」回答，Ｏ數量不代表實際答案字數。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -734,7 +757,6 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒建立開始遊戲喔，請輸入「開始遊戲」建立個人檔案。"))
     elif event.message.text=="遊戲地圖":
-        #施工中
         carousel_template_message = TemplateSendMessage(
             alt_text='遊戲地圖',
             template=CarouselTemplate(
