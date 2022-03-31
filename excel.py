@@ -64,11 +64,7 @@ x=int(worksheet.acell('C2').value)
 x+=3
 worksheet.update('C2',x)
 '''
-userid_list=worksheet.col_values(1)
-if 'Uba41d5fffc98d49212951542e172f811' in userid_list:
-    for i in range(len(userid_list)):
-        if userid_list[i]=='Uba41d5fffc98d49212951542e172f811':
-            j=i+1
-for i in range(4,len(worksheet.row_values(j))):
-    if worksheet.row_values(j)[i]=="1":
-        print(i-3)
+list=[]
+for i in range(65,70):
+    list.append(chr(i)+str(1))
+print(list)
