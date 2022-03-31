@@ -827,7 +827,31 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="期中考的分數公布下來後，日翔考了一個不錯的分數，司晨也在日翔的幫（洩）助（題）下安全地擦邊通過了期中考。"+"\n"+"「阿日！你看！我活到現在第一次考這麼高欸！」司晨興奮地將考卷舉到日翔面前，「阿日你怎麼猜題都猜得那麼準啊！」"+"\n"+"「就、剛好從學長姐那邊拿到考古題啦～」"+"\n"+"「真好啊！那我期末也靠你罩了啊！」"+"\n"+"日翔有時很慶幸還好司晨並不會過問那麼多，他可不擅長撒謊啊！"+"「曉光呢？考得怎麼樣？」日翔轉頭詢問坐在兩人後面的曉光，但其實日翔不需要問也知道結果了，曉光可是提高班上平均分數的大學霸啊。"+"\n"+"「還行。」曉光給了日翔一個模稜兩可的回答，不過日翔聽得出曉光語氣裡的透露了一絲喜悅，看來考試的結果也讓曉光很滿意呢。"))
                 list_talk.append(TextSendMessage(text="在輔大大學入門課程中，為了讓學生更加了解校園環境，學校會安排學生參觀校史室跟淨心堂這兩項活動。"))
-                list_talk.append(TextSendMessage(text="#19 校史館在哪一棟建築的二樓呢？（請以「ＯＯ樓」回答。）"))
+                list_talk.append(TextSendMessage(text="#19 校史館在哪一棟建築的二樓呢？（請以「ＯＯ樓二樓」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #19答案
+    elif event.message.text=="野聲樓二樓":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('W'+str(j))
+            list.append('X'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="校史室位於野聲樓二樓，就像一座位於輔大的小型博物館，存放著從開校以來到現今所保存的各種珍貴文物。校史室不僅只是展示，更是保存、傳承下發生在輔大的故事。"))
+                list_talk.append(TextSendMessage(text="#20 在大學入門課程中，導師會帶學生去什麼地方傾聽神父的禱告呢？"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
