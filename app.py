@@ -615,6 +615,52 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    #14答案
+    elif event.message.text=="x=2500":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('R'+str(j))
+            list.append('S'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「哈哈哈阿日你看到宇桓的表情了嗎？說什麼『還在意料內』我看他根本就是被嚇傻了，哈哈哈！」司晨從離開教室後從沒停止過大笑，彷彿是自己解開了宇桓的難題，日翔終於忍不住反手朝司晨的後腦打了一巴掌。"+"\n"+"「好痛！阿日你幹嘛！？變笨了怎麼辦！」司晨吃了痛驚呼道。"+"\n"+"「已經很……咳嗯，我是說，阿司你也長點心眼，被宇桓算計了也不知道！下次你自己回答！」"+"\n"+"「對不起啦阿日！誰叫他一臉欠揍還說我笨嘛！我聽同學說過傳說中的『輔大三寶』，我請你吃阿日你就消氣吧？」司晨趕緊討好地說，「我記得有......」"))
+                list_talk.append(TextSendMessage(text="#15 傳說中的「輔大三寶」分別是哪三寶？"+"\n"+"（Ａ）小木屋鬆餅、食科冰淇淋、比臉大雞排"+"\n"+"（Ｂ）巧瑋鬆餅、食科冰淇淋、大菠蘿麵包"+"\n"+"（Ｃ）小木屋鬆餅、食科冰淇淋、大菠蘿麵包"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#15',
+                    template=ButtonsTemplate(
+                        title='#15',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='小木屋鬆餅、食科冰淇淋、比臉大雞排'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='巧瑋鬆餅、食科冰淇淋、大菠蘿麵包'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='小木屋鬆餅、食科冰淇淋、大菠蘿麵包'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
