@@ -1009,7 +1009,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     #23答案
-    elif event.message.text=="藝術與人文（含歷史）、社會科學、自然與科技":
+    elif event.message.text=="大一體育必修0學分":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
             for i in range(len(userid_list)):
