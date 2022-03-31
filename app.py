@@ -880,9 +880,9 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="解鎖圖畫！趕快去「個人檔案」看看！"))
                 list_talk.append(TextSendMessage(text="#21 日翔下一節課在進修部上課，請問以下哪個課程最可能在進修部大樓上課呢？"+"\n"+"（Ａ）微積分"+"\n"+"（Ｂ）會計"+"\n"+"（Ｃ）通識"+"\n"+"（Ｄ）統計學"))
                 buttons_template_message = TemplateSendMessage(
-                    alt_text='#18',
+                    alt_text='#20',
                     template=ButtonsTemplate(
-                        title='#18',
+                        title='#20',
                         text='請選出正確答案',
                         actions=[
                             MessageAction(
@@ -905,6 +905,52 @@ def handle_message(event):
                     )
                 )
                 list_talk.append(buttons_template_message) 
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #21答案
+    elif event.message.text=="通識":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('Y'+str(j))
+            list.append('Z'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="日翔其實很喜歡通識課程，除了系上排除課程外，在通識課可以學到各領域的知識。日翔這次很幸運地選上了過去在DCard上大家都很推薦卻一直沒有選上的課程，不過......"+"\n"+"「太慢了！」日翔才找到位置坐下，立刻遭到宇桓的斥責。沒錯，籤王日翔，雖然選上了喜歡的課，但他沒料到宇桓也選了同一門課，甚至連分組報告也和宇桓同一組。"+"\n"+"「根本還沒開始上課啊......」日翔小聲地抱怨。"+"\n"+"一開始在通識教室裡看見宇桓時，日翔差那麼一點點🌌🤏想直接退選出去了，但學校規定："))
+                list_talk.append(TextSendMessage(text="#22 學校規定通識該修滿哪些領域各4學分呢？"+"\n"+"（Ａ）藝術與人文（含歷史）、社會科學、自然與科技"+"\n"+"（Ｂ）資訊與科技、社會正義、宗教與信仰（含歷史）"+"\n"+"（Ｃ）人類與文明（含歷史）、社會科技、自然與變遷"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#22',
+                    template=ButtonsTemplate(
+                        title='#22',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='藝術與人文（含歷史）、社會科學、自然與科技'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='資訊與科技、社會正義、宗教與信仰（含歷史）'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='人類與文明（含歷史）、社會科技、自然與變遷'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
