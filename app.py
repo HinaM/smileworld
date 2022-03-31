@@ -728,6 +728,32 @@ def handle_message(event):
                 worksheet.update(list[2],int(1))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#17 y=e^(2x)，則y'=？"+"\n"+"（Ａ）2xe^(2x)"+"\n"+"（Ｂ）2e^(2x)"+"\n"+"（Ｃ）2e^x"+"\n"+"（Ｄ）e^x"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#17',
+                    template=ButtonsTemplate(
+                        title='#17',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='2xe^(2x)'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='2e^(2x)'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='2e^x'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='e^x'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
