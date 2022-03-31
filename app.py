@@ -662,7 +662,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     #15答案
-    elif event.message.text=="x=2500":
+    elif event.message.text=="巧瑋鬆餅、食科冰淇淋、大菠蘿麵包":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
             for i in range(len(userid_list)):
