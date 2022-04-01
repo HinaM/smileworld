@@ -537,7 +537,7 @@ def handle_message(event):
                 worksheet.update(list[2],int(1))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#12 以下語法為Python結構中的？"+"\n"+"（Ａ）array"+"\n"+"（Ｂ）dictionary"+"\n"+"（Ｃ）tuple"))
-                list.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/25/8MeqCO.png', preview_image_url='https://upload.cc/i1/2022/03/25/8MeqCO.png'))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/25/8MeqCO.png', preview_image_url='https://upload.cc/i1/2022/03/25/8MeqCO.png'))
                 buttons_template_message = TemplateSendMessage(
                     alt_text='#12',
                     template=ButtonsTemplate(
@@ -825,7 +825,7 @@ def handle_message(event):
                 worksheet.update(list[1],int(2))
                 worksheet.update(list[2],int(1))
                 list_talk=[]
-                list_talk.append(TextSendMessage(text="期中考的分數公布下來後，日翔考了一個不錯的分數，司晨也在日翔的幫（洩）助（題）下安全地擦邊通過了期中考。"+"\n"+"「阿日！你看！我活到現在第一次考這麼高欸！」司晨興奮地將考卷舉到日翔面前，「阿日你怎麼猜題都猜得那麼準啊！」"+"\n"+"「就、剛好從學長姐那邊拿到考古題啦～」"+"\n"+"「真好啊！那我期末也靠你罩了啊！」"+"\n"+"日翔有時很慶幸還好司晨並不會過問那麼多，他可不擅長撒謊啊！"+"「曉光呢？考得怎麼樣？」日翔轉頭詢問坐在兩人後面的曉光，但其實日翔不需要問也知道結果了，曉光可是提高班上平均分數的大學霸啊。"+"\n"+"「還行。」曉光給了日翔一個模稜兩可的回答，不過日翔聽得出曉光語氣裡的透露了一絲喜悅，看來考試的結果也讓曉光很滿意呢。"))
+                list_talk.append(TextSendMessage(text="期中考的分數公布下來後，日翔考了一個不錯的分數，司晨也在日翔的幫（洩）助（題）下安全地擦邊通過了期中考。"+"\n"+"「阿日！你看！我活到現在第一次考這麼高欸！」司晨興奮地將考卷舉到日翔面前，「阿日你怎麼猜題都猜得那麼準啊！」"+"\n"+"「就、剛好從學長姐那邊拿到考古題啦～」"+"\n"+"「真好啊！那我期末也靠你罩了啊！」"+"\n"+"日翔有時很慶幸還好司晨並不會過問那麼多，他可不擅長撒謊啊！"+"\n"+"「曉光呢？考得怎麼樣？」日翔轉頭詢問坐在兩人後面的曉光，但其實日翔不需要問也知道結果了，曉光可是提高班上平均分數的大學霸啊。"+"\n"+"「還行。」曉光給了日翔一個模稜兩可的回答，不過日翔聽得出曉光語氣裡的透露了一絲喜悅，看來考試的結果也讓曉光很滿意呢。"))
                 list_talk.append(TextSendMessage(text="在輔大大學入門課程中，為了讓學生更加了解校園環境，學校會安排學生參觀校史室跟淨心堂這兩項活動。"))
                 list_talk.append(TextSendMessage(text="#19 校史館在哪一棟建築的二樓呢？（請以「ＯＯ樓二樓」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
