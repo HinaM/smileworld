@@ -1352,9 +1352,93 @@ def handle_message(event):
                     )
                 )
                 line_bot_api.reply_message(event.reply_token,image_carousel_template_message)
-            #日向視角
-            elif worksheet.acell(list[2]).value=="1":
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))
+            #日向視角&物件0
+            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="0":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【0/8】"))
+                list_talk.append(TextSendMessage(text="還沒解鎖物件喔！趕快去過關解鎖吧！"))
+                line_bot_api.reply_message(event.reply_token, list_talk)
+            #日向視角&物件1
+            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="1":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【1/8】"))
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='已解鎖物件',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/2r7tDCN.png',
+                                action=MessageTemplateAction(
+                                    label='童話書介紹',
+                                    text='童話書介紹'
+                                )
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(image_carousel_template_message)
+                line_bot_api.reply_message(event.reply_token, list_talk)
+            #日向視角&物件2
+            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="2":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【2/8】"))
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='已解鎖物件',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/2r7tDCN.png',
+                                action=MessageTemplateAction(
+                                    label='童話書介紹',
+                                    text='童話書介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/SAwcrWC.png',
+                                action=MessageTemplateAction(
+                                    label='遊Ｏ王卡介紹',
+                                    text='遊Ｏ王卡介紹'
+                                )
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(image_carousel_template_message)
+                line_bot_api.reply_message(event.reply_token, list_talk)
+            #日向視角&物件3
+            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="3":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【3/8】"))
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='已解鎖物件',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/2r7tDCN.png',
+                                action=MessageTemplateAction(
+                                    label='童話書介紹',
+                                    text='童話書介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/SAwcrWC.png',
+                                action=MessageTemplateAction(
+                                    label='遊Ｏ王卡介紹',
+                                    text='遊Ｏ王卡介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/hXpbU2C.png',
+                                action=MessageTemplateAction(
+                                    label='圖畫介紹',
+                                    text='圖畫介紹'
+                                )
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(image_carousel_template_message)
+                line_bot_api.reply_message(event.reply_token, list_talk)
             #小光視角
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：小曉"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))   
