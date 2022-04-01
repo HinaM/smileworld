@@ -1759,7 +1759,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
     
 #40答案
-    elif event.message.text=="中美堂":
+    elif event.message.text=="password":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
             for i in range(len(userid_list)):
