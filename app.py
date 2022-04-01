@@ -1951,6 +1951,109 @@ def handle_message(event):
                 )
                 list_talk.append(image_carousel_template_message)
                 line_bot_api.reply_message(event.reply_token, list_talk)
+            #日向視角&物件5
+            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="5":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【5/10】"))
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='已解鎖物件',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/2r7tDCN.png',
+                                action=MessageTemplateAction(
+                                    label='童話書介紹',
+                                    text='童話書介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/SAwcrWC.png',
+                                action=MessageTemplateAction(
+                                    label='遊Ｏ王卡介紹',
+                                    text='遊Ｏ王卡介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/hXpbU2C.png',
+                                action=MessageTemplateAction(
+                                    label='圖畫介紹',
+                                    text='圖畫介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/nKLmcQG.png',
+                                action=MessageTemplateAction(
+                                    label='冰淇淋券介紹',
+                                    text='冰淇淋券介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/Ep84aDF.png',
+                                action=MessageTemplateAction(
+                                    label='信封介紹',
+                                    text='信封介紹'
+                                )
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(image_carousel_template_message)
+                line_bot_api.reply_message(event.reply_token, list_talk)
+            #日向視角&物件6
+            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="5":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【6/10】"))
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='已解鎖物件',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/2r7tDCN.png',
+                                action=MessageTemplateAction(
+                                    label='童話書介紹',
+                                    text='童話書介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/SAwcrWC.png',
+                                action=MessageTemplateAction(
+                                    label='遊Ｏ王卡介紹',
+                                    text='遊Ｏ王卡介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/hXpbU2C.png',
+                                action=MessageTemplateAction(
+                                    label='圖畫介紹',
+                                    text='圖畫介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/nKLmcQG.png',
+                                action=MessageTemplateAction(
+                                    label='冰淇淋券介紹',
+                                    text='冰淇淋券介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/Ep84aDF.png',
+                                action=MessageTemplateAction(
+                                    label='信封介紹',
+                                    text='信封介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/4MW6lNS.png',
+                                action=MessageTemplateAction(
+                                    label='卡通主題鉛筆介紹',
+                                    text='卡通主題鉛筆介紹'
+                                )
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(image_carousel_template_message)
+                line_bot_api.reply_message(event.reply_token, list_talk)
             #小光視角
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：小曉"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))   
@@ -1965,6 +2068,10 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="在？？的房間牆上經過裱框的一張圖畫，以畫風看來明顯出自於孩童之手。稚氣的圖上畫著兩個孩子手牽著手的樣子。"))
     elif event.message.text=="冰淇淋券介紹":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="不知道是誰用鉛筆親手畫下的冰淇淋券，沒有實際效用。"+"\n"+"稚氣的中文和注音符號寫著「兔ㄈㄟˋ冰氵其氵木木ㄑㄩㄢˋ」（免費冰淇淋券），在旁邊還用心地畫了兩個小孩跟兩支冰淇淋。從鉛筆痕跡的潮濕狀況來看，應該是有些年歲了。"))
+    elif event.message.text=="信封介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="稚嫩的字在信封上寫著「日翔ㄐ攵」。看起來跟那張「冰淇淋券」出自同一人之手。信封裡面沒有任何東西。"))
+    elif event.message.text=="卡通主題鉛筆介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經使用過的鉛筆，上面的圖案是一位童年卡通人物，看得出來鉛筆的主人很愛護它。"))
 
     elif event.message.text=="重置遊戲":
         userid_list=worksheet.col_values(1)
