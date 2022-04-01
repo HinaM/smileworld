@@ -1546,8 +1546,57 @@ def handle_message(event):
                 worksheet.update(list[1],int(2))
                 worksheet.update(list[2],int(1))
                 list_talk=[]
-                list_talk.append(TextSendMessage(text="#35 又該如何輸出全班總分及平均並重新命名表格欄位？"+"\n"+"SELECT ◼(score) ◼ 總分, ◼(score) ◼ 平均 FROM database_score（請以英文大寫「ＯＯＯ/ＯＯ/ＯＯＯ/ＯＯ」回答。）"))
+                list_talk.append(TextSendMessage(text="#35 又該如何輸出全班總分及平均並重新命名表格欄位？（請以半形英文大寫「ＯＯＯ/ＯＯ/ＯＯＯ/ＯＯ」回答。）"+"\n"+"SELECT ◼(score) ◼ 總分, ◼(score) ◼ 平均 FROM database_score"))
                 list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fxIoAx@.png', preview_image_url='https://ppt.cc/fxIoAx@.png'))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+    
+    #35答案
+    elif event.message.text=="SUM/AS/AVG/AS":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('AM'+str(j))
+            list.append('AN'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#36 關聯式資料庫中的key分為很多種，其中主鍵（primary key）和外來鍵（foreign key）兩者的特性為？"+"\n"+"（Ａ）兩者皆可為空"+"\n"+"（Ｂ）兩者皆不可為空"+"\n"+"（Ｃ）主鍵可為空，外來鍵不可"+"\n"+"（Ｄ）外來鍵可為空，主鍵不可"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#36',
+                    template=ButtonsTemplate(
+                        title='#36',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='兩者皆可為空'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='兩者皆不可為空'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='主鍵可為空，外來鍵不可'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='外來鍵可為空，主鍵不可'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
