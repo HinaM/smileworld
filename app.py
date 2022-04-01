@@ -1653,7 +1653,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
     
     #37答案
-    elif event.message.text=="外來鍵可為空，主鍵不可":
+    elif event.message.text=="主鍵在每個儲存格唯一不可重複":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
             for i in range(len(userid_list)):
