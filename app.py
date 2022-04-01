@@ -1880,25 +1880,25 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="解鎖大三劇情"))
                 list_talk.append(TextSendMessage(text="人類的記憶總是在不斷累積，也會在不知不覺間遺忘對大腦而言不重要的事物。"+"\n"+"開學的前一天夜裡，日翔躺在床上努力回憶著過去的種種。他發現：幼時的記憶他似乎也記不得多少了。至於為何要開始回憶過去，是因為他愈發感覺自己似乎遺忘了某個重要的事情。每次和曉光相處的時候，他總能在腦海之中勾勒出幼時見到過的物件，而日翔幼時的玩伴和曉光的身影好像可以重疊在一起——無論是喜歡看書、點了葡萄汁、還是著迷於霜淇淋等等。"+"\n"+"日翔能夠記得的幼時記憶不多，但他還是能隱隱約約感受到，她倆似乎相似過了頭。可是最關鍵的那位小女孩的名字，他卻忘得一乾二淨。"))
                 carousel_template_message = TemplateSendMessage(
-                    alt_text='？？',
+                    alt_text='選項',
                     template=CarouselTemplate(
                         columns=[
                             CarouselColumn(
-                                title='？？',
+                                title='選項',
                                 text='偏偏忘了這麼重要的事……',
                                 actions=[
                                     MessageAction(
-                                        label='？？',
+                                        label='選項',
                                         text='偏偏忘了這麼重要的事……'
                                     )
                                 ]
                             ),
                             CarouselColumn(
-                                title='？？',
+                                title='選項',
                                 text='頭好痛……',
                                 actions=[
                                     MessageAction(
-                                        label='？？',
+                                        label='選項',
                                         text='頭好痛……'
                                     )
                                 ]
