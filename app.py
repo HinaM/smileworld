@@ -491,7 +491,7 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="書局的冷氣吹散了外頭九月悶熱的暑氣。日翔隨意地在書架間瀏覽，他記得以前只在原子筆沒水才進來過少少幾次，他一直都沒注意到書局旁邊還有「每一杯咖啡」這間咖啡廳？比起外面的書局，校內的書局還是顯得要小很多，日翔很快就挑好了幾本。準備去結帳時，日翔看見了走進來的曉光，而曉光也正好發現了自己。"+"\n"+"小、曉光怎麼在這裡！？雖然喜歡看書的曉光出現在書局也不是很意外。"+"\n"+"「你在選書嗎？」"+"\n"+"「咦？啊啊、對......」曉光主動向自己說話讓日翔又驚又喜。"+"\n"+"不過曉光似乎沒有發現日翔的異樣，她的目光落在日翔捧著的書上，「那個......這些書怎麼了嗎？」查覺到曉光的視線，日翔小心翼翼地出聲詢問。"+"\n"+"曉光搖搖頭，「這兩本是一樣的書，只是封面不一樣。」"+"\n"+"「！？真的耶！」日翔翻起內容才發現裡面的內容寫的一樣，只是順序不一樣罷了。可惡！怎麼有這種無良作者，害日翔差一點花了冤枉錢。「差點花錢買下去了......謝謝妳啊，又被妳幫助了。」日翔努力的擺出笑容掩飾面對曉光的緊張。"+"\n"+"「話說，」日翔一面將書放回書架一面向曉光搭話，「妳剛剛明明連內容都沒看卻知道這兩本是一樣的，難不成妳看過了嗎？」"+"\n"+"「嗯，稍微看過。」稍微看過卻連內容都清楚嗎？日翔笑了笑，不過他不打算將這句話說出口。"+"\n"+"「那妳應該很喜歡看書了？之前看妳都在讀書。」"+"\n"+"「……。」"+"\n"+"「我沒有別的意思！就只是剛好看到！真的不是偷窺！」日翔慌張地解釋，不料聽起來卻像此地無銀三百兩的狡辯。"+"\n"+"「很喜歡。」曉光的嘴角揚起了一個淺淺的弧度，要不是日翔和曉光距離得近，日翔可能會漏看難得出現在曉光臉上的笑容。"+"\n"+"「這、這樣啊。」奇怪？剛才有這麼熱嗎？或許是看見喜歡的人意外的笑容，或許是不曾和曉光講過這麼多話，或許是兩者皆有，日翔感覺自己的臉就像熟透的番茄，而方才還很涼爽的地下室現在就像個大蒸籠，悶得日翔喘不過氣。"+"\n\n"+"解鎖童話書！趕快去「個人檔案」看看！"))
                 list_talk.append(TextSendMessage(text="「好——難——」司晨趴在桌上大聲嚷嚷，顯然已經放棄理解螢幕上一行行的程式碼。「怎麼不用中文寫程式一定要用英文啊！」"+"\n"+"「哈哈......系上挑的Python已經算簡單了......」日翔想起過去司晨也這麼跟他抱怨過，以前日翔還跟著附和過呢，不過對於回到過去的日翔來說，現在教的東西對他來說只是一小塊蛋糕。"+"\n"+"「欸欸？所以說還有更難的？騙人的吧......」想到還要面對更加困難的程式語言直接讓司晨失去了夢想。"+"\n"+"「不、不過！其實寫程式運用的邏輯幾乎都是相同的！只要理解這些，其他程式語言阿司也能很快學會的！」見司晨因為自己的話顯得更萎靡了，日翔趕緊出聲安慰。「這樣吧，阿司你哪裡不懂，我都教你！」"+"\n"+"「！阿日！你真是我的救星！」司晨感激地握住了日翔的手。「其實是這些......」"))
                 list_talk.append(TextSendMessage(text="#11 python程式碼如下，請問輸出結果為？"+"\n"+"（Ａ）1234"+"\n"+"（Ｂ）0123"+"\n"+"（Ｃ）123"))
-                list.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/25/5YXBG8.png', preview_image_url='https://upload.cc/i1/2022/03/25/5YXBG8.png'))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/25/5YXBG8.png', preview_image_url='https://upload.cc/i1/2022/03/25/5YXBG8.png'))
                 buttons_template_message = TemplateSendMessage(
                     alt_text='#11',
                     template=ButtonsTemplate(
@@ -1275,7 +1275,7 @@ def handle_message(event):
                 worksheet.update(list[1],int(2))
                 worksheet.update(list[2],int(1))
                 list_talk=[]
-                list_talk.append(TextSendMessage(text="是啊，都已經回到大學生活了，一定要想辦法更加了解曉光才行！她會不會其實很喜歡食科冰淇淋？「好好把握」一詞仍然在他腦中迴盪，他想，他得抓住這次機會才行。"+"\n"+"「曉光！你抽到冰淇淋券了？真幸運！」日翔主動上前搭話。"+"\n"+"「謝謝你……我只是順手填了教學評量。」曉光並沒有外表看起來的難接近，倒是很順口地接續了話題。教學評量是學期末會給同學填寫的各課程教學問卷，為了鼓勵同學作答，通常校方會伴隨舉辦抽獎活動。"+"\n"+"日翔和曉光往教室門口走去，正巧遇到大搖大擺晃進教室的司晨，他很自然地插話道：「剛剛是不是有人提到食科冰？我也要去吃！」"+"\n"+"聞言，曉光便以聽不出來她是在誇還是在罵的語氣平靜地回應：「遲到了卻還那麼厚臉皮，真是不可思議。」"+"\n"+"「這是在誇我嗎？謝謝你呀曉光、嘿嘿。」"+"\n"+"「阿司啊，正常人會覺得這是在誇獎嗎？」"+"\n"+"「哎，又沒關係第一周是加退選吧，也不點名啊！大好時光當然要去吃早餐嘛。」"+"\n"+"於是，一行人以兩人聊天一人吐槽的模式邊走邊聊，一邊走下博達樓的樓梯，這時，司晨看看班群的機測通過名單，苦惱道：「哎、我上兩次機測都只有對一題，這樣真的可以畢業嗎？」"+"\n"+"日翔用詫異的眼神看看司晨：「你不知道嗎？機測其實不一定要一次通過，只要……」"))
+                list_talk.append(TextSendMessage(text="是啊，都已經回到大學生活了，一定要想辦法更加了解曉光才行！她會不會其實很喜歡食科冰淇淋？「好好把握」一詞仍然在他腦中迴盪，他想，他得抓住這次機會才行。"+"\n"+"「曉光！你抽到冰淇淋券了？真幸運！」日翔主動上前搭話。"+"\n"+"「謝謝你……我只是順手填了教學評量。」曉光並沒有外表看起來的難接近，倒是很順口地接續了話題。教學評量是學期末會給同學填寫的各課程教學問卷，為了鼓勵同學作答，通常校方會伴隨舉辦抽獎活動。"+"\n"+"日翔和曉光往教室門口走去，正巧遇到大搖大擺晃進教室的司晨，他很自然地插話道：「剛剛是不是有人提到食科冰？我也要去吃！」"+"\n"+"聞言，曉光便以聽不出來她是在誇還是在罵的語氣平靜地回應：「遲到了卻還那麼厚臉皮，真是不可思議。」"+"\n"+"「這是在誇我嗎？謝謝你呀曉光、嘿嘿。」"+"\n"+"「阿司啊，正常人會覺得這是在誇獎嗎？」"+"\n"+"「哎，又沒關係第一周是加退選吧，也不點名啊！大好時光當然要去吃早餐嘛。」"+"\n"+"於是，一行人以兩人聊天一人吐槽的模式邊走邊聊，一邊走下伯達樓的樓梯，這時，司晨看看班群的機測通過名單，苦惱道：「哎、我上兩次機測都只有對一題，這樣真的可以畢業嗎？」"+"\n"+"日翔用詫異的眼神看看司晨：「你不知道嗎？機測其實不一定要一次通過，只要……」"))
                 list_talk.append(TextSendMessage(text="#28 以下哪一位同學通過了輔大資管系的畢業規則「通過程式語言機測」？"+"\n"+"（Ａ）未通過任何一次程式語言機測，在學期間總共累計通過3題機測題目，且修畢一門資管系的程式設計選修課程"+"\n"+"（Ｂ）未通過任何一次程式語言機測，累計通過2題機測題目並修畢完一門資管系的程式設計選修課程之後，再參加一次機測並通過1題"+"\n"+"（Ｃ）未通過任何一次程式語言機測，在學期間總共累計通過5題機測題目"))
                 buttons_template_message = TemplateSendMessage(
                     alt_text='#28',
@@ -1380,6 +1380,30 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
     
+    #30答案
+    elif event.message.text=="伯達樓":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('AH'+str(j))
+            list.append('AI'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="又過了幾個禮拜，終於，考試又要鄰近了——打算抱佛腳的日翔心想，根據他的經驗，在家看書他一點也不會認真，總是讀了一兩行又跑去滑滑手機敲敲鍵盤、整理書櫃打掃房間、甚至出奇地自告奮勇跑去幫媽媽跑腿。畢竟再怎麼擁有上一次大學生活的經歷，有些東西就是考完就會順便忘記的。於是他決定在學校圖書館讀書。而他心想，現在跟曉光也逐漸熟識了起來，如果有機會也可以向他問問題。"))
+                list_talk.append(TextSendMessage(text="#31 請問本校擁有最多層樓的圖書館是哪一個？"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
@@ -1591,7 +1615,7 @@ def handle_message(event):
             #日向視角&物件4
             elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="4":
                 list_talk=[]
-                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【3/10】"))
+                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【4/10】"))
                 image_carousel_template_message = TemplateSendMessage(
                     alt_text='已解鎖物件',
                     template=ImageCarouselTemplate(
