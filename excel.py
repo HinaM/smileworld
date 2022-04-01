@@ -64,7 +64,3 @@ x=int(worksheet.acell('C2').value)
 x+=3
 worksheet.update('C2',x)
 '''
-list=[]
-for i in range(65,70):
-    list.append(chr(i)+str(1))
-print(list)

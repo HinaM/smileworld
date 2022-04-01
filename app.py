@@ -1444,6 +1444,13 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：小曉"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))   
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲喔，請輸入「開始遊戲」建立個人檔案。"))
+    
+    elif event.message.text=="童話書介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="適合學齡前小朋友的讀物，封底被人用油性筆寫上名字，但部分筆墨已脫落而看不出原本的字。被人反反覆覆翻閱過很多遍，看得出其主人對這本童書內容的喜愛。"))
+    elif event.message.text=="遊Ｏ王卡介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="一張看起來很有年代感的卡牌，上頭印著魄力十足的怪獸，被好好地保存了起來。"))
+    elif event.message.text=="圖畫介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="在？？的房間牆上經過裱框的一張圖畫，以畫風看來明顯出自於孩童之手。稚氣的圖上畫著兩個孩子手牽著手的樣子。"))
 
     elif event.message.text=="重置遊戲":
         userid_list=worksheet.col_values(1)
