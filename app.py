@@ -1758,7 +1758,7 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
     
-#40答案
+    #40答案
     elif event.message.text=="password":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
@@ -1796,6 +1796,52 @@ def handle_message(event):
                             MessageAction(
                                 label='D',
                                 text="<d href='網址'>超連結</d>"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #41答案
+    elif event.message.text=="<a href='網址'>超連結</a>":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('AS'+str(j))
+            list.append('AT'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#42 在html語法中，需要哪些語法以完成下圖效果？"+"\n"+"（Ａ）ol/il"+"\n"+"（Ｂ）ui/il"+"\n"+"（Ｃ）li/ui"))
+                list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fRPf1x@.png', preview_image_url='https://ppt.cc/fRPf1x@.png'))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#42',
+                    template=ButtonsTemplate(
+                        title='#42',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="ol/il"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="ui/il"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="li/ui"
                             )
                         ]
                     )
