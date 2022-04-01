@@ -927,12 +927,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('Z'+str(j))
-            list.append('AA'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="21":
+                worksheet.update(list[1],int(22))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="學校規定通識課程必須修滿三領域共12學分，有些人會選擇在大一二修完通識，好讓大三以後有更多時間對未來做規劃。日翔並不想拖延到大三大四跟學弟妹搶通識名額，也不想白白錯過難得選上的通識課，只好硬著頭皮留了下來並祈禱宇桓不會發現自己。然而這就是「墨菲定律」嗎？越是不想遇到的狀況都讓日翔遇上了。"+"\n"+"在過去日翔沒有跟宇桓同組過，宇桓總是跟班上那些優秀的同學在一塊。然而在這次分組機會下日翔發現，宇桓雖然很喜歡碎碎念並對他人指手畫腳，不過宇桓其實是神一般的隊友。宇桓總能迅速劃分好工作並完成，對分組報告來說宇桓可說是一大助力，也是因為如此日翔才能在通識課程中輕鬆地完成分組報告。"+"\n"+"「報告呢？該不會沒做吧？」宇桓坐在旁邊環抱雙臂斜眼看著日翔，宇桓這種高高在上的態度讓日翔一度想起前公司晨的慣老闆。自開學以來、應該是說從第一次大學生活到現在，宇桓沒少對日翔尖酸的話語，日翔也已經習慣了。"+"\n"+"「早就做好了。」日翔從書包裡抽出報告交給宇桓過目。"+"\n"+"「普普通通。」宇桓隨意翻過日翔的報告後給了一個評語。"+"\n"+"……普普通通是什麼啊！你是這堂課的教授嗎！？日翔怒不敢言，雖然說因為宇桓的能力讓日翔在通識報告中不需要花費太多心力，但還是希望宇桓能少刁難自己啊！"))
                 list_talk.append(TextSendMessage(text="一連下好幾周的雨終於放晴了，日翔覺得雨再下下去自己都要發霉了。好消息是班代在班群宣布今天體育課終於可以到籃球場打球了！日翔都能看到司晨在宿舍聽到消息後歡呼擾人清夢的樣子了。"))
@@ -978,12 +976,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AA'+str(j))
-            list.append('AB'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="22":
+                worksheet.update(list[1],int(23))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="在輔大體育課都是0學分，且大一二都為必修課程。對某些主張「大學生就是要軟爛！」的人來說體育課非常麻煩，恨不得能翹就盡量翹，但對日翔跟司晨來說，體育課就是能讓他們發洩過剩體力最好的時間，兩人總是很期待一周一次的體育課。"+"\n"+"不像日翔在高中體育課那樣，老師會強迫大家動起來，在大學，體育課教授比較睜一隻眼閉一隻眼，只要完成指定活動就可以在旁邊休息或自由活動。"+"\n"+"大概是悶太久了，司晨一聽見可以自由活動就像脫韁野馬般，立刻衝向籃框挑了顆球並揪上日翔和幾個朋友。剛下完雨的球場地板還殘留著一個個大小水坑，要是有一個不注意可能會重心不穩跌倒——就像司晨現在這樣。"+"\n"+"司晨不顧球場的濕滑及教授的提醒，硬是在三分球線上用力蹬起，想帥氣地投籃大顯身手。不過卻因為抓地力不足的關係，司晨在起跳時腳下一滑，雖然勉強保持住身體平衡，投出的球卻不受控制地往其他方向飛去——幸虧站在較遠處盯防的日翔眼急手快，一個箭步上前攔下了亂飛的球，才沒有打到場外的人。"+"\n"+"「沒事吧！？」日翔轉頭詢問。原來在場外休息的是體力欠佳的曉光和她的朋友，隔壁班的林真澄。兩人看起來還是有點驚魂未定的樣子，曉光很快調整好狀態並對日翔擺擺手表示沒事，真澄卻不然，把跑過來道歉的司晨狠狠地數落了一頓。"+"\n"+"不但耍帥失敗，還被訓了一頓的司晨垂頭喪氣地回到球場。眾人見狀，圍上前拍了拍司晨的肩膀，「活該吧你。」「被罵了齁！」「丟臉啊丟臉！」大家異口同聲地接連虧損。"+"\n"+"「喂喂！我還以為你們要安慰我！」司晨不滿地對眾人抱怨道。接連便是難懂的話，什麼「三分球多難投」，什麼「啊我就怕被罵啊」之類，引得眾人都鬨笑起來：球場充滿了快活的空氣。"))
                 list_talk.append(TextSendMessage(text="時間過得飛快，期末考很快就到來了。請完成期末考："))
@@ -1029,12 +1025,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AB'+str(j))
-            list.append('AC'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="23":
+                worksheet.update(list[1],int(24))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#25 公司帳上各科目之正常餘額為：現金$20,000、應收帳款$50,000、備抵壞帳$5,000、設備$600,000、應付帳款$45,000、短期借款$100,000、股本$500,000、保留盈餘$20,000。若發生以現金支付水電費後，則資產總額何者正確："+"\n"+"（Ａ）資產總額$669,000"+"\n"+"（Ｂ）資產總額$146,000"+"\n"+"（Ｃ）資產總額$664,000"+"\n"+"（Ｄ）資產總額$521,000"))
                 buttons_template_message = TemplateSendMessage(
@@ -1078,12 +1072,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AC'+str(j))
-            list.append('AD'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="24":
+                worksheet.update(list[1],int(25))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#26 在html語法中，以何種語法設定分頁標題？"+"\n"+"（Ａ）<strong>輔大資管系</strong>"+"\n"+"（Ｂ）<p>輔大資管系</p>"+"\n"+"（Ｃ）<title>輔大資管系</title>"+"\n"+"（Ｄ）<h1>輔大資管系</h1>"))
                 list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fsCzxx@.png', preview_image_url='https://ppt.cc/fsCzxx@.png'))
@@ -1128,12 +1120,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AD'+str(j))
-            list.append('AE'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="25":
+                worksheet.update(list[1],int(26))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="早早完成考試的日翔交了卷走出考場，最後一科剛好是許多學生眼中最「硬核」的考科，因此像日翔一樣提早交卷的學生只有少少幾人，大多不是對自己很有信心，就是早已放棄打算明年再重修。"+"\n"+"時間已經來到六月底，距離日翔回到過去也快要過了一年。在這一年間，日翔找不到任何關於那個神祕聲音的線索，但他並沒有忘記自己在出社會後滿滿的後悔感，也沒有忘記執行「Code/140.136」時想重回大學把握時光的決心。日翔認真地度過每一天，雖然不知道有沒有符合神秘聲音對他的期待，但日翔認為這是報答他最好的方式了。"+"\n"+"天空的湛藍讓日翔想起了曉光那寶石般閃耀的雙眸，「如果我能變成更好的人，曉光會不會注意到我呢......」日翔用只有自己能聽到的聲音低喃道。"))
                 list_talk.append(TextSendMessage(text="解鎖大二劇情"))
@@ -1167,9 +1157,9 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AE'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、AE=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="26":
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="滿腔的疑問終究淹沒了日翔，他忍不住向這個空間的支配者詢問。"+"\n"+"「你的表現比我想像中的好嘛。」迷霧居然沒有搭理他的疑問，有一瞬間，日翔居然覺得這位陌生的個體似乎太有個性了……"+"\n"+"「你猜猜，我是來找你做什麼的？」"+"\n"+"「我怎麼會知……」正打算回應，可迷霧卻不等待日翔說完，便擅自搶答：「沒有啦，我只是來跟你打招呼，有沒有嚇到？」"+"\n"+"喂、這人……是人嗎？會不會太我行我素了？日翔終於忍不住在內心吐槽。"+"\n"+"不過，感覺上應該不是個壞人。"+"\n"+"謎的聲音似乎真的是來打招呼的，他沒有打算和日翔多說，整個世界便已經隨著逐漸模糊的聲音消逝：「總而言之，能像你一樣得到重返大學生活的機會的人『幾乎』是沒有的……這次啊，你得好好把握……」"))
                 buttons_template_message = TemplateSendMessage(
@@ -1201,10 +1191,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AE'+str(j))
+            list.append('E'+str(j))
             list.append('B'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="26":
                 worksheet.update(list[2],int(5))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="待到日翔重新拾起話語權時，他卻已經回到了柔軟的床上——伴隨手機鬧鐘叮鈴鈴地鬧騰，他意識到剛才與迷霧的對話僅不過是一場夢。"+"\n"+"日翔關閉擾人的鬧鐘，思考道：那場「夢境」清晰得不得了，和真實在眼前發生過的事情沒兩樣。剛剛所經歷的夢真的是一場夢嗎？……不過，能重返大學生活本身，就已經是件不科學的事情了，日翔更傾向於將這場「夢境」視作真正發生過的事情。"+"\n"+"他拍拍臉頰振作自己，今天是開始上課的日子——重新升上大二的上課日。秉持著「好好把握」的理念，他並不想在第一天就遲到。"))
@@ -1225,12 +1215,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AE'+str(j))
-            list.append('AF'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="26":
+                worksheet.update(list[1],int(27))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="是啊，都已經回到大學生活了，一定要想辦法更加了解曉光才行！她會不會其實很喜歡食科冰淇淋？「好好把握」一詞仍然在他腦中迴盪，他想，他得抓住這次機會才行。"+"\n"+"「曉光！你抽到冰淇淋券了？真幸運！」日翔主動上前搭話。"+"\n"+"「謝謝你……我只是順手填了教學評量。」曉光並沒有外表看起來的難接近，倒是很順口地接續了話題。教學評量是學期末會給同學填寫的各課程教學問卷，為了鼓勵同學作答，通常校方會伴隨舉辦抽獎活動。"+"\n"+"日翔和曉光往教室門口走去，正巧遇到大搖大擺晃進教室的司晨，他很自然地插話道：「剛剛是不是有人提到食科冰？我也要去吃！」"+"\n"+"聞言，曉光便以聽不出來她是在誇還是在罵的語氣平靜地回應：「遲到了卻還那麼厚臉皮，真是不可思議。」"+"\n"+"「這是在誇我嗎？謝謝你呀曉光、嘿嘿。」"+"\n"+"「阿司啊，正常人會覺得這是在誇獎嗎？」"+"\n"+"「哎，又沒關係第一周是加退選吧，也不點名啊！大好時光當然要去吃早餐嘛。」"+"\n"+"於是，一行人以兩人聊天一人吐槽的模式邊走邊聊，一邊走下伯達樓的樓梯，這時，司晨看看班群的機測通過名單，苦惱道：「哎、我上兩次機測都只有對一題，這樣真的可以畢業嗎？」"+"\n"+"日翔用詫異的眼神看看司晨：「你不知道嗎？機測其實不一定要一次通過，只要……」"))
                 list_talk.append(TextSendMessage(text="#28 以下哪一位同學通過了輔大資管系的畢業規則「通過程式語言機測」？"+"\n"+"（Ａ）未通過任何一次程式語言機測，在學期間總共累計通過3題機測題目，且修畢一門資管系的程式設計選修課程"+"\n"+"（Ｂ）未通過任何一次程式語言機測，累計通過2題機測題目並修畢完一門資管系的程式設計選修課程之後，再參加一次機測並通過1題"+"\n"+"（Ｃ）未通過任何一次程式語言機測，在學期間總共累計通過5題機測題目"))
@@ -1271,12 +1259,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AF'+str(j))
-            list.append('AG'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="27":
+                worksheet.update(list[1],int(28))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="「原來只要累計三題、再去選修我們系上的程式語言課程就可以算是通過機測了嘛！那就好，我這次再答對一題就可以不用再考了！」司晨露出了像是「賺爛了」的眼神，就好似撥雲見日一般，剛剛懊惱的樣子早已煙消雲散。"+"\n"+"日翔和曉光還來不及吐槽司晨，他又馬上表現出驚喜的樣子，心情轉換堪比川劇變臉：「嗯？風華廣場今天這麼熱鬧，是不是有什麼好玩的！」"+"\n"+"曉光看他像大一新生一樣興奮，依然維持著淡然的樣子默默開口：「那個，是課指組舉辦的……」"))
                 list_talk.append(TextSendMessage(text="#29 位於法籃旁邊的輔仁大學課外活動指導組，簡稱課指組，主要目的是期望透過課外活動之輔導功能，促進學生課業以外之活動延伸與學習。請問以下何者是課指組的承辦業務？"+"\n"+"（Ａ）校慶系列活動、社團博覽會、領才營"+"\n"+"（Ｂ）輔仁大學服務學習種籽志工隊"+"\n"+"（Ｃ）租借中美堂場地"))
@@ -1317,14 +1303,12 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AG'+str(j))
-            list.append('AH'+str(j))
+            list.append('E'+str(j))
             list.append('C'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
-                worksheet.update(list[3],int(4))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="28":
+                worksheet.update(list[1],int(29))
+                worksheet.update(list[2],int(4))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="「啊——我想起來了，原來又到了社團博覽會的季節，時間過得真快。」司晨撓撓頭，似乎終於回想起來去年剛開學的時候也有社博這回事。"+"\n"+"「你居然忘記了，前一年的社博我們是一起參加的吧？去年明明我們都有意願加入系籃，你現在就給我忘了？」日翔失笑，這些年跟司晨相處他很明白他直率過了頭的腦袋，總是讓人有種他能考上資管系真是奇蹟的感覺。"+"\n"+"對日翔而言，他已經和司晨一起逛熱鬧的風華廣場好多次了。不過他可以確定，這一年的社博一定比過往更加獨特，因為無論參加與否，他所喜歡的曉光這次就在旁邊。日翔不經意地將視線撇向曉光——就這麼巧，她也正好往這邊看了過來。"+"\n"+"「……嗯、怎麼了？」曉光注意到了剛剛的注視。冰藍的眸子裡仍然讀不出表情，這也是身為高嶺之花她最獨特的地方，日翔盯著她的眼睛，思緒竟然發散了起來。"+"\n"+"下一刻，日翔才回過神來急急忙忙回應曉光的疑問：「啊沒、沒什麼！只是有點好奇曉光會不會參加社團而已。」"+"\n"+"跟著下課的人流走著走著，食科冰淇淋的招牌映入三人的眼簾。"))
                 list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/07/a6V5BY.png', preview_image_url='https://upload.cc/i1/2022/03/07/a6V5BY.png'))
@@ -1346,12 +1330,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AH'+str(j))
-            list.append('AI'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="29":
+                worksheet.update(list[1],int(30))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="又過了幾個禮拜，終於，考試又要鄰近了——打算抱佛腳的日翔心想，根據他的經驗，在家看書他一點也不會認真，總是讀了一兩行又跑去滑滑手機敲敲鍵盤、整理書櫃打掃房間、甚至出奇地自告奮勇跑去幫媽媽跑腿。畢竟再怎麼擁有上一次大學生活的經歷，有些東西就是考完就會順便忘記的。於是他決定在學校圖書館讀書。而他心想，現在跟曉光也逐漸熟識了起來，如果有機會也可以向他問問題。"))
                 list_talk.append(TextSendMessage(text="#31 請問本校擁有最多層樓的圖書館是哪一個？（請以「ＯＯ樓」回答。）"))
@@ -1370,12 +1352,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AI'+str(j))
-            list.append('AJ'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="30":
+                worksheet.update(list[1],int(31))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#32 請問學校圖書館濟時樓平日幾點開？"+"\n"+"（Ａ）08:00 ~ 23:00"+"\n"+"（Ｂ）08:00 ~ 22:00"+"\n"+"（Ｃ）09:00 ~ 23:00"+"\n"+"（Ｄ）08:30 ~ 22:00"))
                 buttons_template_message = TemplateSendMessage(
@@ -1419,14 +1399,12 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AJ'+str(j))
-            list.append('AK'+str(j))
+            list.append('E'+str(j))
             list.append('B'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
-                worksheet.update(list[3],int(6))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="31":
+                worksheet.update(list[1],int(32))
+                worksheet.update(list[2],int(6))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="解鎖濟時樓！趕快去「遊戲地圖」看看！"))
                 list_talk.append(TextSendMessage(text="日翔這幾天讀得急急忙忙，但靠著過去大學生活的記憶，總算把所有的課程內容讀完了，甚至還比以前要讀得更好——甚至還可以跟曉光討論一些比較艱難的題目，或者是拯救必修快要掛掉的司晨。他們三人後來還借濟時樓的討論室，在課後一起惡補。而且，其中的幾天還遇上同樣跑來濟時樓讀書的宇桓！沒想到，那個學霸也在這裡讀書啊，這是以前日翔都不知道的。"+"\n"+"現在，是該要驗收讀書的成果了。"))
@@ -1446,12 +1424,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AK'+str(j))
-            list.append('AL'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="32":
+                worksheet.update(list[1],int(33))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#34 有一資料庫用來記錄學生分數如下圖，下列有一塗黑語法，該填上什麼可以由小到大輸出A班學生姓名與成績？"+"\n"+"◼ name,score ◼ database_score ◼ class_id=1 ◼ score ASC"+"\n"+"（Ａ）SELECT/FROM/WHERE/ORDER BY/ASC"+"\n"+"（Ｂ）SELECT/FROM/WHERE/GROUP BY/DESC"+"\n"+"（Ｃ）SELECT/FROM/WHEN/ORDER BY/DESC"+"\n"+"（Ｄ）SELECT/FROM/WHEN/GROUP BY/ASC"))
                 list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fxIoAx@.png', preview_image_url='https://ppt.cc/fxIoAx@.png'))
@@ -1496,12 +1472,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AL'+str(j))
-            list.append('AM'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="33":
+                worksheet.update(list[1],int(34))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#35 又該如何輸出全班總分及平均並重新命名表格欄位？（請以半形英文大寫「ＯＯＯ/ＯＯ/ＯＯＯ/ＯＯ」回答。）"+"\n"+"SELECT ◼(score) ◼ 總分, ◼(score) ◼ 平均 FROM database_score"))
                 list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fxIoAx@.png', preview_image_url='https://ppt.cc/fxIoAx@.png'))
@@ -1520,12 +1494,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AM'+str(j))
-            list.append('AN'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="34":
+                worksheet.update(list[1],int(35))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#36 關聯式資料庫中的key分為很多種，其中主鍵（primary key）和外來鍵（foreign key）兩者的特性為？"+"\n"+"（Ａ）兩者皆可為空"+"\n"+"（Ｂ）兩者皆不可為空"+"\n"+"（Ｃ）主鍵可為空，外來鍵不可"+"\n"+"（Ｄ）外來鍵可為空，主鍵不可"))
                 buttons_template_message = TemplateSendMessage(
@@ -1569,12 +1541,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AN'+str(j))
-            list.append('AO'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="35":
+                worksheet.update(list[1],int(36))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#37 下列關於資料庫的選項何者正確？"+"\n"+"（Ａ）主鍵在每個儲存格唯一不可重複"+"\n"+"（Ｂ）外來鍵在每個儲存格唯一不可重複"+"\n"+"（Ｃ）所有儲存格皆不可為Null"+"\n"+"（Ｄ）資料表名稱不可與資料庫名稱重複"))
                 buttons_template_message = TemplateSendMessage(
@@ -1618,14 +1588,12 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AO'+str(j))
-            list.append('AP'+str(j))
+            list.append('E'+str(j))
             list.append('C'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
-                worksheet.update(list[3],int(6))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="36":
+                worksheet.update(list[1],int(37))
+                worksheet.update(list[2],int(6))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="解鎖信封、卡通主題鉛筆！趕快去「個人檔案」看看！"+"\n\n"+"總算是到了大二的學期中末，班代已經在班群開始提醒各組要尋找好專題組員了。"+"\n"+"於是，在一堂課程的下課休息時間，日翔和司晨兩人站在教室門口一邊喝早餐店奶茶，一邊思考要找哪些組員才好。"+"\n"+"「噯，你不是對曉光有意思嗎，快點去邀請她呀阿日！」司晨一如既往地慫恿日翔豁出去了。"+"\n"+"「等一下你怎麼知道的？算了，因為……我怕會拖曉光的後腿。」在日翔的記憶裡，先前一次大學生活的曉光是和宇桓那種等級的學霸們在一起的，就算日翔這幾次考試都靠著神秘的回歸之力得到不錯的分數，他仍然對自己的程式能力有些缺乏自信。"+"\n"+"「當然是身為你好兄弟的直覺啊！這麼明顯！」"+"\n"+"「……日翔？你們在討論什——」曉光聽到好像有人在叫自己的名字後就從教室裡走出來。看見是熟人之後，便上前問話。"+"\n"+"日翔看見自己的真命天女突然在跟兄弟討論「關鍵問題」的時候出現是差點沒嚇破膽，他甚至都還沒有下定決心啊！不，或許就跟司晨、以及那個神祕的聲音說的一樣。這時候已經不能再猶疑不前。明明已經決定好要在「這一次」的大學時光要全力以赴，不留下遺憾了。"+"\n"+"「曉光！你現在專題已經有組了嗎？」"+"\n"+"「哎、哎、還沒有……」"+"\n"+"「那……要不要和我們一組？」"+"\n"+"上課時間，教授似乎還沒回到教室授課。坐在隔壁的司晨趁機用胳膊碰碰日翔，笑著調侃道：「阿日，看你這麼果斷，你很勇喔！前一秒還說怕拖後腿，下一秒就把曉光邀請進來專題群組了嘛。」"+"\n"+"「哈哈哈……這都要謝謝你鼓勵我。」日翔也沒想到這次豁出去會這麼順利，他心想，或許要歸功於考前那次常常開讀書會，才讓曉光對自己感到更加熟識。"+"\n"+"「喂，聽說你們跟曉光一組啊。」聽起來像是要找麻煩一樣的話語從身後傳來，日翔跟司晨回頭一看，宇桓竟然就直直盯著他倆。"+"\n"+"「呃、沒錯，怎麼了？」日翔承受下了宇桓不知為何顯得咄咄逼人的目光。"+"\n"+"「你們現在還缺人吧，我上次看你們在圖書館讀書挺認真的，我很滿意。」宇桓回應。"+"\n"+"日翔默默想道，沒錯，去圖書館那幾次似乎也有看到他在讀書，原來他也看到我們了嗎？"+"\n"+"「？？？」那個高冷學霸宇桓說賞識我哎這裡是哪裡我是誰，司晨露出了貓咪第一次看到宇宙的震撼表情。"))
                 list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/08/Baezmv.jpg', preview_image_url='https://upload.cc/i1/2022/03/08/Baezmv.jpg'))
@@ -1668,12 +1636,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AP'+str(j))
-            list.append('AQ'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="37":
+                worksheet.update(list[1],int(38))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="「我突然想要雙修體育系啊！」司晨看到日翔那麼驚訝也顯得有些意外。"+"\n"+"「一般日間部不能用雙主修的方式申請體育系，而且雙主修這件事應該要好好提早規劃的。」看到日常犯傻的司晨，曉光忍不住吐槽。"+"\n"+"「哎、是這樣啊，那算啦。」"+"\n"+"「……」宇桓選擇沉默，他傻眼地把落到鼻樑下方的眼鏡往上推，似乎想喝一口遺忘汁把這段白癡的對話忘掉——他原先是心想日翔跟曉光這兩人肯定是專題的有力隊友，絕對能襯得上自己才加入他們的，至於司晨……宇桓對他的評價是，原來這世界上真的有那麼蠢的人，大開眼界。"))
                 list_talk.append(TextSendMessage(text="專題五人組在六月的某天為了要討論專題的主題，順便讀期末考而決定約在學校附近的餐廳見面——更重要的是家財萬貫的宇桓決定請所有人吃一頓！"+"\n"+"宇桓的預算近乎是個無底洞，無論司晨在群組提出多麼離譜的建議——無論是學餐還是吃到飽，大家的金主同學幾乎都是回應：「你們選，我都行」；不過，基於虧欠心理，大家自然不會想佔盡宇桓的便宜，最後一行人還是決定在一個大家都沒課的下午去吃輔大附近的貓中途餐廳「吃。貓」。"+"\n"+"只不過計劃趕不上變化，五個人都有空的時間也就那麼一個下午，卻偏偏在當天午後來了場突襲式的傾盆大雨。已經到站的日翔、曉光跟司晨在捷運輔大站的入口屋簷下看著LINE群的訊息，得知了宇桓跟真澄因為選修課延後所以會晚到的消息。"+"\n"+"「欸欸欸你們知道嗎，聽說學校淹水了餒！！」司晨把限動展示給日翔跟曉光看，一臉就是對學校淹水的狀況備感興趣的樣子。"+"\n"+"「阿司，你要去參觀就自己去，『這次』我不想陪你啦。」日翔想到過去的自己選擇陪著司晨去看那個傳說中的湖，最後那個傻子居然拉著自己在學校裡泛舟……那次經驗實在是瘋狂到在日翔畢業後偶爾還會夢到，很是驚悚。不過雖然日翔這麼說，但這「我不陪你」的話也僅僅是開個玩笑而已，畢竟等等就要去吃貓餐廳，再傻也不會有人真的跑進學校吧……"))
@@ -1693,16 +1659,14 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AQ'+str(j))
-            list.append('AR'+str(j))
+            list.append('E'+str(j))
             list.append('B'+str(j))
             list.append('C'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="38":
+                worksheet.update(list[1],int(39))
+                worksheet.update(list[2],int(7))
                 worksheet.update(list[3],int(7))
-                worksheet.update(list[4],int(7))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="解鎖中美堂！趕快去「遊戲地圖」看看！"+"\n\n"+"中美堂是一座大型的圓形建築，類似羅馬競技場。通常是重大集會跟室內體育競賽的選擇地，新生們的開學典禮一般會選擇在這裡舉辦所謂的「叩門禮」。只不過如果遇上了大雨……就會變成傳說中輔大水樂園的鎮園之寶「中美湖」……"+"\n"+"「好啊那我看看就回來！晚點再去找你們吃下午茶！」"+"\n"+"「喂、阿司，我只是開玩笑的！阿司！！」日翔開口大喊，司晨的身影卻早已消失在重重雨簾之中。"+"\n"+"「哇……司晨連傘也不帶就往學校去了。」曉光竟然也忍不住感嘆。"+"\n"+"雖然對他的莽撞感到無言，但日翔對司晨的決定確實是有些感謝之情，因為這樣一來他便得到了第一次名正言順和曉光獨處的機會——即使很可能只有一下下。雖然不知道司晨是不是在幫自己製造機會，但日翔決定以這樣的角度默默感謝他。"+"\n"+"日翔的心情和此時的暴雨呈反比的高興了起來：「曉光，我們先去『吃。貓』等他們吧。」"+"\n"+"「吃。貓」是在北部貓餐廳之中較為著名的一間，據說裡面的人類店長跟貓咪店長都很好，同時也是貓咪的中途之家，許多喜歡貓咪的輔大人都會前去一探究竟。"+"\n"+"日翔和曉光已經提早和人類店長支會總共有五個人要前來用餐，於是他們倆便坐到事先安排好的五人空位桌，由於宇桓和真澄剛剛傳訊息過來表示他們已經下課了，待會就到，於是日翔跟曉光打算等隊友們都差不多到齊了再點餐，至於司晨……他能平安就好。"+"\n"+"畢竟傾盆大雨實在是如倒瀉般止不住，於是到達吃貓的兩人其實也是有些狼狽的——就算是一人撐一把傘，也難以避免身上稍微被淋濕的命運。而因為雨水的緣故，日翔揹筆電跟課本用的背包和手腿無依倖免。嗯……都這樣了還吹著冷氣實在有點討厭啊，曉光她還好嗎？他留意了一下身旁曉光的狀況，她似乎也因為自己的東西淋濕了而懊惱著。"+"\n"+"日翔突然想到，他應該有放一條毛巾在書包裡——起初只是因為對這個「暴雨的今天」有所預防，說白了就是為了要避免司晨真的拉自己去泛舟才帶著的……現在居然可以派上用場，老實說日翔也十分意外。"+"\n"+"他把潔白的毛巾拿出來瞧了瞧。嗯，幸好雨水並沒有波及到它。"+"\n"+"「曉光，這個給妳，如果感冒了就糟糕了。」日翔把自己帶著的乾淨毛巾遞給曉光。"+"\n"+"「欸？啊……謝謝你，我還懊惱要怎麼辦呢。」曉光在接過毛巾之後還細心地確認了一下毛巾的狀況，便用來擦拭濕得很是不舒服的腿腳。"+"\n"+"「不客氣。」他笑著回應完曉光。隨後，日翔的餘光瞄到了她肩膀上的……灰色動物毛？考慮到曉光手機殼印著一隻灰色胖貓，他便好奇地詢問：「曉光，你家裡有養貓嗎？」"+"\n"+"「對，是一隻叫做『德魯貝』的米克斯，小學的時候領養的。」曉光似乎有些驚訝日翔猜中了家裡有養貓，難得地將平淡以外的神情表露在外：「沒想到日翔你可以辨認得出來這是貓毛。」"+"\n"+"「沒有啦，只是我瞎猜的。因為這讓我想到我在小時候也有養過一陣子的貓咪，只要家裡有養動物，毛總是會滿天飛……而且我們也還沒跟這裡的貓咪互動吧。」日翔對於自己的直覺也感到有些驚喜，而他現在才想到，好像也有可能是養灰色的其他動物。"+"\n"+"「這樣呀……我的貓咪以前也是流落街頭，當時是在一間中途之家收養牠的。」一提到自家的貓咪，一邊擦拭書包的她心情就好了起來。"+"\n"+"「啊、如果你會冷的話這個也可以給你，我是不怕冷的那種……雖然只是短袖襯衫，希望可以讓妳好一點。」日翔見到她的臉色似乎還是有些不好，便決定脫下了自己的外套給曉光。"+"\n"+"曉光似乎顯得有些驚喜，也接下了日翔的外套：「不用這麼費心啦……但還是謝謝你。」"))
                 list_talk.append(TextSendMessage(text="「哎唷——聊得很開心嘛。」一個聲音打破了兩人的對話。曉光抬頭一看，是自己的好友真澄，她一邊調侃一邊順勢坐到了曉光的對面。"+"\n"+"「你們可以先吃啊，難道是怕我不來付帳嗎？」跟在後頭的宇桓語氣仍然尖銳，但在場的所有人都並不是很在意，畢竟他是金主爸爸，他說得都對。"+"\n"+"眾人你一言我一語地開始聊了起來，並且開始點起了餐。日翔點了一份「隨便」跟一杯「隨便」順便幫目前不在場的司晨點了一份「吃不完的脆薯」、曉光點了一盤雞米花跟一杯葡萄汁、真澄點了「綜合梅優格」、金主宇桓意思意思地點了杯馬來西亞白咖啡，在滿滿都是貓的氛圍裡過了好是愜意的下午。"+"\n"+"至於當初說好討論的期末考跟專題……在貓餐廳怎麼可能討論得起來啊。"+"\n\n"+"解鎖糖果紙！趕快去「個人檔案」看看！"))
@@ -1724,12 +1688,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AR'+str(j))
-            list.append('AS'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="39":
+                worksheet.update(list[1],int(40))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#41 在html語法中，以何種語法設定超連結？"+"\n"+"（Ａ）<a href='網址'>超連結</a>"+"\n"+"（Ｂ）<b href='網址'>超連結</b>"+"\n"+"（Ｃ）<c href='網址'>超連結</c>"+"\n"+"（Ｄ）<d href='網址'>超連結</d>"))
                 buttons_template_message = TemplateSendMessage(
@@ -1773,12 +1735,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AS'+str(j))
-            list.append('AT'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="40":
+                worksheet.update(list[1],int(41))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#42 在html語法中，需要哪些語法以完成下圖效果？"+"\n"+"（Ａ）ol/il"+"\n"+"（Ｂ）ui/il"+"\n"+"（Ｃ）li/ui"))
                 list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fRPf1x@.png', preview_image_url='https://ppt.cc/fRPf1x@.png'))
@@ -1819,12 +1779,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AT'+str(j))
-            list.append('AU'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="41":
+                worksheet.update(list[1],int(42))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#43 下列關於HTML與CSS的敘述何者錯誤？"+"\n"+"（Ａ）HTML適合用來定義網的內容,CSS適合用來定義網頁的外觀"+"\n"+"（Ｂ）CSS樣式表示由一條一條的樣式規則所組成"+"\n"+"（Ｃ）HTML不會區分英文字母的大小寫"+"\n"+"（Ｄ）CSS不會區分英文字母的大小寫"))
                 buttons_template_message = TemplateSendMessage(
@@ -1868,12 +1826,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AU'+str(j))
-            list.append('AV'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="42":
+                worksheet.update(list[1],int(43))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#44 佇列（Queue）的特性是？"+"\n"+"（Ａ）後進先出（LIFO）"+"\n"+"（Ｂ）先進先出（FIFO）"+"\n"+"（Ｃ）以上皆可"))
                 buttons_template_message = TemplateSendMessage(
@@ -1913,14 +1869,12 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AV'+str(j))
-            list.append('AW'+str(j))
+            list.append('E'+str(j))
             list.append('C'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
-                worksheet.update(list[3],int(8))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="43":
+                worksheet.update(list[1],int(44))
+                worksheet.update(list[2],int(8))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="解鎖紀念幣！趕快去「個人檔案」看看！"))
                 list_talk.append(TextSendMessage(text="解鎖大三劇情"))
@@ -1968,9 +1922,9 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AW'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="44":
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="即使日翔已經回憶到開始頭疼了，還是想不起來，甚至他也無法確定究竟這些記憶是真的，還是因為太喜歡曉光而搞錯了記憶……總不能直接問曉光吧？那也太奇怪了！"+"\n"+"日翔曾經在幼稚園時為了配合父親的公司上下班而全家搬到了新北市，到了新家並轉學到別的幼稚園以後，他就再也沒有回到有那位「兒時玩伴」的城市了，也因此，他對那邊的事情實在印象不深。"+"\n"+"比起研究這個，似乎還是睡覺實在……日翔心想。"+"\n"+"明天又是新的學期了，還是珍惜眼前的大學生活跟曉光本人吧。"))
                 list_talk.append(TextSendMessage(text="大三開學第一週第一堂課。"+"\n"+"老屁股們不像小大一那樣乖乖的全員到齊，基本上都是來的人無精打采、不來的人就理直氣壯地窩在家裡睡大頭覺。刻意坐在中後排座位的日翔跟司晨自然也不是太認真，甚至已經開始在打午餐的算盤了。"+"\n"+"「嘿嘿，等下去吃仁園嗎？還是去輔園？我請客啊。」遙遙隔了一個暑假，到了今天才見到兩個多月未見的摯友，司晨顯得精神特別振奮。"+"\n"+"「阿司，說到請客啊，這次你可別想賴帳喔。」日翔震驚，雖然以司晨熱心腸子又講義氣的個性本身來說他並不太意外司晨會打算請客，但他想到大一的時候吃鬆餅最後還是自己請客……這次得讓這傢伙好好請客才行。"+"\n"+"「當然啦兄弟！我跟你說，我在暑假的時候跑去打工欸，前幾天拿到薪水了，當然要跟好朋友分享啊！隨便你叫外送也行！」司晨自信地拍拍胸脯。日翔敏銳地發現，他今天穿來的大學T似乎也是新買的。"+"\n"+"如果上次大學生活的印象沒有錯的話，司晨的確是從大二升大三的暑假開始打工的，因為大三的課開始變少了嘛。日翔看著他嶄新潔白的衣服感嘆。"+"\n"+"「好啊，是你說的，那我就盡情點囉？」日翔點開司晨手機裡的外送app，隨便點了一個很貴的餐廳。"+"\n"+"「噯噯手下留情手下留情，我沒阿桓那麼有錢啦！」面對在購物車裡狂加餐點的日翔，司晨慌張得把手機搶了回去。"))
@@ -2016,9 +1970,9 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AW'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="44":
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="即使日翔已經回憶到開始頭疼了，還是想不起來，甚至他也無法確定究竟這些記憶是真的，還是因為太喜歡曉光而搞錯了記憶……總不能直接問曉光吧？那也太奇怪了！"+"\n"+"日翔曾經在幼稚園時為了配合父親的公司上下班而全家搬到了新北市，到了新家並轉學到別的幼稚園以後，他就再也沒有回到有那位「兒時玩伴」的城市了，也因此，他對那邊的事情實在印象不深。"+"\n"+"比起研究這個，似乎還是睡覺實在……日翔心想。"+"\n"+"明天又是新的學期了，還是珍惜眼前的大學生活跟曉光本人吧。"))
                 list_talk.append(TextSendMessage(text="大三開學第一週第一堂課。"+"\n"+"老屁股們不像小大一那樣乖乖的全員到齊，基本上都是來的人無精打采、不來的人就理直氣壯地窩在家裡睡大頭覺。刻意坐在中後排座位的日翔跟司晨自然也不是太認真，甚至已經開始在打午餐的算盤了。"+"\n"+"「嘿嘿，等下去吃仁園嗎？還是去輔園？我請客啊。」遙遙隔了一個暑假，到了今天才見到兩個多月未見的摯友，司晨顯得精神特別振奮。"+"\n"+"「阿司，說到請客啊，這次你可別想賴帳喔。」日翔震驚，雖然以司晨熱心腸子又講義氣的個性本身來說他並不太意外司晨會打算請客，但他想到大一的時候吃鬆餅最後還是自己請客……這次得讓這傢伙好好請客才行。"+"\n"+"「當然啦兄弟！我跟你說，我在暑假的時候跑去打工欸，前幾天拿到薪水了，當然要跟好朋友分享啊！隨便你叫外送也行！」司晨自信地拍拍胸脯。日翔敏銳地發現，他今天穿來的大學T似乎也是新買的。"+"\n"+"如果上次大學生活的印象沒有錯的話，司晨的確是從大二升大三的暑假開始打工的，因為大三的課開始變少了嘛。日翔看著他嶄新潔白的衣服感嘆。"+"\n"+"「好啊，是你說的，那我就盡情點囉？」日翔點開司晨手機裡的外送app，隨便點了一個很貴的餐廳。"+"\n"+"「噯噯手下留情手下留情，我沒阿桓那麼有錢啦！」面對在購物車裡狂加餐點的日翔，司晨慌張得把手機搶了回去。"))
@@ -2064,12 +2018,10 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AW'+str(j))
-            list.append('AX'+str(j))
+            list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
-            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
-                worksheet.update(list[1],int(2))
-                worksheet.update(list[2],int(1))
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="44":
+                worksheet.update(list[1],int(45))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="日翔跟司晨花了好一段時間物色餐廳和菜色。"+"\n"+"現在他們已經挑選好餐點了，剩下的就是等待下課時間了。"+"\n"+"「那等等你去後門拿餐，我先去空教室找位置。」日翔開始打起了吃飯時間的策略。"+"\n"+"「好啊！哈哈，不瞞你說我已經開始肚子餓啦……」"+"\n"+"對了，雖然司晨不太可靠，但是應該可以問問他對「似曾相識的女孩」的想法吧，幸好今天沒有約曉光吃午餐。"+"\n"+"下課後，日翔坐在LM405的某個座位上等待司晨把餐點拿來教室，他無趣地看著手機中SNS朋友們發的限動，但卻像走馬看花一般，看得並不上心。簡單地說來，日翔仍舊無法忘懷那些逐漸被自己拾起的回憶，他仍然在乎那個人究竟是不是曉光。糖果紙、紀念幣、童話書、冰淇淋券……他必須承認，這些物品在他腦海內很是鮮明，像是在提醒他必須好好重視一樣。"+"\n"+"突然間LINE跳出了視窗強制打斷日翔思慮出了神的狀態，他定睛一看，原來是司晨傳訊息過來的通知：「欸欸！！！」「oO卐籃球master🍃司晨卍Oo 傳送了照片」"+"\n"+"嗯？……該不會是這個傻子取餐出了什麼事吧，沒帶錢或者是拿不動餐點之類的……日翔飛速點開LINE確認訊息。"+"\n"+"沒想到這傢伙傳的是一張鳥照片……「大笨鳥」的照片。"))
                 list_talk.append(ImageSendMessage(original_content_url='https://reurl.cc/l9m8kl', preview_image_url='https://reurl.cc/l9m8kl'))
