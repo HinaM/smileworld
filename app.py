@@ -2000,7 +2000,7 @@ def handle_message(event):
                 list_talk.append(image_carousel_template_message)
                 line_bot_api.reply_message(event.reply_token, list_talk)
             #日向視角&物件6
-            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="5":
+            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="6":
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【6/10】"))
                 image_carousel_template_message = TemplateSendMessage(
@@ -2056,7 +2056,7 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token, list_talk)
             #小光視角
             else:
-                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：小曉"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))   
+                line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：曉光"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))   
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒開始遊戲喔，請輸入「開始遊戲」建立個人檔案。"))
     
