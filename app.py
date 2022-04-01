@@ -1946,6 +1946,61 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+    
+    #44答案
+    elif event.message.text=="先進先出（FIFO）":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('AV'+str(j))
+            list.append('AW'+str(j))
+            list.append('C'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                worksheet.update(list[3],int(8))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="解鎖紀念幣！趕快去「個人檔案」看看！"))
+                list_talk.append(TextSendMessage(text="解鎖大三劇情"))
+                list_talk.append(TextSendMessage(text="人類的記憶總是在不斷累積，也會在不知不覺間遺忘對大腦而言不重要的事物。"+"\n"+"開學的前一天夜裡，日翔躺在床上努力回憶著過去的種種。他發現：幼時的記憶他似乎也記不得多少了。至於為何要開始回憶過去，是因為他愈發感覺自己似乎遺忘了某個重要的事情。每次和曉光相處的時候，他總能在腦海之中勾勒出幼時見到過的物件，而日翔幼時的玩伴和曉光的身影好像可以重疊在一起——無論是喜歡看書、點了葡萄汁、還是著迷於霜淇淋等等。"+"\n"+"日翔能夠記得的幼時記憶不多，但他還是能隱隱約約感受到，她倆似乎相似過了頭。可是最關鍵的那位小女孩的名字，他卻忘得一乾二淨。"))
+                carousel_template_message = TemplateSendMessage(
+                    alt_text='？？',
+                    template=CarouselTemplate(
+                        columns=[
+                            CarouselColumn(
+                                title='？？',
+                                text='偏偏忘了這麼重要的事……',
+                                actions=[
+                                    MessageAction(
+                                        label='？？',
+                                        text='偏偏忘了這麼重要的事……'
+                                    )
+                                ]
+                            ),
+                            CarouselColumn(
+                                title='？？',
+                                text='頭好痛……',
+                                actions=[
+                                    MessageAction(
+                                        label='？？',
+                                        text='頭好痛……'
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(carousel_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
@@ -2361,6 +2416,75 @@ def handle_message(event):
                 )
                 list_talk.append(image_carousel_template_message)
                 line_bot_api.reply_message(event.reply_token, list_talk)
+            #日向視角&物件8
+            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="8":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【8/10】"))
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='已解鎖物件',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/2r7tDCN.png',
+                                action=MessageTemplateAction(
+                                    label='童話書介紹',
+                                    text='童話書介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/SAwcrWC.png',
+                                action=MessageTemplateAction(
+                                    label='遊Ｏ王卡介紹',
+                                    text='遊Ｏ王卡介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/hXpbU2C.png',
+                                action=MessageTemplateAction(
+                                    label='圖畫介紹',
+                                    text='圖畫介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/nKLmcQG.png',
+                                action=MessageTemplateAction(
+                                    label='冰淇淋券介紹',
+                                    text='冰淇淋券介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/Ep84aDF.png',
+                                action=MessageTemplateAction(
+                                    label='信封介紹',
+                                    text='信封介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/4MW6lNS.png',
+                                action=MessageTemplateAction(
+                                    label='卡通主題鉛筆介紹',
+                                    text='卡通主題鉛筆介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/9TzxQhQ.png',
+                                action=MessageTemplateAction(
+                                    label='糖果紙介紹',
+                                    text='糖果紙介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/3ruuwRd.png',
+                                action=MessageTemplateAction(
+                                    label='紀念幣介紹',
+                                    text='紀念幣介紹'
+                                )
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(image_carousel_template_message)
+                line_bot_api.reply_message(event.reply_token, list_talk)
             #小光視角
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：曉光"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))   
@@ -2381,6 +2505,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經使用過的鉛筆，上面的圖案是一位童年卡通人物，看得出來鉛筆的主人很愛護它。"))
     elif event.message.text=="糖果紙介紹":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="看起來皺巴巴的糖果紙，上面用用黃底紅字印著「Chupa Chups」的字樣，是葡萄口味。從塑膠紙皺褶的壓痕來看，應該是包裝棒棒糖用的。"))
+    elif event.message.text=="紀念幣介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="老舊的科博館紀念幣，只要在館內花費50元製作就可以獲得一枚。對重要的人們總是觀察入微的他，似乎想起了某人的鉛筆盒裡也有一枚……"))
 
     elif event.message.text=="重置遊戲":
         userid_list=worksheet.col_values(1)
