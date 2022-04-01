@@ -1603,7 +1603,7 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
-    #35答案
+    #36答案
     elif event.message.text=="外來鍵可為空，主鍵不可":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
@@ -1621,9 +1621,9 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#37 下列關於資料庫的選項何者正確？"+"\n"+"（Ａ）主鍵在每個儲存格唯一不可重複"+"\n"+"（Ｂ）外來鍵在每個儲存格唯一不可重複"+"\n"+"（Ｃ）所有儲存格皆不可為Null"+"\n"+"（Ｄ）資料表名稱不可與資料庫名稱重複"))
                 buttons_template_message = TemplateSendMessage(
-                    alt_text='#36',
+                    alt_text='#37',
                     template=ButtonsTemplate(
-                        title='#36',
+                        title='#37',
                         text='請選出正確答案',
                         actions=[
                             MessageAction(
@@ -1641,6 +1641,56 @@ def handle_message(event):
                             MessageAction(
                                 label='D',
                                 text='資料表名稱不可與資料庫名稱重複'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+    
+    #37答案
+    elif event.message.text=="外來鍵可為空，主鍵不可":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('AO'+str(j))
+            list.append('AP'+str(j))
+            list.append('C'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                worksheet.update(list[3],int(6))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="解鎖信封、卡通主題鉛筆！趕快去「個人檔案」看看！"+"\n\n"+"總算是到了大二的學期中末，班代已經在班群開始提醒各組要尋找好專題組員了。"+"\n"+"於是，在一堂課程的下課休息時間，日翔和司晨兩人站在教室門口一邊喝早餐店奶茶，一邊思考要找哪些組員才好。"+"\n"+"「噯，你不是對曉光有意思嗎，快點去邀請她呀阿日！」司晨一如既往地慫恿日翔豁出去了。"+"\n"+"「等一下你怎麼知道的？算了，因為……我怕會拖曉光的後腿。」在日翔的記憶裡，先前一次大學生活的曉光是和宇桓那種等級的學霸們在一起的，就算日翔這幾次考試都靠著神秘的回歸之力得到不錯的分數，他仍然對自己的程式能力有些缺乏自信。"+"\n"+"「當然是身為你好兄弟的直覺啊！這麼明顯！」"+"\n"+"「……日翔？你們在討論什——」曉光聽到好像有人在叫自己的名字後就從教室裡走出來。看見是熟人之後，便上前問話。"+"\n"+"日翔看見自己的真命天女突然在跟兄弟討論「關鍵問題」的時候出現是差點沒嚇破膽，他甚至都還沒有下定決心啊！不，或許就跟司晨、以及那個神祕的聲音說的一樣。這時候已經不能再猶疑不前。明明已經決定好要在「這一次」的大學時光要全力以赴，不留下遺憾了。"+"\n"+"「曉光！你現在專題已經有組了嗎？」"+"\n"+"「哎、哎、還沒有……」"+"\n"+"「那……要不要和我們一組？」"+"\n"+"上課時間，教授似乎還沒回到教室授課。坐在隔壁的司晨趁機用胳膊碰碰日翔，笑著調侃道：「阿日，看你這麼果斷，你很勇喔！前一秒還說怕拖後腿，下一秒就把曉光邀請進來專題群組了嘛。」"+"\n"+"「哈哈哈……這都要謝謝你鼓勵我。」日翔也沒想到這次豁出去會這麼順利，他心想，或許要歸功於考前那次常常開讀書會，才讓曉光對自己感到更加熟識。"+"\n"+"「喂，聽說你們跟曉光一組啊。」聽起來像是要找麻煩一樣的話語從身後傳來，日翔跟司晨回頭一看，宇桓竟然就直直盯著他倆。"+"\n"+"「呃、沒錯，怎麼了？」日翔承受下了宇桓不知為何顯得咄咄逼人的目光。"+"\n"+"「你們現在還缺人吧，我上次看你們在圖書館讀書挺認真的，我很滿意。」宇桓回應。"+"\n"+"日翔默默想道，沒錯，去圖書館那幾次似乎也有看到他在讀書，原來他也看到我們了嗎？"+"\n"+"「？？？」那個高冷學霸宇桓說賞識我哎這裡是哪裡我是誰，司晨露出了貓咪第一次看到宇宙的震撼表情。"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/08/Baezmv.jpg', preview_image_url='https://upload.cc/i1/2022/03/08/Baezmv.jpg'))
+                list_talk.append(TextSendMessage(text="「非要我說得那麼明白？我決定跟你們三個一組，這對你們而言不會是件壞事。」宇桓的嘴角勾起，還沒等日翔和司晨反應過來，竟然就擅自認為自己已經加入專題組別了。"+"\n"+"「哇哦……好、好啊，那你先掃QR扣加群組吧。」呃……雖然感覺宇桓好像很有氣場，但在日翔的印象裡，他的程式在全班是數一數二強的！日翔度過的兩次大一上學期的生活裡，宇桓考機測都只用了一小時就出了考場，而且，成績出爐後居然都是五題全通過。這麼厲害的他一定能成為專題的一大助力。"+"\n"+"過了幾周，眾人在團體討論室專題主題。這時候的專題小組已經湊滿五人，有日翔、曉光、司晨、宇桓、以及曉光她隔壁班的朋友，林真澄。"+"\n"+"由於專題或多或少牽涉到畢業、或者職涯發展的話題，司晨便突然開口：「哎，已經要到申請雙主修的時間了。我在想要不要申請雙主修。」"+"\n"+"「真的假的，阿司，你居然想要雙主修！」日翔嘴巴張得大大的，難道世界線發生了這麼大的變動嗎——司晨居然破天荒地跟以前不同，想要變成雙主修學霸了！？"))
+                list_talk.append(TextSendMessage(text="#38 為鼓勵學生多元學習，許多大學都有雙主修、輔修和學分學程的申請，而輔大的申請安排於每學年的下學期 4-6 月，請問以下哪一個是開放申請的時間順序？"+"\n"+"（Ａ）輔系-雙主修-學分學程"+"\n"+"（Ｂ）外雙主修-輔系-學分學程"+"\n"+"（Ｃ）學分學程-雙主修-輔系"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#38',
+                    template=ButtonsTemplate(
+                        title='#38',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='輔系-雙主修-學分學程'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='雙主修-輔系-學分學程'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='學分學程-雙主修-輔系'
                             )
                         ]
                     )
