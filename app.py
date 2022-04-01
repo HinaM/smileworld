@@ -1429,7 +1429,7 @@ def handle_message(event):
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="32":
                 worksheet.update(list[1],int(33))
                 list_talk=[]
-                list_talk.append(TextSendMessage(text="#34 有一資料庫用來記錄學生分數如下圖，下列有一塗黑語法，該填上什麼可以由小到大輸出A班學生姓名與成績？"+"\n"+"◼ name,score ◼ database_score ◼ class_id=1 ◼ score ASC"+"\n"+"（Ａ）SELECT/FROM/WHERE/ORDER BY/ASC"+"\n"+"（Ｂ）SELECT/FROM/WHERE/GROUP BY/DESC"+"\n"+"（Ｃ）SELECT/FROM/WHEN/ORDER BY/DESC"+"\n"+"（Ｄ）SELECT/FROM/WHEN/GROUP BY/ASC"))
+                list_talk.append(TextSendMessage(text="#34 有一資料庫用來記錄學生分數如下圖，下列有一塗黑語法，該填上什麼可以由小到大輸出A班學生姓名與成績？"+"\n"+"◼ name,score ◼ database_score ◼ class_id=1 ◼ score ◼"+"\n"+"（Ａ）SELECT/FROM/WHERE/ORDER BY/ASC"+"\n"+"（Ｂ）SELECT/FROM/WHERE/GROUP BY/DESC"+"\n"+"（Ｃ）SELECT/FROM/WHEN/ORDER BY/DESC"+"\n"+"（Ｄ）SELECT/FROM/WHEN/GROUP BY/ASC"))
                 list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fxIoAx@.png', preview_image_url='https://ppt.cc/fxIoAx@.png'))
                 buttons_template_message = TemplateSendMessage(
                     alt_text='#34',
@@ -2449,102 +2449,70 @@ def handle_message(event):
             elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="8":
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【8/10】"))
-                carousel_template_message8 = TemplateSendMessage(
-            alt_text='遊戲地圖',
-            template=CarouselTemplate(
-                columns=[
-                    CarouselColumn(
-                        thumbnail_image_url='https://photox.pchome.com.tw/s13/moni101/112/135200602386/',
-                        title='利瑪竇大樓',
-                        text='成功解鎖利瑪竇大樓！',
-                        actions=[
-                            MessageAction(
-                                label='建築介紹',
-                                text='利瑪竇大樓介紹'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://pic.pimg.tw/fjumyblog/4a128e07da7c5_wn.jpg',
-                        title='聖言樓',
-                        text='成功解鎖聖言樓！',
-                        actions=[
-                            MessageAction(
-                                label='建築介紹',
-                                text='聖言樓介紹'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/FJU_Religion03.jpg/800px-FJU_Religion03.jpg',
-                        title='淨心堂',
-                        text='成功解鎖淨心堂！',
-                        actions=[
-                            MessageAction(
-                                label='建築介紹',
-                                text='淨心堂介紹'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://mapio.net/images-p/84019119.jpg',
-                        title='進修部',
-                        text='成功解鎖進修部！',
-                        actions=[
-                            MessageAction(
-                                label='建築介紹',
-                                text='進修部介紹'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/sqlb3OC.jpeg',
-                        title='伯達樓',
-                        text='成功解鎖伯達樓！',
-                        actions=[
-                            MessageAction(
-                                label='建築介紹',
-                                text='伯達樓介紹'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://ppt.cc/f3IHdx@.jpg',
-                        title='濟時樓',
-                        text='成功解鎖濟時樓！',
-                        actions=[
-                            MessageAction(
-                                label='建築介紹',
-                                text='濟時樓介紹'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/dx980Kw.jpeg',
-                        title='中美堂',
-                        text='成功解鎖中美堂！',
-                        actions=[
-                            MessageAction(
-                                label='建築介紹',
-                                text='中美堂介紹'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://fastly.4sqi.net/img/general/784x588/43402781_EW7mtusxKDYOM_Og5v3k7sFac_UPy0JeNmwAnTUQWgw.jpg',
-                        title='野聲樓',
-                        text='成功解鎖野聲樓！',
-                        actions=[
-                            MessageAction(
-                                label='建築介紹',
-                                text='野聲樓介紹'
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='已解鎖物件',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/2r7tDCN.png',
+                                action=MessageTemplateAction(
+                                    label='童話書介紹',
+                                    text='童話書介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/SAwcrWC.png',
+                                action=MessageTemplateAction(
+                                    label='遊Ｏ王卡介紹',
+                                    text='遊Ｏ王卡介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/hXpbU2C.png',
+                                action=MessageTemplateAction(
+                                    label='圖畫介紹',
+                                    text='圖畫介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/nKLmcQG.png',
+                                action=MessageTemplateAction(
+                                    label='冰淇淋券介紹',
+                                    text='冰淇淋券介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/Ep84aDF.png',
+                                action=MessageTemplateAction(
+                                    label='信封介紹',
+                                    text='信封介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/4MW6lNS.png',
+                                action=MessageTemplateAction(
+                                    label='卡通主題鉛筆介紹',
+                                    text='卡通主題鉛筆介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/9TzxQhQ.png',
+                                action=MessageTemplateAction(
+                                    label='糖果紙介紹',
+                                    text='糖果紙介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/3ruuwRd.png',
+                                action=MessageTemplateAction(
+                                    label='紀念幣介紹',
+                                    text='紀念幣介紹'
+                                )
                             )
                         ]
                     )
-                ]
-            )
-        )
-                list_talk.append(carousel_template_message8)
+                )
+                list_talk.append(image_carousel_template_message)
                 line_bot_api.reply_message(event.reply_token, list_talk)
             #小光視角
             else:
