@@ -1397,7 +1397,56 @@ def handle_message(event):
                 worksheet.update(list[2],int(1))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="又過了幾個禮拜，終於，考試又要鄰近了——打算抱佛腳的日翔心想，根據他的經驗，在家看書他一點也不會認真，總是讀了一兩行又跑去滑滑手機敲敲鍵盤、整理書櫃打掃房間、甚至出奇地自告奮勇跑去幫媽媽跑腿。畢竟再怎麼擁有上一次大學生活的經歷，有些東西就是考完就會順便忘記的。於是他決定在學校圖書館讀書。而他心想，現在跟曉光也逐漸熟識了起來，如果有機會也可以向他問問題。"))
-                list_talk.append(TextSendMessage(text="#31 請問本校擁有最多層樓的圖書館是哪一個？"))
+                list_talk.append(TextSendMessage(text="#31 請問本校擁有最多層樓的圖書館是哪一個？（請以「ＯＯ樓」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #31答案
+    elif event.message.text=="濟時樓":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('AI'+str(j))
+            list.append('AJ'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#32 請問學校圖書館濟時樓平日幾點開？"+"\n"+"（Ａ）08:00 ~ 23:00"+"\n"+"（Ｂ）08:00 ~ 22:00"+"\n"+"（Ｃ）09:00 ~ 23:00"+"\n"+"（Ｄ）08:30 ~ 22:00"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#32',
+                    template=ButtonsTemplate(
+                        title='#32',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='08:00 ~ 23:00'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='08:00 ~ 22:00'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='09:00 ~ 23:00'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='08:30 ~ 22:00'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
