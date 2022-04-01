@@ -1539,7 +1539,7 @@ def handle_message(event):
                     j=i+1
             list=[]
             list.append('D'+str(j))
-            list.append('AK'+str(j))
+            list.append('AL'+str(j))
             list.append('AM'+str(j))
             #ID已寫入、日向視角、Q2=1
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
