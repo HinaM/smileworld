@@ -1701,6 +1701,31 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+    
+    #38答案
+    elif event.message.text=="學分學程-雙主修-輔系":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('AP'+str(j))
+            list.append('AQ'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「我突然想要雙修體育系啊！」司晨看到日翔那麼驚訝也顯得有些意外。"+"\n"+"「一般日間部不能用雙主修的方式申請體育系，而且雙主修這件事應該要好好提早規劃的。」看到日常犯傻的司晨，曉光忍不住吐槽。"+"\n"+"「哎、是這樣啊，那算啦。」"+"\n"+"「……」宇桓選擇沉默，他傻眼地把落到鼻樑下方的眼鏡往上推，似乎想喝一口遺忘汁把這段白癡的對話忘掉——他原先是心想日翔跟曉光這兩人肯定是專題的有力隊友，絕對能襯得上自己才加入他們的，至於司晨……宇桓對他的評價是，原來這世界上真的有那麼蠢的人，大開眼界。"))
+                list_talk.append(TextSendMessage(text="專題五人組在六月的某天為了要討論專題的主題，順便讀期末考而決定約在學校附近的餐廳見面——更重要的是家財萬貫的宇桓決定請所有人吃一頓！"+"\n"+"宇桓的預算近乎是個無底洞，無論司晨在群組提出多麼離譜的建議——無論是學餐還是吃到飽，大家的金主同學幾乎都是回應：「你們選，我都行」；不過，基於虧欠心理，大家自然不會想佔盡宇桓的便宜，最後一行人還是決定在一個大家都沒課的下午去吃輔大附近的貓中途餐廳「吃。貓」。"+"\n"+"只不過計劃趕不上變化，五個人都有空的時間也就那麼一個下午，卻偏偏在當天午後來了場突襲式的傾盆大雨。已經到站的日翔、曉光跟司晨在捷運輔大站的入口屋簷下看著LINE群的訊息，得知了宇桓跟真澄因為選修課延後所以會晚到的消息。"+"\n"+"「欸欸欸你們知道嗎，聽說學校淹水了餒！！」司晨把限動展示給日翔跟曉光看，一臉就是對學校淹水的狀況備感興趣的樣子。"+"\n"+"「阿司，你要去參觀就自己去，『這次』我不想陪你啦。」日翔想到過去的自己選擇陪著司晨去看那個傳說中的湖，最後那個傻子居然拉著自己在學校裡泛舟……那次經驗實在是瘋狂到在日翔畢業後偶爾還會夢到，很是驚悚。不過雖然日翔這麼說，但這「我不陪你」的話也僅僅是開個玩笑而已，畢竟等等就要去吃貓餐廳，再傻也不會有人真的跑進學校吧……"))
+                list_talk.append(TextSendMessage(text="#39 輔大水樂園開張！傳說每當暴雨強襲，校園內就會出現一面湖，曾有學長帶著橡皮艇「到此一划」，請問應該到哪裡朝聖奇景？（請以「ＯＯＯ」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
