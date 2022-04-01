@@ -1888,7 +1888,7 @@ def handle_message(event):
                                 text='偏偏忘了這麼重要的事……',
                                 actions=[
                                     MessageAction(
-                                        label='選項',
+                                        label='選擇',
                                         text='偏偏忘了這麼重要的事……'
                                     )
                                 ]
@@ -1898,7 +1898,7 @@ def handle_message(event):
                                 text='頭好痛……',
                                 actions=[
                                     MessageAction(
-                                        label='選項',
+                                        label='選擇',
                                         text='頭好痛……'
                                     )
                                 ]
