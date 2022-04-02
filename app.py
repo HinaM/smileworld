@@ -2492,7 +2492,29 @@ def handle_message(event):
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="53":
                 worksheet.update(list[1],int(54))
                 list_talk=[]
-                list_talk.append(TextSendMessage(text="#55 發生死結（Deadlock）的條件有幾個？（請輸入「Ｏ個」回答。）"))
+                list_talk.append(TextSendMessage(text="#55 發生死結（Deadlock）的條件有幾個？（請輸入「Ｏ個」回答，Ｏ為半形數字。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #55答案
+    elif event.message.text=="4個":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="54":
+                worksheet.update(list[1],int(55))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#56 請判斷下列程式碼，包含main()一共會產生多少process？（請輸入「Ｏ個process」，Ｏ為半形數字。）"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/04/02/r8NibS.png', preview_image_url='https://upload.cc/i1/2022/04/02/r8NibS.png'))
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
