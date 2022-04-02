@@ -2990,9 +2990,9 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#67 以下那些課程是輔大的校定必修課程？"+"\n"+"（Ａ）大學入門、人生哲學、專業倫理"+"\n"+"（Ｂ）體育、國文、外國語文"+"\n"+"（Ｃ）人文與藝術、自然與科技、社會科學三個領域通識（包含歷史與文化學群）"+"\n"+"（Ｄ）以上皆是必修課程"))
                 buttons_template_message = TemplateSendMessage(
-                    alt_text='#66',
+                    alt_text='#67',
                     template=ButtonsTemplate(
-                        title='#66',
+                        title='#67',
                         text='請選出正確答案',
                         actions=[
                             MessageAction(
@@ -3015,6 +3015,28 @@ def handle_message(event):
                     )
                 )
                 list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+    
+    #67答案
+    elif event.message.text=="以上皆是必修課程":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="66":
+                worksheet.update(list[1],int(67))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="總而言之，為了安慰又忙又累的司晨，日翔擅自在下課後表示他要請司晨喝個飲料。"+"\n"+"「我也幫司晨出錢。」曉光提議。"+"\n"+"「欸欸！真的不用啦，而且我也有薪水啊。」司晨看著兩位對自己這麼好的同學，連忙進行推辭。不過下一秒便又後悔了：「那不然你們請我711就好啦，嘿嘿，我要順便去取個貨。」"+"\n"+"日翔一邊收書包，一邊無所謂的思考道：對了，學校這麼多便利商店，他甚至都沒有好好研究過店名……"))
+                list_talk.append(TextSendMessage(text="#68 進修部旁邊7-11門市的名稱為？"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
