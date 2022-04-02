@@ -2032,6 +2032,45 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+    
+    #46答案
+    elif event.message.text=="黑冠麻鷺":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="45":
+                worksheet.update(list[1],int(46))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="接著，日翔就沒有看到司晨再傳訊息過來，他估摸一下時間，大概是他快要到教室來了。"+"\n"+"果不其然，他馬上就聽到了推開門的聲音，甚至聽見有人喃喃：「黑冠麻鷺黑冠麻鷺……」"+"\n"+"「嗨。為什麼你要一直講黑冠麻鷺啊？」日翔傻眼地看著進門的司晨。"+"\n"+"「久等啦。我想說以後如果想偷損討厭的教授，我就可以說他是黑冠麻鷺。」"+"\n"+"別把腦子用在這種地方好嗎——這話尚未說出口，日翔就被司晨手邊打開來的餐點吸引了注意力。他們最後其實並沒有選擇高價的餐點，只是叫了附近聽說評價不錯的小火鍋來吃而已。"+"\n"+"日翔被來自司晨桌上的香氣吸引，忍不住評價：「哇噻，這家的麻辣鍋好香哦！」"+"\n"+"司晨一邊興奮的回應，一邊把日翔的餐點從塑膠袋拿出來，自顧自地幫忙掀開蓋子：「嘿嘿，對吧。不過阿日你的起司牛奶鍋感覺也不錯啊，我夾你的豬血糕走囉。」"+"\n"+"日翔點點頭同意司晨擅自把豬血糕夾走的行為，然後把自己的起司牛奶鍋推到眼前，他把連起來的竹筷子拆開，猶豫著是否要開口提起關於兒時回憶的事情……雖然不是什麼大事，但他仍然不知道要怎麼和自己最好的朋友開口。"+"\n"+"躊躇了幾秒後，他還是帶著試探語氣地問道：「欸阿司……我可以問你一個問題嗎？」"+"\n"+"「好啊，怎麼啦？」司晨一邊咬著牛奶起司味的豬血糕一邊回應。他好像注意到了日翔的語氣變化，於是他也收起平時語氣裡帶點嘻皮笑臉的感覺，要不是他還一邊吃東西，可能會覺得他突然變得正經了起來。"))
+                carousel_template_message = TemplateSendMessage(
+                    alt_text='選項',
+                    template=CarouselTemplate(
+                        columns=[
+                            CarouselColumn(
+                                title='選項',
+                                text='有沒有可能我以前其實見過曉光，只是我忘了？',
+                                actions=[
+                                    MessageAction(
+                                        label='選擇',
+                                        text='有沒有可能我以前其實見過曉光，只是我忘了？'
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(carousel_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
@@ -2372,7 +2411,7 @@ def handle_message(event):
                                 )
                             ),
                             ImageCarouselColumn(
-                                image_url='https://i.imgur.com/4MW6lNS.png',
+                                image_url='https://i.imgur.com/cpu3ksv.png',
                                 action=MessageTemplateAction(
                                     label='卡通主題鉛筆介紹',
                                     text='卡通主題鉛筆介紹'
@@ -2427,7 +2466,7 @@ def handle_message(event):
                                 )
                             ),
                             ImageCarouselColumn(
-                                image_url='https://i.imgur.com/4MW6lNS.png',
+                                image_url='https://i.imgur.com/cpu3ksv.png',
                                 action=MessageTemplateAction(
                                     label='卡通主題鉛筆介紹',
                                     text='卡通主題鉛筆介紹'
@@ -2489,7 +2528,7 @@ def handle_message(event):
                                 )
                             ),
                             ImageCarouselColumn(
-                                image_url='https://i.imgur.com/4MW6lNS.png',
+                                image_url='https://i.imgur.com/cpu3ksv.png',
                                 action=MessageTemplateAction(
                                     label='卡通主題鉛筆介紹',
                                     text='卡通主題鉛筆介紹'
