@@ -2565,6 +2565,46 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    #57答案
+    elif event.message.text=="去學生輔導中心詢問":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="56":
+                worksheet.update(list[1],int(57))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「學校原來就有諮詢的資源啊……不過我想這次還是一個人解決就好，謝謝你。」日翔從來不曉得學校居然有專門的諮商服務，而且除了許多老師都會協助進行個人輔導以外，居然還有團體輔導。如果以後真的有需要的話，那或許他也會考慮去諮商看看吧。日翔想到了畢業之後去外面找個諮商就花了他不少錢，瞬間感覺到了學校的良心。"+"\n"+"「游日翔。」宇桓嚴肅地喊住日翔的全名，他再次不顧話題地開口：「你再繼續猶豫不決的，我就要出手了。」"+"\n"+"日翔直覺性地感受到，這或許是對自己的宣戰。他有些驚訝：「欸？欸？難道，你也對曉光……」"+"\n"+"還等不到宇桓的回應，他便頭也不回的離開了。日翔想到之前去曉光家的時候，真澄也提到「男生們對曉光有意思」完全不奇怪……甚至從最當初想起，宇桓想加入專題組，或許就是因為曉光吧……雖說如此，但日翔不知為何地感覺宇桓可能是在鼓勵自己，沒想到這個人比想像中還要好。"+"\n"+"或許也是因為這一樁突來的衝擊，日翔決定現在就傳LINE邀請曉光，他點進了那個熟悉的灰色貓咪頭貼：「曉光，下禮拜11月24日是你的生日吧？要一起出去玩嗎？」"+"\n"+"對方很快就回了一個貓咪問號的貼圖，接著回應：「和大家一起？」"+"\n"+"日翔見到曉光秒回便緊張地嚥了下口水——平常都沒什麼傳訊息的機會，現在一交流就是要邀請他兩個人約會……真叫人害羞的。"+"\n"+"他敲了敲鍵盤，趕緊回應或許還在等待自己回覆的曉光：「我們兩個人就好。」"))
+                list_talk.append(TextSendMessage(text="終於盼到了曉光生日的那一天，日翔甚至緊張得整晚都沒有睡好……整個晚上日翔幾乎都在思考自己要預備些什麼話題、穿什麼衣服、或者該怎麼打理自己的髮型。"+"\n"+"也因為整晚幾乎沒睡好，日翔甚至比預計時間早起了整整一小時。雖然提出邀請的是自己，但也壓根沒想到自己真會有和曉光約會的一天。"+"\n"+"他們今天要一起去IKEA新莊店逛逛，除了可以添購一些家中小物之外，日翔聽說IKEA還被鄉民譽為「被家具耽誤的餐廳」，他早就想去一探究竟了。此外，曉光也表示想要買一隻鯊鯊回家，於是兩人一拍即合，便馬上決定了要在這裡相聚。"+"\n"+"想到了跟那個「code/140.136」的約定，日翔再度燃起了鬥志。"))
+                carousel_template_message = TemplateSendMessage(
+                    alt_text='選項',
+                    template=CarouselTemplate(
+                        columns=[
+                            CarouselColumn(
+                                title='選項',
+                                text='我今天絕對要全力以赴。',
+                                actions=[
+                                    MessageAction(
+                                        label='選擇',
+                                        text='我今天絕對要全力以赴。'
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(carousel_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
