@@ -3069,6 +3069,42 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    #68答案
+    elif event.message.text=="輔進門市":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="67":
+                worksheet.update(list[1],int(68))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="取完貨、日翔和曉光也幫司晨付活益比O多的錢之後，三人走在離開學校的路上。"+"\n"+"日翔也替自己跟曉光結帳了兩瓶果汁。他旋開寶特瓶罐子，開始關心自己好友的狀況：「啊對了，司晨你以後有想做什麼嗎？」"+"\n"+"「欸？我沒講過嗎，經理跟我談好啦，因為我工作很認真，畢業之後工讀要幫我轉正欸！」"+"\n"+"雖然以過去的「經驗」來說，日翔早就知道這個時期的司晨已經給未來做好打算了——他當時也很意外，這個最粗心傻氣的摯友，居然是最先找到出路的。資管系畢業之後也有一些學生會去做與資管無關的工作，司晨就是其中一位。"+"\n"+"「沒想到你是我們之中最先計畫好未來的人。」日翔除了打從心底佩服他以外，也盡力表現出很意外的樣子。"+"\n"+"曉光似乎是想到了自己的升學準備進度，語氣也認真了起來：「好厲害。那我也得努力一點才行了。」"+"\n"+"日翔點點頭同意曉光所說的話，不只是曉光而已，他這個經過回歸的人也不可以就這樣敗給司晨了。"))
+                list_talk.append(TextSendMessage(text="今天是日翔期待已久的實習說明會，說明通常會在導師時間統一舉辦。在這一天，會有許多企業會過來介紹徵才條件與福利等等，對有意參加產業實習的同學們無疑是十分重要的一天。除了不打算升學的日翔以外，同樣想參加實習的真澄和單純前來陪同的曉光也都過來了。"+"\n"+"每一年會參加輔大資管系產業實習計畫的企業都不一樣，不過日翔畢竟使用了code/140.136，於是他多少知道台上的企業大概有哪些。自然，這三年多重來的時間裡，日翔也為此做好了準備，除了在院必修的部分不怠慢之外，也把系上的程式語言課程給全修了！"+"\n"+"他很有信心這樣充實的大學生活，可以為他迎來一個更好的未來。"+"\n"+"他看著台上正好輪到了自己想去的企業之一，主動詢問坐在旁邊的真澄：「噯，真澄你覺得這家怎麼樣？」"+"\n"+"真澄思索了一下，表示他還想聽聽接下來其他企業的福利如何再決定：「我再想想吧，畢竟這很可能會是畢業後的第一份工作嘛。」"+"\n"+"「說得也是……」聽到這裡，日翔突然有感而發——他的大學生活明明已經是經歷了第二次，卻總對時光的飛逝感到措手不急，四年的時間很快又很慢，如今，所有人又將要啟程，隨著自己所定下的命運而飛往不同的方向。"+"\n"+"曉光似乎注意到了日翔心境上的變化，便小聲地對他傳達心情：「即使前程相異，我也會在你身邊……守護我們的約定。」"+"\n"+"日翔似乎因為見到了曉光感性的一面而有些動容。"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='選項',
+                    template=ButtonsTemplate(
+                        title='選項',
+                        text='選項：當然，因為我們已經約好了。',
+                        actions=[
+                            MessageAction(
+                                label='選項',
+                                text='選項：當然，因為我們已經約好了。'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
