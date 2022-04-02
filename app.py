@@ -2136,6 +2136,50 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    #49答案
+    elif event.message.text=="國璽樓":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="48":
+                worksheet.update(list[1],int(49))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="幾週後的下午，日翔準備要去濟時樓找專題開發用的程式語言教學書。這次他們選定的主題要自己學全新的程式語言，是一款他出社會後剛好沒有接觸過的語言。畢竟他實在不想拖曉光等人的後腿，於是他打算先惡補一下。"+"\n"+"輔仁大學圖書館的館藏豐富。截至2021年7月31日的統計為止，光是實體藏書合計就有147.8萬冊，若是算上可提供學生使用的電子書籍292.2萬冊就更驚人了！只要是想找學術用資料，先來圖書館跑一趟可以省下不少買書的錢，日翔這麼認為。"+"\n"+"日翔已經在昨天晚上利用輔大圖書館的館藏查詢功能找好想看的藏書號了，因此只要依照書號跟濟時樓的樓層分類做比較，就可以找到想看的書。通常一本書可以借一個月，日翔覺得借閱的時間非常充足。"+"\n"+"他正置身於一個個佇立的書架叢，認真端詳每一本書的書脊跟書號：「嗯、糟糕……到底在哪裡呢？」"+"\n"+"每一本程式教學書都跟磚塊一樣又厚又重，而且樣子都長得差不多，實在是比想像中難找到網路上都推薦的那一本。正當日翔想放棄，打算隨便抓一本回去的時候——他便在視覺的一角看到了他想借的書，同樣的書籍有三本，而且全部都放在一起。"+"\n"+"找到了！……等等，旁邊居然有人要拿那本書？日翔看到了一隻纖白的手似乎因為搆不到上方的那本程式書而正奮力地向上伸展著。"+"\n"+"至於那隻手的主人……日翔仔細一看，竟然是正在取書的曉光！她似乎差一點就夠得著那些書籍了，可輔大圖書館的書架高度對日翔來說，就算放在書架的最上面也可以輕鬆拿到。日翔思索了一下，便在內心感謝了一下父母生給自己的身高優勢。"+"\n"+"接著，日翔連墊腳尖都沒有就輕而易舉地取了兩本下來，然後將其中一本遞給曉光：「來，給妳吧。」"+"\n"+"面對曉光顯得有些驚喜的樣子，日翔有些得意的回應：「我們借好書之後，去外面聊吧。」"))
+                list_talk.append(TextSendMessage(text="#50 以下何者不是輔大正確的「圖書館-館藏種類」配對？"+"\n"+"（Ａ）公博樓圖書館-人文、藝術、歷史、哲學"+"\n"+"（Ｂ）國璽樓圖書館-公共衛生、心理學、食品營養"+"\n"+"（Ｃ）濟時樓圖書總館-資訊、法律、教育"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#50',
+                    template=ButtonsTemplate(
+                        title='#50',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="公博樓圖書館-人文、藝術、歷史、哲學"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="國璽樓圖書館-公共衛生、心理學、食品營養"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="濟時樓圖書總館-資訊、法律、教育"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
