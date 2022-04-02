@@ -2201,6 +2201,46 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    #51答案
+    elif event.message.text=="公博樓":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="50":
+                worksheet.update(list[1],int(51))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="借完書後，兩人坐在濟時樓外面的長椅閒聊，在鬱鬱蔥蔥的大樹下，即使是偏熱的天氣也能在樹蔭下享受到涼爽的滋味。"+"\n"+"「謝謝你。」曉光拈起了落在自己裙子上的綠葉把玩，一邊對日翔表達感謝。"+"\n"+"「不會啦，沒想到可以在借書的時候看到妳。」難得可以幫助到曉光，日翔的心情也好了起來，臉上也明顯地維持著真心的笑意。"+"\n"+"曉光看了看身旁的人臉上的表情，也帶著微笑回應：「沒想到日翔選書的品味跟我越來越近了。」"+"\n"+"沒想到今天能再見到她的笑臉，而且這是在誇我嗎……！在喜歡的人面前總是容易顯得反常，日翔焦急了起來：「哎、沒有啦，只是有先爬文而已！」"+"\n"+"只是和曉光對視而已我就這麼害臊，希望她沒有注意到自己的臉已經開始發熱了……日翔內心很是慌亂地想。"+"\n"+"「這個作者的教學很清楚，除了全彩印製之外，練習題目難度也剛剛好，重點是還附上了答案跟小建議，初學者容易錯的地方也會特別標記起來。要是我想買教學書，都會首先考慮他的著作。」好像是突然提到感興趣的話題，曉光的話好像就變多了一些，語速好像也變快了一點。"+"\n"+"聞言，日翔便感嘆：「曉光對這個真瞭解啊，大一的時候也是有妳在我才知道我差點買了一樣的書。」"+"\n"+"聽到了誇獎自己的話，曉光倒是表現得很謙虛：「只是剛好記得而已……而且，日翔你剛剛也幫助了我。」"+"\n"+"如果是阿司被我這樣誇的話，一定是洋洋得意的樣子吧……日翔把她跟自己的好友進行了一番殘酷的比對，得出了這兩人果然差距很大的結論。"))
+                list_talk.append(TextSendMessage(text="突然，曉光停止把玩葉子的動作並緊緊地將它握進掌心，像是做了什麼覺悟一般。她努力正視著日翔那對琥珀色的雙眼：「唔……對了，日翔，下禮拜三有空嗎？」"+"\n"+"面對突來的問題，日翔感到驚訝，並輕輕點了點頭。"+"\n"+"雖然表面上只有點頭而已，但實際上日翔已經是受到了晴天霹靂——曉光她，居然主動問別人有沒有空，該不會是想要約我去讀書會之類的吧，而且在我決定好約她之前，她居然是主動先邀請的那個……即使是讀書會，也是讓人很期待的事情啊……"+"\n"+"曉光自然沒有發現日翔腦內的風暴，她繼續開口：「要不要來我家？」"))
+                carousel_template_message = TemplateSendMessage(
+                    alt_text='選項',
+                    template=CarouselTemplate(
+                        columns=[
+                            CarouselColumn(
+                                title='選項',
+                                text='？？？？！',
+                                actions=[
+                                    MessageAction(
+                                        label='選擇',
+                                        text='？？？？！'
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(carousel_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
