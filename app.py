@@ -2728,9 +2728,9 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="「資管系ＸＸ周年運動會」的公告一發布在班群，司晨就馬上興奮地告知坐在隔壁的日翔。沒想到專題發表在即，居然還會有系上的活動！日翔心想，幸好小組的專題已經準備得差不多了，多參加個師生運動會絕對是綽綽有餘的，他想趁著這次機會，再多多表現自己在籃球場上馳騁的英姿。"+"\n"+"據說這次的師生運動會在中美堂舉辦，那應該不會再有大一時司晨發生的窘況——為了耍帥反而摔了一跤了吧。"+"\n"+"「這次我不會搶你風頭，一旦有給你表現的就交給你啊！給曉光看看你帥氣的樣子！」司晨搭上了日翔的肩膀，好像在往他身上加持一些勇氣。"+"\n"+"「哇靠……阿司，你這麼講義氣真好。」日翔想到以前的司晨也是這麼挺朋友，突然發自內心地感嘆有這位朋友真好。"+"\n"+"不過，司晨本人倒是很快就因為這樣的讚賞得意了起來：「哎？嘿嘿，謝謝誇獎。反之，你要好好表現啊，不要辜負我給你的機會！」"+"\n"+"日翔是很習慣他的反應了，拍拍他的肩膀笑道：「哈哈，當然啦。」"+"\n"+"這時，坐在前頭的曉光回過頭來詢問：「你們在聊資管系的師生運動會嗎？」"+"\n"+"「對啊，之後的籃球比賽你會來看嗎？」日翔順勢向她提出了邀請。他發現，自從那次發現彼此就是對方的兒時玩伴之後，曉光就變得比以往更加開朗了起來。"+"\n"+"「嗯。我想去幫你加油。」曉光笑著回應。"+"\n"+"「好期待那天的到來啊！」司晨看著好哥們跟喜歡的女生互動也不禁動容了起來。他心想，說不定他也有機會在師生運動會找到一個喜歡的小仙女呢？"))
                 list_talk.append(TextSendMessage(text="#59 輔大資管系學會想要租借中美堂場地舉辦師生運動會，請問應該到哪個單位租借場地呢？"+"\n"+"（Ａ）心園"+"\n"+"（Ｂ）宜真宜善學苑"+"\n"+"（Ｃ）舊醫學大樓一樓右側"))
                 buttons_template_message = TemplateSendMessage(
-                    alt_text='#57',
+                    alt_text='#59',
                     template=ButtonsTemplate(
-                        title='#57',
+                        title='#59',
                         text='請選出正確答案',
                         actions=[
                             MessageAction(
@@ -2793,6 +2793,27 @@ def handle_message(event):
                     )
                 )
                 list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #60答案
+    elif event.message.text=="SJF法則":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="59":
+                worksheet.update(list[1],int(60))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#61 某IP採用IPv4，且網路為占24bit，請問可用的主機數量有多少？（請以「Ｏ」回答，Ｏ數量不代表正確答案字數。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
