@@ -2605,6 +2605,45 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    #58答案
+    elif event.message.text=="我今天絕對要全力以赴。":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="57":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="日翔抵達IKEA建築內的時候，曉光已經在裡面等了——可實際上，日翔是提早了20分鐘到達約定地點的。曉光會提得這麼早到，實際上有些超乎他的意料，畢竟他本來就因為早起而打算提早到達等待曉光，順便在空閒的時間做好和曉光約會的心理準備。"+"\n"+"可現在一切計畫都被打亂了！沒想到曉光也是習慣早到的人……得要靠臨場反應了。"+"\n"+"「曉光！你好早到啊！」日翔往曉光的方向奔去，朝她大幅度地揮了揮手。"+"\n"+"「不會……只是剛好早起了些。倒是日翔你氣色好像不太好。」"+"\n"+"「沒、沒有啊，應該是你的錯覺吧。」"+"\n"+"日翔突然有一個大膽的猜想：曉光會不會跟自己一樣，其實半夜都沒睡好覺啊！但日翔其實並沒有特別去留意曉光的神氣，反倒是被她的服裝所吸引——她的女神打扮得並不是太華麗、也不是太簡約，她身穿一襲米色的燈籠袖襯衫洋裝，外頭再加了一件棕色馬甲背心，再搭配了一只側背的貓咪小包。曉光本身就看起來就是乾淨氣質，這套服裝在所謂氣質之上又更增添了些復古文青的風味，同時因為肩上的貓咪包包而不顯得過於成熟。"+"\n"+"「妳今天的穿著真好看啊。」日翔看著看著，決定坦率地對曉光的穿著表示讚賞。"+"\n"+"「欸、」曉光似乎是因為被肯定而露出了有些欣喜的樣子，她問道：「真的嗎？」"+"\n"+"「我不會騙你啦。走吧。」語畢，日翔決定豁出去，決定就這樣直接拉著她的手走往賣場裡頭。不過因為有些緊張，日翔並沒有看見被突然牽起了手而滿臉通紅的曉光。"+"\n"+"在兩人視線的角落，似乎有另外一組人馬正在觀察他們……"+"\n"+"「哇、這兩個人的進展比想像中快啊。」"+"\n"+"「對啊對啊！好興奮！……呃，真澄？你怎麼在這裡？」"+"\n"+"「司晨，你也來湊熱鬧啊，那妳等等一定要給我小聲點，別被他們發現了。」"))
+                list_talk.append(TextSendMessage(text="「啊、我是不是……不該擅自拉著妳的手的？抱歉！」兩人總算從門口一路搭手扶梯到了賣場內，可日翔這才意識到自己是不是不該擅自就牽別人的手，應該要徵得對方的同意才對。"+"\n"+"曉光並沒有忽視日翔的道歉，可她回答得極其小聲，卻還是被日翔一字不差地聽見了：「……沒關係，我不在意。」"+"\n"+"正當日翔打算放開手時，才發現曉光似乎沒有放開的意思。曉光是不是想要就這樣手牽著手一起逛呢？日翔因為完全沒有料想到這樣的展開而大腦一片空白，但他當然沒有就這樣甩開曉光，而是再次握好了曉光的手心。"+"\n"+"日翔突然發現，跟曉光手牽手感覺居然令人倍感溫暖、且十分熟稔。"))
+                carousel_template_message = TemplateSendMessage(
+                    alt_text='解鎖記憶碎片',
+                    template=CarouselTemplate(
+                        columns=[
+                            CarouselColumn(
+                                title='記憶碎片-3',
+                                text='交心',
+                                actions=[
+                                    MessageAction(
+                                        label='觀看記憶碎片-3',
+                                        text='與 ░░░ 的約定'
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(carousel_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
