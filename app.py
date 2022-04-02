@@ -2048,24 +2048,20 @@ def handle_message(event):
                 worksheet.update(list[1],int(46))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="接著，日翔就沒有看到司晨再傳訊息過來，他估摸一下時間，大概是他快要到教室來了。"+"\n"+"果不其然，他馬上就聽到了推開門的聲音，甚至聽見有人喃喃：「黑冠麻鷺黑冠麻鷺……」"+"\n"+"「嗨。為什麼你要一直講黑冠麻鷺啊？」日翔傻眼地看著進門的司晨。"+"\n"+"「久等啦。我想說以後如果想偷損討厭的教授，我就可以說他是黑冠麻鷺。」"+"\n"+"別把腦子用在這種地方好嗎——這話尚未說出口，日翔就被司晨手邊打開來的餐點吸引了注意力。他們最後其實並沒有選擇高價的餐點，只是叫了附近聽說評價不錯的小火鍋來吃而已。"+"\n"+"日翔被來自司晨桌上的香氣吸引，忍不住評價：「哇噻，這家的麻辣鍋好香哦！」"+"\n"+"司晨一邊興奮的回應，一邊把日翔的餐點從塑膠袋拿出來，自顧自地幫忙掀開蓋子：「嘿嘿，對吧。不過阿日你的起司牛奶鍋感覺也不錯啊，我夾你的豬血糕走囉。」"+"\n"+"日翔點點頭同意司晨擅自把豬血糕夾走的行為，然後把自己的起司牛奶鍋推到眼前，他把連起來的竹筷子拆開，猶豫著是否要開口提起關於兒時回憶的事情……雖然不是什麼大事，但他仍然不知道要怎麼和自己最好的朋友開口。"+"\n"+"躊躇了幾秒後，他還是帶著試探語氣地問道：「欸阿司……我可以問你一個問題嗎？」"+"\n"+"「好啊，怎麼啦？」司晨一邊咬著牛奶起司味的豬血糕一邊回應。他好像注意到了日翔的語氣變化，於是他也收起平時語氣裡帶點嘻皮笑臉的感覺，要不是他還一邊吃東西，可能會覺得他突然變得正經了起來。"))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='選項',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='選項',
-                                text='有沒有可能我以前其實見過曉光，只是我忘了？',
-                                actions=[
-                                    MessageAction(
-                                        label='選擇',
-                                        text='有沒有可能我以前其實見過曉光，只是我忘了？'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='選項',
+                        text='有沒有可能我以前其實見過曉光，只是我忘了？',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='有沒有可能我以前其實見過曉光，只是我忘了？'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -2217,24 +2213,20 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="借完書後，兩人坐在濟時樓外面的長椅閒聊，在鬱鬱蔥蔥的大樹下，即使是偏熱的天氣也能在樹蔭下享受到涼爽的滋味。"+"\n"+"「謝謝你。」曉光拈起了落在自己裙子上的綠葉把玩，一邊對日翔表達感謝。"+"\n"+"「不會啦，沒想到可以在借書的時候看到妳。」難得可以幫助到曉光，日翔的心情也好了起來，臉上也明顯地維持著真心的笑意。"+"\n"+"曉光看了看身旁的人臉上的表情，也帶著微笑回應：「沒想到日翔選書的品味跟我越來越近了。」"+"\n"+"沒想到今天能再見到她的笑臉，而且這是在誇我嗎……！在喜歡的人面前總是容易顯得反常，日翔焦急了起來：「哎、沒有啦，只是有先爬文而已！」"+"\n"+"只是和曉光對視而已我就這麼害臊，希望她沒有注意到自己的臉已經開始發熱了……日翔內心很是慌亂地想。"+"\n"+"「這個作者的教學很清楚，除了全彩印製之外，練習題目難度也剛剛好，重點是還附上了答案跟小建議，初學者容易錯的地方也會特別標記起來。要是我想買教學書，都會首先考慮他的著作。」好像是突然提到感興趣的話題，曉光的話好像就變多了一些，語速好像也變快了一點。"+"\n"+"聞言，日翔便感嘆：「曉光對這個真瞭解啊，大一的時候也是有妳在我才知道我差點買了一樣的書。」"+"\n"+"聽到了誇獎自己的話，曉光倒是表現得很謙虛：「只是剛好記得而已……而且，日翔你剛剛也幫助了我。」"+"\n"+"如果是阿司被我這樣誇的話，一定是洋洋得意的樣子吧……日翔把她跟自己的好友進行了一番殘酷的比對，得出了這兩人果然差距很大的結論。"))
                 list_talk.append(TextSendMessage(text="突然，曉光停止把玩葉子的動作並緊緊地將它握進掌心，像是做了什麼覺悟一般。她努力正視著日翔那對琥珀色的雙眼：「唔……對了，日翔，下禮拜三有空嗎？」"+"\n"+"面對突來的問題，日翔感到驚訝，並輕輕點了點頭。"+"\n"+"雖然表面上只有點頭而已，但實際上日翔已經是受到了晴天霹靂——曉光她，居然主動問別人有沒有空，該不會是想要約我去讀書會之類的吧，而且在我決定好約她之前，她居然是主動先邀請的那個……即使是讀書會，也是讓人很期待的事情啊……"+"\n"+"曉光自然沒有發現日翔腦內的風暴，她繼續開口：「要不要來我家？」"))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='選項',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='選項',
-                                text='？？？？！',
-                                actions=[
-                                    MessageAction(
-                                        label='選擇',
-                                        text='？？？？！'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='選項',
+                        text='？？？？！',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='？？？？！'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -2255,24 +2247,20 @@ def handle_message(event):
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="51":
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="對日翔來說，她的攻勢可謂一波未平一波又起。不會吧！第一次被喜歡的女生邀請就是去家裡……他畢生都還沒有去過異性朋友的家裡……頂多就是以前去過男同學的家裡有遇到別人家的姊姊而已。日翔馬上就羞得要燒焦了，他結結巴巴地回應：「等等、這、會不會太突然……」"+"\n"+"「我記得真澄也沒課，如果可以的話幫我問問司晨跟宇桓吧。需要長時間開發專題的話家裡還是比圖書館方便，也可以一起討論期中考。」"+"\n"+"原來是大家一起去啊，而且是做專題……沒想到是要去曉光家裡做正事中的正事。日翔的內心因為想到專題的壓力而失落了一瞬，但也僅僅有一瞬——畢竟他可是第一次有機會去喜歡的女生家裡啊。"+"\n"+"接著，日翔連別人的行程都沒確定，就擅自替其他組員答應了邀請：「當然可以！他們都有空！」"+"\n"+"也幸好這份擅自決定的魯莽沒有害了他，日翔後來私下知會司晨跟宇桓的時候，他們都沒有拒絕下周三的聚會。"))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='解鎖記憶碎片',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='記憶碎片-1',
-                                text='交集',
-                                actions=[
-                                    MessageAction(
-                                        label='觀看記憶碎片-1',
-                                        text='A⋂B'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='交集',
+                        text='A⋂B',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='A⋂B'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -2293,24 +2281,20 @@ def handle_message(event):
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="51":
                 list_talk=[]
                 list_talk.append(ImageSendMessage(original_content_url='https://i.imgur.com/V3ojX1A.jpg', preview_image_url='https://i.imgur.com/V3ojX1A.jpg'))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='繼續看主線故事',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='繼續看主線故事-1',
-                                text='繼續看主線故事-1',
-                                actions=[
-                                    MessageAction(
-                                        label='選擇',
-                                        text='繼續看主線故事-1'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='繼續看主線故事-1',
+                        text='繼續看主線故事-1',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='繼續看主線故事-1'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -2332,24 +2316,20 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="終於到了眾人約定前往曉光家的時間，專題組一行人已經來到了曉光家門口。曉光首先走在最前頭開完了鎖，司晨便搶先步伐跑進了別人家裡。"+"\n"+"可能是一進門就可以看見玄關跟大大的客廳，還有採光良好的落地窗跟分布於客廳的木製貓爬架的緣故，司晨居然像小學生遠足一樣興奮地跑來跑去：「好耶！這裡好大喔！！」"+"\n"+"曉光安靜地瞄了一眼窩在紙箱裡休息的灰色胖貓，提醒道：「不要用跑的，德魯貝會嚇到。」"+"\n"+"似乎是因為被主人點名，德魯貝對著剛剛還在亂跑的司晨發出了意義不明的貓叫聲。有一瞬間，司晨好像覺得德魯貝的眼神像是在看笨蛋一樣，但願只是個錯覺。"+"\n"+"日翔看了一眼紙箱中的貓咪，心想那隻「德魯貝」跟曉光手機殼上面的貓果然一模一樣，只是體積好像比想像中的大很多。他好奇地走向貓咪打算多觀察一下他，並隨口提起了問題：「哇，曉光，你現在只跟德魯貝住嗎？」"+"\n"+"話說回來，這隻貓還真胖啊，在曉光家裡過得這麼好嗎？"+"\n"+"曉光確認好所有人都進到家中後鎖上了門，回應：「我媽今天剛好出差不在。」"+"\n"+"不知為何，日翔竟然覺得這隻貓讓自己感到格外的熟悉，但明明應該是第一次見到德魯貝才對——他困惑地想，這種「似曾相識的熟悉感」好像之前在哪裡經歷過了一回，但是他突然想不起來到底是什麼時候的事情，有可能是錯覺吧。"+"\n"+"下一刻，德魯貝便擅自跳進了眼前人類的懷裡，嚇得日翔差點沒接住牠。"+"\n"+"「哇！好重！」日翔感嘆，不過還是很欣然地抱住了對自己毫無戒心的大貓咪。"+"\n"+"「看來德魯貝很喜歡你。」曉光並沒有制止德魯貝跟日翔的互動，也沒有反對其他人在自己家裡參觀的行為，而是一邊打開冰箱拿出招待客人的飲品和點心。"+"\n"+"「所以妳才讓我們到妳家啊，雖然之前就猜想可能很大，但沒想到這麼氣派。」真澄已經擅自坐到了客廳的沙發上，或許是因為足夠熟稔，認為曉光不會介意別人碰東西，於是她沒有經過詢問就直接抱起了一旁貓咪圖案的小靠枕。"+"\n"+"「普普通通吧。」用托盤端著五杯飲料的曉光和坐在沙發上看手機的宇桓不約而同地回應真澄，只不過態度很明顯是一個謙虛一個高傲。"+"\n"+"「這是葡萄汁，」曉光像個服務生一樣熟練地把五盞玻璃杯裝的葡萄汁一一放在乾淨的桌子上：「冰箱裡還有我昨天去亞O克買的北海道生乳捲，等等要是討論累了可以一起吃。」"+"\n"+"「日翔！！快點過來，我們要開始討論囉！」在沙發旁邊席地而坐的司晨朝著還在跟德魯貝玩的日翔大喊。"+"\n"+"「小聲一點，德魯貝會嚇到。」曉光再次出聲提醒，很明顯是在平靜中多了些無奈的語氣。"+"\n"+"日翔的內心仍然帶著說不出口的困惑——我跟那隻貓真有那麼熟嗎？但看看現狀，應該也沒有人可以回答這個奇怪的問題，他只得抱著不想離開懷裡的貓咪走向桌子旁：「啊、好，我馬上過來。」"))
                 list_talk.append(TextSendMessage(text="終於討論得告一段落，眾人也結束了期中考的讀書會——因為大三的必修課跟理論課都不多，所以讀書時間自然是結束得比想像中要快。宇桓已經幫所有人叫了晚餐的外送，於是所有人便決定吃個晚餐再散會。"+"\n"+"「噯、日翔，大好機會啊！臉書通知寫說曉光的生日就快到了！要不要約她出去玩？」司晨趁著曉光到廚房洗吃蛋糕用的碗盤時，偷偷對日翔建議了一番。"+"\n"+"「說得也是……不過我對於要去哪邊玩實在沒什麼頭緒。」日翔的頭垂了下來，很是懊惱的樣子。"+"\n"+"剛剛還放鬆到開始躺在沙發上看手機的真澄似乎是聽見有意思的話題而坐了起來：「想對我家曉光做什麼？我就知道你肯定對她有意思……」"+"\n"+"「咳，日翔，我真的一點都不介意，只是想提醒你別約她去太需要跑跑跳跳的地方，她體力不是很好。」雖然說了「不介意」但日翔總覺得真澄的話裡明顯帶了醋意，也帶了點「真澄我可比你了解曉光」的較勁意味。"+"\n"+"哇……這就是女生跟女生的交情嗎。日翔稍有不解地默默感嘆。不過自己有表現出來喜歡曉光嗎？日翔對此提出疑問：「哎？有這麼明顯嗎？」"+"\n"+"「畢竟曉光是系花，男生對她有意思不奇怪吧。而且再怎麼說，這麼明顯應該也只有曉光本人沒有看出來了。」真澄擺擺手，表現出好像不是第一次應付這種狀況的樣子。"+"\n"+"宇桓只是點頭表示同意真澄的說法，倒是不知道他心裡在想些什麼。"+"\n"+"「找個放學過後短時間在學校附近轉轉的地方，應該不錯吧……」日翔單手抵著下巴思索了起來。他並沒有想要第一次邀約就挑戰和曉光玩一整天，還是先以短時間又輕鬆的邀約為主吧。"))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='解鎖記憶碎片',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='記憶碎片-2',
-                                text='交換',
-                                actions=[
-                                    MessageAction(
-                                        label='觀看記憶碎片-2',
-                                        text='向陽融化之冰'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='交換',
+                        text='向陽融化之冰',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='向陽融化之冰'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -2370,24 +2350,20 @@ def handle_message(event):
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="51":
                 list_talk=[]
                 list_talk.append(ImageSendMessage(original_content_url='https://i.imgur.com/ixtqZOa.jpg', preview_image_url='https://i.imgur.com/ixtqZOa.jpg'))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='繼續看主線故事',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='繼續看主線故事-2',
-                                text='繼續看主線故事-2',
-                                actions=[
-                                    MessageAction(
-                                        label='選擇',
-                                        text='繼續看主線故事-2'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='繼續看主線故事-2',
+                        text='繼續看主線故事-2',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='繼續看主線故事-2'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -2581,24 +2557,20 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="「學校原來就有諮詢的資源啊……不過我想這次還是一個人解決就好，謝謝你。」日翔從來不曉得學校居然有專門的諮商服務，而且除了許多老師都會協助進行個人輔導以外，居然還有團體輔導。如果以後真的有需要的話，那或許他也會考慮去諮商看看吧。日翔想到了畢業之後去外面找個諮商就花了他不少錢，瞬間感覺到了學校的良心。"+"\n"+"「游日翔。」宇桓嚴肅地喊住日翔的全名，他再次不顧話題地開口：「你再繼續猶豫不決的，我就要出手了。」"+"\n"+"日翔直覺性地感受到，這或許是對自己的宣戰。他有些驚訝：「欸？欸？難道，你也對曉光……」"+"\n"+"還等不到宇桓的回應，他便頭也不回的離開了。日翔想到之前去曉光家的時候，真澄也提到「男生們對曉光有意思」完全不奇怪……甚至從最當初想起，宇桓想加入專題組，或許就是因為曉光吧……雖說如此，但日翔不知為何地感覺宇桓可能是在鼓勵自己，沒想到這個人比想像中還要好。"+"\n"+"或許也是因為這一樁突來的衝擊，日翔決定現在就傳LINE邀請曉光，他點進了那個熟悉的灰色貓咪頭貼：「曉光，下禮拜11月24日是你的生日吧？要一起出去玩嗎？」"+"\n"+"對方很快就回了一個貓咪問號的貼圖，接著回應：「和大家一起？」"+"\n"+"日翔見到曉光秒回便緊張地嚥了下口水——平常都沒什麼傳訊息的機會，現在一交流就是要邀請他兩個人約會……真叫人害羞的。"+"\n"+"他敲了敲鍵盤，趕緊回應或許還在等待自己回覆的曉光：「我們兩個人就好。」"))
                 list_talk.append(TextSendMessage(text="終於盼到了曉光生日的那一天，日翔甚至緊張得整晚都沒有睡好……整個晚上日翔幾乎都在思考自己要預備些什麼話題、穿什麼衣服、或者該怎麼打理自己的髮型。"+"\n"+"也因為整晚幾乎沒睡好，日翔甚至比預計時間早起了整整一小時。雖然提出邀請的是自己，但也壓根沒想到自己真會有和曉光約會的一天。"+"\n"+"他們今天要一起去IKEA新莊店逛逛，除了可以添購一些家中小物之外，日翔聽說IKEA還被鄉民譽為「被家具耽誤的餐廳」，他早就想去一探究竟了。此外，曉光也表示想要買一隻鯊鯊回家，於是兩人一拍即合，便馬上決定了要在這裡相聚。"+"\n"+"想到了跟那個「Code/140.136」的約定，日翔再度燃起了鬥志。"))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='選項',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='選項',
-                                text='我今天絕對要全力以赴。',
-                                actions=[
-                                    MessageAction(
-                                        label='選擇',
-                                        text='我今天絕對要全力以赴。'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='選項',
+                        text='我今天絕對要全力以赴。',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='我今天絕對要全力以赴。'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -2620,24 +2592,20 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="日翔抵達IKEA建築內的時候，曉光已經在裡面等了——可實際上，日翔是提早了20分鐘到達約定地點的。曉光會提得這麼早到，實際上有些超乎他的意料，畢竟他本來就因為早起而打算提早到達等待曉光，順便在空閒的時間做好和曉光約會的心理準備。"+"\n"+"可現在一切計畫都被打亂了！沒想到曉光也是習慣早到的人……得要靠臨場反應了。"+"\n"+"「曉光！你好早到啊！」日翔往曉光的方向奔去，朝她大幅度地揮了揮手。"+"\n"+"「不會……只是剛好早起了些。倒是日翔你氣色好像不太好。」"+"\n"+"「沒、沒有啊，應該是你的錯覺吧。」"+"\n"+"日翔突然有一個大膽的猜想：曉光會不會跟自己一樣，其實半夜都沒睡好覺啊！但日翔其實並沒有特別去留意曉光的神氣，反倒是被她的服裝所吸引——她的女神打扮得並不是太華麗、也不是太簡約，她身穿一襲米色的燈籠袖襯衫洋裝，外頭再加了一件棕色馬甲背心，再搭配了一只側背的貓咪小包。曉光本身就看起來就是乾淨氣質，這套服裝在所謂氣質之上又更增添了些復古文青的風味，同時因為肩上的貓咪包包而不顯得過於成熟。"+"\n"+"「妳今天的穿著真好看啊。」日翔看著看著，決定坦率地對曉光的穿著表示讚賞。"+"\n"+"「欸、」曉光似乎是因為被肯定而露出了有些欣喜的樣子，她問道：「真的嗎？」"+"\n"+"「我不會騙你啦。走吧。」語畢，日翔決定豁出去，決定就這樣直接拉著她的手走往賣場裡頭。不過因為有些緊張，日翔並沒有看見被突然牽起了手而滿臉通紅的曉光。"+"\n"+"在兩人視線的角落，似乎有另外一組人馬正在觀察他們……"+"\n"+"「哇、這兩個人的進展比想像中快啊。」"+"\n"+"「對啊對啊！好興奮！……呃，真澄？你怎麼在這裡？」"+"\n"+"「司晨，你也來湊熱鬧啊，那妳等等一定要給我小聲點，別被他們發現了。」"))
                 list_talk.append(TextSendMessage(text="「啊、我是不是……不該擅自拉著妳的手的？抱歉！」兩人總算從門口一路搭手扶梯到了賣場內，可日翔這才意識到自己是不是不該擅自就牽別人的手，應該要徵得對方的同意才對。"+"\n"+"曉光並沒有忽視日翔的道歉，可她回答得極其小聲，卻還是被日翔一字不差地聽見了：「……沒關係，我不在意。」"+"\n"+"正當日翔打算放開手時，才發現曉光似乎沒有放開的意思。曉光是不是想要就這樣手牽著手一起逛呢？日翔因為完全沒有料想到這樣的展開而大腦一片空白，但他當然沒有就這樣甩開曉光，而是再次握好了曉光的手心。"+"\n"+"日翔突然發現，跟曉光手牽手感覺居然令人倍感溫暖、且十分熟稔。"))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='解鎖記憶碎片',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='記憶碎片-3',
-                                text='交心',
-                                actions=[
-                                    MessageAction(
-                                        label='觀看記憶碎片-3',
-                                        text='與 ░░░ 的約定'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='交心',
+                        text='與 ░░░ 的約定',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='與 ░░░ 的約定'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -2661,24 +2629,20 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="解鎖照片！趕快去「個人檔案」看看！"))
                 list_talk.append(ImageSendMessage(original_content_url='https://i.imgur.com/1sdS8xa.jpg', preview_image_url='https://i.imgur.com/1sdS8xa.jpg'))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='繼續看主線故事',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='繼續看主線故事-3',
-                                text='繼續看主線故事-3',
-                                actions=[
-                                    MessageAction(
-                                        label='選擇',
-                                        text='繼續看主線故事-3'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='繼續看主線故事-3',
+                        text='繼續看主線故事-3',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='繼續看主線故事-3'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -2944,24 +2908,20 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="解鎖大四劇情"+"\n\n"+"日翔喜歡貓是從小時候開始的。還記得在尚未搬家的時候，幼小的他就曾經在路邊救過一隻虛弱的小野貓。日翔的印象頗為深刻，那是一個下課後的傍晚，他跟媽媽一起在一棵大樹旁發現了一隻虛弱瘦小的灰色幼貓。"+"\n"+"「哇，媽媽……他好像很虛弱的樣子。」小日翔蹲在歸家的路上看著倒在路上的小傢伙，很是擔憂的樣子。畢竟這可是實實在在的一個小生命，再怎麼說，日翔也無法接受就這樣忽視牠就離開現場。"+"\n"+"而日翔的媽媽也見到了這一幕，她馬上就想到了一個好主意，便向自己的孩子提議：「日翔，我們把他送到獸醫去吧。」"+"\n"+"做這樣的決定的原因有二：一來是這對孩子也是一個生命教育的機會，二來是她也並不想眼睜睜看著小貓受苦。"+"\n"+"在動物醫院裡，醫生很有耐心地替小貓進行檢查。確認沒有外傷且後，便先跟日翔媽媽說好這隻流浪貓支付的費用醫院並不會幫忙給付。而日翔媽媽趁勢告訴日翔，流浪動物沒有跟人類依樣的健保，而醫生的檢查用品也都要花不少錢，動物醫院自然沒有辦法做自行吸收成本的免費服務。要是在路邊看到受傷的小動物卻沒有錢，是不能貿然送到動物醫院的。"+"\n"+"日翔媽媽同意支付費用後，醫生判斷這隻小貓似乎只是餓昏了而已，於是醫生便選擇幫忙補充營養，並在兩人離開醫院之前告知兩人這隻貓很可能是跟媽媽走散了。如果沒有打算要飼養的話，原地放生的存活率也不高。"+"\n"+"於是，這個小傢伙便在日翔家待了一段時間，畢竟家裡沒有預計要養貓，所以日翔的媽媽是一邊詢問有沒有好友可以收留，一邊照顧小貓的。"+"\n"+"自然，有愛心的日翔也出了不少心力，所以日漸恢復的小貓也與他很是親密，只要日翔一回家，小貓便會反常地像狗狗一樣，主動迎接這位拯救了自己的孩子。不過，這樣的日子並不長，小貓僅是在這裡居住了一個禮拜，就因為日翔媽媽找到可以收養的中途之家而離開了家中。"))
                 list_talk.append(TextSendMessage(text="開學的前一天下午，日翔跟曉光兩個人坐在新莊運動公園的草地上談天：「有沒有可能，妳家的德魯貝就是我以前養過的小貓啊？牠剛好也是灰色的耶。」"+"\n"+"日翔開口完便想到之前去曉光家的時候抱著德魯貝的重量，和小時候遇到的貓完全是兩回事，想了想便開始吐槽自己剛剛說的話：「哈哈，可是德魯貝這麼胖，應該不可能吧？」"+"\n"+"確實除了毛色以外，無論身形還是大小都無法對小時候那隻貓跟德魯貝進行聯想……可惜日翔並沒有給他的小貓拍照，他也並沒有問媽媽那隻貓最後怎麼樣了。"+"\n"+"「哎、德魯貝只是毛蓬鬆了一點，而且又不愛運動……唔，好像真的有點胖……」曉光本來似乎想認真地反駁，但後來又越說越小聲。"+"\n"+"「我們可以幫牠制定一個減重計畫呀。」德魯貝好像是曉光小學的時候領養的，年紀也真的不小了……日翔想到德魯貝的健康問題，對此進行了提議。"+"\n"+"「說得也是……要不先從減少零食開始好了。」"+"\n"+"日翔和曉光的交往也過了兩三個月的時間，兩個人早就熟悉了起來，日翔可以感覺到曉光和自己的關係日漸親密，這對他而言是一件很幸福的事情——彼此之間雖然還是很慢熱，但直到今天也已經是無話不談的程度了。"))
                 list_talk.append(TextSendMessage(text="日翔睜開雙眼，只見自己竟然置身於一團迷霧之中……等等，又是這個謎霧？日翔很快地就回憶起了兩年前也進入過這個夢境！無庸置疑，這絕對是那個「Code/140.136」所製造的。"+"\n"+"「『藉著對知識真理的追求，修德行善的用心，欣賞宇宙萬物之美，以體會人生至聖之境』。……日翔你果然做得比我想像中的更加優秀啊——哎唷唷唷，真不愧是我看中的人。」似乎是發現日翔已經意識到這裡是什麼地方，那神秘的個體便逕自跟日翔搭話。"+"\n"+"不知道為什麼，總覺得第一段話聽起來跟背誦課文一樣平淡又毫無感情，而且那段話似乎就是輔大「真善美聖」的校訓……突然講這個要幹嘛？日翔總覺得，每次進來這個空間都會聽到一些莫名其妙的話。"+"\n"+"「大學生活已經快要結束了吧，你還是不能告訴我為什麼要帶我到過去嗎？」不如再問他一次看看吧。日翔乾脆豁出去了。"+"\n"+"「你很快就會知道啦。日翔你已經越來越接近真相囉，太棒了！」他似乎又不打算正面回應。但可以知道的是應該有接觸到真相的那一天，這句話總歸還是有點資訊量的……日翔心想。"+"\n"+"「你是在棒什麼啦……」日翔面對這奇怪的個體，再次壓抑不住內心的吐槽魂。"+"\n"+"「這還用說嗎？因為我們是互惠互利的關係嘛……接下來你只要好好期待就好……」迷霧的聲音逐漸模糊，整個空間也逐漸不穩了起來。"))
-                carousel_template_message = TemplateSendMessage(
+                buttons_template_message = TemplateSendMessage(
                     alt_text='？？',
-                    template=CarouselTemplate(
-                        columns=[
-                            CarouselColumn(
-                                title='？？',
-                                text='你該不會又要擅自離開了吧……',
-                                actions=[
-                                    MessageAction(
-                                        label='？？',
-                                        text='你該不會又要擅自離開了吧……'
-                                    )
-                                ]
+                    template=ButtonsTemplate(
+                        title='？？',
+                        text='你該不會又要擅自離開了吧……',
+                        actions=[
+                            MessageAction(
+                                label='？？',
+                                text='你該不會又要擅自離開了吧……'
                             )
                         ]
                     )
                 )
-                list_talk.append(carousel_template_message)
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -4078,6 +4038,29 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="代號BS，所屬科系為社會科學系、法律學系，資管系的資料庫管理和作業系統課程也在此授課。建築意義：愛護真理、保護青年的張伯達神父（1905-1951致命殉道），他常說：現代青年該具有團結、合作、謙虛、仁恕、急公、好義等社會道德，還要有創造力。這樣，一旦跨出校門，不但能夠適應社會，在社會中生存，更能領導社會，改造社會，做社會中堅份子。"))
     elif event.message.text=="進修部大樓介紹":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輔大進修部的前身是輔大夜間部，自民國五十八年成立迄今已五十餘年。秉持天主教的辦學理念與宗旨，以全人教育為目標；秉持真、善、美、聖的校訓，提供一個終生學習的環境，為社會國家造就許多人才。"+"\n"+"本部下轄8個學系及10個學士學位學程，致力培養學生具備廣博的知識及精進的專業能力，並培育學生具有人文素養、人本情懷、人際溝通與思惟判斷能力之完備的社會人。"))
+    elif event.message.text=="DDD":
+        list_talk=[]
+        buttons_template_message = TemplateSendMessage(
+            alt_text='臭甲',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://i.imgur.com/neBOLvG_d.webp?maxwidth=640&shape=thumb&fidelity=medium',
+                title='恭喜！',
+                text='你找到臭甲財富密碼，請問要花費購買宇桓DLC嗎？',
+                actions=[
+                    MessageAction(
+                        label='好！讓我看甲！',
+                        text='好！讓我看甲！'
+                    ),
+                    MessageAction(
+                        label='等一等，不可以',
+                        text='等一等，不可以'
+                    )
+                ]
+            )
+        )
+        list_talk.append(buttons_template_message)
+        list_talk.append(TextSendMessage(text=""))
+        line_bot_api.reply_message(event.reply_token,list_talk)
     else:    
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
