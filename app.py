@@ -4059,7 +4059,6 @@ def handle_message(event):
             )
         )
         list_talk.append(buttons_template_message)
-        list_talk.append(TextSendMessage(text=""))
         line_bot_api.reply_message(event.reply_token,list_talk)
     else:    
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
