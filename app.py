@@ -2391,6 +2391,28 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+    
+    #??
+    elif event.message.text=="繼續看主線故事-2":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="51":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="時間飛逝，期中考在即。曉光的生日在期中考之後——必須要跨越這道牆，才能夠到達和曉光一起玩的美好時光。當然，日翔並沒有忘記他必須在課業上全力以赴的理念。為了不再次變成那個沒有選擇只能待在某公司賣肝的社畜日翔，也得努力備考才行。"))
+                list_talk.append(TextSendMessage(text="#52 有一空堆疊（Stack），依序做push(a)、push(b)、push(c)、pop、push(d)、push(e)、pop後，由下往上的資料依序是？（填寫範例如下，請依序輸入半形小寫「ＯＯＯ」回答。）"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/04/02/3oDCXx.png', preview_image_url='https://upload.cc/i1/2022/04/02/3oDCXx.png'))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
