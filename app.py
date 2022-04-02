@@ -3036,7 +3036,33 @@ def handle_message(event):
                 worksheet.update(list[1],int(67))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="總而言之，為了安慰又忙又累的司晨，日翔擅自在下課後表示他要請司晨喝個飲料。"+"\n"+"「我也幫司晨出錢。」曉光提議。"+"\n"+"「欸欸！真的不用啦，而且我也有薪水啊。」司晨看著兩位對自己這麼好的同學，連忙進行推辭。不過下一秒便又後悔了：「那不然你們請我711就好啦，嘿嘿，我要順便去取個貨。」"+"\n"+"日翔一邊收書包，一邊無所謂的思考道：對了，學校這麼多便利商店，他甚至都沒有好好研究過店名……"))
-                list_talk.append(TextSendMessage(text="#68 進修部旁邊7-11門市的名稱為？"))
+                list_talk.append(TextSendMessage(text="#68 進修部旁邊7-11門市的名稱為？"+"\n"+"（Ａ）進修門市"+"\n"+"（Ｂ）輔大門市"+"\n"+"（Ｃ）輔進門市"+"\n"+"（Ｄ）輔明門市"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#68',
+                    template=ButtonsTemplate(
+                        title='#68',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="進修門市"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="輔大門市"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="輔進門市"
+                            ),
+                            MessageAction(
+                                label='D',
+                                text="輔明門市"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
