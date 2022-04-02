@@ -2434,6 +2434,49 @@ def handle_message(event):
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+    
+    #53答案
+    elif event.message.text=="108000元":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="52":
+                worksheet.update(list[1],int(53))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#54 下列何者記憶體管理方法有內部碎裂（Internal Fragmentation）問題？"+"\n"+"（Ａ）分頁（Page）"+"\n"+"（Ｂ）連續性（Contiguous）"+"\n"+"（Ｃ）分段（Segment）"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#54',
+                    template=ButtonsTemplate(
+                        title='#54',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="分頁（Page）"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="連續性（Contiguous）"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="分段（Segment）"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
