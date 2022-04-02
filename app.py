@@ -2951,7 +2951,7 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
-    #64答案
+    #65答案
     elif event.message.text=="750分":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
@@ -2968,6 +2968,53 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="「沒事啦阿司，你一定可以度過的。」知道司晨實在不擅長英文，於是日翔還是拍拍司晨的肩膀表達安慰。"+"\n"+"宇桓看到他這麼難過，也只好跟著拉下臉安慰剛剛被自己大聲斥責的人：「畢竟你工讀也挺忙的，不能準備多益也並不是很意外。」"+"\n"+"輔大資管系不只有承認TOEIC750分以上這個標準，尚可以選擇考取iBT TOEFL成績71分以上、IELTS成績6.0以上或全民英檢中高級複試通過等等，這些測驗只要到達了標準都會承認通過英文畢業門檻。但如果沒有辦法通過這些門檻，管院也有為大四生準備8次英語自學方案的測驗，顧及英文程度比較差的同學，而這些測驗的內容跟時間都會公告在自學方案的粉絲專頁。"))
                 list_talk.append(TextSendMessage(text="開學已經過了數周，日翔還是沒有什麼「接近真相」的感覺，他已經開始懷疑是不是要到畢業當天才能知道那個「Code/140.136」製作者的動機了。"+"\n"+"今天是星期二下午三點三十五分，日翔跟曉光坐在教室的一角等待上課時間的來臨。而曉光正在一邊準備她升學所需要的甄試資料，日翔比起以往的偷看，反倒是更加光明正大地注視著他的戀人。"+"\n"+"注意到隔壁的視線，曉光眼睛仍然盯著螢幕對筆電敲敲打打，一邊對身旁的人詢問：「怎麼了，日翔？」"+"\n"+"「沒事，只是覺得妳……嗯，果然是會考研的類型。」只是覺得妳認真起來的樣子我果然好喜歡……這種話好像還是太肉麻了，即使已經和曉光是交往關係，日翔還是對於內心話稍微難以啟齒。"+"\n"+"曉光似乎對日翔的反應不是太意外，便反過來詢問：「畢竟讀書還算是我的專長……唔、日翔以後不升學的話，是要參加產業實習？」"+"\n"+"日翔想到某個往年都有開實習名額夢想公司，便坦率地回答：「我想是這樣的吧……」"+"\n"+"畢竟再怎麼說，他還是想進福利好一點又可以發揮目前所學，還不會日以繼夜爆肝的夢想公司啊！"+"\n"+"「阿——日——午安安——呼、呼……」一個熟悉的人影不知是走還是爬的急急進了教室。"+"\n"+"「阿司，你怎麼這麼累？｣日翔再度看看時間，已經是三點三十九分了，上課時間都要到了，司晨才走進教室。"+"\n"+"「我剛剛，在進修部啦。」司晨一手撐著桌子，氣喘吁吁地回應。"+"\n"+"「上二外有點晚下課，想說、教授會點名就、趕著過來……電梯人太多搭不上……」二外指的是第二外語。在大一的英語必修過了之後，也可以在這個語言資源豐富的學校修習各式各樣的語言，提升自身的競爭力。"+"\n"+"「司晨，喝點水會比較好。」曉光看跑樓梯上來的司晨這麼喘，便關心了他一下。"+"\n"+"噹噹——噹——噹——聽見上課時間到了，司晨便趕緊坐在日翔和曉光的旁邊，然後開始對自己灌水。日翔看著他心裡便想，他這樣邊工讀邊忙課業也是真的很辛苦，不知道他的學分修得怎麼樣了……可自己又不能替他修學分，頂多也只能在課業上多多幫忙了。"))
                 list_talk.append(TextSendMessage(text="#66 請問輔仁大學資訊管理系畢業所需的學分為何？（請以「Ｏ分」回答，Ｏ為半形數字。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #66答案
+    elif event.message.text=="126分":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="65":
+                worksheet.update(list[1],int(66))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#67 以下那些課程是輔大的校定必修課程？"+"\n"+"（Ａ）大學入門、人生哲學、專業倫理"+"\n"+"（Ｂ）體育、國文、外國語文"+"\n"+"（Ｃ）人文與藝術、自然與科技、社會科學三個領域通識（包含歷史與文化學群）"+"\n"+"（Ｄ）以上皆是必修課程"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#66',
+                    template=ButtonsTemplate(
+                        title='#66',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="大學入門、人生哲學、專業倫理"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="體育、國文、外國語文"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="人文與藝術、自然與科技、社會科學三個領域通識（包含歷史與文化學群）"
+                            ),
+                            MessageAction(
+                                label='D',
+                                text="以上皆是必修課程"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
