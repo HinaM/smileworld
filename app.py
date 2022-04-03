@@ -3630,7 +3630,7 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     elif event.message.text=="遊戲規則":
-        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="您有一封來自Code/140.136的遊戲須知❗️✉️"+"\n"+"本遊戲採回答問題的方式進行闖關，玩家將透過回答題目一步步解鎖故事劇情和新關卡✨"+"\n"+"我們提供以下工具幫助您破解關卡👊🏻"+"\n"+"工具1️⃣-遊戲地圖：校園建築物大揭密！點擊查看解鎖進度🏫"+"\n"+"工具2️⃣-個人檔案：在玩家個人檔案中可查看目前選擇的遊戲視角、已解鎖的記憶物件數。"+"\n"+"工具3️⃣-關卡提示：我們鼓勵玩家動腦破解題目，但真的卡關時還是可以參考提示網站🧐"+"\n"+"工具4️⃣-遊戲規則：忘記遊戲規則的玩家，可再次點擊查看！"+"\n"+"工具5️⃣-人物介紹：關於劇情角色的所有秘密，快來認識他們吧~"+"\n"+"工具6️⃣-聯絡管理員：有任何疑問與狀況，歡迎聯繫開發團隊，將有專人為您解答🗣"+"\n"+"最後！玩家若想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n"+"祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
         carousel_template_message = TemplateSendMessage(
             alt_text='人物介紹',
