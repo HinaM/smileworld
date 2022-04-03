@@ -3623,7 +3623,7 @@ def handle_message(event):
                 list_talk.append(ImageSendMessage(original_content_url='https://i.imgur.com/i8xodQ8.jpg', preview_image_url='https://i.imgur.com/i8xodQ8.jpg'))
                 list_talk.append(TextSendMessage(text="「那為什麼要今天才告訴我們真相啊？」"+"\n"+"「儀式感啊，你們不覺得畢業典禮再一次公開很刺激嗎？」"+"\n"+"「喂，……你果然很我行我素啊德魯貝。」"))
                 profile = line_bot_api.get_profile(user_id)  
-                list_talk.append(TextSendMessage(text="恭喜玩家 "+profile+" 完成遊戲🥳"+"\n"+"想看曉光請輸入「重置遊戲」重新選擇視角！"+"\n"+"遊玩上有任何問題或想回饋給我們的意見請點選選單「聯絡管理員」告訴我們！再次感謝玩家的遊玩～"))
+                list_talk.append(TextSendMessage(text="恭喜玩家 "+str(profile)+" 完成遊戲🥳"+"\n"+"想看曉光請輸入「重置遊戲」重新選擇視角！"+"\n"+"遊玩上有任何問題或想回饋給我們的意見請點選選單「聯絡管理員」告訴我們！再次感謝玩家的遊玩～"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
