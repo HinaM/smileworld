@@ -3518,6 +3518,43 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    #??
+    elif event.message.text=="輔園、文園、心園、仁園、理園":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="77":
+                worksheet.update(list[1],int(78))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="最後，還是得歸功於宇桓一如既往「你們選，我都行」的大氣，再加上真的是快要畢業了，這次除了曉光之外，眾人都沒有直接阻止司晨隨便亂選各式各樣吃到飽餐廳的行為。LINE聊天群組裡，幾個人決定聚餐地點的樣子很是熱鬧："+"\n"+"「欸欸不然我們去吃晶華酒店那個很酷的頂級bafet好不好！！！！！！」"+"\n"+"「@oO卐籃球master🍃司晨卍Oo  哇靠那個吃晚餐超貴欸，還有那個是buffet你拼錯了」"+"\n"+"「@日翔☀ 普通價位而已吧？還行，看你們。｣"+"\n"+"「靠，你家到底是多有錢啊……」"+"\n"+"「司晨，這樣麻煩宇桓不好 @oO卐籃球master🍃司晨卍Oo」"+"\n"+"「還是曉光溫柔」"+"\n"+"「還是我家最親愛的曉光溫柔」"+"\n"+"「@真澄_Kotsu 不是你家的😡」"+"\n"+"「@日翔☀ 唷你學會吃醋啦😊😊」"))
+                list_talk.append(TextSendMessage(text="結果大家還是為了顧及宇桓的錢包，依舊決定去吃一波「吃。貓」。而這次相約總算沒有擾人的雨天了，五人自然是坐了一個大桌，他們正一起討論要點些什麼。"+"\n"+"「上次你幫我點那個是什麼啊，CP值超高的欸！！」畢竟上次沒有第一時間就參與，司晨是第一次看到吃貓的菜單，似乎對於裡面豐富的品項感到新奇。"+"\n"+"「哦，那個是『吃不完的脆薯』，你要的話這次自己點。」日翔對那個盯著菜單雙眼發光的摯友感到很不意外。"+"\n"+"「不知道那個叫做『心痛』的飲料到底是什麼……」日翔本來又想點點看「隨便」——也就是店家真的隨機準備的飲料（可能會出現菜單沒有的東西），卻看到了菜單角落有一個叫做心痛的特別飲料。"+"\n"+"「應該是開水。因為要價100元的開水很讓人心痛？」曉光似乎也很好奇，她對此進行了一番合理的推測。"+"\n"+"「……我先說清楚，不要點那種東西，要點自己付錢。」聽聞要價100元「心痛」的真相，金錢觀特別大氣的宇桓也對他們制止了一番。"+"\n"+""))
+                list_talk.append(TextSendMessage(text="很快的眾人就點好了餐，大家都各點了一些自己感興趣的食物。日翔仍舊給自己點了一杯「隨便」，而曉光還是老樣子點了葡萄汁，日翔對此感到頗為有趣。"+"\n"+"「所以宇桓曉光，你們的升學情形怎麼樣啊？」司晨啃著脆薯發問。"+"\n"+"「當然是錄取了。」「我也錄取了。」兩人不約而同地回答。"+"\n"+"哇……不愧是兩個學霸，競爭這麼激烈的升學對他們而言跟喝水一樣。日翔在內心默默佩服……他們都成功考上國立大學的研究所了，真厲害。"+"\n"+"不過對日翔而言，如果要升學他應該會比較傾向考慮資管系的五年一貫方案：若是申請通過，就可以在大三就獲得碩士的修課資格，並在大四後一年就得到學位。既省下整整一年的學費又可以提早出去闖盪，十分划算。"+"\n"+"「這樣看來大家都找到自己出路了。」日翔對於包括自己在內的所有人都有著不錯的未來，內心又是一陣感慨。"+"\n"+"真澄也對此有感而發，帶了些悲傷的情緒：「不過，以後我們就不會坐在教室裡一起上課了。」"+"\n"+"曉光見到自己的好友有些難過，連忙安慰道：「真澄，你上次才說『我們的友情可沒那麼脆弱』。以後我們可以隨時再相約。」"+"\n"+"「是這樣沒錯……可是，總不可能這麼容易就喬出大家都有空的時間吧，況且大家以後都要各奔東西了，甚至也可能有人之後都不在北部工作，像我就是這樣。」真澄難得地道出自己的內心話。"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='選項',
+                    template=ButtonsTemplate(
+                        title='選項',
+                        text='……',
+                        actions=[
+                            MessageAction(
+                                label='選項',
+                                text='……'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
