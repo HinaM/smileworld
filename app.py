@@ -2901,9 +2901,11 @@ def handle_message(event):
             list=[]
             list.append('D'+str(j))
             list.append('E'+str(j))
+            list.append('C'+str(j))
             #ID已寫入、日向視角、Q2=1
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="63":
                 worksheet.update(list[1],int(64))
+                worksheet.update(list[2],int(10))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="呼——日翔長吐了一口氣，他面對著手機，在七夕的前一天對著手機螢幕敲敲打打，他打算在七夕的零時零分準時送出對曉光的告白。雖然總感覺只是以訊息來告白似乎太不盛大了，可日翔卻心想，他總該給自己一些退路……要是曉光拒絕自己呢？那就真的太尷尬了。"+"\n"+"「曉光，關於這件事我想了很久。打從大一看到妳的時候，我就因為妳出眾的外貌而對妳抱持著好印象，也因為妳聰明伶俐對你產生了好感，妳偶爾顯出笨拙的那一面也顯得可愛，總是令我的心產生悸動。」"+"\n"+"嗚哇，感覺有點肉麻……看著由自己撰寫出的一字一句，日翔的臉都不自覺地發燙了起來，可他沒有打算要進行更多的修飾，只是坦然地與曉光分享那個真正的自己。他繼續寫下：「我想或許不只是大一吧，我的心意從很久很久以前，從我們尚未了解所謂的『喜歡』就開始發芽了。只不過我竟然忘記了在搬家前與妳共處的美好時光——若不是我們之間再次產生了交集，或許我一輩子都沒有機會和妳相認、或和妳並肩而行了。」"+"\n"+"日翔話中的意思是，要是沒有「code/140.136」送我回到了大一，我在大學生活與妳的牽連就單單僅有同班而已，而畢業後就會面臨永遠的分道揚鑣。這些話日翔沒有打出來，畢竟他也不知道該怎麼解釋這不科學的事情。"+"\n"+"最後，他以一句真摯的邀請收尾：「妳願意讓我以新的身分進行彌補嗎？」"+"\n"+"最後，在日期更替的那一刻，日翔跟曉光的關係如日翔所願地發生了好的改變。"+"\n"+"不知為何，在看到曉光的回覆後，日翔的眼眶有些發熱。"+"\n\n"+"解鎖信紙！趕快去「個人檔案」看看！"))
                 list_talk.append(TextSendMessage(text="解鎖大四劇情"+"\n\n"+"日翔喜歡貓是從小時候開始的。還記得在尚未搬家的時候，幼小的他就曾經在路邊救過一隻虛弱的小野貓。日翔的印象頗為深刻，那是一個下課後的傍晚，他跟媽媽一起在一棵大樹旁發現了一隻虛弱瘦小的灰色幼貓。"+"\n"+"「哇，媽媽……他好像很虛弱的樣子。」小日翔蹲在歸家的路上看著倒在路上的小傢伙，很是擔憂的樣子。畢竟這可是實實在在的一個小生命，再怎麼說，日翔也無法接受就這樣忽視牠就離開現場。"+"\n"+"而日翔的媽媽也見到了這一幕，她馬上就想到了一個好主意，便向自己的孩子提議：「日翔，我們把他送到獸醫去吧。」"+"\n"+"做這樣的決定的原因有二：一來是這對孩子也是一個生命教育的機會，二來是她也並不想眼睜睜看著小貓受苦。"+"\n"+"在動物醫院裡，醫生很有耐心地替小貓進行檢查。確認沒有外傷且後，便先跟日翔媽媽說好這隻流浪貓支付的費用醫院並不會幫忙給付。而日翔媽媽趁勢告訴日翔，流浪動物沒有跟人類依樣的健保，而醫生的檢查用品也都要花不少錢，動物醫院自然沒有辦法做自行吸收成本的免費服務。要是在路邊看到受傷的小動物卻沒有錢，是不能貿然送到動物醫院的。"+"\n"+"日翔媽媽同意支付費用後，醫生判斷這隻小貓似乎只是餓昏了而已，於是醫生便選擇幫忙補充營養，並在兩人離開醫院之前告知兩人這隻貓很可能是跟媽媽走散了。如果沒有打算要飼養的話，原地放生的存活率也不高。"+"\n"+"於是，這個小傢伙便在日翔家待了一段時間，畢竟家裡沒有預計要養貓，所以日翔的媽媽是一邊詢問有沒有好友可以收留，一邊照顧小貓的。"+"\n"+"自然，有愛心的日翔也出了不少心力，所以日漸恢復的小貓也與他很是親密，只要日翔一回家，小貓便會反常地像狗狗一樣，主動迎接這位拯救了自己的孩子。不過，這樣的日子並不長，小貓僅是在這裡居住了一個禮拜，就因為日翔媽媽找到可以收養的中途之家而離開了家中。"))
@@ -3372,6 +3374,53 @@ def handle_message(event):
                 worksheet.update(list[1],int(74))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#75 剛上大學的小華想要找一份打工，目前有四份工作曉華正在猶豫，分別是補習班 14000 元、餐廳 17000 元、飲料店 16000 元和便利商店 20000元，在僅考慮薪水不考慮其他因素的情況下，小華選擇到飲料店工作的機會成本是多少？（請以「Ｏ元」回答，Ｏ為半形數字。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+    
+    #75答案
+    elif event.message.text=="20000元":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="74":
+                worksheet.update(list[1],int(75))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#76 有關於GDP與GNP，下列何者正確？"+"\n"+"（Ａ）GDP是以國民為計算標準"+"\n"+"（Ｂ）GNP的全名為國民生產毛額"+"\n"+"（Ｃ）GNP是以國家為計算標準"+"\n"+"（Ｄ）GDP的全名為國民生產總額"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#76',
+                    template=ButtonsTemplate(
+                        title='#76',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="GDP是以國民為計算標準"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="GNP的全名為國民生產毛額"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="GNP是以國家為計算標準"
+                            ),
+                            MessageAction(
+                                label='D',
+                                text="GDP的全名為國民生產總額"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
@@ -3935,6 +3984,89 @@ def handle_message(event):
                 )
                 list_talk.append(image_carousel_template_message)
                 line_bot_api.reply_message(event.reply_token, list_talk)
+            #日向視角&物件10
+            elif worksheet.acell(list[2]).value=="1" and worksheet.acell(list[1]).value=="10":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="玩家選擇視角：日翔"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【10/10】"))
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='已解鎖物件',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/2r7tDCN.png',
+                                action=MessageTemplateAction(
+                                    label='童話書介紹',
+                                    text='童話書介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/SAwcrWC.png',
+                                action=MessageTemplateAction(
+                                    label='遊Ｏ王卡介紹',
+                                    text='遊Ｏ王卡介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/hXpbU2C.png',
+                                action=MessageTemplateAction(
+                                    label='圖畫介紹',
+                                    text='圖畫介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/nKLmcQG.png',
+                                action=MessageTemplateAction(
+                                    label='冰淇淋券介紹',
+                                    text='冰淇淋券介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/Ep84aDF.png',
+                                action=MessageTemplateAction(
+                                    label='信封介紹',
+                                    text='信封介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/cpu3ksv.png',
+                                action=MessageTemplateAction(
+                                    label='卡通主題鉛筆介紹',
+                                    text='卡通主題鉛筆介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/9TzxQhQ.png',
+                                action=MessageTemplateAction(
+                                    label='糖果紙介紹',
+                                    text='糖果紙介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/3ruuwRd.png',
+                                action=MessageTemplateAction(
+                                    label='紀念幣介紹',
+                                    text='紀念幣介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/bncQTAE.png',
+                                action=MessageTemplateAction(
+                                    label='照片介紹',
+                                    text='照片介紹'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://i.imgur.com/IkA7fXf.png',
+                                action=MessageTemplateAction(
+                                    label='信紙介紹',
+                                    text='信紙介紹'
+                                )
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(image_carousel_template_message)
+                line_bot_api.reply_message(event.reply_token, list_talk)
             #小光視角
             else:
                 line_bot_api.reply_message(event.reply_token, TextSendMessage(text="玩家選擇視角：曉光"+"\n"+"目前關卡：#"+ques+"\n"+"解鎖物件數：【"+worksheet.acell(list[1]).value+"/8】"))   
@@ -3959,6 +4091,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="老舊的科博館紀念幣，只要在館內花費50元製作就可以獲得一枚。對重要的人們總是觀察入微的他，似乎想起了某人的鉛筆盒裡也有一枚……"))
     elif event.message.text=="照片介紹":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="一張略有泛黃的相片，夕暉之下的窗邊有著一個男孩跟一個女孩的背影，仔細一看可以發現他們在勾勾手，像是在做著什麼約定。考慮到場景是幼稚園，應該是由老師拍攝下來的。"))
+    elif event.message.text=="信紙介紹":
+        line_bot_api.reply_message(event.reply_token,TextSendMessage(text="收在日翔家裡的斑駁信紙。由於保存了一段時間，上頭的字有些模糊，不過可以看得出內容是某位女孩在過去向某位男孩的告白。"))
 
     elif event.message.text=="重置遊戲":
         userid_list=worksheet.col_values(1)
