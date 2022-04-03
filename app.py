@@ -3128,6 +3128,52 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    #??
+    elif event.message.text=="12月":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="68":
+                worksheet.update(list[1],int(69))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「對欸，今天是聖誕節前一個禮拜！那下禮拜不就放假嗎！那天我一定要好好的享受一下！」"+"\n"+"眾所皆知，輔仁大學和其他大學不同的就是——輔大是天主教大學，而到了聖誕節，自然會給學生放一天假！除了聖誕節以外，輔大的教師節也是放假的。因為假期比其他學校要多，也有許多校友戲稱輔仁大學是「放假大學 Fang Jia University」。"+"\n"+"約略在11月底，學校就會在外頭布置華麗的大聖誕樹與聖誕燈飾，並且會在12月的每個晚上都點亮，這樣美麗的聖誕景色總是深得輔大人的心。"+"\n"+"「你聖誕節那天不用上班喔？」"+"\n"+"「不用啊，倒是阿日你都不約你女朋友出去？」司晨似乎是在計畫自己的聖誕節，心情顯得很是愉快。"+"\n"+"「我今天其實已經約她了啦，還在想要怎麼把你打發走呢。」聽聞好朋友居然反過來關心自己，日翔便用調侃的語氣說道。"+"\n"+"「嗚嗚……阿日，你好壞，一交女朋友……就想把我踢走！！」司晨還配合的開始假哭，可下一刻就馬上把那個假掰的語氣收回了，他坦蕩地拍拍日翔的肩膀：「好啦開玩笑的，這種事情你早說嘛，那我先走啦！」"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/28/ZmAdvH.png', preview_image_url='https://upload.cc/i1/2022/03/28/ZmAdvH.png'))
+                list_talk.append(TextSendMessage(text="畢竟接近冬至，晚上五點半的天色自然是黯淡了下來，可輔仁大學的聖誕節的燈飾使得本該孤寂的夜晚十分絢爛，宛如地面的點點星光。日翔跟曉光手牽手漫步在校園中，要先好好欣賞聖誕燈再出學校約會。"+"\n"+"「對了曉光，我跟你說我的實習錄取了！妳那邊怎麼樣？」日翔對於自己的前程早早塵埃落定感到開心。"+"\n"+"「準備得差不多了，還要等過些日子報名。」曉光打算考取其他學校的碩士班，成績優異的她早就已經把升學要考試的東西讀得很是完備，幾乎只差在筆試跟面試的部分了。"+"\n"+"「曉光真厲害啊……」日翔不由得喃喃自語，畢竟對方實在是很會讀書，也很擅長計劃自己的升學考試。就算日翔有code/140.136的加持，使得自己在班上的成績也頗為優異，但他還是明白自己本身並不是一塊擅長讀書的料。"+"\n"+"曉光的回應還是一如既往的謙虛：「別這麼說，我也只是讀得比別人要多次而已。」"+"\n"+"兩人穿梭於繁華的造型燈飾之中，靜靜地欣賞輔仁大學聖誕節的景色。日翔感覺曉光並不是那麼愛聊天的類型，於是他選擇與她一同見證這個熱鬧的夜晚。"+"\n"+"兩人已經走到了校門口附近。日翔感覺，對比自己還算有溫度的手來說，曉光的手即使被自己牽了這麼久還是顯得冰冷。他想，他應該可以買杯熱拿鐵來給曉光一些溫暖。"+"\n"+"「曉光，妳要喝熱拿鐵嗎？我去買。」"+"\n"+"「謝謝你，可是……不用麻煩你了。」"+"\n"+"「沒事，妳冷到了就糟糕了。我去買給妳吧？」"))
+                list_talk.append(TextSendMessage(text="#70 請問靠近學校出口，在郵局旁邊的賣場為何？"+"\n"+"（Ａ）好市多"+"\n"+"（Ｂ）IKEA"+"\n"+"（Ｃ）全聯福利中心"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#70',
+                    template=ButtonsTemplate(
+                        title='#70',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="好市多"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="IKEA"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="全聯福利中心"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     elif event.message.text=="遊戲規則":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="本遊戲是採用回答問題的遊玩方式進行闖關！！"+"\n"+"玩家回答出遊戲內關卡的問題，透過回答問題一步步解鎖劇情✨"+"\n"+"若是問題回答不出來時可以參考下面網站裡的解題技巧喔٩( 'ω' )و "+"\n"+"玩家從個人檔案中觀看目前選擇視角、已解鎖物件，想重新體驗遊戲或選擇不同視角可以輸入「重置遊戲」喔✨"+"\n\n"+"最後祝各位玩家遊玩愉快🥳"))
     elif event.message.text=="人物介紹":
