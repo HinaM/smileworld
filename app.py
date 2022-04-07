@@ -4891,19 +4891,16 @@ def handle_message(event):
                 text='你找到臭甲財富密碼，請問要花費購買司晨DLC嗎？',
                 actions=[
                     MessageAction(
-                        style="primary",
-                        color="#aa9cd5",
                         label='讓我看司日',
                         text='讓我看司日'
                     ),
                     MessageAction(
-                        style="primary",
-                        color="#aa9cd5",
                         label='等一等，不可以',
                         text='等一等，不可以'
                     )
                 ],
-                
+                style="primary",
+                color="#aa9cd5"
             )
         )
         list_talk.append(buttons_template_message)
