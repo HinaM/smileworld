@@ -4869,14 +4869,41 @@ def handle_message(event):
                 text='你找到臭甲財富密碼，請問要花費購買宇桓DLC嗎？',
                 actions=[
                     MessageAction(
-                        label='好！讓我看甲！',
-                        text='好！讓我看甲！'
+                        label='讓我看宇日',
+                        text='讓我看宇日'
                     ),
                     MessageAction(
                         label='等一等，不可以',
                         text='等一等，不可以'
                     )
                 ]
+            )
+        )
+        list_talk.append(buttons_template_message)
+        line_bot_api.reply_message(event.reply_token,list_talk)
+    elif event.message.text=="JÄTTESTOR":
+        list_talk=[]
+        buttons_template_message = TemplateSendMessage(
+            alt_text='臭甲',
+            template=ButtonsTemplate(
+                thumbnail_image_url='https://upload.cc/i1/2022/03/08/Baezmv.jpg',
+                title='恭喜！',
+                text='你找到臭甲財富密碼，請問要花費購買司晨DLC嗎？',
+                actions=[
+                    MessageAction(
+                        style="primary",
+                        color="#aa9cd5",
+                        label='讓我看司日',
+                        text='讓我看司日'
+                    ),
+                    MessageAction(
+                        style="primary",
+                        color="#aa9cd5",
+                        label='等一等，不可以',
+                        text='等一等，不可以'
+                    )
+                ],
+                
             )
         )
         list_talk.append(buttons_template_message)
