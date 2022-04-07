@@ -4898,9 +4898,7 @@ def handle_message(event):
                         label='等一等，不可以',
                         text='等一等，不可以'
                     )
-                ],
-                style="primary",
-                color="#aa9cd5"
+                ]
             )
         )
         list_talk.append(buttons_template_message)
