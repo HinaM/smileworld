@@ -1555,6 +1555,37 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="23":
+                worksheet.update(list[1],int(24))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#25 公司帳上各科目之正常餘額為：現金$20,000、應收帳款$50,000、備抵壞帳$5,000、設備$600,000、應付帳款$45,000、短期借款$100,000、股本$500,000、保留盈餘$20,000。若發生以現金支付水電費後，則資產總額何者正確："+"\n"+"（Ａ）資產總額$669,000"+"\n"+"（Ｂ）資產總額$146,000"+"\n"+"（Ｃ）資產總額$664,000"+"\n"+"（Ｄ）資產總額$521,000"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#25',
+                    template=ButtonsTemplate(
+                        title='#25',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='資產總額$669,000'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='資產總額$146,000'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='資產總額$664,000'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='資產總額$521,000'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
