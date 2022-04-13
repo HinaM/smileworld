@@ -1868,6 +1868,34 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="26":
+                worksheet.update(list[1],int(27))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="正當曉光準備拎著背包前往食科冰淇淋區兌換冰淇淋時，一個熟悉的聲音叫住她。"+"\n"+"「曉光！你抽到冰淇淋券了？真幸運！」這個熟悉的聲音說道。"+"\n"+"「謝謝你，我只是順手填了教學評量。」曉光抬起頭來回應聲音的來源。和她搭話的人是日翔，剛開學的時候就偶然遇上的班上同學，蠻有禮貌的一個人，常常會跟曉光搭話，燦爛的笑容總是讓曉光不知所措。"+"\n"+"正當日翔和曉光邊聊天邊往教室門口走去，正巧遇到大搖大擺晃進教室的司晨，他很自然地插話道：「剛剛是不是有人提到食科冰？我也要去吃！」"+"\n"+"司晨是日翔的朋友，他們總是形影不離，只要有日翔的地方就會有司晨。"+"\n"+"「遲到了卻還那麼厚臉皮，真是不可思議。」出乎曉光意料，司晨不但沒有感覺到羞愧，反而笑嘻嘻地說著。"+"\n"+"「這是在誇我嗎？謝謝你呀曉光、嘿嘿。」這個人還真是粗線條啊，曉光暗自給了司晨一條評語。"+"\n"+"「阿司啊，正常人會覺得這是在誇獎嗎？」日翔敲了敲司晨的腦袋瓜。"+"\n"+"「哎，又沒關係第一周是加退選吧，也不點名啊！大好時光當然要去吃早餐嘛。」說完這句話的司晨，也拍了拍日翔的背，像是在回敬一樣。"+"\n"+"於是，一行人以兩人聊天一人吐槽的模式邊走邊聊，一邊走下博達樓的樓梯，這時，司晨看看班群的機測通過名單，苦惱道：「哎、我上兩次機測都只有對一題，這樣真的可以畢業嗎？」"+"\n"+"日翔用詫異的眼神看看司晨：「你不知道嗎？機測其實不一定要一次通過，只要……」"))
+                list_talk.append(TextSendMessage(text="#28 以下哪一位同學通過了輔大資管系的畢業規則「通過程式語言機測」？"+"\n"+"（Ａ）未通過任何一次程式語言機測，在學期間總共累計通過3題機測題目，且修畢一門資管系的程式設計選修課程"+"\n"+"（Ｂ）未通過任何一次程式語言機測，累計通過2題機測題目並修畢完一門資管系的程式設計選修課程之後，再參加一次機測並通過1題"+"\n"+"（Ｃ）未通過任何一次程式語言機測，在學期間總共累計通過5題機測題目"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#28',
+                    template=ButtonsTemplate(
+                        title='#28',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='未通過任何一次程式語言機測，在學期間總共累計通過3題機測題目，且修畢一門資管系的程式設計選修課程'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='未通過任何一次程式語言機測，累計通過2題機測題目並修畢完一門資管系的程式設計選修課程之後，再參加一次機測並通過1題'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='未通過任何一次程式語言機測，在學期間總共累計通過5題機測題目'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
