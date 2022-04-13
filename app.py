@@ -1474,6 +1474,40 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="22":
+                worksheet.update(list[1],int(23))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="在輔大體育課都是0學分，且大一二都為必修課程。對某些主張「大學生就是要軟爛！」的人來說體育課非常麻煩，恨不得能翹就盡量翹，但是曉光想到翹課會影響她的體育點名成績，想一想還是不翹課的好。"+"\n"+"不像曉光在高中體育課那樣，老師會強迫大家動起來，在大學，體育課教授比較睜一隻眼閉一隻眼，只要完成指定活動就可以在旁邊休息或自由活動。"+"\n"+"「還真是熱血啊，那些男生。」曉光看著場上的日翔與司晨，揮灑著淋漓的汗水。剛下完雨的球場地板還殘留著一個個大小水坑，然而曉光還看到司晨不小心跌進水坑裡面，只好趕緊撇開視線，雖然對司晨很不好意思，曉光還是不小心笑了出來。"))
+                list_talk.append(TextSendMessage(text="刺眼的陽光讓曉光想起的真澄幫她占卜的結果，「指引我的一道光啊…究竟在何方呢？」"))
+                list_talk.append(TextSendMessage(text="時間過得飛快，期末考很快就到來了。請完成期末考："))
+                list_talk.append(TextSendMessage(text="#24 九月一日支付6個房租$12,000採預付租金入帳。假設公司僅於每年年底做調整分錄，則該年年底之調整分錄為："+"\n"+"（Ａ）借：預付房租$8,000，貸：房租費用$8,000"+"\n"+"（Ｂ）借：房租費用$4,000，貸：預付房租$4,000"+"\n"+"（Ｃ）借：房租費用$8,000，貸：預付房租$8,000"+"\n"+"（Ｄ）借：預付房租$4,000，貸：房租費用$4,000"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#24',
+                    template=ButtonsTemplate(
+                        title='#24',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='借：預付房租$8,000，貸：房租費用$8,000'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='借：房租費用$4,000，貸：預付房租$4,000'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='借：房租費用$8,000，貸：預付房租$8,000'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='借：預付房租$4,000，貸：房租費用$4,000'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
