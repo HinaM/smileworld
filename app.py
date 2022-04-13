@@ -207,6 +207,12 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="日翔將上課需要的東西塞進書包匆匆出門了，從日翔老家前往輔大最方便的交通工具就是捷運了，不僅不像公車可能會遇上塞車，在開通環狀線後學生搭捷運所需通勤時間大幅縮短，甚至設有以輔大命名的捷運站直達校門口。"))
                 list_talk.append(TextSendMessage(text="#3 請問離校園最近的捷運出口爲？（請以「Ｏ號」回答。Ｏ為半形數字。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="1":
+                worksheet.update(list[1],int(2))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="曉光匆匆忙忙地出門，根本無暇整理自己的包包。曉光只好把學生證，連同手機拿在手上。"+"\n"+"「唔…還是一樣多人呢。」很久沒搭車的曉光，早就忘了從龍山寺搭到新埔這段路程有多麼辛苦，尤其是身材嬌小的曉光總是找不到能呼吸新鮮空氣的地方，這點讓曉光總是到學校前，臉上就略顯疲態。"))
+                list_talk.append(TextSendMessage(text="#3 請問離校園最近的捷運出口爲？（請以「Ｏ號」回答。Ｏ為半形數字。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
