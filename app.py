@@ -124,7 +124,7 @@ def handle_message(event):
                 list.append(ImageSendMessage(original_content_url='https://i.imgur.com/2cCaBmx.jpeg', preview_image_url='https://i.imgur.com/2cCaBmx.jpeg'))
                 list.append(TextSendMessage(text="「唉......今天又被塞了一堆工作啊......」成為社畜後的日翔，每天過著上班族朝九晚五的生活。早上和一堆人擠著去上班，工作又多又忙連喘息的時間都沒有，晚上回到家早就累壞了。"+'\n'+'「如果能回到大學時期就好了啊......」某天工作回家的日翔突然感嘆起大學生活，大學可謂人生的最顛峰時期，不但沒有工作壓力的負擔，還有很多空閒時間可以讓他盡情做想做的事。這時，日翔的電子信箱突然跳出了一封信，開頭標題寫著「想回到過去嗎？」'+'\n'+'該不會是被誰監視了？雖然這麼想，出於好奇日翔還是點開了信件，內容寫著「路過的小精靈聽到你的願望送上的檔案，並沒有病毒。」，還附上了一個檔案「Code-140.136.py」。'+'\n'+'……哪個詐騙集團會說自己不是詐騙集團呢，日翔吐槽道。'+'\n'+'或許是想回到過去的願望過於強烈，日翔還是不由自主地下載了檔案。'))
                 list.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/06/q4DPkj.png', preview_image_url='https://upload.cc/i1/2022/03/06/q4DPkj.png'))
-                list.append(TextSendMessage(text='#1 檔案只有短短幾行程式碼，請問日翔該輸入什麼才能執行此函式，讓結果非None呢？（請輸入半形英文字母）'))
+                list.append(TextSendMessage(text='#1 檔案只有短短幾行程式碼，請問該輸入什麼才能執行此函式，讓結果非None呢？（請輸入半形英文字母）'))
                 line_bot_api.reply_message(event.reply_token,list)
             #ID已寫入建立且視角!=0
             elif worksheet.acell(list[0]).value=="1":
@@ -151,7 +151,7 @@ def handle_message(event):
                 list.append(ImageSendMessage(original_content_url='https://i.imgur.com/2cCaBmx.jpeg', preview_image_url='https://i.imgur.com/2cCaBmx.jpeg'))
                 list.append(TextSendMessage(text="今天是曉光大學的同學會，然而曉光只是待在家裡，懷裡還抱著一隻她從小飼養到大的貓咪。「唉，早知道那時候就多交一些朋友了。」生性害羞的曉光，不太擅長社交，所以在大學四年根本沒認識什麼人就畢業了，曉光常常為此感到後悔，但是曉光只能繼續按著手上的遙控器，尋找有趣的節目。"+"\n"+"此時，曉光的手指停了下來，目光停留在一則新聞報導上。"+"\n"+"「根據星象專家的判斷，今日有高機率能在天空中看到流星，請民眾多留意。」"+"\n"+"「德魯貝，你聽，有流星耶，說不定等一下我們就能看到流星喔。」曉光對著懷中的貓咪興奮地說道。"+"\n"+"突然，有一道流星劃破天際，出現在曉光的窗外，「有流星！」曉光抱著懷中的德魯貝，快步地走向窗邊。眼看流星越來越大、越來越大，正當曉光感到吃驚時，流星發出刺眼的光芒。曉光的耳邊響起不知名的聲音：「你想重來一次大學生活嗎？」"+"\n"+"什麼意思？雖然曉光半信半疑，可是可以回到過去，也就是回到18歲的我，可以再重溫一次大學生活，交到很多朋友，感覺不賴，曉光決定試試看，答應了這道聲音。"+"\n"+"那道聲音說：「有這麼簡單就能回到過去嗎？先回答我這個問題，答對了馬上就讓你回去。」"+"\n"+"一下說回到過去，一下子說要解題目，我是不是不該答應啊？可是對我也沒什麼損失。"+"\n"+"「什麼題目？」曉光問道。"))
                 list.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/06/q4DPkj.png', preview_image_url='https://upload.cc/i1/2022/03/06/q4DPkj.png'))
-                list.append(TextSendMessage(text='#1 檔案只有短短幾行程式碼，請問日翔該輸入什麼才能執行此函式，讓結果非None呢？（請輸入半形英文字母）'))
+                list.append(TextSendMessage(text='#1 題目只有短短幾行程式碼，請問該輸入什麼才能執行此函式，讓結果非None呢？（請輸入半形英文字母）'))
                 line_bot_api.reply_message(event.reply_token,list)
             #個人檔案已建立且視角!=0
             elif worksheet.acell(list[0]).value=="2":
@@ -177,6 +177,12 @@ def handle_message(event):
                 worksheet.update(list[1],int(1))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="執行程式後，日翔的螢幕發出了一道刺眼的閃光，幾乎讓日翔睜不開眼睛。日翔隱約聽見一個聲音在耳邊說著：「嘻嘻，這樣人情就還清了，剩下的就看你在學校的表現了。」聲音一落下，刺眼的光就消失了，日翔才緩緩地睜開眼睛。"+"\n"+"「剛剛那是什麼！？」日翔不記得自己欠過誰人情呀？過了一會，日翔才發現自己站在老家的房間裡，連房裡的擺設都跟以前一模一樣，難道自己真的回到過去了嗎？"+"\n"+"「日翔！你怎麼還在房間裡！大學不是今天開學嗎，難道你想第一天上學就遲到嗎？」呃！連媽媽的聲音都跟以前一樣，話說回來剛剛的聲音好像提到了學校？總之先去學校看看吧，搞不好能找到有關那個聲音的線索？"))
+                list_talk.append(TextSendMessage(text="#2 要出發去學校了，輔大的地址是？（請以「ＯＯ市ＯＯ區ＯＯ路ＯＯＯ號」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="0":
+                worksheet.update(list[1],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="回答完問題後，曉光的身體發出了一道刺眼的閃光，曉光錯愕地睜大雙眼，只能在刺眼的光芒中看到一抹模糊的微笑，還聽見一個聲音在耳邊說著：「嘻嘻，這樣人情就還清了，剩下的就看你在學校的表現了。」聲音一落下，那道光就消失了，曉光才緩緩地睜開眼睛。"+"\n"+"「我是誰？我還活著嗎？這裡是哪裡？剛剛那是！？」過了一會，曉光才發現自己站在老家的房間裡，連房裡的擺設都跟以前一模一樣，難道自己真的回到過去了嗎？"+"\n"+"「曉光！你怎麼還在房間裡！大學不是今天開學嗎，難道你想第一天上學就遲到嗎？」 母親大聲喊著催促曉光。"+"\n"+"「什麼？學校？我真的回來了嗎？」曉光慌張的看著自己的身體，摸著自己的臉。"+"\n"+"「也就是說…我現在是大學一年級新生了？ 糟糕，那就不能在這裡磨磨蹭蹭了，要趕快出門了。是說那道聲音有提到人情？我怎麼一點印象都沒有。不管了，先去學校再說。」"))
                 list_talk.append(TextSendMessage(text="#2 要出發去學校了，輔大的地址是？（請以「ＯＯ市ＯＯ區ＯＯ路ＯＯＯ號」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
             else:
