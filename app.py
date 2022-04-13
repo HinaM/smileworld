@@ -518,6 +518,12 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="一提起體育話題，司晨精神都來了，開始喋喋不休地和日翔討論最近的賽事，彷彿和早上趴在桌上睡著的是不同人。司晨十分好動這點還是和日翔記憶中的一模一樣，日翔總是覺得司晨是在面試體育系的時候走錯教室。"+"\n"+"「咕嚕咕嚕──」尷尬的聲音讓兩人同時沉默了下來。"+"\n"+"「呃......抱歉抱歉，我拖太久了我自己都餓了，哈哈。」司晨尷尬地對日翔笑了笑。"+"\n"+"「那我們就吃飽一點，去外面吃吧。」日翔提議，「外面的小巷子聽說有很多好吃的喔。」"))
                 list_talk.append(TextSendMessage(text="#9 學校外面藏有很多美食的小巷叫？（請輸入「ＯＯＯ巷」回答，ＯＯＯ為半形數字。） "))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="7":
+                worksheet.update(list[1],int(8))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「體育競賽？我沒什麼興趣。」對於把學業能力點滿，社交能力和體育能力卻低到谷底的曉光來說，體育競賽的確是相當不適合她的活動。「不如舉辦個浪浪募款活動，我一定會參加。」曉光嘴角微微上揚，想必是在心裡模擬募款活動的光景吧。"+"\n"+"既然平常的休息場所變得一點也不平靜，很少離開學校吃飯的曉光，拿出手機裡的課表看了看。「嗯…下午剛好沒有課，不如我就去外面吃吧，這還是我第一次去學校外吃飯。」"))
+                list_talk.append(TextSendMessage(text="#9 學校外面藏有很多美食的小巷叫？（請輸入「ＯＯＯ巷」回答，ＯＯＯ為半形數字。） "))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
