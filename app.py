@@ -723,6 +723,34 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="10":
+                worksheet.update(list[1],int(11))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#12 以下語法為Python結構中的？"+"\n"+"（Ａ）array"+"\n"+"（Ｂ）dictionary"+"\n"+"（Ｃ）tuple"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/25/8MeqCO.png', preview_image_url='https://upload.cc/i1/2022/03/25/8MeqCO.png'))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#12',
+                    template=ButtonsTemplate(
+                        title='#12',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='array'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='dictionary'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='tuple'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
