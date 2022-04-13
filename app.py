@@ -774,6 +774,13 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="#13 請問下圖最後會出現什麼結果？（請以「Ｏ」回答，Ｏ為半形數字。）"))
                 list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/10/J106XE.png', preview_image_url='https://upload.cc/i1/2022/03/10/J106XE.png'))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="11":
+                worksheet.update(list[1],int(12))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="才沒幾分鐘，曉光已經把老師指定要做的習題練習完了，而曉光正打算繼續寫程式時，突然眼角餘光看到了一個身影，是比較瘦長型的身材。「我聽說你…曾經也是知名高中的榜首吧？」聽到這個口氣，就知道來著不善，曉光只好停下手邊的事情，馬宇桓？怎麼會突然和我搭話呢？?我需要搭理他嗎？ 曉光一臉疑惑的看著這名不速之客。「忘了自我介紹，我曾經是數理資優班的，以優異的成績特殊選才進來輔大的『馬宇桓』，請多指教。」"+"\n"+"「真麻煩，遇到一個棘手的人。」曉光不滿的呢喃，「我是何曉光，請問有什麼事情嗎？」"+"\n"+"「也沒什麼啦，只是想問看看你有沒有興趣解這題程式，這可是很知名的迷宮問題喔，我想你應該聽過吧？」"+"\n"+"竟然第一次見面就下馬威，真是討厭的人，曉光默默的在內心留下這個評語。此時曉光的腦袋開始以高倍率的速度運轉。要是我沒有回答他的問題，感覺他會更加小看我，既然都報上自己過去的經歷，想必是很在意學歷的人，唉…這世界上還真的是什麼人都有呢。曉光左思右想，說道：「我有聽過，也知道怎麼解釋這題。」"))
+                list_talk.append(TextSendMessage(text="#13 請問下圖最後會出現什麼結果？（請以「Ｏ」回答，Ｏ為半形數字。）"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/10/J106XE.png', preview_image_url='https://upload.cc/i1/2022/03/10/J106XE.png'))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
