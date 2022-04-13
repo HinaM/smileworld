@@ -338,6 +338,13 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="「呃……請問妳知道第一堂課的教室在哪裡嗎……」日翔轉向曉光不好意思地詢問，希望自己聽起來並不是在隨便找什麼理由搭訕，「我太急著出門，忘記帶課表了……」"+"\n"+"「LM503，企業概論。」曉光連看都不必看，直接回答了日翔的問題。"+"\n"+"果然是學霸，連課表都背起來了。日翔在心裡讚嘆。"))
                 list_talk.append(TextSendMessage(text="#6 「LM」指的是哪棟大樓呢？（請以「ＯＯＯ大樓」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="4":
+                worksheet.update(list[1],int(5))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="曉光從畢業後就沒有再回來學校看過了，她甚至不清楚學校是否在他畢業以後有沒有改建過。走進校園，不僅建築物、銅像甚至是一草一木都和曉光記憶中一模一樣……"+"\n"+"「一點都沒變呢。」不知道是慶幸還是感嘆的曉光，至今還是不敢相信自己又回來了母校。"+"\n"+"「第一堂課在哪裡呢？」一向都是學霸的曉光，即便遇到這種事情也是能不慌不忙的在課業上，曉光拿出手機打開手機的APP查看課表，表定第一堂課的教室在LM503。"+"\n"+"此時身旁的日翔不曉得在慌張什麼，緊張的動作大到連曉光想不注意到也很難。"))
+                list_talk.append(TextSendMessage(text=+"「我太趕著出門，忘記帶課表了，你知道第一堂課的教室在哪裡嗎？」日翔似乎很不好意思地問道。"+"\n"+"「LM503，企業概論。」"+"\n"+"「在校網上的選課清單裡也可以看，日翔同學你也可以用用。」 曉光將自己手機畫面顯示給日翔看。"+"\n"+"「原來如此，謝啦。」"))
+                list_talk.append(TextSendMessage(text="#6 「LM」指的是哪棟大樓呢？（請以「ＯＯＯ大樓」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
