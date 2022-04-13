@@ -393,6 +393,37 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="5":
+                worksheet.update(list[1],int(6))
+                worksheet.update(list[2],int(1))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="解鎖利瑪竇大樓！趕快去「遊戲地圖」看看！"))
+                list_talk.append(TextSendMessage(text="「怎麼那麼吵啊…」曉光咕噥著，原本正專心看書的曉光，抬頭往門口方向一看，日翔好像撞到了一個人。而日翔撞到的那個人是據說是個資優生，以優異的成繁星進來的馬宇桓，但趾高氣昂的態度讓人感到相當不愉快，總之還是不要跟這個人扯上關係比較好，曉光想。"+"\n"+"「不過話說回來，帶我回來的那道光提到的『好好表現』，究竟是什麼呢？」曉光陷入沉思，特地帶人回到過去，一定有所目的，但是就憑這句話還沒辦法聯想到任何關聯性。"+"\n"+"「看來這四年可不平靜啊。」像是法官定案的樣子，從早上不小心掉落自己的學生證，到眼前這些大吵大鬧的光景，一切的一切都不是做夢。"+"\n"+"鐘聲響起，為這場總長四年的大學生活揭開第一幕。"))
+                list_talk.append(TextSendMessage(text="早上的課很快地結束了，一向獨來獨往的曉光總是在午餐時刻找個寧靜的地方休息，但是一如往常的休息場所，卻充滿著喧囂。「開始了嗎？」熙來攘往的風華廣場正在舉辦活動。"))
+                list_talk.append(TextSendMessage(text="#7 請問每年的9月，在風華廣場會舉辦什麼活動？"+"\n"+"（Ａ）社團博覽會"+"\n"+"（Ｂ）星光路跑"+"\n"+"（Ｃ）巧克力傳情"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#7',
+                    template=ButtonsTemplate(
+                        title='#7',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='社團博覽會'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='星光路跑'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='巧克力傳情'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
