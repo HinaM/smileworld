@@ -287,6 +287,34 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="3":
+                worksheet.update(list[1],int(4))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="做完簡單自我介紹後，兩人幾乎是沒有什麼更進一步的對話了。一來是曉光本來就不太擅長主動找人說話，二來因為不知道兩人的共同交集是什麼，曉光也找不到話題可以先開口。明白到這兩點的曉光，認為暫時不需要有更多的互動，拿出書來準備開始閱讀。"+"\n"+"好不容易終於到了輔大站，日翔和曉光兩人像是約好一樣從出車廂維持著日翔在前曉光在後跟著，反正兩人目的本來就是一樣的。回到了母校輔大，曉光從遠處就能看得見的白色三面水泥柱，代表三個教會團體共同復校同心協力的精神。上面大大的寫著輔大的中英文全名。"))
+                list_talk.append(TextSendMessage(text="#5 輔大英文全名是？"+"\n"+"（Ａ）Fu Jen Catholic University"+"\n"+"（Ｂ）Fu Jen Christian University"+"\n"+"（Ｃ）Fang Jia University"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#5',
+                    template=ButtonsTemplate(
+                        title='#5',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='Fu Jen Catholic University'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='Fu Jen Christian University'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='Fang Jia University'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
