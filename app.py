@@ -569,6 +569,35 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="8":
+                worksheet.update(list[1],int(9))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「還蠻好吃的，下次也來這邊吃吧。」吃了一間叫做歐姆先生的咖哩飯店，感到相當滿足的曉光，心想學校外面明明也有不輸給校內的美食，卻像個籠中鳥不願出學校，未免也太畫地自限了吧。"))
+                list_talk.append(TextSendMessage(text="開學最輕鬆的第一個禮拜很快就過去了，曉光漸漸接受起自己回到過去的事實，當然也沒忘記那個聲音要她在學校好好表現。說也奇怪，從那天以後他再也沒有聽到過那個聲音、在學校也尋不到任何線索，曉光也無從詢問「好好表現」具體來說要做什麼才能達到標準。即使如此，曉光仍按著她的生活步調，按部就班的完成每天必做的事情。"+"\n"+"「開學就一定要買書啊。」 以前都是班上的總務統一購買書籍，如今因為疫情的關係，只好自己去採購教科書。聖言樓樓下有一個書局，曉光以前在空堂時都會前往選購、瀏覽書籍。"))
+                list_talk.append(TextSendMessage(text="#10 聖言樓地下室的書局叫？"+"\n"+"（Ａ）金石堂書局"+"\n"+"（Ｂ）敦煌書局"+"\n"+"（Ｃ）誠品書局"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#10',
+                    template=ButtonsTemplate(
+                        title='#10',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='金石堂書局'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='敦煌書局'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='誠品書局'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
