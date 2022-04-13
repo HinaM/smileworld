@@ -468,6 +468,34 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="6":
+                worksheet.update(list[1],int(7))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「是社團招生啊。」一向是學霸的曉光，不是很想要花時間在其他多餘的娛樂上，但是聽說學校有「愛狗社」，熱愛動物的曉光，回想起小時候養貓的過程，實在是令人懷念啊。"+"\n"+"然而愛狗社的旁邊剛好是運動社團，曉光聽到熟悉的聲音：「那......加入系籃怎麼樣？」「對了，在12月學校會舉辦......」。曉光說道：「又遇到他們兩個啊…他們說12月有活動？是什麼活動啊？」"))
+                list_talk.append(TextSendMessage(text="#8 請問每年的12月，學校會舉辦什麼活動？"+"\n"+"（Ａ）煙火大會"+"\n"+"（Ｂ）課堂加退選"+"\n"+"（Ｃ）校慶運動會"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#8',
+                    template=ButtonsTemplate(
+                        title='#8',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='煙火大會'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='課堂加退選'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='校慶運動會'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
