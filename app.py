@@ -147,7 +147,12 @@ def handle_message(event):
             #ID已寫入且已選擇視角
             if worksheet.acell(list[0]).value=="0":
                 worksheet.update(list[0],int(2))
-                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="選擇了曉光視角！"))
+                list=[]
+                list.append(ImageSendMessage(original_content_url='https://i.imgur.com/2cCaBmx.jpeg', preview_image_url='https://i.imgur.com/2cCaBmx.jpeg'))
+                list.append(TextSendMessage(text="今天是曉光大學的同學會，然而曉光只是待在家裡，懷裡還抱著一隻她從小飼養到大的貓咪。「唉，早知道那時候就多交一些朋友了。」生性害羞的曉光，不太擅長社交，所以在大學四年根本沒認識什麼人就畢業了，曉光常常為此感到後悔，但是曉光只能繼續按著手上的遙控器，尋找有趣的節目。"+"\n"+"此時，曉光的手指停了下來，目光停留在一則新聞報導上。"+"\n"+"「根據星象專家的判斷，今日有高機率能在天空中看到流星，請民眾多留意。」"+"\n"+"「德魯貝，你聽，有流星耶，說不定等一下我們就能看到流星喔。」曉光對著懷中的貓咪興奮地說道。"+"\n"+"突然，有一道流星劃破天際，出現在曉光的窗外，「有流星！」曉光抱著懷中的德魯貝，快步地走向窗邊。眼看流星越來越大、越來越大，正當曉光感到吃驚時，流星發出刺眼的光芒。曉光的耳邊響起不知名的聲音：「你想重來一次大學生活嗎？」"+"\n"+"什麼意思？雖然曉光半信半疑，可是可以回到過去，也就是回到18歲的我，可以再重溫一次大學生活，交到很多朋友，感覺不賴，曉光決定試試看，答應了這道聲音。"+"\n"+"那道聲音說：「有這麼簡單就能回到過去嗎？先回答我這個問題，答對了馬上就讓你回去。」"+"\n"+"一下說回到過去，一下子說要解題目，我是不是不該答應啊？可是對我也沒什麼損失。"+"\n"+"「什麼題目？」曉光問道。"))
+                list.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/06/q4DPkj.png', preview_image_url='https://upload.cc/i1/2022/03/06/q4DPkj.png'))
+                list.append(TextSendMessage(text='#1 檔案只有短短幾行程式碼，請問日翔該輸入什麼才能執行此函式，讓結果非None呢？（請輸入半形英文字母）'))
+                line_bot_api.reply_message(event.reply_token,list)
             #個人檔案已建立且視角!=0
             elif worksheet.acell(list[0]).value=="2":
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="已經選曉光視角，要重置請輸入「重置遊戲」。"))
