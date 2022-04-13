@@ -1228,6 +1228,41 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message) 
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="19":
+                worksheet.update(list[1],int(20))
+                worksheet.update(list[2],int(3))
+                worksheet.update(list[3],int(3))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="解鎖淨心堂！趕快去「遊戲地圖」看看！"+"\n\n"+"眾所皆知輔大是天主教大學，當然少不了大型教堂，淨心堂開放也開放讓非天主教教徒進入禱告，走在輔大校園內也可以看見一些神父及修女。此外，除了淨心堂，輔大校內也設有淨心室讓同學進入沉澱心靈。"+"\n"+"曉光和真澄正位於淨心堂之中，跟著班級的所有人聆聽神父的一言一語。雖然兩人在天主教大學就讀，但並沒有相關的宗教信仰，於是這對他們而言這是頗為新鮮的體驗。二樓的聖堂整體打造為扇形的格局，據說，這擁有「教友將歸向天主」的意義。"+"\n"+"雖然曉光並不是天主教徒，但仍舊認為宗教的言語多少給人溫暖人心的力量，或許這便是教徒們會選擇跟隨神明的原因吧，她默默地想。"+"\n"+"突然間，她想起在很久以前自己似乎也感受過這樣柔和的、宛如午後坐擁薄雲的陽光——腦海裡和誰牽著手的模糊影像閃過了一瞬，緊接著是小時候的她將一張稚氣的圖畫送給了誰的畫面……可除此之外，曉光卻什麼都想不起來。"+"\n"+"算了，應該不是很重要的事情吧。曉光決定不再去想，並隨著神父的指示闔上雙眼聆聽禱告詞。"))
+                list_talk.append(TextSendMessage(text="解鎖圖畫！趕快去「個人檔案」看看！"))
+                list_talk.append(TextSendMessage(text="#21 曉光下一節課在進修部上課，請問以下哪個課程最可能在進修部大樓上課呢？"+"\n"+"（Ａ）微積分"+"\n"+"（Ｂ）會計"+"\n"+"（Ｃ）通識"+"\n"+"（Ｄ）統計學"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#21',
+                    template=ButtonsTemplate(
+                        title='#21',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='微積分'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='會計'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='通識'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='統計學'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message) 
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
