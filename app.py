@@ -929,6 +929,37 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="14":
+                worksheet.update(list[1],int(15))
+                worksheet.update(list[2],int(2))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="據說吃甜點能促進大腦思考，這是曉光從書上學到的，因此曉光很喜歡吃甜食。聽到輔大有地方賣鬆餅，二話不說就來到輔大的「心園餐廳」。心園位於信義和平宿舍的地下室，因此第一次去不注意環境的話很可能會錯過。心園除了有輔大三寶之一的鬆餅外，也提供便宜的果汁、餐點，甚至還有雜貨店等，因此被眾多學生評價為CP值最高的學餐。"))
+                list_talk.append(TextSendMessage(text="「要點什麼好呢？」曉光從上到下、從左到右，巡視著菜單上的一行一句。此時突然有個聲音打斷了她的思考迴路。"+"\n"+"「曉光？你也來買鬆餅嗎？」曉光不用看到對方，就能知道是誰在和她說話。"+"\n"+"「嗯。還在想要點什麼，那日翔同學你想要點什麼？」曉光說完這句後，才轉過身子看著日翔。"+"\n"+"「哈哈、畢竟菜單很多選擇，連鹹的口味也有。」日翔說起他第一次買鬆餅時，也因為五花八門的口味而思考了很久要買什麼。曉光能想像日翔站在店門口，埋頭苦思的樣子，光是想像這個光景，就覺得挺有趣的，曉光小聲地笑了一聲。"+"\n"+"「怎麼了？有什麼好笑的？」日翔歪著一邊的腦袋，疑惑的看著曉光。「沒..沒什麼啦」曉光為了不要把話題轉向自己身上，趕緊又接了下一句，「對了，要不要一起點餐？」當曉光說出這句話時，曉光感覺用了她畢生以來所有的勇氣。"+"\n"+"「當然好啊。」日翔爽快的答應曉光，但日翔似乎沒發現曉光的緊張。曉光聽到日翔幫他自己點了玉米蔬菜，幫他旁邊的司晨點了蜂蜜奶油，還有她的鮮奶油。"+"\n"+"「太好了，我期待已久的鬆餅。」曉光正準備從錢包裡找出零錢準備付款，但卻怎麼也找不到零錢。"+"\n"+"「阿司你的加上我的95元，曉光的……怎麼了嗎？」日翔問道，一向冷靜的曉光，這時卻亂了分寸。"+"\n"+"「……沒有足夠的零錢……只有大鈔……」要趕快把大鈔換成小鈔才行。正當曉光這麼想時，日翔竟然說出曉光意想不到的話：「這樣啊……那不用給我了。」曉光嚇了一跳，曉光從來也沒有想過會有這樣子的答覆，為什麼要對我這麼好？曉光臉上堆滿疑惑。"+"\n"+"日翔繼續解釋，「呃、我的意思是，上次妳不是幫了我嗎？當成那次的回禮好了。」上次？是說書局那一次嗎？原來他還記得，我還以為對他來說是不重要的小事情。曉光原先認為日翔是個迷糊的人，可是他卻把別人的事情牢牢記著。「看來跟想像中的有所誤差呢。得修正對他的印象才行。」"+"\n"+"在日翔和司晨正在小倆口鬥嘴時，曉光在一旁更正她的評價。「下一次換我請他好了，如果有遇到他的話。」曉光點了點頭，握起手心說著：「一定要更努力才行，一掃以前怯弱的我。」"+"\n\n"+"解鎖遊O王卡！趕快去「個人檔案」看看！"))
+                list_talk.append(TextSendMessage(text="時間很快地過去，讓大家最頭痛的期中考也悄悄地來了。幸好曉光還保有過去的記憶，重理解一次課程上的問題對她來說並不困難。請完成以下題目安全度過期中考："))
+                list_talk.append(TextSendMessage(text="#16 y=(5x+6)^10，則y'=？"+"\n"+"（Ａ）10*(5x+6)^9"+"\n"+"（Ｂ）50*(5x+6)^9"+"\n"+"（Ｃ）50x+60"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#16',
+                    template=ButtonsTemplate(
+                        title='#16',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='10*(5x+6)^9'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='50*(5x+6)^9'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='50x+60'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
