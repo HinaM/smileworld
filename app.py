@@ -1703,6 +1703,27 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="25":
+                worksheet.update(list[1],int(26))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="期末考終於結束了，曉光背起背包正要離開時，突然聽見一個聲音在她耳邊呢喃著，「回到過去了，好不好玩啊？」曉光抬起頭來，想要找出聲音的來源，卻怎麼樣都找不到。「是錯覺嗎？」曉光沒有多想，一如往常地踏上回家的路程。"+"\n"+"悄然夜晚，萬物進入夢鄉。正準備入睡的曉光站在窗邊，望向星光熠熠的天空。已經一年了，仍沒有想出那聲音告訴她的好好表現是什麼意思，曉光愁眉不展的歎了一口氣，「究竟要做什麼呢…？」這個問題一直存在曉光的心中。搖了搖頭，蓋上棉被的曉光，決定將這個問題拋開。"))
+                list_talk.append(TextSendMessage(text="解鎖大二劇情"))
+                list_talk.append(TextSendMessage(text="「呼啊——好久不見啦。」"+"\n"+"「誰？是誰在說話？這裡是哪裡？」"+"\n"+"「這裡是你的夢，至於我是誰，哼哼哼，大膽刁民竟然敢問本皇的尊名，我才不告訴你。」"+"\n"+"曉光對這個聲音十分印象深刻，畢竟之前才聽到相似的聲音，曉光當時還沒意會到聲音的主人是誰，但是能在夢裡和她對話，唯一想到的可能性就是那道光，沒有錯，就是那道光之中的聲音。"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='？？',
+                    template=ButtonsTemplate(
+                        title='？？',
+                        text='你到底是誰？為什麼要讓我回到大學生活？',
+                        actions=[
+                            MessageAction(
+                                label='？？',
+                                text='你到底是誰？為什麼要讓我回到大學生活？'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
