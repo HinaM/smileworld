@@ -1940,6 +1940,34 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="27":
+                worksheet.update(list[1],int(28))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「原來只要累計三題、再去選修我們系上的程式語言課程就可以算是通過機測了嘛！那就好，我這次再答對一題就可以不用再考了！」司晨露出了像是「賺爛了」的眼神，就好似撥雲見日一般，剛剛懊惱的樣子早已煙消雲散。"+"\n"+"如果能一次過當然是最好的，除了曉光、日翔、宇桓，還有其他少數同學以外，多數同學都還沒通過測驗，看來系上的機測蠻有鑑別度的。"+"\n"+"「怎麼了，曉光，你不是早就通過測驗了？」日翔看著曉光問道。"+"\n"+"「不，沒什麼，聽到司晨同學不用再考試，也覺得挺開心的。」"+"\n"+"「對吧對吧，阿日，這是多麼值得慶祝的一件事啊。」司晨蹦蹦又跳跳的說著。"+"\n"+"「嗯？你們看，風華廣場今天這麼熱鬧，是不是有什麼好玩的！」正在興奮情緒中的司晨，手指了指豐華廣場的方向。"+"\n"+"曉光看他像大一新生一樣興奮，依然維持著淡然的樣子默默開口：「那個，是課指組舉辦的……」"))
+                list_talk.append(TextSendMessage(text="#29 位於法籃旁邊的輔仁大學課外活動指導組，簡稱課指組，主要目的是期望透過課外活動之輔導功能，促進學生課業以外之活動延伸與學習。請問以下何者是課指組的承辦業務？"+"\n"+"（Ａ）校慶系列活動、社團博覽會、領才營"+"\n"+"（Ｂ）輔仁大學服務學習種籽志工隊"+"\n"+"（Ｃ）租借中美堂場地"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#29',
+                    template=ButtonsTemplate(
+                        title='#29',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='校慶系列活動、社團博覽會、領才營'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='輔仁大學服務學習種籽志工隊'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='租借中美堂場'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
