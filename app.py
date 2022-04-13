@@ -1169,6 +1169,12 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="校史室位於野聲樓二樓，就像一座位於輔大的小型博物館，存放著從開校以來到現今所保存的各種珍貴文物。校史室不僅只是展示，更是保存、傳承下發生在輔大的故事。"))
                 list_talk.append(TextSendMessage(text="#20 在大學入門課程中，導師會帶學生去什麼地方傾聽神父的禱告呢？（請以「ＯＯＯ」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="18":
+                worksheet.update(list[1],int(19))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="校史室位於野聲樓二樓，就像一座位於輔大的小型博物館，存放著從開校以來到現今所保存的各種珍貴文物。校史室不僅只是展示，更是保存、傳承下發生在輔大的故事。"))
+                list_talk.append(TextSendMessage(text="#20 在大學入門課程中，導師會帶學生去什麼地方傾聽神父的禱告呢？（請以「ＯＯＯ」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
