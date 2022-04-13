@@ -853,6 +853,34 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="13":
+                worksheet.update(list[1],int(14))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="只見曉光以飛快的速度打著程式碼，三兩下就達成宇桓的要求，這點讓宇桓目瞪口呆。"+"\n"+"「還有其他問題嗎？」 你真的干擾到我的讀書進度了，當然曉光沒有說出口，只是內心這麼覺得。"+"\n"+"宇桓露出一臉尷尬的表情，說道：「哎呀，沒想到你那麼厲害，果然名不虛傳，沒了，我問完了，下次我會再拿其他題目來『請教』你。」語畢，宇桓轉身快步離開。「這個人完全是日翔同學的翻版呢…連謝謝都沒說，下次他再來找我，我是不是要裝作沒看到？」曉光長嘆一口氣，無奈的聳了聳肩。"+"\n"+"解了無數道題目的曉光，身心俱疲之下決定去吃點東西，但是曉光不太想出去校門，「對了！現在就是好時機，就去吃那個傳說中的『輔大三寶』好了。」曉光一手手掌張開，一手拳頭敲了一下掌心，像是在蓋章一樣，對這個臨時想到的提案感到相當滿意。"))
+                list_talk.append(TextSendMessage(text="#15 傳說中的「輔大三寶」分別是哪三寶？"+"\n"+"（Ａ）小木屋鬆餅、食科冰淇淋、比臉大雞排"+"\n"+"（Ｂ）巧瑋鬆餅、食科冰淇淋、大菠蘿麵包"+"\n"+"（Ｃ）小木屋鬆餅、食科冰淇淋、大菠蘿麵包"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#15',
+                    template=ButtonsTemplate(
+                        title='#15',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='小木屋鬆餅、食科冰淇淋、比臉大雞排'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='巧瑋鬆餅、食科冰淇淋、大菠蘿麵包'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='小木屋鬆餅、食科冰淇淋、大菠蘿麵包'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
