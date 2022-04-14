@@ -3458,6 +3458,40 @@ def handle_message(event):
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     #??
+    elif event.message.text=="要不要來我家？":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="51":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="曉光終於鼓起勇氣開口邀請日翔。不過她似乎還沒有意識到「邀請日翔去自己家」究竟有什麼不妥。畢竟對內向不愛出門曉光而言，家裡便是她最好最棒的避風港，去哪裡都沒有在家的愜意。"+"\n"+"不過，這還是曉光第一次主動約日翔，於是並不打算只約他一個人。她打算邀請專題組的所有人一起研究專題，順便讀期中考——她事前已經考慮過，做專題這事除了邀約上的「合理性」之外，多一些其他的人在場，尤其是好友真澄，也會讓她不那麼緊張……"+"\n"+"「欸、等等、這、會不會太突然……！？」畢竟只有問了「要不要來我家」，不知道曉光計畫全貌的日翔迅速地緊張了起來。"+"\n"+"「我記得真澄也沒課，如果可以的話幫我問問司晨跟宇桓吧。需要長時間開發專題的話家裡還是比圖書館方便，也可以一起討論期中考。」當曉光提起其他人的名字時，能看到日翔的表情些微的改變，不過她並沒有仔細探究原因。"+"\n"+"「當然可以！他們都有空！」日翔格外爽朗地回應。"+"\n"+"欸，他們原來都有空嗎？曉光當然不太清楚司晨跟宇桓的行程是怎麼樣的，不過既然日翔清楚就好，那麼這次的邀請就是成功了。對於自己勇敢道出心意的第一步，曉光對此頗為滿意。"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='解鎖記憶碎片',
+                    template=ButtonsTemplate(
+                        title='交集',
+                        text='A⋂B',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='A⋂B'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
+    #??
     elif event.message.text=="A⋂B":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
