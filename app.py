@@ -3627,6 +3627,24 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="51":
+                list_talk=[]
+                list_talk.append(ImageSendMessage(original_content_url='https://i.imgur.com/ixtqZOa.jpg', preview_image_url='https://i.imgur.com/ixtqZOa.jpg'))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='繼續看主線故事',
+                    template=ButtonsTemplate(
+                        title='繼續看主線故事-2',
+                        text='繼續看主線故事-2',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='繼續看主線故事-2'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
     
