@@ -4541,6 +4541,28 @@ def handle_message(event):
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
+    #64答案
+    elif event.message.text=="等、等等……":
+        userid_list=worksheet.col_values(1)
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入、日向視角、Q2=1
+            if worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="64":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="待到曉光恢復意識時，和之前一樣躺在柔軟的床上。那道光無論是出現還是消失，都毫無徵兆，彷彿擁有自己的意志。曉光在床邊坐著，思考著剛剛的對話。"+"\n"+"「至少知道一點線索了。」曉光增加了信心，她握緊了自己的手掌心放在胸前。"))
+                list_talk.append(TextSendMessage(text="「我昨天收到多益的通知書了！一次就考過了！」真澄將手機裡的多益證書秀給大家看，「大三為了寫專題少修了一點課，還好我們做得很快才有時間念多益。」"+"\n"+"「真澄，恭喜妳。」曉光說，宇桓也點點頭表示祝賀。"+"\n"+"「哎、你們都考過啦？我都還沒考呢！」司晨驚訝地說。"+"\n"+"「……你現在都沒有去考多益？真的假的？」宇桓大聲地說，在教室內引起一些人的注目。"+"\n"+"「對啊對啊，所以我要參加管院的自學方案……聽說跟高中一樣會考雜誌，希望不會太難。」司晨好像沒有注意到對方傻眼的語氣，他像是閒聊一樣輕鬆地接話。"+"\n"+"「唉，幸好管院有規劃自學方案，你才可以有準時畢業的機會。」早已通過多益畢業門檻的真澄嘆氣。"+"\n"+"「我上上學期多益也考過門檻了，阿司你要加油啊。」晚來的日翔似乎也在教室外聽見了宇桓的驚呼，一進教室就加入了多益的話題。"+"\n"+"「什、什麼！你原來通過了嗎，阿日，你居然背著我偷偷來……」司晨的語氣像是朋友背叛了自己一樣悽慘。"+"\n"+"「你不要說這麼招人誤會的話啦！」"+"\n"+"「因為我真的沒想到阿日會去考多益啊！！還以為你會跟我一起參加自學方案……」司晨頭垂了下來對日翔進行了一番解釋，語氣中帶了點難過。"))
+                list_talk.append(TextSendMessage(text="#65 請問本系英文畢業門檻多益成績為多少分以上？（請以「Ｏ分」回答，Ｏ為半形數字。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+
     #65答案
     elif event.message.text=="750分":
         userid_list=worksheet.col_values(1)
@@ -4559,13 +4581,21 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="開學已經過了數周，日翔還是沒有什麼「接近真相」的感覺，他已經開始懷疑是不是要到畢業當天才能知道那個「Code/140.136」製作者的動機了。"+"\n"+"今天是星期二下午三點三十五分，日翔跟曉光坐在教室的一角等待上課時間的來臨。而曉光正在一邊準備她升學所需要的甄試資料，日翔比起以往的偷看，反倒是更加光明正大地注視著他的戀人。"+"\n"+"注意到隔壁的視線，曉光眼睛仍然盯著螢幕對筆電敲敲打打，一邊對身旁的人詢問：「怎麼了，日翔？」"+"\n"+"「沒事，只是覺得妳……嗯，果然是會考研的類型。」只是覺得妳認真起來的樣子我果然好喜歡……這種話好像還是太肉麻了，即使已經和曉光是交往關係，日翔還是對於內心話稍微難以啟齒。"+"\n"+"曉光似乎對日翔的反應不是太意外，便反過來詢問：「畢竟讀書還算是我的專長……唔、日翔以後不升學的話，是要參加產業實習？」"+"\n"+"日翔想到某個往年都有開實習名額夢想公司，便坦率地回答：「我想是這樣的吧……」"+"\n"+"畢竟再怎麼說，他還是想進福利好一點又可以發揮目前所學，還不會日以繼夜爆肝的夢想公司啊！"+"\n"+"「阿——日——午安安——呼、呼……」一個熟悉的人影不知是走還是爬的急急進了教室。"+"\n"+"「阿司，你怎麼這麼累？｣日翔再度看看時間，已經是三點三十九分了，上課時間都要到了，司晨才走進教室。"+"\n"+"「我剛剛，在進修部啦。」司晨一手撐著桌子，氣喘吁吁地回應。"+"\n"+"「上二外有點晚下課，想說、教授會點名就、趕著過來……電梯人太多搭不上……」二外指的是第二外語。在大一的英語必修過了之後，也可以在這個語言資源豐富的學校修習各式各樣的語言，提升自身的競爭力。"+"\n"+"「司晨，喝點水會比較好。」曉光看跑樓梯上來的司晨這麼喘，便關心了他一下。"+"\n"+"噹噹——噹——噹——聽見上課時間到了，司晨便趕緊坐在日翔和曉光的旁邊，然後開始對自己灌水。日翔看著他心裡便想，他這樣邊工讀邊忙課業也是真的很辛苦，不知道他的學分修得怎麼樣了……可自己又不能替他修學分，頂多也只能在課業上多多幫忙了。"))
                 list_talk.append(TextSendMessage(text="#66 請問輔仁大學資訊管理系畢業所需的學分為何？（請以「Ｏ分」回答，Ｏ為半形數字。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="64":
+                worksheet.update(list[1],int(65))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「沒事啦阿司，你一定可以度過的。」知道司晨實在不擅長英文，於是日翔還是拍拍司晨的肩膀表達安慰。"+"\n"+"「畢竟你工讀也挺忙的，不能準備多益也並不是很意外。」宇桓看到他這麼難過，也只好跟著拉下臉安慰剛剛被自己大聲斥責的人。"+"\n"+"輔大資管系不只有承認TOEIC750分以上這個標準，尚可以選擇考取iBT TOEFL成績71分以上、IELTS成績6.0以上或全民英檢中高級複試通過等等，這些測驗只要到達了標準都會承認通過英文畢業門檻。但如果沒有辦法通過這些門檻，管院也有為大四生準備8次英語自學方案的測驗，顧及英文程度比較差的同學，而這些測驗的內容跟時間都會公告在自學方案的粉絲專頁。"))
+                list_talk.append(TextSendMessage(text="開學已經過了數周，那道光依舊還是沒有出現，曉光已經開始懷疑是不是要到畢業當天才能知道那個「Code/140.136」的真相。"+"\n"+"今天是星期二下午三點三十五分，日翔跟曉光坐在教室的一角等待上課時間的來臨，而曉光正在一邊準備她升學所需要的甄試資料的時候，突然發覺身旁的日翔正在看著他。"+"\n"+"「怎麼了，日翔？」注意到隔壁的視線，曉光眼睛仍然盯著螢幕對筆電敲敲打打，一邊對身旁的人詢問。"+"\n"+"「沒事，只是覺得妳……嗯，果然是會考研的類型。」日翔說。"+"\n"+"「畢竟讀書還算是我的專長……唔、日翔以後不升學的話，是要參加產業實習？」曉光詢問。"+"\n"+"「我想是這樣的吧……」日翔提起往年都有開實習名額夢想公司，便坦率地回答。"))
+                list_talk.append(TextSendMessage(text="「阿——日——午安安——呼、呼……」一個熟悉的人影不知是走還是爬的急急進了教室，打斷兩個人的對話。"+"\n"+"「阿司，你怎麼這麼累？｣日翔再度看看時間，已經是三點三十九分了。"+"\n"+"「我剛剛，在進修部啦。」司晨一手撐著桌子，氣喘吁吁地回應。"+"\n"+"「上二外有點晚下課，想說、教授會點名就、趕著過來……電梯人太多搭不上……」二外指的是第二外語。在大一的英語必修過了之後，也可以在這個語言資源豐富的學校修習各式各樣的語言，提升自身的競爭力。"+"\n"+"「司晨，喝點水會比較好。」曉光看跑樓梯上來的司晨這麼喘，便關心了他一下。"+"\n"+"噹噹——噹——噹——聽見上課時間到了，司晨便趕緊坐在日翔和曉光的旁邊，然後開始對自己灌水。司晨邊工讀邊念書真辛苦，不知道他的學分修得怎麼樣了……"))
+                list_talk.append(TextSendMessage(text="#66 請問輔仁大學資訊管理系畢業所需的學分為何？（請以「Ｏ分」回答，Ｏ為半形數字。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
             line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
 
     #66答案
-    elif event.message.text=="126分":
+    elif event.message.text=="128分":
         userid_list=worksheet.col_values(1)
         if event.source.user_id in userid_list:
             for i in range(len(userid_list)):
@@ -4576,6 +4606,37 @@ def handle_message(event):
             list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="65":
+                worksheet.update(list[1],int(66))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#67 以下那些課程是輔大的校定必修課程？"+"\n"+"（Ａ）大學入門、人生哲學、專業倫理"+"\n"+"（Ｂ）體育、國文、外國語文"+"\n"+"（Ｃ）人文與藝術、自然與科技、社會科學三個領域通識（包含歷史與文化學群）"+"\n"+"（Ｄ）以上皆是必修課程"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#67',
+                    template=ButtonsTemplate(
+                        title='#67',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="大學入門、人生哲學、專業倫理"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="體育、國文、外國語文"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="人文與藝術、自然與科技、社會科學三個領域通識（包含歷史與文化學群）"
+                            ),
+                            MessageAction(
+                                label='D',
+                                text="以上皆是必修課程"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="65":
                 worksheet.update(list[1],int(66))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#67 以下那些課程是輔大的校定必修課程？"+"\n"+"（Ａ）大學入門、人生哲學、專業倫理"+"\n"+"（Ｂ）體育、國文、外國語文"+"\n"+"（Ｃ）人文與藝術、自然與科技、社會科學三個領域通識（包含歷史與文化學群）"+"\n"+"（Ｄ）以上皆是必修課程"))
@@ -4654,6 +4715,38 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="66":
+                worksheet.update(list[1],int(67))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="為了安慰又忙又累的司晨，日翔擅自在下課後表示他要請司晨喝個飲料。"+"\n"+"「我也幫司晨出錢。」曉光提議。"+"\n"+"「欸欸！真的不用啦，而且我也有薪水啊。」司晨看著兩位對自己這麼好的同學，連忙進行推辭。不過下一秒便又後悔了：「那不然你們請我711就好啦，嘿嘿，我要順便去取個貨。」"+"\n"+"曉光一邊收書包，一邊思考著：對了，學校這麼多便利商店，她甚至都沒有好好研究過店名……"))
+                list_talk.append(TextSendMessage(text="#68 進修部旁邊7-11門市的名稱為？"+"\n"+"（Ａ）進修門市"+"\n"+"（Ｂ）輔大門市"+"\n"+"（Ｃ）輔進門市"+"\n"+"（Ｄ）輔明門市"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#68',
+                    template=ButtonsTemplate(
+                        title='#68',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="進修門市"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="輔大門市"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="輔進門市"
+                            ),
+                            MessageAction(
+                                label='D',
+                                text="輔明門市"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
@@ -4684,6 +4777,26 @@ def handle_message(event):
                             MessageAction(
                                 label='選擇',
                                 text='當然，因為我們已經約好了。'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="67":
+                worksheet.update(list[1],int(68))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="取完貨、日翔和曉光也幫司晨付活益比O多的錢之後，三人走在離開學校的路上。"+"\n"+"日翔也替自己跟曉光結帳了兩瓶果汁。他旋開寶特瓶罐子，開始關心自己好友的狀況：「啊對了，司晨你以後有想做什麼嗎？」"+"\n"+"「欸？我沒講過嗎，經理跟我談好啦，因為我工作很認真，畢業之後工讀要幫我轉正欸！」"+"\n"+"其實曉光早已知道這件事情，畢竟她可是從未來來的人，不過曉光還是很佩服司晨的努力，累積了許多的工作經驗，也存了一筆錢，未來這些資源都會變成他前進的助力，這點已經贏過大半數的大學生了。"+"\n"+"「沒想到你是我們之中最先計畫好未來的人。」日翔發出讚嘆的語氣。"+"\n"+"「真厲害。那我也得努力一點才行了。」曉光想想過去的自己，的確也是從畢業後考試、升學，之後憑著碩士學歷去找到適合自己的工作，這一步步走來的確也是不輕鬆。"+"\n"+"日翔點點頭同意曉光所說的話。"))
+                list_talk.append(TextSendMessage(text="今天是實習說明會，說明通常會在導師時間統一舉辦。在這一天，會有許多企業會過來介紹徵才條件與福利等等，對有意參加產業實習的同學們無疑是十分重要的一天。除了不打算升學的日翔以外，同樣想參加實習的真澄和單純前來陪同的曉光也都過來了。"+"\n"+"「噯，真澄你覺得這家怎麼樣？」日翔主動詢問坐在旁邊的真澄。"+"\n"+"「我再想想吧，畢竟這很可能會是畢業後的第一份工作嘛。」真澄思索了一下，表示他還想聽聽接下來其他企業的福利如何再決定。"+"\n"+"「說得也是……」"+"\n"+"看來他們也都各自決定好未來的方向了，曉光看著正在討論的兩人想道。"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='選項',
+                    template=ButtonsTemplate(
+                        title='選項',
+                        text='即使前程相異，我也會在你身邊……守護我們的約定。',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='即使前程相異，我也會在你身邊……守護我們的約定。'
                             )
                         ]
                     )
