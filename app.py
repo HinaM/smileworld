@@ -2910,6 +2910,28 @@ def handle_message(event):
                 )
                 list_talk.append(carousel_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="43":
+                worksheet.update(list[1],int(44))
+                worksheet.update(list[2],int(8))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="解鎖紀念幣！趕快去「個人檔案」看看！"))
+                list_talk.append(TextSendMessage(text="解鎖大三劇情"))
+                list_talk.append(TextSendMessage(text="夜深人靜，曉光複習完今日上課的內容，洗了澡，開始整理房間。沒想到整理到書櫃時，突然從最上層掉下一個有點舊的盒子，從上面佈滿灰塵的狀況看來似乎被遺忘很久了，曉光對此盒子並沒有印象，它的出現讓曉光十分疑惑。"+"\n"+"「奇怪，這些東西是什麼？」 曉光開啟盒子端詳起裡面的物品，有信封、圖畫、還有……戰鬥紙牌？看著這些毫無關聯的物品，曉光並沒有想出個所以然。「應該不會有人特地把東西寄放在我這裡吧？」"+"\n"+"「……總覺得忘了什麼。」雖然跟日翔相處的時候，看到一些事物，隱隱約約會有股「被電到的感覺」，為什麼是日翔呢？可是其他人就沒有相似的感覺，難道這些東西和日翔有關？曉光不敢妄下斷論，但是也不想否定這個問題。"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='選項',
+                    template=ButtonsTemplate(
+                        title='選項',
+                        text='是什麼呢……想不起來。',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text="是什麼呢……想不起來。"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
