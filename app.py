@@ -2136,6 +2136,14 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="日翔這幾天讀得急急忙忙，但靠著過去大學生活的記憶，總算把所有的課程內容讀完了，甚至還比以前要讀得更好——甚至還可以跟曉光討論一些比較艱難的題目，或者是拯救必修快要掛掉的司晨。他們三人後來還借濟時樓的討論室，在課後一起惡補。而且，其中的幾天還遇上同樣跑來濟時樓讀書的宇桓！沒想到，那個學霸也在這裡讀書啊，這是以前日翔都不知道的。"+"\n"+"現在，是該要驗收讀書的成果了。"))
                 list_talk.append(TextSendMessage(text="#33 班上 1-10 號的同學身高分別為 178、160、155、182、169、160、164、158、175、160，請分別輸入這十位同學的算術平均數、中位數與眾數。（請以「Ｏ、Ｏ、Ｏ」回答，若Ｏ有小數點為四捨五入至第一位半形數字。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="31":
+                worksheet.update(list[1],int(32))
+                worksheet.update(list[2],int(6))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="解鎖濟時樓！趕快去「遊戲地圖」看看！"))
+                list_talk.append(TextSendMessage(text="期中考逼近，曉光平時都保持著課前預習、課後複習的好習慣，加上課堂教的又是曉光已經掌握的知識，因此曉光早早就準備好令大家頭疼的期中考試了。不過，跟以往獨自念書不同，這次日翔和司晨也會來詢問自己一些不明白的問題，為此三人還專門去濟時樓借了討論室開讀書會。甚至遇上了同來濟時樓念書的馬宇桓，雖說他為人高傲，不過也是很努力在讀書上呢。"+"\n"+"現在，是該要驗收讀書的成果了。"))
+                list_talk.append(TextSendMessage(text="#33 班上 1-10 號的同學身高分別為 178、160、155、182、169、160、164、158、175、160，請分別輸入這十位同學的算術平均數、中位數與眾數。（請以「Ｏ、Ｏ、Ｏ」回答，若Ｏ有小數點為四捨五入至第一位半形數字。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
