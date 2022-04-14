@@ -4280,6 +4280,11 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#61 某IP採用IPv4，且網路為占24bit，請問可用的主機數量有多少？（請以「Ｏ」回答，Ｏ數量不代表正確答案字數。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="59":
+                worksheet.update(list[1],int(60))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#61 某IP採用IPv4，且網路為占24bit，請問可用的主機數量有多少？（請以「Ｏ」回答，Ｏ數量不代表正確答案字數。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
@@ -4297,6 +4302,33 @@ def handle_message(event):
             list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="60":
+                worksheet.update(list[1],int(61))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#62 IPv6採用多少位元來表示IP位置？"+"\n"+"（Ａ）32"+"\n"+"（Ｂ）64"+"\n"+"（Ｃ）128"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#62',
+                    template=ButtonsTemplate(
+                        title='#62',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="32"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="64"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="128"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="60":
                 worksheet.update(list[1],int(61))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#62 IPv6採用多少位元來表示IP位置？"+"\n"+"（Ａ）32"+"\n"+"（Ｂ）64"+"\n"+"（Ｃ）128"))
@@ -4366,6 +4398,33 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="61":
+                worksheet.update(list[1],int(62))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#63 網頁資料URL的英文全名是？"+"\n"+"（Ａ）Uniform Resource Locator"+"\n"+"（Ｂ）Used Return Link"+"\n"+"（Ｃ）Unknow Rank Location"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#63',
+                    template=ButtonsTemplate(
+                        title='#63',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="Uniform Resource Locator"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="Used Return Link"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="Unknow Rank Location"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
@@ -4383,6 +4442,11 @@ def handle_message(event):
             list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="62":
+                worksheet.update(list[1],int(63))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#64 有一二進位數1100 1101 0011，轉十進位是？（請以「Ｏ」回答，Ｏ數量不代表正確答案字數。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="62":
                 worksheet.update(list[1],int(63))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#64 有一二進位數1100 1101 0011，轉十進位是？（請以「Ｏ」回答，Ｏ數量不代表正確答案字數。）"))
@@ -4421,6 +4485,29 @@ def handle_message(event):
                             MessageAction(
                                 label='？？',
                                 text='你該不會又要擅自離開了吧……'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="63":
+                worksheet.update(list[1],int(64))
+                worksheet.update(list[2],int(10))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="明日就是七夕了，而七夕前一晚的曉光，剛洗完澡頭髮仍濕淋淋的，穿著粉色貓咪圖案的睡衣，肩上還掛著毛巾。曉光到冰箱拿了一瓶沁涼的果汁牛奶，還有一個小紅豆麵包，準備好好享用。"+"\n"+"此時，曉光的手機收到了一則訊息。"+"\n"+"「是誰啊？這麼晚了。」曉光打開手機，目光停留在寄件人的名字。「日翔？怎麼了嗎？」"+"\n"+"曉光點開日翔的訊息，上面寫著：「曉光，關於這件事我想了很久。打從大一看到妳的時候，我就因為妳出眾的外貌而對妳抱持著好印象…」"+"\n"+"看到一半的曉光，瞬間明白這封信的目的。"+"\n"+"是…情書？！曉光驚呼了一聲，她能感受到手正在顫抖，心跳加速。曉光緊張地拿起最近買的IKEA鯊魚，緊緊抱在懷裡。"+"\n"+"曉光內心激動不已，遲遲不敢往下看訊息。而正當曉光猶豫該怎麼辦時，身邊的德魯貝突然慵懶地叫了一聲。"+"\n"+"「德魯貝，你在幫我加油嗎？」 曉光摸了一下德魯貝。"+"\n"+"「喵嗚。」不曉得是聽得懂人話的德魯貝，還是剛好只是又想發出叫聲。"+"\n"+"「嗯，我會把它看完。」曉光把懷裡的鯊魚放在沙發上，拿起剛剛放在桌上的手機，做了個深呼吸。"+"\n"+"後來，曉光一字不漏的將這些字看完了，又再度吸了一口氣，把手機放在一旁，將已經不那麼冰涼的果汁和麵包握在手上。不同於剛剛的曉光，心情很快就平復下來，開始思考要怎麼回應日翔的「告白」。"+"\n"+"曉光回想起從認識日翔的那刻，無論曉光面對任何困難，日翔總是一直幫助曉光，在曉光最寂寞的時候，也一直陪伴著曉光，而臉上的笑容總能融化曉光冰冷的外在。曉光很感激日翔的所做所為，也覺得日翔是個貼心、溫柔善良的男孩子。"+"\n"+"而如今又回到大學生活，想起以前的回憶，也不斷受到日翔的照顧，曉光認為是時候該回覆日翔的心意了。"+"\n"+"曉光把手上的果汁和麵包飲用完，收拾一下，打開了手機，開始慢慢的按下手機上的按鍵。"+"\n\n"+"「謝謝你，日翔，你的心意我確實收到了。一直以來受到你的幫忙，不論是小時候，你陪伴了常常一個人，感到寂寞的我，帶著我到處去遊玩。我一直都記得。還有一次你帶著我去吃冰淇淋，我的臉上沾到冰淇淋了，你拿出手帕幫我擦拭嘴角，我很喜歡你這些貼心的舉動。"+"\n"+"直到現在大學了，你依舊在一旁默默的幫助我，剛開學的時候你撿起我的學生證，臉上的笑容，如同你的名字，像太陽一樣溫暖我的心。不過還是像以前一樣，對課業不太擅長呢，但是從大一到現在的你，已經進步了很多了喔。還有一起吃著鬆餅、冰淇淋的時候，真的很快樂。到現在大三開始做專題，你在吃貓餐廳遞給我毛巾好讓我擦拭身體，在圖書館幫我拿書本，我也都記得。而最近我們一起去IKEA，你牽起我的手，當時我的心跳真的跳得好快。"+"\n"+"不知道該怎麼答謝你，也很感謝你對我做的這些。"+"\n"+"如果不嫌棄的話，希望你可以一直在我身邊。"+"\n"+"我答應你。」"+"\n\n"+"曉光重頭看了一次自己寫的字，確定都沒問題以後，按下發送。"+"\n"+"轉眼間，這個輪迴的大學生活即將邁入最後一年，曉光不禁感嘆時光飛逝。"+"\n"+"原本一片混亂的腦袋，似乎找到了自己的地圖，原本被迷霧壟罩的路程，隨著一道曙光開闢了道路，曉光已經不再對未來感到迷惘。"+"\n"+"「但，究竟是誰呢？」還是不理解是什麼人大費周章讓她回顧一次大學生活，也不清楚這樣能帶給那個人什麼好處。"+"\n"+"不過，曉光仍然想再見那個人一次面，想當面向他道謝。"+"\n"+"「感謝您帶我回來。」曉光面對家中的窗外，雙手合十道謝以後，隨即轉身回到房間裡。"+"\n"+"而正當曉光轉身的瞬間，夜幕中再度劃過一顆流星。"+"\n\n"+"解鎖信紙！趕快去「個人檔案」看看！"))
+                list_talk.append(TextSendMessage(text="家貓德魯貝是在小學的時候，曉光從貓咪中途之家收養而來的。當時，年幼的曉光與母親相依為命，母親又常常因為工作的關係會晚回家，因此曉光常常一個人在家裡。"+"\n"+"為了不讓曉光感到寂寞，也知道曉光喜歡動物，於是有一天…"+"\n"+"「曉光，明天媽媽帶你去一個地方好不好？」"+"\n"+"很久沒跟媽媽出門玩的曉光，聽到媽媽這麼說，高興的猛點頭。"+"\n"+"「那太好了，你要好好期待喔。」母親摸了摸曉光的頭，臉上帶著慈祥的笑容。"+"\n"+"隔一天，曉光和媽媽到了貓咪中途之家，裡面有很多曉光最喜歡的貓咪。"+"\n"+"「媽媽你看，有好多貓咪喔。」曉光拉著母親的衣角，興奮的說著。"+"\n"+"「曉光，你很喜歡貓咪對吧？」"+"\n"+"「對呀！特別是這一隻，小小的好可愛。」曉光手指著玻璃櫥櫃後面一隻灰色小貓。"+"\n"+"「這隻貓咪之前被一個家庭餵養了一個禮拜，有帶給獸醫檢查過，健康方面都什麼問題，如果你們喜歡的話，可以領養牠喔。」中途之家的人員告訴曉光母女。"+"\n"+"「欸…這樣啊，那曉光你覺得呢？」母親問道。"+"\n"+"「真的嗎媽媽？這隻貓咪會跟我們一起回家嗎？」曉光看著母親的雙眼。"+"\n"+"「是真的喔，那我們就帶這隻貓咪回家吧。」嘴角微微上揚、眼睛瞇成上弦月的母親，是曉光最喜歡的笑容。"+"\n"+"於是曉光和母親帶著這隻灰色貓咪回家，並取名為德魯貝，而德魯貝的名字由來，是出自於曉光最喜歡的卡通「月光美少女戰士」裡面，女主角飼養的貓咪的名字。"+"\n"+"自從那天以後，受到天皇等級般照顧的德魯貝，與曉光感情密切，形影不離。"))
+                list_talk.append(TextSendMessage(text="開學的前一天下午，日翔跟曉光兩個人坐在新莊運動公園的草地上談天：「有沒有可能，妳家的德魯貝就是我以前養過的小貓啊？牠剛好也是灰色的耶。」"+"\n"+"對了，日翔之前說過家裡有養過貓。"+"\n"+"「哈哈，可是德魯貝這麼胖，應該不可能吧？」日翔摸摸頭笑了笑。"+"\n"+"「哎、德魯貝只是毛蓬鬆了一點，而且又不愛運動……唔，好像真的有點胖……」曉光本來似乎想認真地反駁，但後來又越說越小聲。"+"\n"+"「我們可以幫牠制定一個減重計畫呀。」日翔想到德魯貝的健康問題，對此進行了提議。"+"\n"+"「說得也是……要不先從減少零食開始好了。」曉光附和道。"+"\n"+"日翔和曉光的交往也過了兩三個月的時間，兩個人早就熟悉了起來，日翔可以感覺到曉光和自己的關係日漸親密，這對他而言是一件很幸福的事情——彼此之間雖然還是很慢熱，但直到今天也已經是無話不談的程度了。"))
+                list_talk.append(TextSendMessage(text="曉光睜開雙眼，突然就被一道刺眼的光芒照射著……又是這道光？曉光很快地就回憶起了兩年前也看過這道光！無庸置疑，這絕對是那個「Code/140.136」所製造的。"+"\n"+"「『藉著對知識真理的追求，修德行善的用心，欣賞宇宙萬物之美，以體會人生至聖之境』。……曉光你果然做得比我想像中的更加優秀啊——哎唷唷唷，真不愧是我看中的人。」似乎是發現曉光已經意識到這裡是什麼地方，那神秘的個體便逕自曉光搭話。"+"\n"+"曉光總看不透聲音的主人內心所想，突然講起輔大「真善美聖」的校訓想告訴她什麼呢？且曉光對於他口中所說「看中的人」也十分在意。"+"\n"+"「……大學生活也快結束了，你還是不願告訴我你的身分嗎？」曉光詢問道。"+"\n"+"「妳很快就會知道啦，曉光妳已經越來越接近真相囉！」聲音告訴曉光，果然從他口中直接套出真相的機率是微乎其微，不過曉光還是從這句話裡得知了一定的資訊。"+"\n"+"「唔……也就是說，總有一天你會告訴我真相嗎？」曉光再次向聲音問道。"+"\n"+"「接下來你只要好好期待就好……」聲音仍不打算交代清楚，隨著聲音聽起來越來越模糊，曉光知道他又要離開了，可是她還有很多問題想問……"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='？？',
+                    template=ButtonsTemplate(
+                        title='？？',
+                        text='等、等等……',
+                        actions=[
+                            MessageAction(
+                                label='？？',
+                                text='等、等等……'
                             )
                         ]
                     )
