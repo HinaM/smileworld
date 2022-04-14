@@ -3305,6 +3305,36 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="48":
+                worksheet.update(list[1],int(49))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「這樣就沒問題了，來睡覺吧。」曉光闔上手機，把房間的電燈關掉，準備入眠。"+"\n"+"春季的夜晚，涼涼的微風吹拂著，花兒隨著風搖曳，風中飄散著淡淡的花香。"+"\n"+"「看來你好像想起什麼。」早已進入夢鄉的曉光，並沒有聽到這句話。"))
+                list_talk.append(TextSendMessage(text="獲得充足睡眠的曉光，擺脫昨日的疲態，整頓好心情準備好上學。"+"\n"+"昨日安排好的事情，在今日早上井然有序的辦好了，面對這些丈二摸不著金剛，宛如童話故事才會出現的劇情，曉光仍不慌不忙的處理事情，這就是曉光厲害的地方。"+"\n"+"「事情都辦好了阿，那下午就去一趟圖書館吧。」對於圖書館常客的曉光，經常瀏覽圖書館的消息，而根據圖書館最新的消息，在今日下午會引進一些新書，曉光決定去一探究竟。"+"\n"+"輔仁大學圖書館的館藏豐富。截至2021年7月31日的統計為止，光是實體藏書合計就有147.8萬冊，若是算上可提供學生使用的電子書籍292.2萬冊就更驚人了！只要是想找學術用資料，先來圖書館跑一趟可以省下不少買書的錢。"))
+                list_talk.append(TextSendMessage(text="「我看看喔。」面對這些比曉光高上兩倍的新書架，曉光需要抬起頭來一本本找尋自己喜歡的書籍。"+"\n"+"找尋一段時間後，曉光的眼神緊盯著一本書，那是有關於程式的書籍，但是這本書位於書架的高處，身材嬌小的曉光無論怎麼伸手都拿不到。"+"\n"+"「怎麼辦才好？是不是該拿凳子，或是請人來拿呢？」"+"\n"+"突然，曉光看到那本書正被另外一隻手取走。"+"\n"+"「那個…」想出聲制止那隻手的曉光，因為緊張而沒注意到自己的音量。"+"\n"+"「來，給妳吧。」只見那隻手的主人把手上的書遞給曉光。"+"\n"+"曉光顯得有些驚喜，因為這隻手的主人正是日翔。"+"\n"+"「我們借好書之後，去外面聊吧。」而注意到曉光剛剛出聲音量過大，稍微吸引到一些人側目的日翔，提出這個建議。"+"\n"+"曉光點了點頭，答應日翔的邀約。"))
+                list_talk.append(TextSendMessage(text="#50 以下何者不是輔大正確的「圖書館-館藏種類」配對？"+"\n"+"（Ａ）公博樓圖書館-人文、藝術、歷史、哲學"+"\n"+"（Ｂ）國璽樓圖書館-公共衛生、心理學、食品營養"+"\n"+"（Ｃ）濟時樓圖書總館-資訊、法律、教育"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#50',
+                    template=ButtonsTemplate(
+                        title='#50',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="公博樓圖書館-人文、藝術、歷史、哲學"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="國璽樓圖書館-公共衛生、心理學、食品營養"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="濟時樓圖書總館-資訊、法律、教育"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
