@@ -2377,6 +2377,37 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="35":
+                worksheet.update(list[1],int(36))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#37 下列關於資料庫的選項何者正確？"+"\n"+"（Ａ）主鍵在每個儲存格唯一不可重複"+"\n"+"（Ｂ）外來鍵在每個儲存格唯一不可重複"+"\n"+"（Ｃ）所有儲存格皆不可為Null"+"\n"+"（Ｄ）資料表名稱不可與資料庫名稱重複"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#37',
+                    template=ButtonsTemplate(
+                        title='#37',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='主鍵在每個儲存格唯一不可重複'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='外來鍵在每個儲存格唯一不可重複'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='所有儲存格皆不可為Null'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='資料表名稱不可與資料庫名稱重複'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
