@@ -3356,6 +3356,11 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#51 接續上題多媒體視聽區位於校內ＯＯ樓圖書館。（請以「ＯＯ樓」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="49":
+                worksheet.update(list[1],int(50))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#51 接續上題多媒體視聽區位於校內ＯＯ樓圖書館。（請以「ＯＯ樓」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
