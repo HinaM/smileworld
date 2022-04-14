@@ -2027,6 +2027,12 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="又過了幾個禮拜，終於，考試又要鄰近了——打算抱佛腳的日翔心想，根據他的經驗，在家看書他一點也不會認真，總是讀了一兩行又跑去滑滑手機敲敲鍵盤、整理書櫃打掃房間、甚至出奇地自告奮勇跑去幫媽媽跑腿。畢竟再怎麼擁有上一次大學生活的經歷，有些東西就是考完就會順便忘記的。於是他決定在學校圖書館讀書。而他心想，現在跟曉光也逐漸熟識了起來，如果有機會也可以向他問問題。"))
                 list_talk.append(TextSendMessage(text="#31 請問本校擁有最多層樓的圖書館是哪一個？（請以「ＯＯ樓」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="29":
+                worksheet.update(list[1],int(30))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="又過了幾個禮拜，終於，考試又要鄰近了——曉光總是不急不徐的安排好讀書計畫，以及吃飯與休息時間，仿佛一天的每一分每一秒都掌握在她的手上。而對於喜歡安靜場所的曉光而言，圖書館是再適合不過的地方，也因此，曉光把輔大的所有圖書館的開館與閉館記得一清二楚。"))
+                list_talk.append(TextSendMessage(text="#31 請問本校擁有最多層樓的圖書館是哪一個？（請以「ＯＯ樓」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
