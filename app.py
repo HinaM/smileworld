@@ -3397,6 +3397,27 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="50":
+                worksheet.update(list[1],int(51))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="借完書後，兩人坐在濟時樓外面的長椅閒聊，在鬱鬱蔥蔥的大樹下，即使是偏熱的天氣也能在樹蔭下享受到涼爽的滋味。可曉光一點都感受不到什麼涼爽，畢竟她身邊可是那個過去似乎與他有所交集的男孩……而且，她自己現在也對日翔抱持著不明的好感。"+"\n"+"「……謝謝你。」曉光把玩起了落在自己裙子上的綠葉試圖冷靜下來，嘴上也不忘對日翔表達感謝。"+"\n"+"經常處於被動方的曉光其實早早就在想要不要主動約日翔看看了；前些日子在博物館看見了簽名，自那之後，她便更想嘗試慢慢地拉近日翔跟自己的關係了。說不定會因為更多的相處，回憶起更多記憶呢？"+"\n"+"曉光實在是很想趁著這次聊天的機會，乾脆邀請日翔在下周三沒課的時候一起研究專題。可她還沒有下定決心。"+"\n"+"「不會啦，沒想到可以在借書的時候看到妳。」日翔笑著回應。"+"\n"+"「沒想到日翔選書的品味跟我越來越近了。」他笑起來真好看啊，好像都要比陽光都炫目了……曉光緊張的心情依舊沒有散去，但也依舊不自覺地露出笑容。"+"\n"+"在這樣既緊張又心動的狀態下還能好好隱藏情緒聊天，應該是何曉光原先就很是聰明的緣故。"))
+                list_talk.append(TextSendMessage(text="「哎、沒有啦，只是有先爬文而已！」日翔受到了誇獎後似乎顯得有些慌張，不過曉光仍然在整理自己的情緒，於是並沒有注意到這件事。"+"\n"+"「這個作者的教學很清楚，除了全彩印製之外，練習題目難度也剛剛好，重點是還附上了答案跟小建議，初學者容易錯的地方也會特別標記起來。要是我想買教學書，都會首先考慮他的著作。」曉光早早就足了功課，滔滔不絕的向日翔介紹這本書的優點。"+"\n"+"「曉光對這個真瞭解啊，大一的時候也是有妳在我才知道我差點買了一樣的書。」日翔感嘆。"+"\n"+"「只是剛好記得而已……而且，日翔你剛剛也幫助了我。」不太會表達感謝的曉光，在說出這句話後，趕緊低下頭轉移焦點，但曉光的內心是十分感謝日翔。"+"\n"+"——是啊，日翔他剛剛也幫助了我。如果不趁這次機會邀請，下一次機會還要等到什麼時候呢？如果僅僅在這裡猶豫不決，那不是和過去的自己一樣了嗎？曉光已經有過了一次後悔，她不想在第二次的大學生活之中，在此時此刻又功虧一簣。"))
+                list_talk.append(TextSendMessage(text="她將葉子握進掌心，自己的命運將要由自己決定啊。"+"\n"+"「唔……對了，日翔，下禮拜三有空嗎？」曉光努力正視著日翔那對琥珀色的雙眼。"+"\n"+"面對突來的問題，日翔露出驚訝的表情，但還是輕輕點了點頭。"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='選項',
+                    template=ButtonsTemplate(
+                        title='選項',
+                        text='要不要來我家？',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='要不要來我家？'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
