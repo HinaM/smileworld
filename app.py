@@ -3665,6 +3665,12 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="#52 有一空堆疊（Stack），依序做push(a)、push(b)、push(c)、pop、push(d)、push(e)、pop後，由下往上的資料依序是？（填寫範例如下，請依序輸入半形小寫「ＯＯＯ」回答。）"))
                 list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/04/02/3oDCXx.png', preview_image_url='https://upload.cc/i1/2022/04/02/3oDCXx.png'))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="51":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="時間飛逝，期中考在即，而曉光的生日也跟著接近了。不過，為了保持好成績，就算是生日也得先擱在一邊，專心面對高山一樣的參考書，才能解決即將來臨的期中考！"))
+                list_talk.append(TextSendMessage(text="#52 有一空堆疊（Stack），依序做push(a)、push(b)、push(c)、pop、push(d)、push(e)、pop後，由下往上的資料依序是？（填寫範例如下，請依序輸入半形小寫「ＯＯＯ」回答。）"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/04/02/3oDCXx.png', preview_image_url='https://upload.cc/i1/2022/04/02/3oDCXx.png'))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
@@ -3682,6 +3688,11 @@ def handle_message(event):
             list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="51":
+                worksheet.update(list[1],int(52))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#53 小志畢業後可以選擇就業或繼續攻讀研究所。如果小志選擇上研究所，他的學費總共是42000元，生活費31000元，書本費2300元。若他選擇就業，他的薪水是25000元，生活費13000元。小志選擇上研究所的成本總共是？（請以「Ｏ元」回答，Ｏ數量不代表答案正確字數。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="51":
                 worksheet.update(list[1],int(52))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#53 小志畢業後可以選擇就業或繼續攻讀研究所。如果小志選擇上研究所，他的學費總共是42000元，生活費31000元，書本費2300元。若他選擇就業，他的薪水是25000元，生活費13000元。小志選擇上研究所的成本總共是？（請以「Ｏ元」回答，Ｏ數量不代表答案正確字數。）"))
@@ -3729,6 +3740,33 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="52":
+                worksheet.update(list[1],int(53))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#54 下列何者記憶體管理方法有內部碎裂（Internal Fragmentation）問題？"+"\n"+"（Ａ）分頁（Page）"+"\n"+"（Ｂ）連續性（Contiguous）"+"\n"+"（Ｃ）分段（Segment）"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#54',
+                    template=ButtonsTemplate(
+                        title='#54',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="分頁（Page）"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="連續性（Contiguous）"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="分段（Segment）"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
@@ -3746,6 +3784,11 @@ def handle_message(event):
             list.append('E'+str(j))
             #ID已寫入、日向視角、Q2=1
             if worksheet.acell(list[0]).value=="1" and worksheet.acell(list[1]).value=="53":
+                worksheet.update(list[1],int(54))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#55 發生死結（Deadlock）的條件有幾個？（請輸入「Ｏ個」回答，Ｏ為半形數字。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="53":
                 worksheet.update(list[1],int(54))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#55 發生死結（Deadlock）的條件有幾個？（請輸入「Ｏ個」回答，Ｏ為半形數字。）"))
@@ -3772,6 +3815,12 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="#56 請判斷下列程式碼，包含main()一共會產生多少process？（請輸入「Ｏ個process」，Ｏ為半形數字。）"))
                 list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/04/02/r8NibS.png', preview_image_url='https://upload.cc/i1/2022/04/02/r8NibS.png'))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="54":
+                worksheet.update(list[1],int(55))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#56 請判斷下列程式碼，包含main()一共會產生多少process？（請輸入「Ｏ個process」，Ｏ為半形數字。）"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/04/02/r8NibS.png', preview_image_url='https://upload.cc/i1/2022/04/02/r8NibS.png'))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
@@ -3792,6 +3841,34 @@ def handle_message(event):
                 worksheet.update(list[1],int(56))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="日翔突然覺得，他或許是一個會在關鍵時刻成為縮頭烏龜的人。"+"\n"+"距離曉光的生日已經剩下僅僅一周了，他卻沒有下定決心要怎麼樣好好約曉光才行——他確實是有考慮過要不要在LINE上面約曉光就好，可是又怕會不會太突然……光是在這件事上，日翔就猶豫了許久。"+"\n"+"日翔坐在輔園的椅子上咬著插在珍珠紅茶上頭的吸管：「哎。怎麼辦才好啊——」"+"\n"+"今天司晨沒課，怎麼偏偏在這煩惱的時刻少了平常最熱鬧的人啊，如果他在的話或許還能跟我討論，或者讓我分分心的……日翔自顧自地喃喃道。"+"\n"+"突然，有一道人影直截了當地到了日翔面前，甚至在日翔反應過來前就理所當然地坐在了他的對面：「你一個人在這煩惱沒用的。」"+"\n"+"日翔一聽到那個傲骨嶙嶙的聲音時，就已經確定了這個人究竟是何方神聖：「啊、……宇、宇桓？你今天也有課嗎？」"+"\n"+"沒想到宇桓會在這個時候來輔園……日翔頗為震驚。不過，宇桓並沒有打算要理會日翔的疑問，倒是單刀直入地切入主題：「這麼煩惱的話你大可去找諮詢。」"))
+                list_talk.append(TextSendMessage(text="#57 請問要是心情鬱悶，想找個人談談的話，可以到哪裡諮詢呢？"+"\n"+"（Ａ）在籃球場吶喊"+"\n"+"（Ｂ）去全聯福利中心買買買解悶"+"\n"+"（Ｃ）去學生輔導中心詢問"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#57',
+                    template=ButtonsTemplate(
+                        title='#57',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="在籃球場吶喊"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="去全聯福利中心買買買解悶"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="去學生輔導中心詢問"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="55":
+                worksheet.update(list[1],int(56))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="「終於結束了。」 剛考完試的曉光決定要吃冰淇淋犒賞自己。"+"\n"+"曉光找了一個空曠的地方，坐在長椅上好好享用冰淇淋。"+"\n"+"「考完是考完了，但好像還沒辦法放鬆下來。」"+"\n"+"至今為止，曉光未解的謎團越來越多了。首先是那莫名其妙帶她回來的那道光，家裡出現自己沒有印象的物品，看到博物館與日翔的筆跡，這些種種讓她摸不著頭緒。"+"\n"+"而一想到日翔的曉光，心跳得特別快。"+"\n"+"「該怎麼辦才好…」曉光也不知道該跟誰提起這件事，說自己突然又重新過了大學生活，任誰都不會相信。"+"\n"+"「要不要去諮詢看看呢？」"))
                 list_talk.append(TextSendMessage(text="#57 請問要是心情鬱悶，想找個人談談的話，可以到哪裡諮詢呢？"+"\n"+"（Ａ）在籃球場吶喊"+"\n"+"（Ｂ）去全聯福利中心買買買解悶"+"\n"+"（Ｃ）去學生輔導中心詢問"))
                 buttons_template_message = TemplateSendMessage(
                     alt_text='#57',
