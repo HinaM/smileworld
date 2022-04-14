@@ -2299,6 +2299,37 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="34":
+                worksheet.update(list[1],int(35))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#36 關聯式資料庫中的key分為很多種，其中主鍵（primary key）和外來鍵（foreign key）兩者的特性為？"+"\n"+"（Ａ）兩者皆可為空"+"\n"+"（Ｂ）兩者皆不可為空"+"\n"+"（Ｃ）主鍵可為空，外來鍵不可"+"\n"+"（Ｄ）外來鍵可為空，主鍵不可"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#36',
+                    template=ButtonsTemplate(
+                        title='#36',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='兩者皆可為空'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='兩者皆不可為空'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='主鍵可為空，外來鍵不可'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='外來鍵可為空，主鍵不可'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
