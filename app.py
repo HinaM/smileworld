@@ -3101,6 +3101,13 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="「欸X，阿日這個笨笨的是什麼鳥啊，嗚呼！！可以養嗎？欸阿日這可以養嗎？」司晨傳了一張表達興奮的貼圖。"+"\n"+"而日翔則是回敬了一張傻眼的貼圖，接著輸入：「這叫阿司鳥，學校不是很多嗎？你現在才注意到喔。」"+"\n"+"過沒幾秒鐘，司晨便又傳來了訊息：「我以為那是雕像結果他會動？？？？」「真假跟我同名，酷欸」「不對我怎麼覺得你在損我？！？！！」"+"\n"+"劈哩啪啦地傳了三則訊息後，又緊接著貼了哭哭的動態貼圖。"+"\n"+"日翔嘆出一口氣，無奈笑了出來：「你居然會注意到我在損你？好啦，其實他叫……」"))
                 list_talk.append(TextSendMessage(text="#46 輔大內有許多咖啡色的「大笨鳥」，請問他的正名是？（請以「ＯＯＯＯ」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="44":
+                worksheet.update(list[1],int(45))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="吃飽飯後，兩人參觀博物館裡面的鳥類特別展覽。"+"\n"+"「曉光你看這個，是金剛鸚鵡耶，毛色好漂亮，好像我喜歡的寶石一樣有好多色彩。」真澄指著金剛鸚鵡的模型說著。"+"\n"+"「真的耶，我喜歡那個紅色。」"+"\n"+"「還有你看看這個，是孔雀，孔雀的毛色也好漂亮。」真澄假裝自己是孔雀，把雙手張開，像是孔雀開屏一樣。"+"\n"+"真澄好像喜歡毛色很多色的鳥類呢。曉光觀察真澄的眼神，毛色比較多樣的鳥類，真澄的雙眼就會盯著很久，但是像是禿鷹或是烏鴉等偏黑色系的鳥類，真澄連看都沒看。"+"\n"+"「喔喔喔，這個是。」真澄又指著一隻鳥。"+"\n"+"曉光的目光隨著真澄手指的方向看。「是大笨鳥呢，學校很常看到。」"+"\n"+"「哈哈哈，大家都說牠是大笨鳥，但是我看很少人知道牠的名字吧。」真澄笑著說道。"))
+                list_talk.append(TextSendMessage(text="#46 輔大內有許多咖啡色的「大笨鳥」，請問他的正名是？（請以「ＯＯＯＯ」回答。）"))
+                list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fZdZax@.jpg', preview_image_url='https://ppt.cc/fZdZax@.jpg'))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
