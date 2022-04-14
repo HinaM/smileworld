@@ -2192,6 +2192,38 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="32":
+                worksheet.update(list[1],int(33))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#34 有一資料庫用來記錄學生分數如下圖，下列有一塗黑語法，該填上什麼可以由小到大輸出A班學生姓名與成績？"+"\n"+"◼ name,score ◼ database_score ◼ class_id=1 ◼ score ◼"+"\n"+"（Ａ）SELECT/FROM/WHERE/ORDER BY/ASC"+"\n"+"（Ｂ）SELECT/FROM/WHERE/GROUP BY/DESC"+"\n"+"（Ｃ）SELECT/FROM/WHEN/ORDER BY/DESC"+"\n"+"（Ｄ）SELECT/FROM/WHEN/GROUP BY/ASC"))
+                list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fxIoAx@.png', preview_image_url='https://ppt.cc/fxIoAx@.png'))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#34',
+                    template=ButtonsTemplate(
+                        title='#34',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='SELECT/FROM/WHERE/ORDER BY/ASC'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='SELECT/FROM/WHERE/GROUP BY/DESC'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='SELECT/FROM/WHEN/ORDER BY/DESC'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='SELECT/FROM/WHEN/GROUP BY/ASC'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
