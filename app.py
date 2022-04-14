@@ -2756,6 +2756,37 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="41":
+                worksheet.update(list[1],int(42))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#43 下列關於HTML與CSS的敘述何者錯誤？"+"\n"+"（Ａ）HTML適合用來定義網的內容,CSS適合用來定義網頁的外觀"+"\n"+"（Ｂ）CSS樣式表示由一條一條的樣式規則所組成"+"\n"+"（Ｃ）HTML不會區分英文字母的大小寫"+"\n"+"（Ｄ）CSS不會區分英文字母的大小寫"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#43',
+                    template=ButtonsTemplate(
+                        title='#43',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="HTML適合用來定義網的內容,CSS適合用來定義網頁的外觀"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="CSS樣式表示由一條一條的樣式規則所組成"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="HTML不會區分英文字母的大小寫"
+                            ),
+                            MessageAction(
+                                label="D",
+                                text="CSS不會區分英文字母的大小寫"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
