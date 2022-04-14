@@ -2830,6 +2830,33 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="42":
+                worksheet.update(list[1],int(43))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#44 佇列（Queue）的特性是？"+"\n"+"（Ａ）後進先出（LIFO）"+"\n"+"（Ｂ）先進先出（FIFO）"+"\n"+"（Ｃ）以上皆可"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#44',
+                    template=ButtonsTemplate(
+                        title='#44',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="後進先出（LIFO）"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="先進先出（FIFO）"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="以上皆可"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
