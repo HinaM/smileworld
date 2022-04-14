@@ -2606,6 +2606,37 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="39":
+                worksheet.update(list[1],int(40))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#41 在html語法中，以何種語法設定超連結？"+"\n"+"（Ａ）<a href='網址'>超連結</a>"+"\n"+"（Ｂ）<b href='網址'>超連結</b>"+"\n"+"（Ｃ）<c href='網址'>超連結</c>"+"\n"+"（Ｄ）<d href='網址'>超連結</d>"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#41',
+                    template=ButtonsTemplate(
+                        title='#41',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="<a href='網址'>超連結</a>"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="<b href='網址'>超連結</b>"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="<c href='網址'>超連結</c>"
+                            ),
+                            MessageAction(
+                                label='D',
+                                text="<d href='網址'>超連結</d>"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
