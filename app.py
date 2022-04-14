@@ -4058,6 +4058,26 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="57":
+                worksheet.update(list[2],int(9))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="解鎖照片！趕快去「個人檔案」看看！"))
+                list_talk.append(ImageSendMessage(original_content_url='https://i.imgur.com/1sdS8xa.jpg', preview_image_url='https://i.imgur.com/1sdS8xa.jpg'))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='繼續看主線故事',
+                    template=ButtonsTemplate(
+                        title='繼續看主線故事-3',
+                        text='繼續看主線故事-3',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='繼續看主線故事-3'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
@@ -4081,6 +4101,13 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="雖然也感受到了曉光對自己的好感，但日翔顧慮到了專題發表的壓力，於是他還沒有跟曉光告白。他打算要等到時機成熟，大家都放下了壓力之後再明確地告訴曉光自己的心意。日翔注意到自己在和曉光的第一次約會過後和她的距離也近了許多。他很感謝司晨給自己的建議，也很感謝宇桓給自己激將了一番……當然，更是感謝那個「Code/140.136」給了自己重來一次的機會，不然這輩子想要和曉光再次有接觸，幾乎是不太可能了吧。"+"\n"+"日翔和司晨剛剛結束了今天的最後一堂課，正要離開校園。"+"\n"+"「欸、欸、糟糕、阿日！」走往捷運站的路上，司晨突然毫無預警地慘叫了一聲，成功引來了周圍所有人的注目禮。"+"\n"+"日翔感到有些尷尬，但見到司晨的臉色慘白，還是有些感到緊張：「怎麼了？」"+"\n"+"仔細一看，司晨似乎正在一邊翻找自己的書包跟錢包，焦急得不行：「我的學生證不見了，怎麼辦！我以後要怎麼回家啊嗚嗚嗚嗚……」"+"\n"+"「唉。我跟你說，學生證要是找不到的話，其實……」"))
                 list_talk.append(TextSendMessage(text="#58 請問學生如果學生有學務上的問題該去哪裏處理？（請以「ＯＯ樓」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="57":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="兩人就這樣慢悠悠地逛了幾乎整個賣場，曉光很中意大鯊鯊玩偶「BLÅHAJ」於是抱了一隻，日翔也打算買一隻，便也拿在手上。"+"\n"+"當然，手也還是牽得緊緊的。他們似乎是已經習慣了對方手心的溫度，更或者是有了什麼不約而同的默契，誰都不願意放開手；手心的溫度，讓曉光想起來，這不是第一次牽起異性的手，而是在幼兒園時期，也是跟他一起，沒錯，跟日翔一起。"+"\n"+"「那個……」想起來這段過往的曉光，試圖開口詢問。"+"\n"+"沒想到跟日翔同時開了口，曉光對這個意料之外的默契感到有些驚訝。而一旁的日翔似乎也嚇到了，曉光連忙回應：「沒事、你先講。」"+"\n"+"「我有一件很重要的事情要問你。」似乎是因為接下來要談的事情藏在心中很久了，日翔的語氣變得鄭重了起來。"+"\n"+"「……我剛剛也想起來了。」曉光連日翔的問題都不必聽，因為她已經知道日翔想要說什麼，曉光露出了淺淺的微笑。"+"\n"+"「曉光，難道妳是說……妳也跟我一樣想起了那個約定？」日翔看著她的笑臉，似乎也知道了曉光究竟要講些什麼。"+"\n"+"或許是因為回憶起了相同的景物，日翔跟曉光格外地有著對話的默契，不用把話說得清楚就可以了解對方想表達的東西。"+"\n"+"「嗯，那個人就是你。」曉光的語氣少見地篤定。"+"\n"+"「沒想到我們到現在才真正地相認啊……對不起，我應該要早些想起來的。」日翔的和曉光道歉。"+"\n"+"曉光搖搖頭讓日翔不要道歉。曉光其實想問日翔搬家後過得好不好、想跟日翔說她想起了盒子裡所有跟他有關的回憶、想告訴日翔她終於又見到他了、想告訴日翔要是自己能早點想起來就好了……可曉光最後還是說不出口，她有太多太多話想跟日翔說。"+"\n"+"突然，有個熟悉的聲音打破了兩人的對話：「哇X！真假！！！！」"+"\n"+"兩人轉頭一看，竟然發現司晨躲在柱子後面，或許是因為聽到了他們的對話，驚訝的叫出聲來。"+"\n"+"「白癡，司晨你太大聲了！！」接著，日翔和曉光聽到了另一個熟悉的聲音對著司晨進行告誡。"+"\n"+"兩人毅然決然往聲音的方向走近，當然是看見了露出尷尬神情的司晨跟真澄。"))
+                list_talk.append(TextSendMessage(text="或許是因為感到害臊，日翔和曉光的手已經放開來了，曉光的雙手緊緊抱著鯊鯊一語不發，似乎是對於被兩個朋友「關切」（雖然很明顯這只是單純的跟蹤而不是關切）而有些難為情的緣故。"+"\n"+"「就是，實在是太擔心了才來看看啊，阿日你前陣子不還是很猶豫不決嗎？」司晨好像沒有對偷窺兩人約會表達歉意的意思，至少依他的神情看來，應該是真的很擔心摯友的狀況。"+"\n"+"「是這樣沒錯……」日翔看起來相當無奈。"+"\n"+"「今天也是我的生日，有人搶了我跟曉光相處的好時光才過來關心一下。」真澄跟著解釋了自己的動機，但不知為何日翔總感覺她似乎不打算澄清什麼。"+"\n"+"「等等，不是我的錯吧！」日翔忍不住對真澄吐槽。"+"\n"+"「噗、好意外，真澄跟司晨居然都跟過來了。」終於平復心情的曉光笑了出來。"+"\n"+"而原先日翔跟曉光兩人預定的午餐時刻自然是演變成了四個人一起在瑞典餐廳吃飯，日翔表示他要順便請客慶祝一下現場兩位女生的生日。"+"\n"+"今天真的很開心。想起了以前的種種回憶，買到了喜歡的鯊魚布偶，也吃到IKEA的香草冰淇淋。不過面對司晨瘋狂催促和曉光快點交往的事情，又是另一個故事了。"))
+                list_talk.append(TextSendMessage(text="眼看專題發表的時間將近，曉光先把其他想法拋在腦後，想要努力打好這場仗。"+"\n"+"「糟糕，差點就忘記這件事。」曉光敲了敲自己的腦袋。"+"\n"+"最近發生太多事情，著實的讓小光感受到充實的大學生活，比起第一次度過的大學生活來說，還來的忙碌許多，但曉光卻十分感謝「Code/140.136」給了自己重來一次的機會，不然這輩子想要和日翔再次有接觸，幾乎是不可能。"+"\n"+"剛下課的曉光，決定趕快去辦理獎學金。"))
+                list_talk.append(TextSendMessage(text="#58 請問學生如果學生有學務上的問題該去哪裏處理？（請以「ＯＯ樓」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
@@ -4102,8 +4129,40 @@ def handle_message(event):
                 worksheet.update(list[1],int(58))
                 worksheet.update(list[2],int(8))
                 list_talk=[]
-                list_talk.append(TextSendMessage(text="解鎖野聲樓！趕快去「遊戲地圖」看看！"+"\n\n"+"「原來是這樣……阿日你對學校真的很熟欸，像我都不知道野聲樓在幹嘛。」司晨一邊翻找錢包的動作緩了下來，似乎是鬆了一口氣。"+"\n"+"哈哈，我猜你甚至不知道野聲樓的聲不是野生的「生」，而是聲音的「聲」……日翔內心默默吐槽自己的朋友。"))
+                list_talk.append(TextSendMessage(text="解鎖野聲樓！趕快去「遊戲地圖」看看！"))
+                list_talk.append(TextSendMessage(text="「原來是這樣……阿日你對學校真的很熟欸，像我都不知道野聲樓在幹嘛。」司晨一邊翻找錢包的動作緩了下來，似乎是鬆了一口氣。"+"\n"+"哈哈，我猜你甚至不知道野聲樓的聲不是野生的「生」，而是聲音的「聲」……日翔內心默默吐槽自己的朋友。"))
                 list_talk.append(TextSendMessage(text="「資管系ＸＸ周年運動會」的公告一發布在班群，司晨就馬上興奮地告知坐在隔壁的日翔。沒想到專題發表在即，居然還會有系上的活動！日翔心想，幸好小組的專題已經準備得差不多了，多參加個師生運動會絕對是綽綽有餘的，他想趁著這次機會，再多多表現自己在籃球場上馳騁的英姿。"+"\n"+"據說這次的師生運動會在中美堂舉辦，那應該不會再有大一時司晨發生的窘況——為了耍帥反而摔了一跤了吧。"+"\n"+"「這次我不會搶你風頭，一旦有給你表現的就交給你啊！給曉光看看你帥氣的樣子！」司晨搭上了日翔的肩膀，好像在往他身上加持一些勇氣。"+"\n"+"「哇靠……阿司，你這麼講義氣真好。」日翔想到以前的司晨也是這麼挺朋友，突然發自內心地感嘆有這位朋友真好。"+"\n"+"不過，司晨本人倒是很快就因為這樣的讚賞得意了起來：「哎？嘿嘿，謝謝誇獎。反之，你要好好表現啊，不要辜負我給你的機會！」"+"\n"+"日翔是很習慣他的反應了，拍拍他的肩膀笑道：「哈哈，當然啦。」"+"\n"+"這時，坐在前頭的曉光回過頭來詢問：「你們在聊資管系的師生運動會嗎？」"+"\n"+"「對啊，之後的籃球比賽你會來看嗎？」日翔順勢向她提出了邀請。他發現，自從那次發現彼此就是對方的兒時玩伴之後，曉光就變得比以往更加開朗了起來。"+"\n"+"「嗯。我想去幫你加油。」曉光笑著回應。"+"\n"+"「好期待那天的到來啊！」司晨看著好哥們跟喜歡的女生互動也不禁動容了起來。他心想，說不定他也有機會在師生運動會找到一個喜歡的小仙女呢？"))
+                list_talk.append(TextSendMessage(text="#59 輔大資管系學會想要租借中美堂場地舉辦師生運動會，請問應該到哪個單位租借場地呢？"+"\n"+"（Ａ）心園"+"\n"+"（Ｂ）宜真宜善學苑"+"\n"+"（Ｃ）舊醫學大樓一樓右側"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#59',
+                    template=ButtonsTemplate(
+                        title='#59',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="心園"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="宜真宜善學苑"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="舊醫學大樓一樓右側"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="57":
+                worksheet.update(list[1],int(58))
+                worksheet.update(list[2],int(8))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="解鎖野聲樓！趕快去「遊戲地圖」看看！"))
+                list_talk.append(TextSendMessage(text="「資管系ＸＸ周年運動會」的公告一發布在班群，司晨就馬上興奮地告知坐在隔壁的日翔。"+"\n"+"而坐在他們兩人前面的曉光，聽得見他們兩人的對話。"+"\n"+"「這次我不會搶你風頭，一旦有給你表現的就交給你啊！給曉光看看你帥氣的樣子！」司晨搭上了日翔的肩膀，好像在往他身上加持一些勇氣。"+"\n"+"「哇靠……阿司，你這麼講義氣真好。」"+"\n"+"「哎？嘿嘿，謝謝誇獎。反之，你要好好表現啊，不要辜負我給你的機會！」司晨本人倒是很快就因為這樣的讚賞得意了起來。"+"\n"+"「哈哈，當然啦。」日翔是很習慣他的反應了，拍拍他的肩膀笑道。"))
+                list_talk.append(TextSendMessage(text="「你們在聊資管系的師生運動會嗎？」 聽到自己名字被提起的曉光，回過頭來詢問。"+"\n"+"「對啊，之後的籃球比賽你會來看嗎？」日翔順勢向她提出了邀請。"+"\n"+"「嗯。我想去幫你加油。」曉光笑著回應，自從那次發現彼此就是對方的兒時玩伴之後，曉光就變得比以往更加開朗了起來。"+"\n"+"「好期待那天的到來啊！說不定他也有機會在師生運動會找到一個喜歡的小仙女呢？」司晨看著好哥們跟喜歡的女生互動也不禁動容了起來。"))
                 list_talk.append(TextSendMessage(text="#59 輔大資管系學會想要租借中美堂場地舉辦師生運動會，請問應該到哪個單位租借場地呢？"+"\n"+"（Ａ）心園"+"\n"+"（Ｂ）宜真宜善學苑"+"\n"+"（Ｃ）舊醫學大樓一樓右側"))
                 buttons_template_message = TemplateSendMessage(
                     alt_text='#59',
@@ -4148,6 +4207,34 @@ def handle_message(event):
                 worksheet.update(list[1],int(59))
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="專題發表的時刻終於到了！五人組對於這次的專題內容十分有信心。但信心歸信心，發表時刻終究還是有所考驗的。趕緊動用所學，度過專題大魔王吧！"+"\n"+"日翔已經決定好結束這次專題就要向曉光表達心意了，可不能在這個時候漏氣呀。"))
+                list_talk.append(TextSendMessage(text="#60 CPU排班演算法中，效能最佳的是？"+"\n"+"（Ａ）FIFO法則"+"\n"+"（Ｂ）SJF法則"+"\n"+"（Ｃ）RR法則"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#60',
+                    template=ButtonsTemplate(
+                        title='#60',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text="FIFO法則"
+                            ),
+                            MessageAction(
+                                label='B',
+                                text="SJF法則"
+                            ),
+                            MessageAction(
+                                label='C',
+                                text="RR法則"
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="58":
+                worksheet.update(list[1],int(59))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="專題發表的時刻終於到了！五人組對於這次的專題內容十分有信心。但信心歸信心，發表時刻終究還是有所考驗的。趕緊動用所學，度過專題大魔王吧！"))
                 list_talk.append(TextSendMessage(text="#60 CPU排班演算法中，效能最佳的是？"+"\n"+"（Ａ）FIFO法則"+"\n"+"（Ｂ）SJF法則"+"\n"+"（Ｃ）RR法則"))
                 buttons_template_message = TemplateSendMessage(
                     alt_text='#60',
