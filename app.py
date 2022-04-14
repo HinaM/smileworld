@@ -3143,6 +3143,25 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value=="2" and worksheet.acell(list[1]).value=="45":
+                worksheet.update(list[1],int(46))
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="其實我也是到現在才知道叫做黑冠麻鷺呢。增廣見聞的曉光，點了點頭。"+"\n"+"時間隨著兩人閱覽各式各樣的鳥類，導覽也漸漸到了尾聲。"+"\n"+"「導覽即將結束摟，最後提醒大家，如果喜歡鳥類的話，想買點東西回家，可以到旁邊的紀念品專區，裡面有關於鳥類的周邊商品，或是可以到這裡來，這裡有各式各樣的鳥類印章，蓋在這邊的手冊上，紀念自己到此一遊喔。」導覽員拿著麥克風大聲說著。"+"\n"+"「曉光曉光，既然都來了，我們就去蓋印章吧。」真澄像個小孩一樣，拉著曉光的衣袖，示意著曉光往剛剛導覽員說的方向行動。"+"\n"+"「好，我也想收集博物館的印章呢。」語畢，兩人走向放著手冊和蓋章的桌子旁邊準備蓋章。"+"\n"+"小光打開手冊，翻到最後一頁。"+"\n"+"「為什麼要翻到最後一頁？」真澄問道。"+"\n"+"「對耶，下意識就…」 曉光也沒有察覺道自己做這件事的理由，手自然的就翻到最後一頁。"+"\n"+"「等等！曉光！你看。」真澄驚訝的斷句，讓曉光的視線指向真澄手指的地方。"+"\n"+"「！？」曉光驚訝到說不出話來，因為在她眼前的是，蓋著大笨鳥的印章下方寫著「曉光和日翔到此一遊:D」這句話，上面還有兩人的簽名。"+"\n"+"「曉光，你早就跟日翔同學來過了嗎？」真澄直視著曉光的雙眼。"+"\n"+"「欸？沒有，我是第一次來這間博物館啊。」曉光拼命的搖了搖頭。"+"\n"+"「那…怎麼會？」真澄也不知道發生什麼事情，只是留下這個問題給曉光，而那也是曉光內心的問題。"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='選項',
+                    template=ButtonsTemplate(
+                        title='選項',
+                        text='有沒有可能我以前其實見過日翔，只是我忘了？',
+                        actions=[
+                            MessageAction(
+                                label='選擇',
+                                text='有沒有可能我以前其實見過日翔，只是我忘了？'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         else:
