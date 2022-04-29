@@ -7740,6 +7740,36 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="17":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#18 下列何者為會計恆等式？"+"\n"+"（Ａ）資產 = 負債 + 權益"+"\n"+"（Ｂ）資產 – 權益 = 存貨"+"\n"+"（Ｃ）資產 = 權益"+"\n"+"（Ｄ）負債 = 權益 – 資產"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#18',
+                    template=ButtonsTemplate(
+                        title='#18',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='資產 = 負債 + 權益'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='資產 – 權益 = 存貨'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='資產 = 權益'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='負債 = 權益 – 資產'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
