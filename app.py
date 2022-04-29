@@ -7684,6 +7684,32 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="15":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#16 y=(5x+6)^10，則y'=？"+"\n"+"（Ａ）10*(5x+6)^9"+"\n"+"（Ｂ）50*(5x+6)^9"+"\n"+"（Ｃ）50x+60"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#16',
+                    template=ButtonsTemplate(
+                        title='#16',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='10*(5x+6)^9'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='50*(5x+6)^9'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='50x+60'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
