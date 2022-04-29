@@ -7465,7 +7465,7 @@ def handle_message(event):
                 list_talk.append(image_carousel_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
             #ID已寫入
-            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value!="0":
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="0":
                 list_talk=[]
                 list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/06/q4DPkj.png', preview_image_url='https://upload.cc/i1/2022/03/06/q4DPkj.png'))
                 list_talk.append(TextSendMessage("#1 檔案只有短短幾行程式碼，請問該輸入什麼才能執行此函式，讓結果非None呢？（請輸入半形英文字母）"))
