@@ -7482,6 +7482,32 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage("#4 曉光的學號是「408402132」，請問曉光是民國幾年入學、甲班還是乙班、座號幾號呢？（請以「ＯＯ年、Ｏ班、ＯＯ號」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="4":
+                list_talk=[]
+                list_talk.append(TextSendMessage("#5 輔大英文全名是？"+"\n"+"（Ａ）Fu Jen Catholic University"+"\n"+"（Ｂ）Fu Jen Christian University"+"\n"+"（Ｃ）Fang Jia University"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#5',
+                    template=ButtonsTemplate(
+                        title='#5',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='Fu Jen Catholic University'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='Fu Jen Christian University'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='Fang Jia University'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
