@@ -7568,6 +7568,32 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage("#9 學校外面藏有很多美食的小巷叫？（請輸入「ＯＯＯ巷」回答，ＯＯＯ為半形數字。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="9":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#10 聖言樓地下室的書局叫？"+"\n"+"（Ａ）金石堂書局"+"\n"+"（Ｂ）敦煌書局"+"\n"+"（Ｃ）誠品書局"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#10',
+                    template=ButtonsTemplate(
+                        title='#10',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='金石堂書局'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='敦煌書局'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='誠品書局'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
