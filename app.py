@@ -7427,6 +7427,54 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="代號BS，所屬科系為社會科學系、法律學系，資管系的資料庫管理和作業系統課程也在此授課。建築意義：愛護真理、保護青年的張伯達神父（1905-1951致命殉道），他常說：現代青年該具有團結、合作、謙虛、仁恕、急公、好義等社會道德，還要有創造力。這樣，一旦跨出校門，不但能夠適應社會，在社會中生存，更能領導社會，改造社會，做社會中堅份子。"))
     elif event.message.text=="進修部大樓介紹":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輔大進修部的前身是輔大夜間部，自民國五十八年成立迄今已五十餘年。秉持天主教的辦學理念與宗旨，以全人教育為目標；秉持真、善、美、聖的校訓，提供一個終生學習的環境，為社會國家造就許多人才。"+"\n"+"本部下轄8個學系及10個學士學位學程，致力培養學生具備廣博的知識及精進的專業能力，並培育學生具有人文素養、人本情懷、人際溝通與思惟判斷能力之完備的社會人。"))
+    elif event.message.text=="現在題目":
+        userid_list=worksheet.col_values(1)
+        #ID已寫入
+        if event.source.user_id in userid_list:
+            for i in range(len(userid_list)):
+                if userid_list[i]==event.source.user_id:
+                    j=i+1
+            list=[]
+            list.append('D'+str(j))
+            list.append('E'+str(j))
+            #ID已寫入且未選擇視角
+            if worksheet.acell(list[0]).value=="0":
+                list_talk=[]
+                list_talk.append(TextSendMessage("還沒選遊戲擇視角，請選擇"))
+                image_carousel_template_message = TemplateSendMessage(
+                    alt_text='選擇視角',
+                    template=ImageCarouselTemplate(
+                        columns=[
+                            ImageCarouselColumn(
+                                image_url='https://upload.cc/i1/2022/03/30/K9D6Xw.jpg?fbclid=IwAR3TXV-o2OBUFuPpOursWi-w4pik7hG__iqpSahR59P7CcBaeb76ZvWKQPM',
+                                action=MessageTemplateAction(
+                                    label='日翔',
+                                    text='以日翔的視角進行遊戲'
+                                )
+                            ),
+                            ImageCarouselColumn(
+                                image_url='https://upload.cc/i1/2022/03/30/dRcCSl.jpg?fbclid=IwAR0LgBlXQ2LP-Ag99jBXJALWmbv2zF-DUX9BXp6dTEGn494AIAUKrxOr6q4',
+                                action=MessageTemplateAction(
+                                    label='曉光',
+                                    text='以曉光的視角進行遊戲'
+                                )
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(image_carousel_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            #ID已寫入
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value!="0":
+                list_talk=[]
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/06/q4DPkj.png', preview_image_url='https://upload.cc/i1/2022/03/06/q4DPkj.png'))
+                list_talk.append(TextSendMessage("#1 檔案只有短短幾行程式碼，請問該輸入什麼才能執行此函式，讓結果非None呢？（請輸入半形英文字母）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            else:
+                line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
+        #ID未寫入
+        else:
+            line_bot_api.reply_message(event.reply_token,TextSendMessage(text="還沒建立個人檔案喔，輸入「開始遊戲」建立。"))
     elif event.message.text=="DDD":
         list_talk=[]
         buttons_template_message = TemplateSendMessage(
