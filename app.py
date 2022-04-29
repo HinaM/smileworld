@@ -7653,6 +7653,11 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="#13 請問下圖最後會出現什麼結果？（請以「Ｏ」回答，Ｏ為半形數字。）"))
                 list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/10/J106XE.png', preview_image_url='https://upload.cc/i1/2022/03/10/J106XE.png'))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="13":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#14 下列以Python語法撰寫出的程式碼最後輸出結果為？（請以「x=Ｏ」回答，Ｏ數量不代表實際答案字數。）"))
+                list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/25/uHLoSw.png', preview_image_url='https://upload.cc/i1/2022/03/25/uHLoSw.png'))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
