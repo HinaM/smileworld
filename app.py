@@ -7864,6 +7864,36 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message) 
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="23":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#24 九月一日支付6個房租$12,000採預付租金入帳。假設公司僅於每年年底做調整分錄，則該年年底之調整分錄為："+"\n"+"（Ａ）借：預付房租$8,000，貸：房租費用$8,000"+"\n"+"（Ｂ）借：房租費用$4,000，貸：預付房租$4,000"+"\n"+"（Ｃ）借：房租費用$8,000，貸：預付房租$8,000"+"\n"+"（Ｄ）借：預付房租$4,000，貸：房租費用$4,000"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#24',
+                    template=ButtonsTemplate(
+                        title='#24',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='借：預付房租$8,000，貸：房租費用$8,000'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='借：房租費用$4,000，貸：預付房租$4,000'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='借：房租費用$8,000，貸：預付房租$8,000'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='借：預付房租$4,000，貸：房租費用$4,000'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message) 
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
