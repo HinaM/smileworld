@@ -7808,6 +7808,32 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message) 
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="21":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#22 學校規定通識該修滿哪些領域各4學分呢？"+"\n"+"（Ａ）藝術與人文（含歷史）、社會科學、自然與科技"+"\n"+"（Ｂ）資訊與科技、社會正義、宗教與信仰（含歷史）"+"\n"+"（Ｃ）人類與文明（含歷史）、社會科技、自然與變遷"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#22',
+                    template=ButtonsTemplate(
+                        title='#22',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='藝術與人文（含歷史）、社會科學、自然與科技'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='資訊與科技、社會正義、宗教與信仰（含歷史）'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='人類與文明（含歷史）、社會科技、自然與變遷'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message) 
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
