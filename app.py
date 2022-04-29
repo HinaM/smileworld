@@ -8019,6 +8019,40 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#31 請問本校擁有最多層樓的圖書館是哪一個？（請以「ＯＯ樓」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="31":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#31 請問本校擁有最多層樓的圖書館是哪一個？（請以「ＯＯ樓」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="32":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#32 請問學校圖書館濟時樓平日幾點開？"+"\n"+"（Ａ）08:00 ~ 23:00"+"\n"+"（Ｂ）08:00 ~ 22:00"+"\n"+"（Ｃ）09:00 ~ 23:00"+"\n"+"（Ｄ）08:30 ~ 22:00"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#32',
+                    template=ButtonsTemplate(
+                        title='#32',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='08:00 ~ 23:00'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='08:00 ~ 22:00'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='09:00 ~ 23:00'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='08:30 ~ 22:00'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
