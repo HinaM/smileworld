@@ -7924,6 +7924,37 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="25":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#26 在html語法中，以何種語法設定分頁標題？"+"\n"+"（Ａ）<strong>輔大資管系</strong>"+"\n"+"（Ｂ）<p>輔大資管系</p>"+"\n"+"（Ｃ）<title>輔大資管系</title>"+"\n"+"（Ｄ）<h1>輔大資管系</h1>"))
+                list_talk.append(ImageSendMessage(original_content_url='https://ppt.cc/fsCzxx@.png', preview_image_url='https://ppt.cc/fsCzxx@.png'))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#26',
+                    template=ButtonsTemplate(
+                        title='#26',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='<strong>輔大資管系</strong>'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='<p>輔大資管系</p>'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='<title>輔大資管系</title>'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='<h1>輔大資管系</h1>'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
