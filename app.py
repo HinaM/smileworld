@@ -7512,6 +7512,32 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage("#6 「LM」指的是哪棟大樓呢？（請以「ＯＯＯ大樓」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="6":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#7 請問每年的9月，在風華廣場會舉辦什麼活動？"+"\n"+"（Ａ）社團博覽會"+"\n"+"（Ｂ）星光路跑"+"\n"+"（Ｃ）巧克力傳情"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#7',
+                    template=ButtonsTemplate(
+                        title='#7',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='社團博覽會'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='星光路跑'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='巧克力傳情'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
