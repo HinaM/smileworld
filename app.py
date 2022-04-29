@@ -7774,6 +7774,10 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#19 校史館在哪一棟建築的二樓呢？（請以「ＯＯ樓二樓」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="19":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#20 在大學入門課程中，導師會帶學生去什麼地方傾聽神父的禱告呢？（請以「ＯＯＯ」回答。）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
