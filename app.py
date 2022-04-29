@@ -7538,6 +7538,32 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="7":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#8 請問每年的12月，學校會舉辦什麼活動？"+"\n"+"（Ａ）煙火大會"+"\n"+"（Ｂ）課堂加退選"+"\n"+"（Ｃ）校慶運動會"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#8',
+                    template=ButtonsTemplate(
+                        title='#8',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='煙火大會'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='課堂加退選'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='校慶運動會'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
