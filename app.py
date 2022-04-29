@@ -8011,6 +8011,10 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message)
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="29":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#30 資管系系學會目前位在哪一個大樓？（請以「ＯＯ樓」回答）"))
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
