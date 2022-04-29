@@ -7658,6 +7658,32 @@ def handle_message(event):
                 list_talk.append(TextSendMessage(text="#14 下列以Python語法撰寫出的程式碼最後輸出結果為？（請以「x=Ｏ」回答，Ｏ數量不代表實際答案字數。）"))
                 list_talk.append(ImageSendMessage(original_content_url='https://upload.cc/i1/2022/03/25/uHLoSw.png', preview_image_url='https://upload.cc/i1/2022/03/25/uHLoSw.png'))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="14":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#15 傳說中的「輔大三寶」分別是哪三寶？"+"\n"+"（Ａ）小木屋鬆餅、食科冰淇淋、比臉大雞排"+"\n"+"（Ｂ）巧瑋鬆餅、食科冰淇淋、大菠蘿麵包"+"\n"+"（Ｃ）小木屋鬆餅、食科冰淇淋、大菠蘿麵包"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#15',
+                    template=ButtonsTemplate(
+                        title='#15',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='小木屋鬆餅、食科冰淇淋、比臉大雞排'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='巧瑋鬆餅、食科冰淇淋、大菠蘿麵包'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='小木屋鬆餅、食科冰淇淋、大菠蘿麵包'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
