@@ -7834,6 +7834,36 @@ def handle_message(event):
                 )
                 list_talk.append(buttons_template_message) 
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="22":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#23 以下關於輔仁大學與體育相關的敘述何者正確？"+"\n"+"（Ａ）大一體育必修0學分"+"\n"+"（Ｂ）大二體育必修4學分"+"\n"+"（Ｃ）校園內有排球場、籃球場和網球場"+"\n"+"（Ｄ）位於積健樓的游泳池總長有25公尺"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#23',
+                    template=ButtonsTemplate(
+                        title='#23',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='大一體育必修0學分'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='大二體育必修4學分'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='校園內有排球場、籃球場和網球場'
+                            ),
+                            MessageAction(
+                                label='D',
+                                text='位於積健樓的游泳池總長有25公尺'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message) 
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
