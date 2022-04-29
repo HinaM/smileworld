@@ -7959,6 +7959,32 @@ def handle_message(event):
                 list_talk=[]
                 list_talk.append(TextSendMessage(text="#27 經典輔大美食：食科冰淇淋最接近哪個學餐？（請以「Ｏ園」回答。）"))
                 line_bot_api.reply_message(event.reply_token,list_talk)
+            elif worksheet.acell(list[0]).value!="0" and worksheet.acell(list[1]).value=="27":
+                list_talk=[]
+                list_talk.append(TextSendMessage(text="#28 以下哪一位同學通過了輔大資管系的畢業規則「通過程式語言機測」？"+"\n"+"（Ａ）未通過任何一次程式語言機測，在學期間總共累計通過3題機測題目，且修畢一門資管系的程式設計選修課程"+"\n"+"（Ｂ）未通過任何一次程式語言機測，累計通過2題機測題目並修畢完一門資管系的程式設計選修課程之後，再參加一次機測並通過1題"+"\n"+"（Ｃ）未通過任何一次程式語言機測，在學期間總共累計通過5題機測題目"))
+                buttons_template_message = TemplateSendMessage(
+                    alt_text='#28',
+                    template=ButtonsTemplate(
+                        title='#28',
+                        text='請選出正確答案',
+                        actions=[
+                            MessageAction(
+                                label='A',
+                                text='未通過任何一次程式語言機測，在學期間總共累計通過3題機測題目，且修畢一門資管系的程式設計選修課程'
+                            ),
+                            MessageAction(
+                                label='B',
+                                text='未通過任何一次程式語言機測，累計通過2題機測題目並修畢完一門資管系的程式設計選修課程之後，再參加一次機測並通過1題'
+                            ),
+                            MessageAction(
+                                label='C',
+                                text='未通過任何一次程式語言機測，在學期間總共累計通過5題機測題目'
+                            )
+                        ]
+                    )
+                )
+                list_talk.append(buttons_template_message)
+                line_bot_api.reply_message(event.reply_token,list_talk)
             else:
                 line_bot_api.reply_message(event.reply_token,TextSendMessage(text="輸入錯誤"))
         #ID未寫入
